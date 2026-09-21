@@ -1,0 +1,3098 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="measymate-project-id" content="contact-shift">
+<title>Contact Shift</title>
+<style>
+:root{--bg:#edf2f6;--card:#fff;--text:#13212c;--muted:#6c7b88;--line:#dfe6ec;--navy:#0b2a45;--navy2:#174f77;--blue:#276c9b;--red:#c43d35;--amber:#c98714;--green:#2b8856;--violet:#6658c8;--shadow:0 10px 28px rgba(15,38,58,.10);--r:18px}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif}.app{max-width:620px;margin:auto;min-height:100vh;padding-bottom:92px}
+.hero{background:linear-gradient(145deg,var(--navy),var(--navy2));color:#fff;padding:18px}.top{display:flex;justify-content:space-between;gap:12px;align-items:center}.brand{font-size:21px;font-weight:900}.sub{font-size:11px;opacity:.78;margin-top:3px}.pill{font-size:10px;font-weight:900;padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.13)}
+main{padding:14px}.section{margin-top:18px}.sech{display:flex;justify-content:space-between;align-items:center;margin:0 2px 9px;gap:10px}.sech h2{font-size:15px;margin:0}.hint{font-size:10px;color:var(--muted)}
+.card{background:#fff;border-radius:var(--r);padding:14px;box-shadow:var(--shadow);margin-bottom:10px}.grid4{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric{background:#fff;border-radius:16px;padding:13px;box-shadow:var(--shadow)}.metric .n{font-size:25px;font-weight:900}.metric .l{font-size:10px;color:var(--muted);margin-top:3px}.red{color:var(--red)}.amber{color:var(--amber)}.green{color:var(--green)}.blue{color:var(--blue)}.violet{color:var(--violet)}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.quick button{border:0;background:#fff;border-radius:16px;padding:12px 7px;box-shadow:var(--shadow);font-family:inherit;font-weight:900;color:#263a4a}.quick button span{display:block;font-size:20px;margin-bottom:4px}
+.issue{border-left:5px solid var(--amber)}.issue.p1{border-left-color:var(--red)}.issue.closed{border-left-color:var(--green)}.row{display:flex;justify-content:space-between;gap:9px;align-items:flex-start}.title{font-size:15px;font-weight:900}.meta{font-size:10px;color:var(--muted);line-height:1.5;margin-top:4px}.badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}.badge{font-size:9px;font-weight:900;padding:5px 7px;border-radius:999px;background:#eef3f7;color:#314655}.badge.red{background:#fde9e7;color:#9e3029}.badge.amber{background:#fff0d7;color:#8d5a0c}.badge.green{background:#e8f5ee;color:#227145}.badge.blue{background:#e8f2f8;color:#245f84}.badge.violet{background:#efedfb;color:#5043ad}
+.next{margin-top:10px;background:#f5f7f9;border-radius:12px;padding:10px}.next b{display:block;font-size:9px;color:var(--muted);letter-spacing:.4px}.next span{font-size:12px}.photo-strip{display:flex;gap:7px;overflow:auto;margin-top:10px}.photo-wrap{position:relative;flex:0 0 auto}.photo-strip img{width:78px;height:78px;object-fit:cover;border-radius:10px;border:1px solid #dfe5ea}.photo-remove{position:absolute;right:-4px;top:-4px;width:23px;height:23px;border:0;border-radius:50%;background:#172b3b;color:#fff;font-size:12px}
+.btn{border:0;border-radius:12px;padding:11px 13px;font-weight:900;font-family:inherit;cursor:pointer}.btn.primary{background:var(--navy);color:#fff}.btn.light{background:#edf2f6;color:#2a4254}.btn.good{background:#e6f5ed;color:#246c43}.btn.warn{background:#fff0d6;color:#8d5909}.btn.full{width:100%}.btn.outline{background:#fff;border:1px solid #d7e0e7;color:#2a4254}
+.form label{display:block;font-size:10px;font-weight:900;margin:11px 0 5px}.form input,.form select,.form textarea{width:100%;border:1px solid #d7e0e7;border-radius:12px;padding:11px;background:#fff;font:inherit}.form textarea{min-height:78px}.helper{font-size:10px;color:var(--muted);line-height:1.45;margin-top:5px}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.actions{display:flex;gap:8px;margin-top:12px}.actions .btn{flex:1}.photo-buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px}.photo-buttons label{margin:0;display:block;text-align:center}
+.timeline{position:relative;margin-left:7px;padding-left:20px}.timeline:before{content:"";position:absolute;left:4px;top:4px;bottom:4px;width:2px;background:#dfe5ea}.titem{position:relative;margin-bottom:14px}.titem:before{content:"";position:absolute;left:-20px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--navy)}.thead{font-size:10px;font-weight:900}.tbody{font-size:12px;color:#40505e;margin-top:4px}
+.mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mode{background:#fff;border-radius:18px;padding:15px;box-shadow:var(--shadow);border:0;text-align:left;font-family:inherit}.mode .icon{font-size:29px}.mode strong{display:block;font-size:14px;margin-top:7px}.mode span{display:block;font-size:10px;color:var(--muted);line-height:1.45;margin-top:4px}.mode em{display:inline-block;font-style:normal;font-size:9px;font-weight:900;border-radius:999px;padding:5px 7px;background:#eef4f8;color:#275e81;margin-top:8px}
+.qrbox{background:#fff;border-radius:22px;padding:15px;box-shadow:var(--shadow);text-align:center}#qrCanvas{width:min(78vw,350px);height:auto;image-rendering:pixelated;background:#fff;border-radius:12px}.qr-note{font-size:10px;color:var(--muted);line-height:1.5;margin-top:10px}.qr-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.receive-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.receive-grid label{display:block;text-align:center}.or{text-align:center;font-size:10px;color:var(--muted);margin:10px 0}
+.config-group{background:#fff;border-radius:16px;padding:12px;box-shadow:var(--shadow);margin-bottom:10px}.config-group h3{font-size:13px;margin:0 0 8px}.config-add{display:grid;grid-template-columns:1fr auto;gap:8px}.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}.chip{display:flex;gap:6px;align-items:center;background:#eef3f7;border-radius:999px;padding:6px 8px;font-size:10px}.chip button{border:0;background:transparent;color:#8c2f2a;font-weight:900;padding:0}
+.tabs{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(620px,100%);display:grid;grid-template-columns:repeat(5,1fr);background:#fff;border-top:1px solid var(--line);z-index:50}.tab{padding:8px 2px 10px;text-align:center;font-size:9px;color:var(--muted)}.tab .ico{display:block;font-size:19px;margin-bottom:2px}.tab.active{color:var(--navy);font-weight:900}
+.hidden{display:none!important}.toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:#102737;color:#fff;padding:10px 13px;border-radius:999px;font-size:10px;display:none;z-index:90}.statusline{font-size:10px;color:var(--muted);margin-top:7px}
+
+.validation-box{margin:10px 0;padding:11px 12px;border-radius:12px;background:#fff0ef;color:#9b2f28;font-size:11px;line-height:1.55;border:1px solid #f2c8c4}
+.form input.invalid,.form select.invalid,.form textarea.invalid{border:2px solid #c63b34;background:#fff7f6}
+.statusline.error{color:#9b2f28;font-weight:800}
+.statusline.warn{color:#8a5a0b;font-weight:800}
+.statusline.ok{color:#237147;font-weight:800}
+
+
+.toolbar{display:grid;grid-template-columns:1fr auto;gap:8px;margin-bottom:9px}.toolbar input,.filterbar select{width:100%;border:1px solid #d7e0e7;border-radius:11px;padding:10px;background:#fff;font:inherit}.filterbar{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-bottom:10px}.view-switch{display:flex;gap:6px}.view-switch button{padding:9px 10px}
+.table-wrap{overflow:auto;background:#fff;border-radius:16px;box-shadow:var(--shadow)}table.data-table{border-collapse:collapse;width:100%;min-width:860px;font-size:10px}table.data-table th{position:sticky;top:0;background:#eaf0f4;color:#284154;text-align:left;padding:9px;border-bottom:1px solid #d5dfe6;white-space:nowrap}table.data-table td{padding:9px;border-bottom:1px solid #edf1f4;vertical-align:top;max-width:180px}table.data-table tr:hover{background:#f7fafc}.cell-clip{max-width:190px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.detail-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:10px 0}.detail-tabs button{border:0;border-radius:10px;padding:9px;font:inherit;font-size:10px;font-weight:900;background:#edf2f6;color:#415565}.detail-tabs button.active{background:var(--navy);color:#fff}.rev-item{padding:10px 0;border-bottom:1px solid #edf1f4}.rev-item:last-child{border-bottom:0}.rev-head{font-size:10px;font-weight:900}.rev-change{font-size:11px;line-height:1.55;margin-top:5px}.old{color:#9e3029;text-decoration:line-through}.new{color:#237145;font-weight:800}.sync-card{background:#f8fbfd;border:1px solid #dce9f0;border-radius:14px;padding:11px;margin-top:10px;font-size:10px;line-height:1.55}.sync-card.warn{background:#fff8eb;border-color:#f0d8a5;color:#7a530b}.sync-card.ok{background:#edf8f2;border-color:#c9e8d6;color:#216a43}.sync-card.bad{background:#fff0ef;border-color:#f0cbc7;color:#8f312a}.sync-result{margin-top:10px}.export-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.file-btn{display:block;text-align:center}.smallnote{font-size:9px;color:var(--muted);line-height:1.45}.revision-badge{background:#f0edfb;color:#5143ad}.conflict-badge{background:#fff0ef;color:#9b312a}.sheet-count{font-size:10px;color:var(--muted);margin-bottom:7px}
+
+
+.license-banner{background:linear-gradient(135deg,#fff7df,#fff);border:1px solid #edd49a;border-radius:16px;padding:12px 13px;box-shadow:var(--shadow);margin-top:10px;font-size:11px;line-height:1.55}.license-banner.full{background:#edf8f2;border-color:#c8e6d4}.license-banner.expired{background:#fff0ef;border-color:#efc7c3}.license-banner b{font-size:12px}.license-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}.license-kpi{background:rgba(255,255,255,.72);border-radius:11px;padding:9px}.license-kpi small{display:block;color:var(--muted);font-size:9px}.license-kpi strong{font-size:13px}.danger{background:#fdeae8!important;color:#9b3029!important}.archive{background:#eef3f7!important;color:#465d70!important}.record-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.retention-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.record-state{font-size:9px;font-weight:900;padding:5px 7px;border-radius:999px;background:#eef3f7;color:#425869}.record-state.archived{background:#edf0f4;color:#536474}.record-state.trash{background:#fdebea;color:#9b312a}.readonly-note{background:#f5f7f9;border-radius:12px;padding:10px;font-size:10px;color:var(--muted);line-height:1.5}.history-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}.history-kpi{background:#fff;border-radius:14px;padding:10px;box-shadow:var(--shadow);text-align:center}.history-kpi b{display:block;font-size:20px}.history-kpi span{font-size:9px;color:var(--muted)}.seller-note{font-size:9px;color:var(--muted);line-height:1.45}.activation-code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:10px;min-height:90px}.locked-btn{opacity:.55}
+
+
+.team-card{background:linear-gradient(135deg,#edf6fb,#fff);border:1px solid #cfe3ee;border-radius:16px;padding:12px 13px;box-shadow:var(--shadow);font-size:10px;line-height:1.55}
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}.team-kpi{background:#fff;border-radius:11px;padding:9px}.team-kpi small{display:block;color:var(--muted);font-size:9px}.team-kpi strong{font-size:11px;word-break:break-all}
+.scope-card{border-radius:14px;padding:12px;margin-top:10px;font-size:10px;line-height:1.55}.scope-card.cross{background:#fff8eb;border:1px solid #ecd4a5;color:#79520a}.scope-card.block{background:#fff0ef;border:1px solid #efc8c4;color:#8e312a}.scope-title{font-weight:900;font-size:11px;margin-bottom:5px}.scope-list{margin:7px 0 0;padding-left:17px}.scope-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px}
+.trial-start{margin-top:9px}.license-banner.warn7{background:#fff8e7;border-color:#ead49e}.license-banner.warn3{background:#fff1dc;border-color:#e8bc71}.license-banner.warn1{background:#fff0ef;border-color:#e7aaa4}.team-code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:9px;min-height:70px;word-break:break-all}
+.team-setup-methods{display:grid;grid-template-columns:1fr;gap:8px;margin:10px 0}
+.team-setup-method{border:1px solid #d7e4ec;background:#fff;border-radius:16px;padding:13px;text-align:left;font-family:inherit;color:var(--text)}
+.team-setup-method strong{display:block;font-size:13px}.team-setup-method span{display:block;font-size:10px;color:var(--muted);line-height:1.45;margin-top:4px}
+.team-setup-method .method-icon{font-size:22px;float:left;margin-right:10px}
+.setup-wizard{border:1px solid #cfe3ee;background:#f8fcfe;border-radius:16px;padding:12px;margin:10px 0}
+.setup-wizard h3{font-size:13px;margin:0 0 7px}.setup-step{font-size:10px;line-height:1.55;color:var(--muted);margin:6px 0}
+.setup-qr-wrap{text-align:center;background:#fff;border-radius:14px;padding:10px;margin:9px 0;border:1px solid #e1e8ed}
+#teamSetupWizardCanvas{max-width:min(78vw,330px);width:100%;height:auto;background:#fff;image-rendering:pixelated}
+.setup-wizard-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.setup-role-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.setup-online-pending{background:#fff8e7;border:1px solid #ead49e;border-radius:12px;padding:10px;font-size:10px;line-height:1.5;color:#79520a}
+.member-list{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}.member-chip{font-size:8px;font-weight:900;padding:4px 6px;border-radius:999px;background:#edf2f6;color:#42596c}.external-badge{background:#fff2d9;color:#8b5a0b}
+
+.viewer-entry{margin-top:12px;background:linear-gradient(135deg,#f7fbff,#eef6fb);border:1px solid #d6e7f3;border-radius:18px;padding:14px;box-shadow:var(--shadow)}
+.viewer-entry .viewer-title{font-size:14px;font-weight:900}.viewer-entry p{font-size:10px;color:var(--muted);line-height:1.55;margin:5px 0 10px}
+.viewer-hero{background:linear-gradient(145deg,#142d42,#2d617f);color:#fff;border-radius:20px;padding:15px;box-shadow:var(--shadow)}
+.viewer-hero .viewer-mode{display:inline-block;background:rgba(255,255,255,.15);padding:5px 8px;border-radius:999px;font-size:9px;font-weight:900}
+.viewer-hero h2{font-size:17px;margin:8px 0 2px}.viewer-hero p{font-size:10px;opacity:.8;margin:0;line-height:1.5}
+.viewer-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:11px}
+.viewer-meta div{background:rgba(255,255,255,.10);border-radius:11px;padding:9px}
+.viewer-meta small{display:block;font-size:8px;opacity:.72}.viewer-meta b{display:block;font-size:11px;margin-top:2px;word-break:break-all}
+.viewer-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:10px}
+.viewer-kpis div{background:#fff;border-radius:13px;padding:10px 5px;text-align:center;box-shadow:var(--shadow)}
+.viewer-kpis b{display:block;font-size:19px}.viewer-kpis span{font-size:8px;color:var(--muted)}
+.viewer-card{background:#fff;border-radius:16px;padding:13px;margin-top:9px;box-shadow:var(--shadow);border-left:5px solid var(--amber)}
+.viewer-card.p1{border-left-color:var(--red)}
+.viewer-card .vtop{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.viewer-card h3{font-size:13px;margin:0}.viewer-card .vmeta{font-size:9px;color:var(--muted);margin-top:4px;line-height:1.45}
+.viewer-card .vsection{margin-top:9px;background:#f5f7f9;border-radius:10px;padding:9px}
+.viewer-card .vsection b{display:block;font-size:8px;color:var(--muted);letter-spacing:.3px}.viewer-card .vsection span{font-size:11px;line-height:1.45}
+.viewer-readonly{margin-top:10px;background:#eaf5ee;color:#236b43;border:1px solid #cfe7d8;border-radius:12px;padding:10px;font-size:10px;line-height:1.5}
+.viewer-stale{margin-top:10px;background:#fff1dc;color:#8d5a0c;border:1px solid #ecd4ad;border-radius:12px;padding:10px;font-size:10px;line-height:1.5}
+.viewer-incomplete{margin-top:10px;background:#eef3ff;color:#394c93;border:1px solid #d8dff8;border-radius:12px;padding:10px;font-size:10px;line-height:1.5}
+.viewer-empty{background:#fff;border-radius:18px;padding:25px 15px;text-align:center;color:var(--muted);box-shadow:var(--shadow)}
+.viewer-source-badge{display:inline-flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+
+</style>
+</head>
+<body>
+<div class="app">
+<header class="hero"><div class="top"><div><div class="brand">CONTACT SHIFT</div><div class="sub"><span id="headerContext">สมุดส่งต่อกะดิจิทัล • Offline • V10.3.4</span></div></div><div class="pill" id="licensePill">ทดลอง 30 วัน</div></div></header>
+<main>
+<section id="view-home">
+  <div class="quick">
+    <button onclick="openNewIssue()"><span>＋</span>เพิ่มเรื่องใหม่</button>
+    <button onclick="showView('handover')"><span>⇄</span>ส่งต่อกะ</button>
+    <button onclick="showView('issues');setIssueView('table')"><span>▤</span>ตารางข้อมูล</button>
+  </div>
+  <div class="viewer-entry">
+    <div class="viewer-title">👁 Handover Viewer — สำหรับหัวหน้างาน / คนที่ 4</div>
+    <p>สแกน QR เพื่อดู Snapshot แบบ Read Only ได้ทันที • ไม่ใช้ Device Slot • ไม่ Import • ไม่ Merge • ไม่เขียนเข้าฐานข้อมูลหลัก</p>
+    <button class="btn good full" onclick="openViewer()">เปิด Viewer Mode</button>
+  </div>
+  <div id="trialBanner" class="license-banner"></div>
+  <div id="teamSummary" class="team-card"></div>
+  <div class="section"><div class="grid4">
+    <div class="metric"><div class="n red" id="mP1">0</div><div class="l">เรื่องวิกฤต</div></div>
+    <div class="metric"><div class="n amber" id="mCarry">0</div><div class="l">ต้องส่งต่อ</div></div>
+    <div class="metric"><div class="n violet" id="mRepeat">0</div><div class="l">ปัญหาเกิดซ้ำ</div></div>
+    <div class="metric"><div class="n blue" id="mPhotos">0</div><div class="l">รูปที่แนบ</div></div>
+  </div></div>
+  <div class="section"><div class="sech"><h2>เรื่องที่ต้องติดตามก่อน</h2><button class="btn light" onclick="showView('issues')">ดูทั้งหมด</button></div><div id="priorityList"></div></div>
+</section>
+
+<section id="view-issues" class="hidden">
+  <div class="sech"><h2>ข้อมูล Contact Shift</h2><button class="btn primary" onclick="openNewIssue()">+ เพิ่มเรื่อง</button></div>
+  <div class="toolbar"><input id="issueSearch" placeholder="ค้นหา ID / หัวข้อ / พื้นที่ / Owner / ข้อความ"><div class="view-switch"><button id="btnCards" class="btn primary" onclick="setIssueView('cards')">การ์ด</button><button id="btnTable" class="btn light" onclick="setIssueView('table')">ตาราง</button></div></div>
+  <div class="filterbar"><select id="filterStatus"><option value="">ทุกสถานะ</option><option>Open</option><option>Monitoring</option><option>Waiting</option><option>Closed</option></select><select id="filterPriority"><option value="">ทุก Priority</option><option>P1</option><option>P2</option><option>P3</option></select><select id="filterArea"><option value="">ทุกพื้นที่</option></select><select id="filterCategory"><option value="">ทุกประเภท</option></select></div>
+  <div class="sheet-count" id="issueCount"></div>
+  <div id="issueList"></div>
+  <div id="issueTable" class="table-wrap hidden"></div>
+  <div class="section"><div class="export-grid"><button class="btn light" onclick="exportCSV()">Export CSV</button><button class="btn light" onclick="exportBackup()">Backup JSON</button></div></div>
+</section>
+
+<section id="view-new" class="hidden">
+  <div class="sech"><h2>บันทึกเรื่องส่งต่อกะ</h2><button class="btn light" onclick="showView('issues')">← กลับ</button></div>
+  <div class="card form">
+    <label>หัวข้อเรื่อง *</label><input id="fTitle" placeholder="เช่น MC-03 Alarm / Scratch defect / Part shortage">
+    <div class="field-grid">
+      <div><label>กะที่พบ *</label><select id="fShift"></select></div>
+      <div><label>พื้นที่ / ไลน์ *</label><select id="fArea"></select></div>
+    </div>
+    <div class="field-grid">
+      <div><label>ประเภทเรื่อง *</label><select id="fCategory"></select></div>
+      <div><label>ระดับความสำคัญ *</label><select id="fPriority"><option value="P1">P1 วิกฤต</option><option value="P2" selected>P2 สำคัญ</option><option value="P3">P3 ปกติ</option></select></div>
+    </div>
+    <label>1) สิ่งที่พบ / เกิดอะไรขึ้น *</label><textarea id="fFound" placeholder="บอกอาการ เหตุการณ์ หรือสิ่งผิดปกติให้กะถัดไปเข้าใจ"></textarea>
+    <label>2) ผลกระทบ</label><textarea id="fImpact" placeholder="กระทบ Safety / Quality / Production / Delivery หรือไม่"></textarea>
+    <label>3) สิ่งที่ทำไปแล้ว</label><textarea id="fAction" placeholder="ตรวจอะไร แก้อะไร หยุดเครื่อง แยกของ แจ้งใครแล้ว"></textarea>
+    <label>4) สิ่งที่ต้องทำต่อ (Next Action)</label><textarea id="fNext" placeholder="ถ้ามีงานต่อ ให้ระบุว่ากะถัดไปต้องทำอะไร / ถ้าเป็นเพียงข้อมูลแจ้งไว้ สามารถเว้นได้"></textarea>
+    <div class="field-grid">
+      <div><label>ผู้รับผิดชอบหลัก (Owner)</label><select id="fOwner"></select></div>
+      <div><label>กำหนดติดตาม / Due</label><input id="fDue" placeholder="เช่น กะ B / 18:00 / 7 ก.ย."></div>
+    </div>
+    <div class="helper"><b>Owner คืออะไร?</b> คือคนหรือหน่วยงานหลักที่ต้องรับเรื่องและติดตามจนปิด เช่น Maintenance, QA, Production, Team Leader ถ้ายังไม่รู้ให้เลือก “ยังไม่กำหนด” ได้</div>
+    <label>รูปภาพประกอบ</label>
+    <div class="photo-buttons">
+      <label class="btn outline">📷 ถ่ายรูป<input id="photoCamera" type="file" accept="image/*" capture="environment" hidden></label>
+      <label class="btn outline">🖼 เลือกรูป<input id="photoGallery" type="file" accept="image/*" multiple hidden></label>
+    </div>
+    <div class="helper">แยกปุ่มแล้ว: “ถ่ายรูป” จะเปิดกล้อง ส่วน “เลือกรูป” จะเลือกจาก Gallery/Files</div>
+    <div id="newPhotoPreview" class="photo-strip"></div>
+    <label style="display:flex;align-items:center;gap:8px"><input id="fCarry" type="checkbox" checked style="width:auto"> ต้องส่งต่อกะถัดไป</label>
+    <div id="validationBox" class="validation-box hidden"></div>
+    <button class="btn primary full" onclick="createIssue()">บันทึกเรื่อง</button>
+    <div id="saveStatus" class="statusline"></div>
+  </div>
+</section>
+
+<section id="view-detail" class="hidden"><button class="btn light" onclick="showView('issues')">← กลับ</button><div id="detailBox" style="margin-top:10px"></div></section>
+
+<section id="view-handover" class="hidden">
+  <div class="sech"><h2>ส่งต่อกะ</h2><span class="hint">เลือกวิธีตามข้อมูล</span></div>
+  <div class="card form">
+    <div class="field-grid">
+      <div><label>จากกะ</label><select id="handoverFromShift"></select></div>
+      <div><label>ส่งต่อให้กะ</label><select id="handoverToShift"></select></div>
+    </div>
+    <div class="helper">ข้อมูล “จากกะ → ไปกะ” จะติดไปกับ QR และ Full Sync Package เพื่อให้ Viewer รู้ว่า Snapshot นี้เป็นการส่งมอบช่วงไหน</div>
+  </div>
+  <div class="mode-grid">
+    <button class="mode" onclick="openQRTransfer()"><div class="icon">▦</div><strong>QR Quick Sync</strong><span>ส่ง Snapshot + Update/Revision ล่าสุด ไม่รวมรูป ถ้าประวัติไม่ตรงระบบจะเตือน</span><em>เร็ว • ตรวจ Sync ได้</em></button>
+    <button class="mode" onclick="sharePackage()"><div class="icon">📦</div><strong>Full Sync Package</strong><span>รวมข้อมูลเต็ม Timeline + Revision History + รูป สำหรับ Sync/Repair ให้ครบ</span><em>Full Sync • มีรูป</em></button>
+  </div>
+  <div class="section"><div class="sech"><h2>เรื่องที่จะส่งต่อ</h2><span class="hint" id="photoHint"></span></div><div id="handoverList"></div></div>
+  <div class="section">
+    <div class="sech"><h2>รับมอบกะ</h2><span class="hint">รองรับทั้ง QR และ Package</span></div>
+    <label class="btn good full" style="display:block;text-align:center">📥 รับ Handover Package<input id="pkgInput" type="file" accept=".json,.handover,application/json" hidden></label>
+    <div class="or">หรือรับด้วย QR</div>
+    <div class="receive-grid">
+      <label class="btn outline">📷 สแกน QR ด้วยกล้อง<input id="qrCameraInput" type="file" accept="image/*" capture="environment" hidden></label>
+      <label class="btn outline">🖼 โหลดรูป QR<input id="qrGalleryInput" type="file" accept="image/*" hidden></label>
+    </div>
+    <div class="helper">“สแกน QR” ยังอยู่เหมือนเดิม และเพิ่ม “โหลดรูป QR” สำหรับ QR ที่บันทึกหรือได้รับทาง LINE</div>
+    <div class="or">กรณีเครื่องอ่าน QR ในแอปไม่ได้</div>
+    <div class="card form"><textarea id="qrPaste" placeholder="วางข้อความ QR เช่น CSQ9:..."></textarea><button class="btn primary full" onclick="importQRText(document.getElementById('qrPaste').value)">รับข้อมูลจากข้อความ QR</button></div>
+    <div id="syncResult" class="sync-result"></div><div id="externalPreview"></div>
+    <div class="viewer-entry">
+      <div class="viewer-title">ดู QR อย่างเดียว ไม่ Sync</div>
+      <p>ใช้สำหรับ Supervisor / Manager / คนที่ 4 ที่ต้องการดูข้อมูลส่งต่อ โดยไม่เข้าทีม 3 เครื่อง</p>
+      <button class="btn good full" onclick="openViewer()">👁 เปิด Handover Viewer</button>
+    </div>
+  </div>
+</section>
+
+<section id="view-qr" class="hidden">
+  <div class="sech"><h2>QR ส่งต่อกะ</h2><button class="btn light" onclick="showView('handover')">← กลับ</button></div>
+  <div class="qrbox"><div id="qrPageLabel" class="badge blue" style="margin-bottom:10px">QR 1/1</div><canvas id="qrCanvas"></canvas><div class="qr-note">QR Quick Sync ส่ง Snapshot + Update/Revision ล่าสุด <b>ไม่รวมรูปภาพ</b> หากข้อมูลมาก ระบบจะแบ่งเป็นหลาย QR อัตโนมัติ</div></div>
+  <div class="qr-actions"><button id="qrPrev" class="btn light" onclick="changeQRPage(-1)">← QR ก่อนหน้า</button><button id="qrNext" class="btn light" onclick="changeQRPage(1)">QR ถัดไป →</button></div>
+  <div class="qr-actions"><button class="btn primary" onclick="shareQRImage()">📤 แชร์ QR / LINE</button><button class="btn good" onclick="saveQRImage()">💾 บันทึกรูป QR</button></div>
+  <div style="height:8px"></div><button class="btn light full" onclick="copyQRText()">คัดลอกข้อความ QR</button>
+</section>
+
+
+<section id="view-viewer" class="hidden">
+  <div class="sech"><h2>Handover Viewer</h2><button class="btn light" onclick="showView('home')">← กลับ</button></div>
+  <div class="viewer-hero">
+    <span class="viewer-mode">VIEW ONLY • ไม่ใช้ Device Slot</span>
+    <h2>ดู Snapshot จาก QR</h2>
+    <p>หน้านี้ไม่ Import, ไม่ Merge, ไม่เพิ่ม Timeline/History และไม่แก้ไขฐานข้อมูลหลักของเครื่อง</p>
+  </div>
+
+  <div class="section">
+    <div class="sech"><h2>รับ QR เพื่อดู</h2><span class="hint">กล้อง / รูป / ข้อความ</span></div>
+    <div class="receive-grid">
+      <label class="btn outline">📷 สแกน QR ด้วยกล้อง<input id="viewerQrCameraInput" type="file" accept="image/*" capture="environment" hidden></label>
+      <label class="btn outline">🖼 โหลดรูป QR<input id="viewerQrGalleryInput" type="file" accept="image/*" hidden></label>
+    </div>
+    <div class="or">หรือวางข้อความ QR</div>
+    <div class="card form">
+      <textarea id="viewerQrPaste" placeholder="วาง CSQ9:... หรือ CSQ10:..."></textarea>
+      <button class="btn primary full" onclick="viewerFromText(document.getElementById('viewerQrPaste').value)">แสดง Snapshot</button>
+    </div>
+    <button class="btn light full" onclick="resetViewer()">ล้าง Viewer</button>
+  </div>
+
+  <div id="viewerProgress"></div>
+  <div id="viewerContent" class="viewer-empty">
+    ยังไม่มี Snapshot<br><span style="font-size:10px">สแกน QR Handover เพื่อดูข้อมูลแบบ Read Only</span>
+  </div>
+</section>
+
+<section id="view-history" class="hidden">
+  <div class="sech"><h2>ประวัติ / สำรองข้อมูล</h2><span class="hint">ข้อมูลแบบตรวจสอบย้อนหลังได้</span></div>
+  <div class="card">
+    <div class="export-grid"><button class="btn primary" onclick="exportBackup()">💾 Backup JSON</button><label class="btn good file-btn">📥 Restore Backup<input id="restoreInput" type="file" accept=".json,application/json" hidden></label></div>
+    <div style="height:8px"></div><button class="btn light full" onclick="exportCSV()">▤ Export ตาราง CSV</button>
+    <div class="smallnote" style="margin-top:8px">JSON เก็บ Timeline, Revision History และรูปครบ ส่วน CSV ใช้เปิดดู/วิเคราะห์แบบตารางคล้าย Spreadsheet</div>
+  </div>
+  <div class="history-grid"><div class="history-kpi"><b id="closedCount">0</b><span>ปิดแล้ว</span></div><div class="history-kpi"><b id="archiveCount">0</b><span>Archive</span></div><div class="history-kpi"><b id="trashCount">0</b><span>ถังขยะ</span></div></div>
+  <div class="sech"><h2>Team Archive</h2><span class="hint">ทีมเก่าแบบ Read Only • <b id="teamArchiveCount">0</b> ชุด</span></div>
+  <div id="teamArchiveList"></div>
+  <div class="sech"><h2>เรื่องที่ปิดแล้ว</h2><span class="hint">ยังค้นดูได้และย้ายเข้า Archive ได้</span></div><div id="historyList"></div>
+  <div class="sech"><h2>Archive</h2><span class="hint">ซ่อนจากงานประจำ แต่ History ยังครบ</span></div><div id="archiveList"></div>
+  <div class="sech"><h2>ถังขยะ</h2><span class="hint">กู้คืนได้ก่อนลบถาวร</span></div><div id="trashList"></div>
+</section>
+
+<section id="view-settings" class="hidden">
+  <div class="sech"><h2>ข้อมูลระบบ / สิทธิ์ใช้งาน</h2><span class="hint">Trial → Grace 7 วัน → Monthly / Yearly / Lifetime โดยข้อมูลเดิมไม่หาย</span></div>
+  <div class="card form">
+    <div id="licenseStatusBox" class="license-banner"></div>
+    <label>Device ID / Installation ID</label><div class="config-add"><input id="installIdField" readonly>
+
+<div class="card" id="teamRenewalRequestBox" style="margin-top:12px">
+  <div class="sech" style="margin-bottom:8px">
+    <h2 style="font-size:14px;margin:0">ขอรหัสต่ออายุ Team</h2>
+    <span class="hint">ส่งให้ผู้ขายเพียง 1 รหัส</span>
+  </div>
+  <div class="helper" style="margin-bottom:8px">
+    รหัสนี้รวม Company ID + Team ID + Anchor Device + จำนวน Device ของ Team โดยไม่ส่งข้อมูล Handover
+  </div>
+
+    <div id="licenseRecoveryCard" class="card hidden" style="margin:12px 0">
+      <div class="sech" style="margin-top:0"><h2>สำรอง / กู้คืน Team License</h2><span class="hint">ไม่ต้องจำรหัส</span></div>
+      <div class="readonly-note">
+        Package: <b id="licenseRecoveryPlan">-</b><br>
+        Expiry: <b id="licenseRecoveryExpiry">-</b><br>
+        Serial: <b id="licenseRecoverySerial">-</b>
+      </div>
+      <div class="helper" style="margin:8px 0">
+        ใช้เมื่อเพิ่มเครื่องใหม่หรือเปลี่ยนเครื่องใน Team เดิม • รหัสนี้ใช้ได้เฉพาะ Company / Team / Anchor เดิม และยังอยู่ภายใต้ข้อจำกัด 3 Full Devices
+      </div>
+      <div class="config-add">
+        <button class="btn" type="button" onclick="copyCurrentTeamLicense()">คัดลอก Team License</button>
+        <button class="btn" type="button" onclick="shareCurrentTeamLicense()">Share License</button>
+      </div>
+      <button class="btn full" type="button" style="margin-top:8px" onclick="downloadCurrentTeamLicense()">บันทึก License เป็นไฟล์</button>
+    </div>
+
+<label>Renewal Request Code</label>
+  <textarea
+    id="teamRenewalRequestCode"
+    class="team-code"
+    readonly
+    placeholder="CSRR1:..."
+    style="min-height:92px"
+  ></textarea>
+  <div class="scope-actions">
+    <button class="btn light" type="button" onclick="copyTeamRenewalRequest()">คัดลอกรหัสขอต่ออายุ</button>
+    <button class="btn good" type="button" onclick="shareTeamRenewalRequest()">ส่งทาง LINE / Share</button>
+  </div>
+</div>
+
+<div class="card" id="renewalActivationBox" style="margin-top:12px">
+  <div class="sech" style="margin-bottom:8px">
+    <h2 style="font-size:14px;margin:0">Activation / Renewal Code</h2>
+    <span class="hint">Monthly / Yearly / Lifetime</span>
+  </div>
+  <div class="helper" style="margin-bottom:8px">
+    วาง Signed License / Renewal Code ของเครื่องนี้หรือ Team นี้ แล้วกด เปิดใช้งาน / ต่ออายุ
+  </div>
+  <textarea
+    id="activationInput"
+    class="activation-code"
+    placeholder="วาง Activation / Renewal Code ที่นี่"
+    style="width:100%;box-sizing:border-box;min-height:120px"
+  ></textarea>
+  <button
+    class="btn primary full"
+    type="button"
+    onclick="activateLicense()"
+    style="margin-top:8px"
+  >เปิดใช้งาน / ต่ออายุ</button>
+</div>
+<button class="btn light" onclick="copyInstallId()">คัดลอก</button></div>
+    <div class="helper">Trial นี้รองรับทีม 3 เครื่อง (กะ A/B/C) แต่ละเครื่องมี Device ID ของตัวเอง และต้องอยู่ Company ID + Team ID เดียวกันจึง Sync เต็มอัตโนมัติ</div><div class="helper" style="margin-top:8px"><b>Viewer Mode:</b> คนที่อยู่นอก 3 Device Slots สามารถสแกน QR เพื่อดู Snapshot แบบ Read Only ได้ โดยไม่เข้าทีมและไม่เขียนข้อมูลลงฐานข้อมูล</div>
+    <div class="helper" style="margin-top:8px"><b>หลังซื้อ / ต่ออายุ:</b> 1 Team License = สูงสุด 3 Full Devices • ใช้ Team Renewal Code 1 รหัสต่อ Team • รองรับ Monthly / Yearly / Lifetime • Viewer ไม่กิน Slot และการต่ออายุไม่แตะข้อมูล Handover</div>
+  </div>
+  <div class="sech"><h2>Company / Team Scope</h2><span class="hint">กำหนดว่าข้อมูลชุดไหน Sync กันได้</span></div>
+  <div class="card form">
+    <div class="field-grid"><div><label>Company ID</label><input id="companyIdField" readonly></div><div><label>Team ID</label><input id="teamIdField" readonly></div></div>
+    <div class="team-grid"><div class="team-kpi"><small>จำนวนเครื่องที่พบในทีม</small><strong id="teamMemberCount">1 / 3</strong></div><div class="team-kpi"><small>Device นี้</small><strong id="deviceShort"></strong></div></div>
+    <div id="teamMemberList" class="member-list"></div>
+    <div class="sech"><h2>เชื่อมเครื่องเข้าทีม</h2><span class="hint">เลือกตามสถานการณ์</span></div>
+    <div class="team-setup-methods">
+      <button class="team-setup-method" type="button" onclick="openTeamSetupWizard('near')">
+        <span class="method-icon">📷</span><strong>1. QR — อยู่ใกล้กัน</strong>
+        <span>ไม่ต้องใช้อินเทอร์เน็ต • ใช้กล้องสแกน QR ระหว่างเครื่อง</span>
+      </button>
+      <button class="team-setup-method" type="button" onclick="openTeamSetupWizard('line')">
+        <span class="method-icon">💬</span><strong>2. ส่ง QR ทาง LINE — อยู่ไกลกัน</strong>
+        <span>ส่ง/รับรูป QR ผ่าน LINE • ข้อมูล Team ไม่ต้องผ่าน Server ของ MEasyMate</span>
+      </button>
+      <button class="team-setup-method" type="button" onclick="openTeamSetupWizard('online')">
+        <span class="method-icon">⚡</span><strong>3. Quick Setup Online</strong>
+        <span>เตรียมไว้สำหรับ MEasyMate Team Service • ตั้ง Team ก่อน แล้วเพิ่ม License ภายหลังได้</span>
+      </button>
+    </div>
+
+    <div id="teamSetupWizard" class="setup-wizard hidden">
+      <div class="row"><h3 id="teamSetupWizardTitle">Team Setup</h3><button class="btn light" type="button" onclick="closeTeamSetupWizard()">ปิด</button></div>
+      <div id="teamSetupWizardStatus" class="setup-step"></div>
+
+      <div id="teamSetupWizardOffline">
+        <div class="setup-role-actions">
+          <button class="btn primary" type="button" onclick="teamWizardShowInvite()">เครื่องหลัก: สร้าง QR เชิญ</button>
+          <label class="btn good" style="text-align:center">
+            เครื่องใหม่/เครื่องหลัก: สแกน QR
+            <input id="teamSetupWizardCamera" type="file" accept="image/*" capture="environment" hidden>
+          </label>
+        </div>
+        <label id="teamSetupWizardGalleryLabel" class="btn light full" style="text-align:center;margin-top:8px">
+          เลือกรูป QR ที่ได้รับ
+          <input id="teamSetupWizardGallery" type="file" accept="image/*" hidden>
+        </label>
+
+        <div id="teamSetupWizardQRBox" class="setup-qr-wrap hidden">
+          <div id="teamSetupWizardQRLabel" class="badge blue">QR</div>
+          <div style="height:8px"></div>
+          <canvas id="teamSetupWizardCanvas"></canvas>
+          <div id="teamSetupWizardQRNote" class="qr-note"></div>
+          <div class="setup-wizard-actions">
+            <button id="teamSetupWizardShareBtn" class="btn good" type="button" onclick="shareTeamSetupWizardQR()">📤 Share / LINE</button>
+            <button class="btn light" type="button" onclick="saveTeamSetupWizardQR()">💾 บันทึกรูป</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="teamSetupWizardOnline" class="hidden">
+        <div class="setup-online-pending">
+          <b>Quick Setup Online — เตรียมโครงไว้แล้ว</b><br>
+          รุ่นนี้ยังไม่เชื่อม Server เพื่อไม่ให้เกิด backend ชั่วคราวที่ต้องทิ้งภายหลัง<br>
+          เป้าหมาย: Anchor สร้าง QR/รหัสสั้น → เครื่องใหม่ Join → Anchor อนุมัติ → เสร็จ<br>
+          Contact Shift ยังทำงาน Offline ได้หลังตั้งค่าเสร็จ และ License สามารถเพิ่มภายหลัง
+        </div>
+      </div>
+    </div>
+
+    <div id="anchorRoleStatus" class="readonly-note" style="margin-bottom:8px"></div>
+    <button class="btn warn full" type="button" onclick="createNewTeam()">＋ สร้าง Team ใหม่ / Package ใหม่</button>
+    <div class="helper" style="margin:6px 0 10px">ใช้เมื่อสมาชิกต้องการแยกไปเป็นเจ้าของ Team ใหม่ • Team เดิมจะเก็บเป็น Read-only Archive</div>
+
+    <div id="slotManagerBox" class="readonly-note" style="margin-bottom:10px">
+      <b>จัดการ Device Slots (Anchor)</b>
+      <div class="config-add" style="margin-top:7px">
+        <select id="releaseDeviceSelect"></select>
+        <button id="releaseSlotBtn" class="btn warn" type="button" onclick="releaseTeamDeviceSlot()">ปล่อย Slot</button>
+      </div>
+      <div class="helper">กรณีสมาชิกออกจากทีม/เปลี่ยนเครื่อง Anchor ต้องปล่อย Slot เดิมก่อนรับเครื่องใหม่</div>
+    </div>
+
+    <details id="teamAdvancedSetup" style="margin-top:12px">
+      <summary style="cursor:pointer;font-weight:900">ขั้นสูง / ใช้ Code แบบเดิม</summary>
+      <div style="height:8px"></div>
+    <label>Team Setup Code</label><textarea id="teamSetupCode" class="team-code" readonly></textarea>
+    <div class="scope-actions"><button class="btn light" onclick="copyTeamSetupCode()">คัดลอก Team Code</button><button class="btn good" onclick="shareTeamSetupCode()">แชร์ให้เครื่อง 2/3</button></div>
+    <div class="helper">Team Setup Code ใช้เพื่อเริ่มคำขอเข้าทีมเท่านั้น • ยังไม่เปิด Full Device Slot จนกว่า Anchor จะอนุมัติ</div>
+
+    <label>1) เครื่องใหม่: วาง Team Setup Code</label>
+    <textarea id="joinTeamCode" class="team-code" placeholder="วาง Team Setup Code จากเครื่องหลัก"></textarea>
+    <button class="btn primary full" onclick="joinTeamFromCode()">สร้าง Join Request</button>
+
+    <label>2) ส่ง Join Request ให้เครื่องหลัก</label>
+    <textarea id="joinRequestCode" class="team-code" readonly placeholder="Join Request จะขึ้นที่นี่"></textarea>
+    <div class="scope-actions"><button class="btn light" onclick="copyFieldText('joinRequestCode','คัดลอก Join Request แล้ว')">คัดลอก Request</button><button class="btn good" onclick="shareJoinRequest()">แชร์ให้เครื่องหลัก</button></div>
+
+    <label>3) เครื่องใหม่: วาง Join Approval จากเครื่องหลัก</label>
+    <textarea id="joinApprovalCode" class="team-code" placeholder="วาง Join Approval Code"></textarea>
+    <button class="btn primary full" onclick="acceptJoinApproval()">ยืนยันเข้าร่วม Team</button>
+
+    <div class="readonly-note" style="margin-top:12px"><b>สำหรับ Anchor / เครื่องหลัก</b><br>วาง Join Request ที่ได้รับ แล้วอนุมัติ Device Slot</div>
+    <label>Join Request จากเครื่องใหม่</label>
+    <textarea id="approveJoinRequestInput" class="team-code" placeholder="วาง CSRJ1:..."></textarea>
+    <button class="btn good full" onclick="approveJoinRequest()">อนุมัติ Device Slot</button>
+    <label>Join Approval สำหรับส่งกลับ</label>
+    <textarea id="joinApprovalOut" class="team-code" readonly placeholder="Approval จะขึ้นที่นี่"></textarea>
+    <div class="scope-actions"><button class="btn light" onclick="copyFieldText('joinApprovalOut','คัดลอก Join Approval แล้ว')">คัดลอก Approval</button><button class="btn good" onclick="shareJoinApproval()">แชร์กลับเครื่องใหม่</button></div>
+    <div class="helper">สูงสุด 3 Full Devices ต่อ Team • เครื่องที่ 4 ใช้ Viewer Mode ได้ แต่จะไม่ได้ Full Device Slot</div>
+    </details>
+  </div>
+  <div class="sech"><h2>ข้อมูลโรงงาน / แผนก</h2></div>  <div class="sech"><h2>ข้อมูลโรงงาน / แผนก</h2></div>
+  <div class="card form"><label>ชื่อโรงงาน / บริษัท</label><input id="companyName"><label>แผนก / พื้นที่หลัก</label><input id="departmentName"><button class="btn primary full" onclick="saveBranding()">บันทึกชื่อที่แสดง</button><div style="height:8px"></div><button class="btn light full" onclick="clearDemoData()">ล้างข้อมูลตัวอย่าง แล้วเริ่มใช้งานจริง</button></div>
+  <div class="sech"><h2>การเก็บข้อมูล</h2><span class="hint">ค่าเริ่มต้นปลอดภัย: ไม่ลบอัตโนมัติ</span></div>
+  <div class="card form"><div class="retention-grid"><div><label>Auto Archive เรื่องที่ปิด</label><select id="autoArchiveDays"><option value="0">ไม่อัตโนมัติ</option><option value="30">หลัง 30 วัน</option><option value="90">หลัง 90 วัน</option><option value="180">หลัง 180 วัน</option></select></div><div><label>ถังขยะเตือนเมื่อครบ</label><select id="trashDays"><option value="7">7 วัน</option><option value="30">30 วัน</option><option value="60">60 วัน</option><option value="90">90 วัน</option></select></div></div><label style="display:flex;align-items:center;gap:8px"><input id="autoPurgeTrash" type="checkbox" style="width:auto"> ลบถาวรอัตโนมัติเมื่อครบกำหนด (ไม่แนะนำ)</label><button class="btn primary full" onclick="saveRetention()">บันทึกนโยบายเก็บข้อมูล</button><div class="helper">Archive ไม่ลบ Timeline/Revision/รูป ส่วน Trash ยัง Restore ได้จนกว่าจะลบถาวร</div></div>
+  <div class="sech"><h2>ตั้งค่ารายการ Dropdown / Master Data</h2><span class="hint">เพิ่ม / ลดได้เอง</span></div>
+  <div class="helper" style="margin-bottom:10px">รายการเหล่านี้จะไปแสดงในหน้าบันทึกเรื่องใหม่ จึงปรับให้เข้ากับแต่ละโรงงาน/แผนกได้โดยไม่แก้โค้ด</div>
+
+  <div class="sech"><h2>MEasyMate / Information</h2><span class="hint">ข่าวสาร • เว็บไซต์ • LINE</span></div>
+  <div class="card" id="measymateInfoPanelV1">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+      <img src="./measymate-logo.jpg" alt="MEasyMate" style="width:66px;height:66px;border-radius:16px;object-fit:cover;box-shadow:0 6px 18px rgba(15,38,58,.12)">
+      <div>
+        <div style="font-size:18px;font-weight:900">MEasyMate</div>
+        <div class="helper" style="margin-top:2px">Make Everything Easy</div>
+        <div class="helper">Contact Shift by MEasyMate</div>
+      </div>
+    </div>
+    <div class="readonly-note">ประกาศจาก MEasyMate จะแสดงด้านบนของแอปเมื่อมีข่าวสารสำคัญ</div>
+    <div class="actions" style="margin-top:12px">
+      <a class="btn light" href="https://measymate.com/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;text-align:center">🌐 Website</a>
+      <a class="btn good" href="https://lin.ee/YlHM4br" target="_blank" rel="noopener noreferrer" style="text-decoration:none;text-align:center">LINE Official</a>
+    </div>
+    <div class="helper" style="margin-top:8px">เว็บไซต์: measymate.com • ติดต่อ/สอบถามผ่าน LINE Official</div>
+  </div>
+
+  <div id="configArea"></div>
+</section>
+</main>
+<nav class="tabs">
+  <div class="tab active" data-view="home" onclick="showView('home')"><span class="ico">◫</span>หน้าหลัก</div>
+  <div class="tab" data-view="issues" onclick="showView('issues')"><span class="ico">☷</span>รายการ</div>
+  <div class="tab" data-view="handover" onclick="showView('handover')"><span class="ico">⇄</span>ส่งต่อกะ</div>
+  <div class="tab" data-view="history" onclick="showView('history')"><span class="ico">◷</span>ประวัติ</div>
+  <div class="tab" data-view="settings" onclick="showView('settings')"><span class="ico">⚙</span>ตั้งค่า</div>
+</nav>
+</div><div class="toast" id="toast"></div>
+<script>(function(){const __mods={};const __cache={};
+__mods["./QR8bitByte"]=function(require,module,exports){
+var QRMode = require('./QRMode');
+
+function QR8bitByte(data) {
+	this.mode = QRMode.MODE_8BIT_BYTE;
+	this.data = data;
+}
+
+QR8bitByte.prototype = {
+
+	getLength : function() {
+		return this.data.length;
+	},
+
+	write : function(buffer) {
+		for (var i = 0; i < this.data.length; i++) {
+			// not JIS ...
+			buffer.put(this.data.charCodeAt(i), 8);
+		}
+	}
+};
+
+module.exports = QR8bitByte;
+
+};
+__mods["./QRBitBuffer"]=function(require,module,exports){
+function QRBitBuffer() {
+	this.buffer = [];
+	this.length = 0;
+}
+
+QRBitBuffer.prototype = {
+
+	get : function(index) {
+		var bufIndex = Math.floor(index / 8);
+		return ( (this.buffer[bufIndex] >>> (7 - index % 8) ) & 1) == 1;
+	},
+
+	put : function(num, length) {
+		for (var i = 0; i < length; i++) {
+			this.putBit( ( (num >>> (length - i - 1) ) & 1) == 1);
+		}
+	},
+
+	getLengthInBits : function() {
+		return this.length;
+	},
+
+	putBit : function(bit) {
+
+		var bufIndex = Math.floor(this.length / 8);
+		if (this.buffer.length <= bufIndex) {
+			this.buffer.push(0);
+		}
+
+		if (bit) {
+			this.buffer[bufIndex] |= (0x80 >>> (this.length % 8) );
+		}
+
+		this.length++;
+	}
+};
+
+module.exports = QRBitBuffer;
+
+};
+__mods["./QRErrorCorrectLevel"]=function(require,module,exports){
+module.exports = {
+	L : 1,
+	M : 0,
+	Q : 3,
+	H : 2
+};
+
+
+};
+__mods["./QRMaskPattern"]=function(require,module,exports){
+module.exports = {
+	PATTERN000 : 0,
+	PATTERN001 : 1,
+	PATTERN010 : 2,
+	PATTERN011 : 3,
+	PATTERN100 : 4,
+	PATTERN101 : 5,
+	PATTERN110 : 6,
+	PATTERN111 : 7
+};
+
+};
+__mods["./QRMath"]=function(require,module,exports){
+var QRMath = {
+
+	glog : function(n) {
+
+		if (n < 1) {
+			throw new Error("glog(" + n + ")");
+		}
+
+		return QRMath.LOG_TABLE[n];
+	},
+
+	gexp : function(n) {
+
+		while (n < 0) {
+			n += 255;
+		}
+
+		while (n >= 256) {
+			n -= 255;
+		}
+
+		return QRMath.EXP_TABLE[n];
+	},
+
+	EXP_TABLE : new Array(256),
+
+	LOG_TABLE : new Array(256)
+
+};
+
+for (var i = 0; i < 8; i++) {
+	QRMath.EXP_TABLE[i] = 1 << i;
+}
+for (var i = 8; i < 256; i++) {
+	QRMath.EXP_TABLE[i] = QRMath.EXP_TABLE[i - 4]
+		^ QRMath.EXP_TABLE[i - 5]
+		^ QRMath.EXP_TABLE[i - 6]
+		^ QRMath.EXP_TABLE[i - 8];
+}
+for (var i = 0; i < 255; i++) {
+	QRMath.LOG_TABLE[QRMath.EXP_TABLE[i] ] = i;
+}
+
+module.exports = QRMath;
+
+};
+__mods["./QRMode"]=function(require,module,exports){
+module.exports = {
+    MODE_NUMBER :       1 << 0,
+    MODE_ALPHA_NUM :    1 << 1,
+    MODE_8BIT_BYTE :    1 << 2,
+    MODE_KANJI :        1 << 3
+};
+
+};
+__mods["./QRPolynomial"]=function(require,module,exports){
+var QRMath = require('./QRMath');
+
+function QRPolynomial(num, shift) {
+	if (num.length === undefined) {
+		throw new Error(num.length + "/" + shift);
+	}
+
+	var offset = 0;
+
+	while (offset < num.length && num[offset] === 0) {
+		offset++;
+	}
+
+	this.num = new Array(num.length - offset + shift);
+	for (var i = 0; i < num.length - offset; i++) {
+		this.num[i] = num[i + offset];
+	}
+}
+
+QRPolynomial.prototype = {
+
+	get : function(index) {
+		return this.num[index];
+	},
+
+	getLength : function() {
+		return this.num.length;
+	},
+
+	multiply : function(e) {
+
+		var num = new Array(this.getLength() + e.getLength() - 1);
+
+		for (var i = 0; i < this.getLength(); i++) {
+			for (var j = 0; j < e.getLength(); j++) {
+				num[i + j] ^= QRMath.gexp(QRMath.glog(this.get(i) ) + QRMath.glog(e.get(j) ) );
+			}
+		}
+
+		return new QRPolynomial(num, 0);
+	},
+
+	mod : function(e) {
+
+		if (this.getLength() - e.getLength() < 0) {
+			return this;
+		}
+
+		var ratio = QRMath.glog(this.get(0) ) - QRMath.glog(e.get(0) );
+
+		var num = new Array(this.getLength() );
+
+		for (var i = 0; i < this.getLength(); i++) {
+			num[i] = this.get(i);
+		}
+
+		for (var x = 0; x < e.getLength(); x++) {
+			num[x] ^= QRMath.gexp(QRMath.glog(e.get(x) ) + ratio);
+		}
+
+		// recursive call
+		return new QRPolynomial(num, 0).mod(e);
+	}
+};
+
+module.exports = QRPolynomial;
+
+};
+__mods["./QRRSBlock"]=function(require,module,exports){
+var QRErrorCorrectLevel = require('./QRErrorCorrectLevel');
+
+function QRRSBlock(totalCount, dataCount) {
+	this.totalCount = totalCount;
+	this.dataCount  = dataCount;
+}
+
+QRRSBlock.RS_BLOCK_TABLE = [
+
+	// L
+	// M
+	// Q
+	// H
+
+	// 1
+	[1, 26, 19],
+	[1, 26, 16],
+	[1, 26, 13],
+	[1, 26, 9],
+
+	// 2
+	[1, 44, 34],
+	[1, 44, 28],
+	[1, 44, 22],
+	[1, 44, 16],
+
+	// 3
+	[1, 70, 55],
+	[1, 70, 44],
+	[2, 35, 17],
+	[2, 35, 13],
+
+	// 4
+	[1, 100, 80],
+	[2, 50, 32],
+	[2, 50, 24],
+	[4, 25, 9],
+
+	// 5
+	[1, 134, 108],
+	[2, 67, 43],
+	[2, 33, 15, 2, 34, 16],
+	[2, 33, 11, 2, 34, 12],
+
+	// 6
+	[2, 86, 68],
+	[4, 43, 27],
+	[4, 43, 19],
+	[4, 43, 15],
+
+	// 7
+	[2, 98, 78],
+	[4, 49, 31],
+	[2, 32, 14, 4, 33, 15],
+	[4, 39, 13, 1, 40, 14],
+
+	// 8
+	[2, 121, 97],
+	[2, 60, 38, 2, 61, 39],
+	[4, 40, 18, 2, 41, 19],
+	[4, 40, 14, 2, 41, 15],
+
+	// 9
+	[2, 146, 116],
+	[3, 58, 36, 2, 59, 37],
+	[4, 36, 16, 4, 37, 17],
+	[4, 36, 12, 4, 37, 13],
+
+	// 10
+	[2, 86, 68, 2, 87, 69],
+	[4, 69, 43, 1, 70, 44],
+	[6, 43, 19, 2, 44, 20],
+	[6, 43, 15, 2, 44, 16],
+
+	// 11
+	[4, 101, 81],
+	[1, 80, 50, 4, 81, 51],
+	[4, 50, 22, 4, 51, 23],
+	[3, 36, 12, 8, 37, 13],
+
+	// 12
+	[2, 116, 92, 2, 117, 93],
+	[6, 58, 36, 2, 59, 37],
+	[4, 46, 20, 6, 47, 21],
+	[7, 42, 14, 4, 43, 15],
+
+	// 13
+	[4, 133, 107],
+	[8, 59, 37, 1, 60, 38],
+	[8, 44, 20, 4, 45, 21],
+	[12, 33, 11, 4, 34, 12],
+
+	// 14
+	[3, 145, 115, 1, 146, 116],
+	[4, 64, 40, 5, 65, 41],
+	[11, 36, 16, 5, 37, 17],
+	[11, 36, 12, 5, 37, 13],
+
+	// 15
+	[5, 109, 87, 1, 110, 88],
+	[5, 65, 41, 5, 66, 42],
+	[5, 54, 24, 7, 55, 25],
+	[11, 36, 12],
+
+	// 16
+	[5, 122, 98, 1, 123, 99],
+	[7, 73, 45, 3, 74, 46],
+	[15, 43, 19, 2, 44, 20],
+	[3, 45, 15, 13, 46, 16],
+
+	// 17
+	[1, 135, 107, 5, 136, 108],
+	[10, 74, 46, 1, 75, 47],
+	[1, 50, 22, 15, 51, 23],
+	[2, 42, 14, 17, 43, 15],
+
+	// 18
+	[5, 150, 120, 1, 151, 121],
+	[9, 69, 43, 4, 70, 44],
+	[17, 50, 22, 1, 51, 23],
+	[2, 42, 14, 19, 43, 15],
+
+	// 19
+	[3, 141, 113, 4, 142, 114],
+	[3, 70, 44, 11, 71, 45],
+	[17, 47, 21, 4, 48, 22],
+	[9, 39, 13, 16, 40, 14],
+
+	// 20
+	[3, 135, 107, 5, 136, 108],
+	[3, 67, 41, 13, 68, 42],
+	[15, 54, 24, 5, 55, 25],
+	[15, 43, 15, 10, 44, 16],
+
+	// 21
+	[4, 144, 116, 4, 145, 117],
+	[17, 68, 42],
+	[17, 50, 22, 6, 51, 23],
+	[19, 46, 16, 6, 47, 17],
+
+	// 22
+	[2, 139, 111, 7, 140, 112],
+	[17, 74, 46],
+	[7, 54, 24, 16, 55, 25],
+	[34, 37, 13],
+
+	// 23
+	[4, 151, 121, 5, 152, 122],
+	[4, 75, 47, 14, 76, 48],
+	[11, 54, 24, 14, 55, 25],
+	[16, 45, 15, 14, 46, 16],
+
+	// 24
+	[6, 147, 117, 4, 148, 118],
+	[6, 73, 45, 14, 74, 46],
+	[11, 54, 24, 16, 55, 25],
+	[30, 46, 16, 2, 47, 17],
+
+	// 25
+	[8, 132, 106, 4, 133, 107],
+	[8, 75, 47, 13, 76, 48],
+	[7, 54, 24, 22, 55, 25],
+	[22, 45, 15, 13, 46, 16],
+
+	// 26
+	[10, 142, 114, 2, 143, 115],
+	[19, 74, 46, 4, 75, 47],
+	[28, 50, 22, 6, 51, 23],
+	[33, 46, 16, 4, 47, 17],
+
+	// 27
+	[8, 152, 122, 4, 153, 123],
+	[22, 73, 45, 3, 74, 46],
+	[8, 53, 23, 26, 54, 24],
+	[12, 45, 15, 28, 46, 16],
+
+	// 28
+	[3, 147, 117, 10, 148, 118],
+	[3, 73, 45, 23, 74, 46],
+	[4, 54, 24, 31, 55, 25],
+	[11, 45, 15, 31, 46, 16],
+
+	// 29
+	[7, 146, 116, 7, 147, 117],
+	[21, 73, 45, 7, 74, 46],
+	[1, 53, 23, 37, 54, 24],
+	[19, 45, 15, 26, 46, 16],
+
+	// 30
+	[5, 145, 115, 10, 146, 116],
+	[19, 75, 47, 10, 76, 48],
+	[15, 54, 24, 25, 55, 25],
+	[23, 45, 15, 25, 46, 16],
+
+	// 31
+	[13, 145, 115, 3, 146, 116],
+	[2, 74, 46, 29, 75, 47],
+	[42, 54, 24, 1, 55, 25],
+	[23, 45, 15, 28, 46, 16],
+
+	// 32
+	[17, 145, 115],
+	[10, 74, 46, 23, 75, 47],
+	[10, 54, 24, 35, 55, 25],
+	[19, 45, 15, 35, 46, 16],
+
+	// 33
+	[17, 145, 115, 1, 146, 116],
+	[14, 74, 46, 21, 75, 47],
+	[29, 54, 24, 19, 55, 25],
+	[11, 45, 15, 46, 46, 16],
+
+	// 34
+	[13, 145, 115, 6, 146, 116],
+	[14, 74, 46, 23, 75, 47],
+	[44, 54, 24, 7, 55, 25],
+	[59, 46, 16, 1, 47, 17],
+
+	// 35
+	[12, 151, 121, 7, 152, 122],
+	[12, 75, 47, 26, 76, 48],
+	[39, 54, 24, 14, 55, 25],
+	[22, 45, 15, 41, 46, 16],
+
+	// 36
+	[6, 151, 121, 14, 152, 122],
+	[6, 75, 47, 34, 76, 48],
+	[46, 54, 24, 10, 55, 25],
+	[2, 45, 15, 64, 46, 16],
+
+	// 37
+	[17, 152, 122, 4, 153, 123],
+	[29, 74, 46, 14, 75, 47],
+	[49, 54, 24, 10, 55, 25],
+	[24, 45, 15, 46, 46, 16],
+
+	// 38
+	[4, 152, 122, 18, 153, 123],
+	[13, 74, 46, 32, 75, 47],
+	[48, 54, 24, 14, 55, 25],
+	[42, 45, 15, 32, 46, 16],
+
+	// 39
+	[20, 147, 117, 4, 148, 118],
+	[40, 75, 47, 7, 76, 48],
+	[43, 54, 24, 22, 55, 25],
+	[10, 45, 15, 67, 46, 16],
+
+	// 40
+	[19, 148, 118, 6, 149, 119],
+	[18, 75, 47, 31, 76, 48],
+	[34, 54, 24, 34, 55, 25],
+	[20, 45, 15, 61, 46, 16]
+];
+
+QRRSBlock.getRSBlocks = function(typeNumber, errorCorrectLevel) {
+
+	var rsBlock = QRRSBlock.getRsBlockTable(typeNumber, errorCorrectLevel);
+
+	if (rsBlock === undefined) {
+		throw new Error("bad rs block @ typeNumber:" + typeNumber + "/errorCorrectLevel:" + errorCorrectLevel);
+	}
+
+	var length = rsBlock.length / 3;
+
+	var list = [];
+
+	for (var i = 0; i < length; i++) {
+
+		var count = rsBlock[i * 3 + 0];
+		var totalCount = rsBlock[i * 3 + 1];
+		var dataCount  = rsBlock[i * 3 + 2];
+
+		for (var j = 0; j < count; j++) {
+			list.push(new QRRSBlock(totalCount, dataCount) );
+		}
+	}
+
+	return list;
+};
+
+QRRSBlock.getRsBlockTable = function(typeNumber, errorCorrectLevel) {
+
+	switch(errorCorrectLevel) {
+	case QRErrorCorrectLevel.L :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 0];
+	case QRErrorCorrectLevel.M :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 1];
+	case QRErrorCorrectLevel.Q :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 2];
+	case QRErrorCorrectLevel.H :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 3];
+	default :
+		return undefined;
+	}
+};
+
+module.exports = QRRSBlock;
+
+};
+__mods["./QRUtil"]=function(require,module,exports){
+var QRMode = require('./QRMode');
+var QRPolynomial = require('./QRPolynomial');
+var QRMath = require('./QRMath');
+var QRMaskPattern = require('./QRMaskPattern');
+
+var QRUtil = {
+
+    PATTERN_POSITION_TABLE : [
+        [],
+        [6, 18],
+        [6, 22],
+        [6, 26],
+        [6, 30],
+        [6, 34],
+        [6, 22, 38],
+        [6, 24, 42],
+        [6, 26, 46],
+        [6, 28, 50],
+        [6, 30, 54],
+        [6, 32, 58],
+        [6, 34, 62],
+        [6, 26, 46, 66],
+        [6, 26, 48, 70],
+        [6, 26, 50, 74],
+        [6, 30, 54, 78],
+        [6, 30, 56, 82],
+        [6, 30, 58, 86],
+        [6, 34, 62, 90],
+        [6, 28, 50, 72, 94],
+        [6, 26, 50, 74, 98],
+        [6, 30, 54, 78, 102],
+        [6, 28, 54, 80, 106],
+        [6, 32, 58, 84, 110],
+        [6, 30, 58, 86, 114],
+        [6, 34, 62, 90, 118],
+        [6, 26, 50, 74, 98, 122],
+        [6, 30, 54, 78, 102, 126],
+        [6, 26, 52, 78, 104, 130],
+        [6, 30, 56, 82, 108, 134],
+        [6, 34, 60, 86, 112, 138],
+        [6, 30, 58, 86, 114, 142],
+        [6, 34, 62, 90, 118, 146],
+        [6, 30, 54, 78, 102, 126, 150],
+        [6, 24, 50, 76, 102, 128, 154],
+        [6, 28, 54, 80, 106, 132, 158],
+        [6, 32, 58, 84, 110, 136, 162],
+        [6, 26, 54, 82, 110, 138, 166],
+        [6, 30, 58, 86, 114, 142, 170]
+    ],
+
+    G15 : (1 << 10) | (1 << 8) | (1 << 5) | (1 << 4) | (1 << 2) | (1 << 1) | (1 << 0),
+    G18 : (1 << 12) | (1 << 11) | (1 << 10) | (1 << 9) | (1 << 8) | (1 << 5) | (1 << 2) | (1 << 0),
+    G15_MASK : (1 << 14) | (1 << 12) | (1 << 10)    | (1 << 4) | (1 << 1),
+
+    getBCHTypeInfo : function(data) {
+        var d = data << 10;
+        while (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G15) >= 0) {
+            d ^= (QRUtil.G15 << (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G15) ) );
+        }
+        return ( (data << 10) | d) ^ QRUtil.G15_MASK;
+    },
+
+    getBCHTypeNumber : function(data) {
+        var d = data << 12;
+        while (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G18) >= 0) {
+            d ^= (QRUtil.G18 << (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G18) ) );
+        }
+        return (data << 12) | d;
+    },
+
+    getBCHDigit : function(data) {
+
+        var digit = 0;
+
+        while (data !== 0) {
+            digit++;
+            data >>>= 1;
+        }
+
+        return digit;
+    },
+
+    getPatternPosition : function(typeNumber) {
+        return QRUtil.PATTERN_POSITION_TABLE[typeNumber - 1];
+    },
+
+    getMask : function(maskPattern, i, j) {
+
+        switch (maskPattern) {
+
+        case QRMaskPattern.PATTERN000 : return (i + j) % 2 === 0;
+        case QRMaskPattern.PATTERN001 : return i % 2 === 0;
+        case QRMaskPattern.PATTERN010 : return j % 3 === 0;
+        case QRMaskPattern.PATTERN011 : return (i + j) % 3 === 0;
+        case QRMaskPattern.PATTERN100 : return (Math.floor(i / 2) + Math.floor(j / 3) ) % 2 === 0;
+        case QRMaskPattern.PATTERN101 : return (i * j) % 2 + (i * j) % 3 === 0;
+        case QRMaskPattern.PATTERN110 : return ( (i * j) % 2 + (i * j) % 3) % 2 === 0;
+        case QRMaskPattern.PATTERN111 : return ( (i * j) % 3 + (i + j) % 2) % 2 === 0;
+
+        default :
+            throw new Error("bad maskPattern:" + maskPattern);
+        }
+    },
+
+    getErrorCorrectPolynomial : function(errorCorrectLength) {
+
+        var a = new QRPolynomial([1], 0);
+
+        for (var i = 0; i < errorCorrectLength; i++) {
+            a = a.multiply(new QRPolynomial([1, QRMath.gexp(i)], 0) );
+        }
+
+        return a;
+    },
+
+    getLengthInBits : function(mode, type) {
+
+        if (1 <= type && type < 10) {
+
+            // 1 - 9
+
+            switch(mode) {
+            case QRMode.MODE_NUMBER     : return 10;
+            case QRMode.MODE_ALPHA_NUM  : return 9;
+            case QRMode.MODE_8BIT_BYTE  : return 8;
+            case QRMode.MODE_KANJI      : return 8;
+            default :
+                throw new Error("mode:" + mode);
+            }
+
+        } else if (type < 27) {
+
+            // 10 - 26
+
+            switch(mode) {
+            case QRMode.MODE_NUMBER     : return 12;
+            case QRMode.MODE_ALPHA_NUM  : return 11;
+            case QRMode.MODE_8BIT_BYTE  : return 16;
+            case QRMode.MODE_KANJI      : return 10;
+            default :
+                throw new Error("mode:" + mode);
+            }
+
+        } else if (type < 41) {
+
+            // 27 - 40
+
+            switch(mode) {
+            case QRMode.MODE_NUMBER     : return 14;
+            case QRMode.MODE_ALPHA_NUM  : return 13;
+            case QRMode.MODE_8BIT_BYTE  : return 16;
+            case QRMode.MODE_KANJI      : return 12;
+            default :
+                throw new Error("mode:" + mode);
+            }
+
+        } else {
+            throw new Error("type:" + type);
+        }
+    },
+
+    getLostPoint : function(qrCode) {
+
+        var moduleCount = qrCode.getModuleCount();
+        var lostPoint = 0;
+        var row = 0;
+        var col = 0;
+
+
+        // LEVEL1
+
+        for (row = 0; row < moduleCount; row++) {
+
+            for (col = 0; col < moduleCount; col++) {
+
+                var sameCount = 0;
+                var dark = qrCode.isDark(row, col);
+
+                for (var r = -1; r <= 1; r++) {
+
+                    if (row + r < 0 || moduleCount <= row + r) {
+                        continue;
+                    }
+
+                    for (var c = -1; c <= 1; c++) {
+
+                        if (col + c < 0 || moduleCount <= col + c) {
+                            continue;
+                        }
+
+                        if (r === 0 && c === 0) {
+                            continue;
+                        }
+
+                        if (dark === qrCode.isDark(row + r, col + c) ) {
+                            sameCount++;
+                        }
+                    }
+                }
+
+                if (sameCount > 5) {
+                    lostPoint += (3 + sameCount - 5);
+                }
+            }
+        }
+
+        // LEVEL2
+
+        for (row = 0; row < moduleCount - 1; row++) {
+            for (col = 0; col < moduleCount - 1; col++) {
+                var count = 0;
+                if (qrCode.isDark(row,     col    ) ) count++;
+                if (qrCode.isDark(row + 1, col    ) ) count++;
+                if (qrCode.isDark(row,     col + 1) ) count++;
+                if (qrCode.isDark(row + 1, col + 1) ) count++;
+                if (count === 0 || count === 4) {
+                    lostPoint += 3;
+                }
+            }
+        }
+
+        // LEVEL3
+
+        for (row = 0; row < moduleCount; row++) {
+            for (col = 0; col < moduleCount - 6; col++) {
+                if (qrCode.isDark(row, col) &&
+                        !qrCode.isDark(row, col + 1) &&
+                         qrCode.isDark(row, col + 2) &&
+                         qrCode.isDark(row, col + 3) &&
+                         qrCode.isDark(row, col + 4) &&
+                        !qrCode.isDark(row, col + 5) &&
+                         qrCode.isDark(row, col + 6) ) {
+                    lostPoint += 40;
+                }
+            }
+        }
+
+        for (col = 0; col < moduleCount; col++) {
+            for (row = 0; row < moduleCount - 6; row++) {
+                if (qrCode.isDark(row, col) &&
+                        !qrCode.isDark(row + 1, col) &&
+                         qrCode.isDark(row + 2, col) &&
+                         qrCode.isDark(row + 3, col) &&
+                         qrCode.isDark(row + 4, col) &&
+                        !qrCode.isDark(row + 5, col) &&
+                         qrCode.isDark(row + 6, col) ) {
+                    lostPoint += 40;
+                }
+            }
+        }
+
+        // LEVEL4
+
+        var darkCount = 0;
+
+        for (col = 0; col < moduleCount; col++) {
+            for (row = 0; row < moduleCount; row++) {
+                if (qrCode.isDark(row, col) ) {
+                    darkCount++;
+                }
+            }
+        }
+
+        var ratio = Math.abs(100 * darkCount / moduleCount / moduleCount - 50) / 5;
+        lostPoint += ratio * 10;
+
+        return lostPoint;
+    }
+
+};
+
+module.exports = QRUtil;
+
+};
+__mods["./index"]=function(require,module,exports){
+//---------------------------------------------------------------------
+// QRCode for JavaScript
+//
+// Copyright (c) 2009 Kazuhiko Arase
+//
+// URL: http://www.d-project.com/
+//
+// Licensed under the MIT license:
+//   http://www.opensource.org/licenses/mit-license.php
+//
+// The word "QR Code" is registered trademark of
+// DENSO WAVE INCORPORATED
+//   http://www.denso-wave.com/qrcode/faqpatent-e.html
+//
+//---------------------------------------------------------------------
+// Modified to work in node for this project (and some refactoring)
+//---------------------------------------------------------------------
+
+var QR8bitByte = require('./QR8bitByte');
+var QRUtil = require('./QRUtil');
+var QRPolynomial = require('./QRPolynomial');
+var QRRSBlock = require('./QRRSBlock');
+var QRBitBuffer = require('./QRBitBuffer');
+
+function QRCode(typeNumber, errorCorrectLevel) {
+	this.typeNumber = typeNumber;
+	this.errorCorrectLevel = errorCorrectLevel;
+	this.modules = null;
+	this.moduleCount = 0;
+	this.dataCache = null;
+	this.dataList = [];
+}
+
+QRCode.prototype = {
+
+	addData : function(data) {
+		var newData = new QR8bitByte(data);
+		this.dataList.push(newData);
+		this.dataCache = null;
+	},
+
+	isDark : function(row, col) {
+		if (row < 0 || this.moduleCount <= row || col < 0 || this.moduleCount <= col) {
+			throw new Error(row + "," + col);
+		}
+		return this.modules[row][col];
+	},
+
+	getModuleCount : function() {
+		return this.moduleCount;
+	},
+
+	make : function() {
+		// Calculate automatically typeNumber if provided is < 1
+		if (this.typeNumber < 1 ){
+			var typeNumber = 1;
+			for (typeNumber = 1; typeNumber < 40; typeNumber++) {
+				var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, this.errorCorrectLevel);
+
+				var buffer = new QRBitBuffer();
+				var totalDataCount = 0;
+				for (var i = 0; i < rsBlocks.length; i++) {
+					totalDataCount += rsBlocks[i].dataCount;
+				}
+
+				for (var x = 0; x < this.dataList.length; x++) {
+					var data = this.dataList[x];
+					buffer.put(data.mode, 4);
+					buffer.put(data.getLength(), QRUtil.getLengthInBits(data.mode, typeNumber) );
+					data.write(buffer);
+				}
+				if (buffer.getLengthInBits() <= totalDataCount * 8)
+					break;
+			}
+			this.typeNumber = typeNumber;
+		}
+		this.makeImpl(false, this.getBestMaskPattern() );
+	},
+
+	makeImpl : function(test, maskPattern) {
+
+		this.moduleCount = this.typeNumber * 4 + 17;
+		this.modules = new Array(this.moduleCount);
+
+		for (var row = 0; row < this.moduleCount; row++) {
+
+			this.modules[row] = new Array(this.moduleCount);
+
+			for (var col = 0; col < this.moduleCount; col++) {
+				this.modules[row][col] = null;//(col + row) % 3;
+			}
+		}
+
+		this.setupPositionProbePattern(0, 0);
+		this.setupPositionProbePattern(this.moduleCount - 7, 0);
+		this.setupPositionProbePattern(0, this.moduleCount - 7);
+		this.setupPositionAdjustPattern();
+		this.setupTimingPattern();
+		this.setupTypeInfo(test, maskPattern);
+
+		if (this.typeNumber >= 7) {
+			this.setupTypeNumber(test);
+		}
+
+		if (this.dataCache === null) {
+			this.dataCache = QRCode.createData(this.typeNumber, this.errorCorrectLevel, this.dataList);
+		}
+
+		this.mapData(this.dataCache, maskPattern);
+	},
+
+	setupPositionProbePattern : function(row, col)  {
+
+		for (var r = -1; r <= 7; r++) {
+
+			if (row + r <= -1 || this.moduleCount <= row + r) continue;
+
+			for (var c = -1; c <= 7; c++) {
+
+				if (col + c <= -1 || this.moduleCount <= col + c) continue;
+
+				if ( (0 <= r && r <= 6 && (c === 0 || c === 6) ) ||
+                     (0 <= c && c <= 6 && (r === 0 || r === 6) ) ||
+                     (2 <= r && r <= 4 && 2 <= c && c <= 4) ) {
+					this.modules[row + r][col + c] = true;
+				} else {
+					this.modules[row + r][col + c] = false;
+				}
+			}
+		}
+	},
+
+	getBestMaskPattern : function() {
+
+		var minLostPoint = 0;
+		var pattern = 0;
+
+		for (var i = 0; i < 8; i++) {
+
+			this.makeImpl(true, i);
+
+			var lostPoint = QRUtil.getLostPoint(this);
+
+			if (i === 0 || minLostPoint >  lostPoint) {
+				minLostPoint = lostPoint;
+				pattern = i;
+			}
+		}
+
+		return pattern;
+	},
+
+	createMovieClip : function(target_mc, instance_name, depth) {
+
+		var qr_mc = target_mc.createEmptyMovieClip(instance_name, depth);
+		var cs = 1;
+
+		this.make();
+
+		for (var row = 0; row < this.modules.length; row++) {
+
+			var y = row * cs;
+
+			for (var col = 0; col < this.modules[row].length; col++) {
+
+				var x = col * cs;
+				var dark = this.modules[row][col];
+
+				if (dark) {
+					qr_mc.beginFill(0, 100);
+					qr_mc.moveTo(x, y);
+					qr_mc.lineTo(x + cs, y);
+					qr_mc.lineTo(x + cs, y + cs);
+					qr_mc.lineTo(x, y + cs);
+					qr_mc.endFill();
+				}
+			}
+		}
+
+		return qr_mc;
+	},
+
+	setupTimingPattern : function() {
+
+		for (var r = 8; r < this.moduleCount - 8; r++) {
+			if (this.modules[r][6] !== null) {
+				continue;
+			}
+			this.modules[r][6] = (r % 2 === 0);
+		}
+
+		for (var c = 8; c < this.moduleCount - 8; c++) {
+			if (this.modules[6][c] !== null) {
+				continue;
+			}
+			this.modules[6][c] = (c % 2 === 0);
+		}
+	},
+
+	setupPositionAdjustPattern : function() {
+
+		var pos = QRUtil.getPatternPosition(this.typeNumber);
+
+		for (var i = 0; i < pos.length; i++) {
+
+			for (var j = 0; j < pos.length; j++) {
+
+				var row = pos[i];
+				var col = pos[j];
+
+				if (this.modules[row][col] !== null) {
+					continue;
+				}
+
+				for (var r = -2; r <= 2; r++) {
+
+					for (var c = -2; c <= 2; c++) {
+
+						if (Math.abs(r) === 2 ||
+                            Math.abs(c) === 2 ||
+                            (r === 0 && c === 0) ) {
+							this.modules[row + r][col + c] = true;
+						} else {
+							this.modules[row + r][col + c] = false;
+						}
+					}
+				}
+			}
+		}
+	},
+
+	setupTypeNumber : function(test) {
+
+		var bits = QRUtil.getBCHTypeNumber(this.typeNumber);
+        var mod;
+
+		for (var i = 0; i < 18; i++) {
+			mod = (!test && ( (bits >> i) & 1) === 1);
+			this.modules[Math.floor(i / 3)][i % 3 + this.moduleCount - 8 - 3] = mod;
+		}
+
+		for (var x = 0; x < 18; x++) {
+			mod = (!test && ( (bits >> x) & 1) === 1);
+			this.modules[x % 3 + this.moduleCount - 8 - 3][Math.floor(x / 3)] = mod;
+		}
+	},
+
+	setupTypeInfo : function(test, maskPattern) {
+
+		var data = (this.errorCorrectLevel << 3) | maskPattern;
+		var bits = QRUtil.getBCHTypeInfo(data);
+        var mod;
+
+		// vertical
+		for (var v = 0; v < 15; v++) {
+
+			mod = (!test && ( (bits >> v) & 1) === 1);
+
+			if (v < 6) {
+				this.modules[v][8] = mod;
+			} else if (v < 8) {
+				this.modules[v + 1][8] = mod;
+			} else {
+				this.modules[this.moduleCount - 15 + v][8] = mod;
+			}
+		}
+
+		// horizontal
+		for (var h = 0; h < 15; h++) {
+
+			mod = (!test && ( (bits >> h) & 1) === 1);
+
+			if (h < 8) {
+				this.modules[8][this.moduleCount - h - 1] = mod;
+			} else if (h < 9) {
+				this.modules[8][15 - h - 1 + 1] = mod;
+			} else {
+				this.modules[8][15 - h - 1] = mod;
+			}
+		}
+
+		// fixed module
+		this.modules[this.moduleCount - 8][8] = (!test);
+
+	},
+
+	mapData : function(data, maskPattern) {
+
+		var inc = -1;
+		var row = this.moduleCount - 1;
+		var bitIndex = 7;
+		var byteIndex = 0;
+
+		for (var col = this.moduleCount - 1; col > 0; col -= 2) {
+
+			if (col === 6) col--;
+
+			while (true) {
+
+				for (var c = 0; c < 2; c++) {
+
+					if (this.modules[row][col - c] === null) {
+
+						var dark = false;
+
+						if (byteIndex < data.length) {
+							dark = ( ( (data[byteIndex] >>> bitIndex) & 1) === 1);
+						}
+
+						var mask = QRUtil.getMask(maskPattern, row, col - c);
+
+						if (mask) {
+							dark = !dark;
+						}
+
+						this.modules[row][col - c] = dark;
+						bitIndex--;
+
+						if (bitIndex === -1) {
+							byteIndex++;
+							bitIndex = 7;
+						}
+					}
+				}
+
+				row += inc;
+
+				if (row < 0 || this.moduleCount <= row) {
+					row -= inc;
+					inc = -inc;
+					break;
+				}
+			}
+		}
+
+	}
+
+};
+
+QRCode.PAD0 = 0xEC;
+QRCode.PAD1 = 0x11;
+
+QRCode.createData = function(typeNumber, errorCorrectLevel, dataList) {
+
+	var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, errorCorrectLevel);
+
+	var buffer = new QRBitBuffer();
+
+	for (var i = 0; i < dataList.length; i++) {
+		var data = dataList[i];
+		buffer.put(data.mode, 4);
+		buffer.put(data.getLength(), QRUtil.getLengthInBits(data.mode, typeNumber) );
+		data.write(buffer);
+	}
+
+	// calc num max data.
+	var totalDataCount = 0;
+	for (var x = 0; x < rsBlocks.length; x++) {
+		totalDataCount += rsBlocks[x].dataCount;
+	}
+
+	if (buffer.getLengthInBits() > totalDataCount * 8) {
+		throw new Error("code length overflow. (" +
+            buffer.getLengthInBits() +
+            ">" +
+            totalDataCount * 8 +
+            ")");
+	}
+
+	// end code
+	if (buffer.getLengthInBits() + 4 <= totalDataCount * 8) {
+		buffer.put(0, 4);
+	}
+
+	// padding
+	while (buffer.getLengthInBits() % 8 !== 0) {
+		buffer.putBit(false);
+	}
+
+	// padding
+	while (true) {
+
+		if (buffer.getLengthInBits() >= totalDataCount * 8) {
+			break;
+		}
+		buffer.put(QRCode.PAD0, 8);
+
+		if (buffer.getLengthInBits() >= totalDataCount * 8) {
+			break;
+		}
+		buffer.put(QRCode.PAD1, 8);
+	}
+
+	return QRCode.createBytes(buffer, rsBlocks);
+};
+
+QRCode.createBytes = function(buffer, rsBlocks) {
+
+	var offset = 0;
+
+	var maxDcCount = 0;
+	var maxEcCount = 0;
+
+	var dcdata = new Array(rsBlocks.length);
+	var ecdata = new Array(rsBlocks.length);
+
+	for (var r = 0; r < rsBlocks.length; r++) {
+
+		var dcCount = rsBlocks[r].dataCount;
+		var ecCount = rsBlocks[r].totalCount - dcCount;
+
+		maxDcCount = Math.max(maxDcCount, dcCount);
+		maxEcCount = Math.max(maxEcCount, ecCount);
+
+		dcdata[r] = new Array(dcCount);
+
+		for (var i = 0; i < dcdata[r].length; i++) {
+			dcdata[r][i] = 0xff & buffer.buffer[i + offset];
+		}
+		offset += dcCount;
+
+		var rsPoly = QRUtil.getErrorCorrectPolynomial(ecCount);
+		var rawPoly = new QRPolynomial(dcdata[r], rsPoly.getLength() - 1);
+
+		var modPoly = rawPoly.mod(rsPoly);
+		ecdata[r] = new Array(rsPoly.getLength() - 1);
+		for (var x = 0; x < ecdata[r].length; x++) {
+            var modIndex = x + modPoly.getLength() - ecdata[r].length;
+			ecdata[r][x] = (modIndex >= 0)? modPoly.get(modIndex) : 0;
+		}
+
+	}
+
+	var totalCodeCount = 0;
+	for (var y = 0; y < rsBlocks.length; y++) {
+		totalCodeCount += rsBlocks[y].totalCount;
+	}
+
+	var data = new Array(totalCodeCount);
+	var index = 0;
+
+	for (var z = 0; z < maxDcCount; z++) {
+		for (var s = 0; s < rsBlocks.length; s++) {
+			if (z < dcdata[s].length) {
+				data[index++] = dcdata[s][z];
+			}
+		}
+	}
+
+	for (var xx = 0; xx < maxEcCount; xx++) {
+		for (var t = 0; t < rsBlocks.length; t++) {
+			if (xx < ecdata[t].length) {
+				data[index++] = ecdata[t][xx];
+			}
+		}
+	}
+
+	return data;
+
+};
+
+module.exports = QRCode;
+
+};
+
+function __req(id){
+  if(__cache[id]) return __cache[id].exports;
+  if(!__mods[id]) throw new Error("QR module not found: "+id);
+  const module={exports:{}};
+  __cache[id]=module;
+  function localRequire(req){
+    if(req.startsWith("./")){
+      let base=id.split("/").slice(0,-1);
+      let parts=req.split("/");
+      for(const part of parts){
+        if(part==="."||part==="") continue;
+        if(part==="..") base.pop(); else base.push(part);
+      }
+      let resolved=base.join("/");
+      if(!resolved.startsWith(".")) resolved="./"+resolved;
+      if(__mods[resolved]) return __req(resolved);
+      if(__mods[resolved+"/index"]) return __req(resolved+"/index");
+      throw new Error("QR require missing: "+resolved);
+    }
+    return __req(req);
+  }
+  __mods[id](localRequire,module,module.exports);
+  return module.exports;
+}
+window.QRCodeCore=__req("./index");
+window.QRErrorCorrectLevelCore=__req("./QRErrorCorrectLevel");
+})();</script>
+<script>
+const PRODUCT_ID="CSPRO-V9",TRIAL_DAYS=30,MAX_TEAM_DEVICES=3;
+const RENEWAL_PRODUCT_ID="CSPRO-V10.3",TEAM_RENEWAL_PRODUCT_ID="CSPRO-V10.4-TEAM",GRACE_DAYS=7;
+const RENEWAL_RSA_N=BigInt("0xba0a74a083b872d5ce1d7159eb710d174587a5e85b8c7ef5f235f74bb8c6db73c463a8dfe846f64160cb7e1d1c7ffc6867d85adec88274c9d25d11436f38679551c601a3f92cddf1f65ef5a18935d24bedcc7d9595a74ec014ca56a6048baddbf166046083075ddf889c1e54b4d4fe18a82009978b50a4db5fa05a9e0b4c292a8ae416c2d83d23a9f545d470187e3183926bd6910430eaba0a32deab514cd35230060e7298b743e6f69ff82b379d339a5d2368f4728bdce839835d44ded1f37e88b71eb65261c59910862e80d197bea9a8482ebabce92e19ddafa6986b0125851b1da135f33e003cacd763278c1d2eb946411cd683fb737bdd543f1e12f21439"),RENEWAL_RSA_E=65537n,RENEWAL_RSA_K=256;
+const LICENSE_RSA_N=BigInt("0xa4714aa7575ebd837d356463f46e65fd00566588b78f9622f573af2bc851a6dda89ae61d9a533c3a8bd089c0215c6a20491eaa87a956b94d365c17cd5ac633ed45e51a79e450484f747a75957358cce8eb05cb8598ffde4963a943ffca76523f65e0b67c301027df0b2cd202859c803d068c1d6e90b10860ae9aeb811f5d2f6a1e6747ffc163e27f1a98ec27a7c6799f9b817e3020eb959c35b23fcc98e78240d737dfdd5ddad67c2d7ccddb065d73ce7e92e3de781a251fa05a32db25ad5b39cf5899d8cc32a2efa522e7611ce19a4f91b8aa15232553b2fb5c5baa1720779f7787b3e9dda283aaa9212fdcf6552f7a54b268565cb7a93a9fbb802699427817"),LICENSE_RSA_E=65537n,LICENSE_RSA_K=256;
+function sha256Bytes(ascii){
+  const K=[1116352408,1899447441,3049323471,3921009573,961987163,1508970993,2453635748,2870763221,3624381080,310598401,607225278,1426881987,1925078388,2162078206,2614888103,3248222580,3835390401,4022224774,264347078,604807628,770255983,1249150122,1555081692,1996064986,2554220882,2821834349,2952996808,3210313671,3336571891,3584528711,113926993,338241895,666307205,773529912,1294757372,1396182291,1695183700,1986661051,2177026350,2456956037,2730485921,2820302411,3259730800,3345764771,3516065817,3600352804,4094571909,275423344,430227734,506948616,659060556,883997877,958139571,1322822218,1537002063,1747873779,1955562222,2024104815,2227730452,2361852424,2428436474,2756734187,3204031479,3329325298];
+  const H=[1779033703,3144134277,1013904242,2773480762,1359893119,2600822924,528734635,1541459225];
+  const bytes=Array.from(new TextEncoder().encode(ascii)),bitLen=bytes.length*8;bytes.push(0x80);while((bytes.length%64)!==56)bytes.push(0);const hi=Math.floor(bitLen/0x100000000),lo=bitLen>>>0;for(let i=3;i>=0;i--)bytes.push((hi>>>(i*8))&255);for(let i=3;i>=0;i--)bytes.push((lo>>>(i*8))&255);
+  const rotr=(x,n)=>(x>>>n)|(x<<(32-n));
+  for(let off=0;off<bytes.length;off+=64){const w=new Array(64);for(let i=0;i<16;i++)w[i]=((bytes[off+4*i]<<24)|(bytes[off+4*i+1]<<16)|(bytes[off+4*i+2]<<8)|bytes[off+4*i+3])>>>0;for(let i=16;i<64;i++){const s0=(rotr(w[i-15],7)^rotr(w[i-15],18)^(w[i-15]>>>3))>>>0,s1=(rotr(w[i-2],17)^rotr(w[i-2],19)^(w[i-2]>>>10))>>>0;w[i]=(w[i-16]+s0+w[i-7]+s1)>>>0}let [a,b,c,d,e,f,g,h]=H;for(let i=0;i<64;i++){const S1=(rotr(e,6)^rotr(e,11)^rotr(e,25))>>>0,ch=((e&f)^((~e)&g))>>>0,t1=(h+S1+ch+K[i]+w[i])>>>0,S0=(rotr(a,2)^rotr(a,13)^rotr(a,22))>>>0,maj=((a&b)^(a&c)^(b&c))>>>0,t2=(S0+maj)>>>0;h=g;g=f;f=e;e=(d+t1)>>>0;d=c;c=b;b=a;a=(t1+t2)>>>0}H[0]=(H[0]+a)>>>0;H[1]=(H[1]+b)>>>0;H[2]=(H[2]+c)>>>0;H[3]=(H[3]+d)>>>0;H[4]=(H[4]+e)>>>0;H[5]=(H[5]+f)>>>0;H[6]=(H[6]+g)>>>0;H[7]=(H[7]+h)>>>0}
+  const out=[];for(const x of H)for(let i=3;i>=0;i--)out.push((x>>>(i*8))&255);return Uint8Array.from(out)
+}
+function modPow(b,e,m){let r=1n;b%=m;while(e>0n){if(e&1n)r=(r*b)%m;e>>=1n;b=(b*b)%m}return r}
+function bytesToBigInt(bytes){let h="";for(const b of bytes)h+=b.toString(16).padStart(2,"0");return BigInt("0x"+(h||"0"))}
+function bigIntToBytes(n,len){let h=n.toString(16).padStart(len*2,"0");const a=new Uint8Array(len);for(let i=0;i<len;i++)a[i]=parseInt(h.slice(i*2,i*2+2),16);return a}
+function emsaSha256(msg,k=LICENSE_RSA_K){const digest=sha256Bytes(msg),prefix=[0x30,0x31,0x30,0x0d,0x06,0x09,0x60,0x86,0x48,0x01,0x65,0x03,0x04,0x02,0x01,0x05,0x00,0x04,0x20],t=new Uint8Array(prefix.length+digest.length);t.set(prefix);t.set(digest,prefix.length);const psLen=k-t.length-3;if(psLen<8)throw new Error("RSA encoding");const em=new Uint8Array(k);em[0]=0;em[1]=1;em.fill(0xff,2,2+psLen);em[2+psLen]=0;em.set(t,3+psLen);return em}
+function equalBytes(a,b){if(a.length!==b.length)return false;let x=0;for(let i=0;i<a.length;i++)x|=a[i]^b[i];return x===0}
+
+const defaultState={
+  meta:{version:10,deviceId:"",companyId:"",teamId:"",anchorDeviceId:"",teamMembers:[],pendingTeamJoin:null,lastJoinApproval:"",lastSyncAt:""},
+  license:{trialStartAt:"",lastSeenAt:"",activationCode:"",activationPayload:null,verified:false,clockRollback:false,renewalCode:"",renewalPayload:null,teamActivationRequired:false},
+  teamArchives:[],
+  retention:{autoArchiveDays:0,trashDays:30,autoPurgeTrash:false},
+  config:{companyName:"NOVAX Manufacturing",departmentName:"Assembly",shifts:["Shift A","Shift B","Shift C"],areas:["Assembly Line 1","Assembly Line 2","Packing","Warehouse"],categories:["Machine","Quality","Material","Safety","Manpower","Process","Other"],owners:["ยังไม่กำหนด","Maintenance","QA","Production","Warehouse","Safety","Team Leader"]},
+  issues:[
+    {id:"CS-001",isDemo:true,title:"MC-03 Sensor Alarm",shift:"Shift A",area:"Assembly Line 1",category:"Machine",priority:"P1",status:"Monitoring",carry:true,owner:"Maintenance",due:"Shift B",repeated:6,found:"Alarm E32 เกิดซ้ำ เครื่องหยุด 8 นาที",impact:"มี Downtime และเสี่ยงหยุดซ้ำ",action:"Reset แล้วและตรวจเบื้องต้น",next:"Monitor alarm recurrence and inspect connector CN-4",photos:[],updates:[{shift:"Shift A",time:"08:45",by:"Narin",text:"พบ Alarm E32"}]},
+    {id:"CS-002",isDemo:true,title:"Scratch defect on Housing",shift:"Shift A",area:"Assembly Line 2",category:"Quality",priority:"P2",status:"Open",carry:true,owner:"QA",due:"Shift B",repeated:4,found:"พบ Scratch 6 pcs จาก lot H240905",impact:"เสี่ยง NG หลุดไปกะถัดไป",action:"Hold lot แล้ว",next:"Verify sample before release",photos:[],updates:[{shift:"Shift A",time:"09:20",by:"Mali",text:"Hold lot H240905"}]},
+    {id:"CS-003",isDemo:true,title:"Part shortage P-221",shift:"Shift C",area:"Packing",category:"Material",priority:"P2",status:"Waiting",carry:true,owner:"ยังไม่กำหนด",due:"Shift B",repeated:3,found:"เหลือ 120 pcs",impact:"อาจไม่พอถึงกะ B",action:"แจ้ง Warehouse แล้ว",next:"Check incoming stock before peak",photos:[],updates:[{shift:"Shift C",time:"07:50",by:"Somchai",text:"แจ้ง stock ต่ำ"}]}
+  ]
+};
+let state=structuredClone(defaultState),newPhotos=[],currentQRText="",currentQRPages=[],currentQRIndex=0,issueView="cards",licenseVerified=false,renewalVerified=false,viewerSession={sid:"",total:1,pages:new Map(),meta:null};
+const APP_VERSION="10.4.0",DATA_SCHEMA_VERSION=3,DB_STORAGE_VERSION=2;
+const DB_NAME="measymate_contact_shift_db",LEGACY_DB_NAME="ContactShiftProV9";
+const STORE="app",KEY="state",BACKUP_STORE="backups";
+const FALLBACK_KEY="measymate_contact_shift_fallback",LEGACY_FALLBACK_KEY="ContactShiftProV9_fallback";
+const MIGRATION_RECEIPT_KEY="measymate_contact_shift_migration_v10_2";
+const INSTALL_TRIAL_KEY="measymate_contact_shift_install_trial_v1";
+let storageRecoveryMode=false,storageSource="unknown",storageMigrationStatus="pending";
+const el=id=>document.getElementById(id);
+const nowIso=()=>new Date().toISOString();
+function uid(prefix="E"){return prefix+"-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,8)}
+function toast(msg){const t=el("toast");t.textContent=msg;t.style.display="block";setTimeout(()=>t.style.display="none",2100)}
+function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]))}
+function openNamedDB(name,version=1){return new Promise((res,rej)=>{try{const r=indexedDB.open(name,version);r.onupgradeneeded=()=>{const db=r.result;if(!db.objectStoreNames.contains(STORE))db.createObjectStore(STORE);if(name===DB_NAME&&!db.objectStoreNames.contains(BACKUP_STORE))db.createObjectStore(BACKUP_STORE,{keyPath:"id"})};r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);r.onblocked=()=>rej(new Error("indexeddb blocked"))}catch(e){rej(e)}})}
+async function dbExists(name){try{if(!indexedDB.databases)return null;const xs=await indexedDB.databases();return xs.some(x=>x.name===name)}catch{return null}}
+async function dbReadFrom(name,version,key=KEY){const ex=await dbExists(name);if(ex===false)return null;const db=await openNamedDB(name,version);return new Promise((res,rej)=>{const tx=db.transaction(STORE,"readonly"),r=tx.objectStore(STORE).get(key);r.onsuccess=()=>{const v=r.result;db.close();res(v)};r.onerror=()=>{db.close();rej(r.error)}})}
+async function dbWriteTo(name,version,v,key=KEY){const db=await openNamedDB(name,version);return new Promise((res,rej)=>{const tx=db.transaction(STORE,"readwrite");tx.objectStore(STORE).put(v,key);tx.oncomplete=()=>{db.close();res()};tx.onerror=()=>{db.close();rej(tx.error)};tx.onabort=()=>{db.close();rej(tx.error||new Error("transaction aborted"))}})}
+async function backupPut(record){const db=await openNamedDB(DB_NAME,DB_STORAGE_VERSION);return new Promise((res,rej)=>{const tx=db.transaction(BACKUP_STORE,"readwrite");tx.objectStore(BACKUP_STORE).put(record);tx.oncomplete=()=>{db.close();res(record.id)};tx.onerror=()=>{db.close();rej(tx.error)};tx.onabort=()=>{db.close();rej(tx.error||new Error("backup transaction aborted"))}})}
+async function dbGet(){return dbReadFrom(DB_NAME,DB_STORAGE_VERSION)}
+async function dbSet(v){return dbWriteTo(DB_NAME,DB_STORAGE_VERSION,v)}
+async function legacyDbGet(){return dbReadFrom(LEGACY_DB_NAME,1)}
+function localLoad(){try{const s=localStorage.getItem(FALLBACK_KEY);return s?JSON.parse(s):null}catch{return null}}
+function localSave(v){localStorage.setItem(FALLBACK_KEY,JSON.stringify(v))}
+function legacyLocalLoad(){try{const s=localStorage.getItem(LEGACY_FALLBACK_KEY);return s?JSON.parse(s):null}catch{return null}}
+function migrationSummary(s){const issues=Array.isArray(s?.issues)?s.issues:[];return{issueCount:issues.length,ids:issues.map(x=>String(x?.id||"")).sort(),updates:issues.reduce((n,x)=>n+(Array.isArray(x?.updates)?x.updates.length:0),0),revisions:issues.reduce((n,x)=>n+(Array.isArray(x?.revisions)?x.revisions.length:0),0),photos:issues.reduce((n,x)=>n+(Array.isArray(x?.photos)?x.photos.length:0),0),deviceId:String(s?.meta?.deviceId||""),companyId:String(s?.meta?.companyId||""),teamId:String(s?.meta?.teamId||"")}}
+function validateStateShape(s){const e=[];if(!s||typeof s!=="object")e.push("state");if(!Array.isArray(s?.issues))e.push("issues");if(!s?.meta||typeof s.meta!=="object")e.push("meta");if(!s?.config||typeof s.config!=="object")e.push("config");const ids=(s?.issues||[]).map(x=>String(x?.id||""));if(ids.some(x=>!x))e.push("issue_id");if(new Set(ids).size!==ids.length)e.push("duplicate_issue_id");return{ok:e.length===0,errors:e}}
+function validateMigration(before,after){const e=[],a=migrationSummary(before),b=migrationSummary(after),sh=validateStateShape(after);if(!sh.ok)e.push(...sh.errors);if(a.issueCount!==b.issueCount)e.push("issue_count");if(JSON.stringify(a.ids)!==JSON.stringify(b.ids))e.push("issue_ids");if(a.updates!==b.updates)e.push("updates_count");if(a.revisions!==b.revisions)e.push("revisions_count");if(a.photos!==b.photos)e.push("photos_count");for(const k of ["deviceId","companyId","teamId"])if(a[k]&&a[k]!==b[k])e.push(k);return{ok:e.length===0,errors:e,before:a,after:b}}
+async function createMigrationBackup(source,sourceName){const id=`migration-${Date.now()}-${Math.random().toString(36).slice(2,7)}`;await backupPut({id,type:"CONTACT_SHIFT_AUTO_MIGRATION_BACKUP",createdAt:nowIso(),source:sourceName,appVersion:APP_VERSION,dataSchemaVersion:DATA_SCHEMA_VERSION,state:structuredClone(source)});return id}
+async function commitMigratedState(source,sourceName){const candidate=migrateState(structuredClone(source)),check=validateMigration(source,candidate);if(!check.ok)throw new Error("migration validation: "+check.errors.join(","));const backupId=await createMigrationBackup(source,sourceName);await dbSet(candidate);const verify=await dbGet(),vc=validateMigration(candidate,verify);if(!vc.ok)throw new Error("post-write verification: "+vc.errors.join(","));try{localStorage.setItem(MIGRATION_RECEIPT_KEY,JSON.stringify({status:"PASS",at:nowIso(),backupId,source:sourceName,appVersion:APP_VERSION,dataSchemaVersion:DATA_SCHEMA_VERSION}))}catch{}return candidate}
+/* duplicate dbGet removed */
+/* duplicate dbSet removed */
+/* duplicate localLoad removed */
+/* duplicate localSave removed */
+function simpleHash(str){let h=2166136261;for(let i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619)}return (h>>>0).toString(36)}
+function photoObj(p){if(typeof p==="string")return {id:uid("P"),data:p,createdAt:nowIso()};return p}
+function migrateIssue(x){
+  x.photos=(x.photos||[]).map(photoObj);
+  x.updates=(x.updates||[]).map(u=>({...u,id:u.id||uid("U"),createdAt:u.createdAt||nowIso()}));
+  x.revisions=(x.revisions||[]).map(r=>({...r,id:r.id||uid("R"),createdAt:r.createdAt||nowIso()}));
+  x.conflicts=x.conflicts||[];
+  x.recordState=x.recordState||"active";x.preTrashState=x.preTrashState||"active";x.archivedAt=x.archivedAt||"";x.trashedAt=x.trashedAt||"";x.closedAt=x.closedAt||(x.status==="Closed"?(x.modifiedAt||x.createdAt||nowIso()):"");
+  x.createdAt=x.createdAt||nowIso();x.modifiedAt=x.modifiedAt||x.createdAt;
+  return x;
+}
+function migrateState(s){
+  if(!s.meta)s.meta={};
+  s.meta.version=10;s.meta.appVersion=APP_VERSION;s.meta.dataSchemaVersion=DATA_SCHEMA_VERSION;
+  if(!s.meta.deviceId)s.meta.deviceId=uid("DEV");
+  if(!s.meta.companyId)s.meta.companyId=uid("CO");
+  if(!s.meta.teamId)s.meta.teamId=uid("TM");
+  s.meta.teamMembers=Array.isArray(s.meta.teamMembers)?s.meta.teamMembers:[];
+  if(!s.meta.anchorDeviceId)s.meta.anchorDeviceId=s.meta.teamMembers[0]||s.meta.deviceId;
+  if(s.meta.pendingTeamJoin===undefined)s.meta.pendingTeamJoin=null;
+  if(!s.meta.lastJoinApproval)s.meta.lastJoinApproval="";
+  if(!s.meta.teamMembers.includes(s.meta.deviceId))s.meta.teamMembers.push(s.meta.deviceId);
+  s.meta.teamMembers=[...new Set(s.meta.teamMembers)].slice(0,MAX_TEAM_DEVICES);
+  s.config={...structuredClone(defaultState.config),...(s.config||{})};
+  s.license={...structuredClone(defaultState.license),...(s.license||{})};
+  s.teamArchives=Array.isArray(s.teamArchives)?s.teamArchives:[];
+  s.retention={...structuredClone(defaultState.retention),...(s.retention||{})};
+  if(!s.license.lastSeenAt)s.license.lastSeenAt=s.license.trialStartAt||"";
+  s.issues=(s.issues||[]).map(migrateIssue);return s;
+}
+function b64urlToBytes(s){s=s.replace(/-/g,"+").replace(/_/g,"/");while(s.length%4)s+="=";const raw=atob(s);return Uint8Array.from(raw,c=>c.charCodeAt(0))}
+function bytesToB64url(bytes){let s="";for(const b of bytes)s+=String.fromCharCode(b);return btoa(s).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/g,"")}
+function utf8b64url(s){return bytesToB64url(new TextEncoder().encode(s))}
+function trialStarted(){return !!state.license.trialStartAt}
+function effectiveNowMs(){const n=Date.now(),last=Date.parse(state.license.lastSeenAt||0)||0;if(last&&n+5*60*1000<last){state.license.clockRollback=true;return last}state.license.clockRollback=false;if(trialStarted()&&n>last)state.license.lastSeenAt=new Date(n).toISOString();return n}
+function trialEndMs(){return trialStarted()?Date.parse(state.license.trialStartAt)+TRIAL_DAYS*86400000:0}
+function trialDaysLeft(){return trialStarted()?Math.max(0,Math.ceil((trialEndMs()-effectiveNowMs())/86400000)):TRIAL_DAYS}
+function isLegacyFull(){return licenseVerified&&state.license.activationPayload?.t==="FULL"&&state.license.activationPayload?.i===state.meta.deviceId}
+function renewalScopeMatches(p){
+  if(!p)return false;
+  if(p.p===RENEWAL_PRODUCT_ID)return p.i===state.meta.deviceId;
+  const anchor=state.meta.anchorDeviceId||state.meta.teamMembers?.[0]||state.meta.deviceId;
+  return p.p===TEAM_RENEWAL_PRODUCT_ID&&p.t==="TEAM_RENEWAL"&&p.co===state.meta.companyId&&p.tm===state.meta.teamId&&p.a===anchor&&Number(p.max)===MAX_TEAM_DEVICES;
+}
+function isRenewalLifetime(){return renewalVerified&&state.license.renewalPayload?.plan==="LIFETIME"&&renewalScopeMatches(state.license.renewalPayload)}
+function isFull(){return isLegacyFull()||isRenewalLifetime()}
+function paidExpiryMs(){if(!renewalVerified||!state.license.renewalPayload)return 0;const p=state.license.renewalPayload;if(!renewalScopeMatches(p))return 0;if(p.plan==="LIFETIME")return Number.POSITIVE_INFINITY;return Date.parse(p.exp||0)||0}
+function paidActive(){const e=paidExpiryMs();return e===Number.POSITIVE_INFINITY||e>effectiveNowMs()}
+function paidInGrace(){const e=paidExpiryMs();if(!e||e===Number.POSITIVE_INFINITY)return false;const n=effectiveNowMs();return n>=e&&n<e+GRACE_DAYS*86400000}
+function trialActive(){return !trialStarted()||effectiveNowMs()<trialEndMs()}
+function hasRenewalHistory(){
+  if(!state.license.renewalCode)return false;
+  const p=state.license.renewalPayload;
+  if(!p)return true;
+  return renewalScopeMatches(p);
+}
+
+function installTrialMap(){
+  try{
+    const x=JSON.parse(localStorage.getItem(INSTALL_TRIAL_KEY)||"{}");
+    return x&&typeof x==="object"?x:{};
+  }catch{return {}}
+}
+function installTrialUsedEver(dev=state.meta.deviceId){
+  const x=installTrialMap();
+  return !!x?.[dev]?.used;
+}
+function markInstallTrialUsed(startAt,source="team_trial"){
+  const dev=state.meta.deviceId;
+  if(!dev)return;
+  const x=installTrialMap();
+  const old=x[dev]||{};
+  const oldMs=Date.parse(old.startAt||0),newMs=Date.parse(startAt||0);
+  const chosen=(oldMs&&newMs)?(oldMs<=newMs?old.startAt:startAt):(old.startAt||startAt||nowIso());
+  x[dev]={...old,used:true,startAt:chosen,source:old.source||source,updatedAt:nowIso()};
+  try{localStorage.setItem(INSTALL_TRIAL_KEY,JSON.stringify(x))}catch{}
+}
+function teamTrialStartForSync(){
+  const x=state.license?.trialStartAt||"";
+  return Date.parse(x||0)?x:"";
+}
+function applyIncomingTeamTrialStart(raw,source="team_sync",incomingTeamId=""){
+  if(!Date.parse(raw||0))return false;
+  const teamId=incomingTeamId||state.meta.teamId||"";
+  if(teamId&&teamId!==state.meta.teamId)return false;
+
+  const local=state.license?.trialStartAt||"";
+  const localTeam=state.license?.trialTeamId||"";
+  const inMs=Date.parse(raw),localMs=Date.parse(local||0);
+
+  // Trial date is scoped to Team.
+  // First scoped Team Sync replaces an old/unscoped Trial date from another Team.
+  // After scope is known, the date may only stay the same or move earlier.
+  if(!localTeam||localTeam!==teamId){
+    state.license.trialStartAt=raw;
+    state.license.trialTeamId=teamId;
+  }else if(!localMs||inMs<localMs){
+    state.license.trialStartAt=raw;
+  }
+
+  markInstallTrialUsed(state.license.trialStartAt||raw,source);
+  return true;
+}
+function clearActiveTeamEntitlementForSwitch(){
+  state.license.activationCode="";
+  state.license.activationPayload=null;
+  state.license.renewalCode="";
+  state.license.renewalPayload=null;
+  state.license.verified=false;
+  state.license.trialStartAt="";
+  state.license.trialTeamId="";
+  state.license.lastSeenAt="";
+  state.license.clockRollback=false;
+  state.license.teamActivationRequired=false;
+  licenseVerified=false;
+  renewalVerified=false;
+}
+
+function canWrite(){
+  if(isFull()||paidActive()||paidInGrace())return true;
+  // A valid active Team Trial received from Team Sync must not be blocked
+  // by stale local renewal history from an earlier state.
+  if(trialStarted())return trialActive();
+  if(hasRenewalHistory())return false;
+  // Team Trial is started by Anchor only. Members receive the same
+  // Team Trial start via Join Approval / Handover QR / Full Sync.
+  return isAnchorDevice()&&!installTrialUsedEver();
+}
+async function startTrial(source="manual"){
+  if(trialStarted()){markInstallTrialUsed(state.license.trialStartAt,"existing_team_trial");toast("Trial เริ่มแล้ว");return true}
+  if(!isAnchorDevice()){toast("Trial ของ Team ต้องเริ่มจากเครื่องหลัก");return false}
+  if(installTrialUsedEver()){toast("Installation นี้เคยใช้ Trial แล้ว • ตั้ง Team ได้ แต่ต้องใช้ License หรือเข้าร่วม Team ที่มีสิทธิ์");return false}
+  const ts=nowIso();
+  state.license.trialStartAt=ts;
+  state.license.trialTeamId=state.meta.teamId;
+  state.license.lastSeenAt=ts;
+  markInstallTrialUsed(ts,source);
+  await saveState();
+  renderLicenseUI();
+  toast(source==="first_record"?"เริ่ม Team Trial 30 วันจากเรื่องจริงแรก":"เริ่ม Team Trial 30 วันแล้ว");
+  return true
+}
+async function ensureTrialStarted(){if(!trialStarted())return await startTrial("first_record");markInstallTrialUsed(state.license.trialStartAt,"existing_team_trial");return true}
+function guardWrite(feature="แก้ไขข้อมูล"){
+  if(storageRecoveryMode){
+    if(feature==="Restore Backup") return true;
+    toast(`Storage Recovery Mode - หยุดการ${feature} เพื่อป้องกันข้อมูลเดิม`);
+    return false
+  }
+  if(canWrite())return true;
+  toast(`หมดช่วงทดลอง 30 วัน - ข้อมูลยังดู/Backup ได้ แต่ล็อกการ${feature}`);
+  showView("settings");
+  return false
+}
+async function verifyActivationCode(code){try{const [p64,s64]=String(code||"").trim().split(".");if(!p64||!s64)return null;const payload=JSON.parse(new TextDecoder().decode(b64urlToBytes(p64)));if(payload.p!==PRODUCT_ID||payload.i!==state.meta.deviceId||payload.t!=="FULL")return null;const sig=b64urlToBytes(s64);if(sig.length!==LICENSE_RSA_K)return null;const m=modPow(bytesToBigInt(sig),LICENSE_RSA_E,LICENSE_RSA_N),got=bigIntToBytes(m,LICENSE_RSA_K),want=emsaSha256(p64);return equalBytes(got,want)?payload:null}catch{return null}}
+
+async function verifyRenewalCode(code){
+  try{
+    const [p64,s64]=String(code||"").trim().split(".");
+    if(!p64||!s64)return null;
+
+    const payload=JSON.parse(new TextDecoder().decode(b64urlToBytes(p64)));
+    const anchor=state.meta.anchorDeviceId||state.meta.teamMembers?.[0]||state.meta.deviceId;
+    const legacyScope=payload.p===RENEWAL_PRODUCT_ID&&payload.i===state.meta.deviceId&&payload.t==="RENEWAL";
+    const teamScope=payload.p===TEAM_RENEWAL_PRODUCT_ID&&payload.t==="TEAM_RENEWAL"&&payload.co===state.meta.companyId&&payload.tm===state.meta.teamId&&payload.a===anchor&&Number(payload.max)===MAX_TEAM_DEVICES;
+    if(!legacyScope&&!teamScope)return null;
+    if(!["MONTH","YEAR","LIFETIME"].includes(payload.plan))return null;
+    if(payload.plan!=="LIFETIME"&&!Date.parse(payload.exp||0))return null;
+
+    const sig=b64urlToBytes(s64);
+    if(sig.length!==RENEWAL_RSA_K)return null;
+
+    const m=modPow(bytesToBigInt(sig),RENEWAL_RSA_E,RENEWAL_RSA_N);
+    const got=bigIntToBytes(m,RENEWAL_RSA_K);
+    const want=emsaSha256(p64,RENEWAL_RSA_K);
+
+    return equalBytes(got,want)?payload:null;
+  }catch{return null}
+}
+
+async function refreshLicenseStatus(){
+  licenseVerified=false;
+  renewalVerified=false;
+
+  if(state.license.activationCode){
+    const p=await verifyActivationCode(state.license.activationCode);
+    if(p){
+      state.license.activationPayload=p;
+      licenseVerified=true;
+    }else{
+      state.license.activationPayload=null;
+    }
+  }
+
+  if(state.license.renewalCode){
+    const r=await verifyRenewalCode(state.license.renewalCode);
+    if(r){
+      state.license.renewalPayload=r;
+      renewalVerified=true;
+    }else{
+      state.license.renewalPayload=null;
+    }
+  }
+
+  renderLicenseUI();
+}
+function renderLicenseUI(){
+  const lifetime=isFull();
+  const started=trialStarted();
+  const paid=renewalVerified&&!!state.license.renewalPayload;
+  const p=state.license.renewalPayload;
+  const paidTimed=paid&&p.plan!=="LIFETIME";
+  const paidLive=paidTimed&&paidActive();
+  const grace=paidTimed&&paidInGrace();
+  const hasPaidHistory=hasRenewalHistory();
+  const trialLive=!hasPaidHistory&&trialActive();
+  const expired=(hasPaidHistory&&!lifetime&&!paidLive&&!grace)||(started&&!lifetime&&!paidLive&&!grace&&!trialLive);
+
+  const trialStart=started?(state.license.trialStartAt||"").slice(0,10):"-";
+  const trialEnd=started?new Date(trialEndMs()).toISOString().slice(0,10):"-";
+  const paidEnd=paidTimed?(p.exp||"").slice(0,10):"-";
+
+  let msg,cls="license-banner",mode="TRIAL READY";
+
+  if(lifetime){
+    msg=`<b>✅ Full Lifetime</b><br>สิทธิ์ใช้งานแบบ Lifetime • ข้อมูลเดิมและ Handover ไม่ถูกแตะ`;
+    cls+=" full";
+    mode="LIFETIME";
+  }else if(paidLive){
+    const left=Math.max(0,Math.ceil((paidExpiryMs()-effectiveNowMs())/86400000));
+    msg=`<b>✅ Full ${p.plan==="MONTH"?"Monthly":"Yearly"}</b><br>ใช้งานถึง ${paidEnd} • เหลือประมาณ ${left} วัน`;
+    cls+=" full";
+    mode=p.plan==="MONTH"?"MONTHLY":"YEARLY";
+  }else if(grace){
+    const gleft=Math.max(0,Math.ceil((paidExpiryMs()+GRACE_DAYS*86400000-effectiveNowMs())/86400000));
+    msg=`<b>⚠ Grace Period</b><br>License หมด ${paidEnd} • ยังใช้งานต่อได้อีก ${gleft} วันจาก Grace ${GRACE_DAYS} วัน<br>การต่ออายุครั้งถัดไปให้นับจากวันหมดอายุเดิม`;
+    cls+=" warn1";
+    mode=`GRACE ${gleft} วัน`;
+  }else if(!started&&!hasPaidHistory){
+    if(installTrialUsedEver()){
+      msg=`<b>⚙ Setup Mode</b><br>Installation นี้เคยใช้ Trial แล้ว • ยังตั้งค่า/เชื่อม Team/ดู Archive ได้<br>หาก Join Team ที่มี Trial หรือ Package อยู่ จะใช้สิทธิ์ของ Team นั้นได้`;
+      mode="SETUP ONLY";
+    }else if(!isAnchorDevice()){
+      msg=`<b>🕒 รอสิทธิ์จาก Team</b><br>เครื่องสมาชิกไม่เริ่ม Trial แยกเอง • รับวันเริ่ม Trial เดียวกับเครื่องหลักผ่าน Team Sync`;
+      mode="WAIT TEAM TRIAL";
+    }else{
+      msg=`<b>🕒 Team Trial ยังไม่เริ่มนับ</b><br>ตั้งค่า Team ได้ก่อน เมื่อบันทึกเรื่องจริงครั้งแรก ระบบจึงเริ่ม Team Trial ${TRIAL_DAYS} วัน<div class="trial-start"><button class="btn primary full" onclick="startTrial('manual')">เริ่มทดลองใช้งาน ${TRIAL_DAYS} วัน</button></div>`;
+      mode="TRIAL READY";
+    }
+  }else if(expired){
+    msg=`<b>⛔ สิทธิ์ใช้งานหมดแล้ว</b><br>ข้อมูลไม่หาย: ยังดู History / Revision / รูป และ Backup/Export ได้ แต่การบันทึก แก้ไข และ Sync ถูกล็อก<br>ต่ออายุ Monthly / Yearly หรือ Lifetime ได้ด้วย Renewal Code`;
+    cls+=" expired";
+    mode="READ ONLY";
+  }else{
+    const left=trialDaysLeft();
+    let warn="";
+    if(left<=1){warn="<br><b>⚠ เหลือ 1 วัน</b> — เตรียมต่ออายุ";cls+=" warn1"}
+    else if(left<=3){warn=`<br><b>⚠ เหลือ ${left} วัน</b> — ควรเตรียมต่ออายุ`;cls+=" warn3"}
+    else if(left<=7){warn=`<br><b>เตือน: เหลือ ${left} วัน</b> ก่อน Trial หมด`;cls+=" warn7"}
+
+    msg=`<b>ทดลองใช้งาน ${TRIAL_DAYS} วัน • เหลือ ${left} วัน</b><br>เริ่ม ${trialStart} • สิ้นสุด ${trialEnd}${warn}${state.license.clockRollback?"<br>⚠ ตรวจพบเวลาของเครื่องย้อนหลัง ระบบยึดเวลาที่ใช้งานล่าสุด":""}`;
+    mode=`TRIAL ${left} วัน`;
+  }
+
+  for(const id of ["trialBanner","licenseStatusBox"]){
+    const b=el(id);
+    if(b){
+      b.className=cls;
+      b.innerHTML=msg+`<div class="license-grid"><div class="license-kpi"><small>โหมด</small><strong>${mode}</strong></div><div class="license-kpi"><small>Device</small><strong>${esc(state.meta.deviceId.slice(-10))}</strong></div></div>`;
+    }
+  }
+
+  if(el("licensePill"))el("licensePill").textContent=mode;
+  if(el("installIdField"))el("installIdField").value=state.meta.deviceId;
+}
+async function loadState(){
+  storageRecoveryMode=false;
+  storageMigrationStatus="checking";
+  let loaded=null;
+  try{
+    const target=await dbGet();
+    let legacy=null,legacySource="";
+    try{legacy=await legacyDbGet();if(legacy?.issues)legacySource="ContactShiftProV9"}catch(e){console.warn("legacy IndexedDB read failed",e)}
+    if(!legacy?.issues){legacy=legacyLocalLoad();if(legacy?.issues)legacySource="ContactShiftProV9_fallback"}
+    const targetCount=Array.isArray(target?.issues)?target.issues.length:-1;
+    const legacyCount=Array.isArray(legacy?.issues)?legacy.issues.length:-1;
+
+    if(target?.issues && targetCount===0 && legacy?.issues && legacyCount>0){
+      loaded=await commitMigratedState(legacy,legacySource+"-recover-empty-target");
+      storageSource="recovered-legacy-over-empty-target";
+      storageMigrationStatus="PASS_RECOVERED_EMPTY_TARGET";
+    }else if(target?.issues){
+      // issues=[] is a valid Contact Shift state.
+      // Team / Device roster / License can exist before the first Issue.
+      const sh=validateStateShape(target);
+      if(!sh.ok)throw new Error("target invalid: "+sh.errors.join(","));
+      if(targetCount>0 && legacy?.issues && legacyCount>targetCount){
+        storageRecoveryMode=true;
+        storageSource="target-legacy-count-conflict";
+        storageMigrationStatus="TARGET_LEGACY_CONFLICT";
+        loaded=migrateState(structuredClone(target));
+      }else{
+        loaded=migrateState(structuredClone(target));
+        storageSource="target";
+        storageMigrationStatus=targetCount===0?"target-empty-valid":"target";
+      }
+    }else{
+      const tf=localLoad();
+      if(tf?.issues && tf.issues.length>0){
+        loaded=await commitMigratedState(tf,"target-localStorage");
+        storageSource="target-recovered";
+        storageMigrationStatus="PASS";
+        try{localStorage.removeItem(FALLBACK_KEY)}catch{}
+      }else if(legacy?.issues && legacyCount>=0){
+        loaded=await commitMigratedState(legacy,legacySource);
+        storageSource="migrated-legacy";
+        storageMigrationStatus="PASS";
+      }else{
+        const isConfirmedNew = confirm(
+          "ไม่พบฐานข้อมูล Contact Shift ของเครื่องนี้จริง ๆ\n\n"+
+          "ถ้าเครื่องนี้เคยใช้งานหรือเคยเข้าร่วม Team มาก่อน ให้กด ยกเลิก เพื่อเข้า Recovery Mode และห้ามเริ่มใหม่\n\n"+
+          "กด ตกลง เฉพาะอุปกรณ์/Browser/ที่อยู่นี้เป็นการติดตั้งใหม่จริง ๆ เท่านั้น"
+        );
+        if(isConfirmedNew){
+          loaded=migrateState(structuredClone(defaultState));
+          const sh=validateStateShape(loaded);
+          if(!sh.ok)throw new Error("new install invalid");
+          await dbSet(loaded);
+          storageSource="confirmed-new-install";
+          storageMigrationStatus="NEW_CONFIRMED";
+        }else{
+          storageRecoveryMode=true;
+          storageSource="no-source-this-origin";
+          storageMigrationStatus="ORIGIN_MISMATCH_OR_NO_SOURCE";
+          loaded=migrateState(structuredClone(defaultState));
+          try{localStorage.setItem(MIGRATION_RECEIPT_KEY,JSON.stringify({status:"WAITING_FOR_BACKUP",at:nowIso(),reason:"legacy data not visible on this origin",origin:location.origin,appVersion:APP_VERSION}))}catch{}
+        }
+      }
+    }
+  }catch(e){
+    console.error("Contact Shift storage recovery:",e);
+    storageRecoveryMode=true;
+    storageMigrationStatus="FAIL";
+    let legacy=null;
+    try{legacy=await legacyDbGet()}catch{}
+    if(!legacy?.issues)legacy=legacyLocalLoad();
+    loaded=legacy?.issues?migrateState(structuredClone(legacy)):migrateState(structuredClone(defaultState));
+    storageSource=legacy?.issues?"legacy-readonly":"recovery-default";
+    try{localStorage.setItem(MIGRATION_RECEIPT_KEY,JSON.stringify({status:"FAIL",at:nowIso(),message:String(e?.message||e),source:storageSource,origin:location.origin}))}catch{}
+  }
+  state=loaded;
+  if(!storageRecoveryMode&&trialStarted())markInstallTrialUsed(state.license.trialStartAt,"loaded_team_trial");
+  applyRetentionPolicy(false);
+  renderAll();
+  await refreshLicenseStatus();
+  if(storageMigrationStatus==="ORIGIN_MISMATCH_OR_NO_SOURCE"){
+    toast("ไม่พบข้อมูลเดิมใน origin นี้ - ห้ามเริ่มใหม่หากเคยใช้ V10 - ให้ Backup จาก V10 เดิมแล้ว Restore ที่นี่");
+  }else if(storageMigrationStatus==="TARGET_LEGACY_CONFLICT"){
+    toast("พบข้อมูลเดิมมากกว่าฐานใหม่ - เข้า Recovery Mode เพื่อป้องกันข้อมูลหาย - ให้ Backup ก่อนดำเนินการต่อ");
+  }else if(storageMigrationStatus==="PASS_RECOVERED_EMPTY_TARGET"){
+    toast("กู้ข้อมูลเดิมจาก ContactShiftProV9 สำเร็จ - กรุณาตรวจจำนวนข้อมูลและ Refresh");
+  }else if(storageRecoveryMode){
+    toast("Storage Recovery Mode - ข้อมูลเดิมยังไม่ถูกลบ - ระบบหยุดการเขียนข้อมูล");
+  }else{
+    try{await dbSet(state)}catch(e){console.error(e)}
+  }
+}
+async function saveState(){if(storageRecoveryMode){renderAll();toast("Storage Recovery Mode - หยุดการเขียนเพื่อป้องกันข้อมูลเดิม");return "recovery-readonly"}try{state.meta.appVersion=APP_VERSION;state.meta.dataSchemaVersion=DATA_SCHEMA_VERSION;await dbSet(state);try{localStorage.removeItem(FALLBACK_KEY)}catch{}renderAll();return "indexeddb"}catch(e){try{localSave(state);renderAll();return "localstorage"}catch{renderAll();return "memory"}}}
+function active(){return state.issues.filter(x=>x.recordState==="active"&&x.status!=="Closed")}
+function stats(){const a=active();return {p1:a.filter(x=>x.priority==="P1").length,carry:a.filter(x=>x.carry).length,repeat:a.filter(x=>(x.repeated||1)>=3).length,photos:a.reduce((n,x)=>n+(x.photos?.length||0),0)}}
+function badgeClass(x){if(x.status==="Closed")return"green";if(x.priority==="P1")return"red";if(x.status==="Waiting")return"amber";return"blue"}
+function historySignature(x){const ids=[...(x.updates||[]).map(e=>e.id),...(x.revisions||[]).map(e=>e.id)].sort();return simpleHash(ids.join("|"))}
+function historyCount(x){return (x.updates?.length||0)+(x.revisions?.length||0)}
+function card(x){const photos=(x.photos||[]).slice(0,4).map(p=>`<img src="${p.data}" alt="photo">`).join("");return `<div class="card issue ${x.priority==="P1"?"p1":""} ${x.status==="Closed"?"closed":""}" onclick="openIssue('${x.id}')"><div class="row"><div><div class="title">${esc(x.title)}</div><div class="meta">${esc(x.id)} • ${esc(x.shift||"")} • ${esc(x.area)} • ${esc(x.category)}</div></div><span class="badge ${badgeClass(x)}">${esc(x.status)}</span></div><div class="badges"><span class="badge ${x.priority==="P1"?"red":"amber"}">${x.priority}</span>${(x.repeated||1)>=3?`<span class="badge violet">↻ ${x.repeated}x</span>`:""}<span class="badge blue">Owner: ${esc(x.owner||"ยังไม่กำหนด")}</span><span class="badge revision-badge">Rev ${(x.revisions||[]).length}</span>${x.recordState!=="active"?`<span class="record-state ${x.recordState}">${x.recordState==="archived"?"ARCHIVE":"TRASH"}</span>`:""}${x.syncWarning?`<span class="badge conflict-badge">Sync ⚠</span>`:""}${(x.photos?.length||0)?`<span class="badge green">📷 ${x.photos.length}</span>`:""}</div><div class="next"><b>NEXT ACTION</b><span>${esc(x.next||"ยังไม่ได้กำหนด")}</span></div>${photos?`<div class="photo-strip">${photos}</div>`:""}</div>`}
+function renderSelect(id,items,includeBlank=false,label="ทั้งหมด"){const s=el(id);if(!s)return;const current=s.value;s.innerHTML=(includeBlank?`<option value="">${label}</option>`:"")+items.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join("");if([...s.options].some(o=>o.value===current))s.value=current}
+function renderFormOptions(){
+  renderSelect("fShift",state.config.shifts);
+  renderSelect("fArea",state.config.areas);
+  renderSelect("fCategory",state.config.categories);
+  renderSelect("fOwner",state.config.owners);
+  renderSelect("filterArea",state.config.areas,true,"ทุกพื้นที่");
+  renderSelect("filterCategory",state.config.categories,true,"ทุกประเภท");
+  renderSelect("handoverFromShift",state.config.shifts);
+  renderSelect("handoverToShift",state.config.shifts);
+  const a=el("handoverFromShift"),b=el("handoverToShift");
+  if(a&&!a.dataset.init){a.value=state.config.shifts[0]||"";a.dataset.init="1"}
+  if(b&&!b.dataset.init){b.value=state.config.shifts[1]||state.config.shifts[0]||"";b.dataset.init="1"}
+}
+function renderConfig(){const defs=[["shifts","กะทำงาน"],["areas","พื้นที่ / ไลน์"],["categories","ประเภทเรื่อง"],["owners","ผู้รับผิดชอบ (Owner)"]];el("configArea").innerHTML=defs.map(([k,label])=>`<div class="config-group"><h3>${label}</h3><div class="config-add"><input id="add_${k}" placeholder="เพิ่มรายการใหม่"><button class="btn primary" onclick="addConfig('${k}')">เพิ่ม</button></div><div class="chips">${state.config[k].map((v,i)=>`<span class="chip">${esc(v)} <button onclick="removeConfig('${k}',${i})">×</button></span>`).join("")}</div></div>`).join("")}
+function filteredIssues(){let arr=state.issues.filter(x=>x.recordState==="active"),q=(el("issueSearch")?.value||"").trim().toLowerCase(),st=el("filterStatus")?.value||"",pr=el("filterPriority")?.value||"",ar=el("filterArea")?.value||"",cat=el("filterCategory")?.value||"";if(q)arr=arr.filter(x=>[x.id,x.title,x.shift,x.area,x.category,x.owner,x.found,x.impact,x.action,x.next,...(x.updates||[]).map(u=>u.text)].join(" ").toLowerCase().includes(q));if(st)arr=arr.filter(x=>x.status===st);if(pr)arr=arr.filter(x=>x.priority===pr);if(ar)arr=arr.filter(x=>x.area===ar);if(cat)arr=arr.filter(x=>x.category===cat);return arr.sort((a,b)=>(a.status==="Closed")-(b.status==="Closed")||(a.priority>b.priority?1:-1)||(b.modifiedAt||"").localeCompare(a.modifiedAt||""))}
+function renderIssueViews(){if(!el("issueList"))return;const arr=filteredIssues();el("issueCount").textContent=`แสดง ${arr.length} จาก ${state.issues.filter(x=>x.recordState==="active").length} เรื่อง`;el("issueList").innerHTML=arr.map(card).join("")||"<div class='card'>ไม่พบข้อมูล</div>";el("issueTable").innerHTML=`<table class="data-table"><thead><tr><th>ID</th><th>หัวข้อ</th><th>กะ</th><th>พื้นที่</th><th>ประเภท</th><th>P</th><th>Status</th><th>Owner</th><th>Due</th><th>Next Action</th><th>Updates</th><th>Rev</th><th>แก้ล่าสุด</th></tr></thead><tbody>${arr.map(x=>`<tr onclick="openIssue('${x.id}')"><td>${esc(x.id)}</td><td class="cell-clip">${esc(x.title)}</td><td>${esc(x.shift)}</td><td>${esc(x.area)}</td><td>${esc(x.category)}</td><td>${esc(x.priority)}</td><td>${esc(x.status)}</td><td>${esc(x.owner)}</td><td>${esc(x.due||"")}</td><td class="cell-clip">${esc(x.next||"")}</td><td>${x.updates?.length||0}</td><td>${x.revisions?.length||0}</td><td>${esc((x.modifiedAt||"").slice(0,16).replace("T"," "))}</td></tr>`).join("")}</tbody></table>`;setIssueView(issueView,false)}
+function setIssueView(v,rerender=true){issueView=v;el("issueList")?.classList.toggle("hidden",v!=="cards");el("issueTable")?.classList.toggle("hidden",v!=="table");if(el("btnCards")){el("btnCards").className="btn "+(v==="cards"?"primary":"light");el("btnTable").className="btn "+(v==="table"?"primary":"light")}if(rerender)renderIssueViews()}
+function renderAll(){const s=stats();el("mP1").textContent=s.p1;el("mCarry").textContent=s.carry;el("mRepeat").textContent=s.repeat;el("mPhotos").textContent=s.photos;const sorted=[...active()].sort((a,b)=>(a.priority>b.priority?1:-1)||(b.repeated||1)-(a.repeated||1));el("priorityList").innerHTML=sorted.slice(0,3).map(card).join("")||"<div class='card'>ไม่มีเรื่องค้าง</div>";const ho=active().filter(x=>x.carry);el("handoverList").innerHTML=ho.map(card).join("")||"<div class='card'>ไม่มีเรื่องส่งต่อ</div>";const pc=ho.reduce((n,x)=>n+(x.photos?.length||0),0);el("photoHint").textContent=pc?`มีรูป ${pc} รูป → Full Sync Package จะครบที่สุด`:"ไม่มีรูป → QR Quick Sync ได้";const closed=state.issues.filter(x=>x.recordState==="active"&&x.status==="Closed"),arch=state.issues.filter(x=>x.recordState==="archived"),trash=state.issues.filter(x=>x.recordState==="trash");el("historyList").innerHTML=closed.map(card).join("")||"<div class='card'>ยังไม่มีเรื่องปิด</div>";el("archiveList").innerHTML=arch.map(card).join("")||"<div class='card'>ยังไม่มี Archive</div>";el("trashList").innerHTML=trash.map(card).join("")||"<div class='card'>ถังขยะว่าง</div>";el("closedCount").textContent=closed.length;el("archiveCount").textContent=arch.length;el("trashCount").textContent=trash.length;renderTeamArchives();renderFormOptions();renderConfig();renderSettingsFields();renderIssueViews();renderLicenseUI();renderLicenseRecovery()}
+
+function showView(v){document.querySelectorAll("main>section").forEach(s=>s.classList.add("hidden"));el("view-"+v).classList.remove("hidden");document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t.dataset.view===v));if(v==="issues")renderIssueViews();if(v==="settings")renderSettingsFields();if(v==="viewer"&&!viewerSession.sid)renderViewerEmpty();window.scrollTo({top:0,behavior:"smooth"})}
+function openNewIssue(){if(!guardWrite("เพิ่มเรื่องใหม่"))return;showView("new")}
+async function addConfig(k){if(!guardWrite("แก้ Master Data"))return;const inp=el("add_"+k),v=inp.value.trim();if(!v)return;if(!state.config[k].includes(v))state.config[k].push(v);inp.value="";await saveState();toast("เพิ่มรายการแล้ว")}
+async function removeConfig(k,i){if(!guardWrite("แก้ Master Data"))return;if(state.config[k].length<=1){toast("ต้องเหลืออย่างน้อย 1 รายการ");return}state.config[k].splice(i,1);await saveState();toast("ลบรายการแล้ว")}
+function fileToImage(file){return new Promise((res,rej)=>{const rd=new FileReader();rd.onload=()=>{const img=new Image();img.onload=()=>res(img);img.onerror=rej;img.src=rd.result};rd.onerror=rej;rd.readAsDataURL(file)})}
+async function compressImage(file,max=1280,quality=.72){let w,h,draw;try{const bmp=await createImageBitmap(file);w=bmp.width;h=bmp.height;draw=(ctx,nw,nh)=>ctx.drawImage(bmp,0,0,nw,nh)}catch{const img=await fileToImage(file);w=img.naturalWidth;h=img.naturalHeight;draw=(ctx,nw,nh)=>ctx.drawImage(img,0,0,nw,nh)}const scale=Math.min(1,max/Math.max(w,h));const c=document.createElement("canvas");c.width=Math.max(1,Math.round(w*scale));c.height=Math.max(1,Math.round(h*scale));draw(c.getContext("2d"),c.width,c.height);return c.toDataURL("image/jpeg",quality)}
+async function addPhotos(files){for(const f of [...files]){if(newPhotos.length>=6){toast("แนบได้สูงสุด 6 รูปต่อเรื่อง");break}try{newPhotos.push({id:uid("P"),data:await compressImage(f),createdAt:nowIso()})}catch{toast("มีรูปที่อ่านไม่ได้")}}renderPhotoPreview()}
+function renderPhotoPreview(){el("newPhotoPreview").innerHTML=newPhotos.map((p,i)=>`<div class="photo-wrap"><img src="${p.data}"><button class="photo-remove" onclick="removeNewPhoto(${i})">×</button></div>`).join("")}
+function removeNewPhoto(i){newPhotos.splice(i,1);renderPhotoPreview()}
+el("photoCamera").addEventListener("change",e=>{addPhotos(e.target.files);e.target.value=""});el("photoGallery").addEventListener("change",e=>{addPhotos(e.target.files);e.target.value=""});
+function clearValidation(){["fTitle","fFound"].forEach(id=>el(id)?.classList.remove("invalid"));el("validationBox").classList.add("hidden");el("validationBox").innerHTML="";el("saveStatus").textContent=""}
+function showValidation(missing){const b=el("validationBox");b.innerHTML="<b>ยังบันทึกไม่ได้ เพราะขาดข้อมูล:</b><br>• "+missing.map(x=>x.label).join("<br>• ");b.classList.remove("hidden");missing.forEach(x=>el(x.id)?.classList.add("invalid"));el(missing[0].id)?.focus()}
+async function createIssue(){if(!guardWrite("บันทึกเรื่อง"))return;clearValidation();const title=el("fTitle").value.trim(),found=el("fFound").value.trim(),missing=[];if(!title)missing.push({id:"fTitle",label:"หัวข้อเรื่อง"});if(!found)missing.push({id:"fFound",label:"สิ่งที่พบ / เกิดอะไรขึ้น"});if(missing.length){showValidation(missing);toast("กรอกช่องกรอบแดงก่อน");return}await ensureTrialStarted();const id="CS-"+String(Math.max(0,...state.issues.map(x=>+x.id.split("-")[1]||0))+1).padStart(3,"0"),ts=nowIso();const item=migrateIssue({id,title,isDemo:false,recordState:"active",shift:el("fShift").value,area:el("fArea").value,category:el("fCategory").value,priority:el("fPriority").value,status:"Open",carry:el("fCarry").checked,owner:el("fOwner").value,due:el("fDue").value.trim(),repeated:1,found,impact:el("fImpact").value.trim(),action:el("fAction").value.trim(),next:el("fNext").value.trim()||"ยังไม่กำหนด Next Action",photos:[...newPhotos],updates:[{id:uid("U"),shift:el("fShift").value,time:new Date().toLocaleTimeString("th-TH",{hour:"2-digit",minute:"2-digit"}),by:"ผู้บันทึก",text:found,createdAt:ts}],revisions:[],createdAt:ts,modifiedAt:ts});state.issues.unshift(item);const mode=await saveState();newPhotos=[];renderPhotoPreview();["fTitle","fFound","fImpact","fAction","fNext","fDue"].forEach(fid=>el(fid).value="");showView("issues");toast(`บันทึก ${id} แล้ว (${mode})`)}
+const fieldLabels={title:"หัวข้อ",shift:"กะ",area:"พื้นที่",category:"ประเภท",priority:"Priority",status:"สถานะ",owner:"ผู้รับผิดชอบ",due:"Due",found:"สิ่งที่พบ",impact:"ผลกระทบ",action:"สิ่งที่ทำแล้ว",next:"Next Action",carry:"ส่งต่อกะ"};
+function revHtml(x){if(!(x.revisions||[]).length)return '<div class="smallnote">ยังไม่มีการแก้ไขข้อมูลหลัก</div>';return [...x.revisions].sort((a,b)=>b.createdAt.localeCompare(a.createdAt)).map(r=>`<div class="rev-item"><div class="rev-head">${esc(r.by||"ผู้แก้ไข")} • ${esc((r.createdAt||"").slice(0,16).replace("T"," "))}</div><div class="rev-change">${Object.entries(r.changes||{}).map(([k,c])=>`<b>${esc(fieldLabels[k]||k)}:</b> <span class="old">${esc(String(c.from??""))}</span> → <span class="new">${esc(String(c.to??""))}</span>`).join("<br>")}</div></div>`).join("")}
+function recordActionsHtml(x){if(x.recordState==="trash")return `<div class="card record-actions"><button class="btn good" onclick="restoreFromTrash('${x.id}')">↩ กู้คืน</button><button class="btn danger" onclick="permanentDelete('${x.id}')">ลบถาวร</button></div>`;if(x.recordState==="archived")return `<div class="card record-actions"><button class="btn good" onclick="restoreArchive('${x.id}')">↩ นำกลับจาก Archive</button><button class="btn danger" onclick="moveToTrash('${x.id}')">🗑 ย้ายถังขยะ</button></div>`;if(x.status==="Closed")return `<div class="card record-actions"><button class="btn archive" onclick="archiveIssue('${x.id}')">📦 Archive</button><button class="btn danger" onclick="moveToTrash('${x.id}')">🗑 ย้ายถังขยะ</button></div>`;return `<div class="card"><button class="btn danger full" onclick="moveToTrash('${x.id}')">🗑 ย้ายเรื่องนี้ไปถังขยะ</button></div>`}
+async function archiveIssue(id){if(!guardWrite("Archive"))return;const x=state.issues.find(i=>i.id===id);if(!x)return;if(x.status!=="Closed"){toast("ปิดเรื่องก่อนจึง Archive ได้");return}x.recordState="archived";x.archivedAt=nowIso();x.modifiedAt=nowIso();await saveState();showView("history");toast("ย้ายเข้า Archive แล้ว")}
+async function restoreArchive(id){if(!guardWrite("กู้ Archive"))return;const x=state.issues.find(i=>i.id===id);if(!x)return;x.recordState="active";x.archivedAt="";x.modifiedAt=nowIso();await saveState();openIssue(id);toast("นำกลับจาก Archive แล้ว")}
+async function moveToTrash(id){if(!guardWrite("ย้ายถังขยะ"))return;const x=state.issues.find(i=>i.id===id);if(!x)return;if(!confirm(`ย้าย ${x.id} ไปถังขยะ? ข้อมูลยัง Restore ได้`))return;x.preTrashState=x.recordState||"active";x.recordState="trash";x.trashedAt=nowIso();x.modifiedAt=nowIso();await saveState();showView("history");toast("ย้ายไปถังขยะแล้ว")}
+async function restoreFromTrash(id){if(!guardWrite("กู้ข้อมูล"))return;const x=state.issues.find(i=>i.id===id);if(!x)return;x.recordState=x.preTrashState==="archived"?"archived":"active";x.trashedAt="";x.modifiedAt=nowIso();await saveState();openIssue(id);toast("กู้คืนแล้ว")}
+async function permanentDelete(id){if(!guardWrite("ลบถาวร"))return;const x=state.issues.find(i=>i.id===id);if(!x)return;if(!confirm(`ลบ ${x.id} ถาวร? Timeline / Revision / รูป จะกู้คืนไม่ได้`))return;state.issues=state.issues.filter(i=>i.id!==id);await saveState();showView("history");toast("ลบถาวรแล้ว")}
+function openIssue(id,tab="detail"){const x=state.issues.find(i=>i.id===id);if(!x)return;const ph=(x.photos||[]).map(p=>`<img src="${p.data}">`).join("");const sync=x.syncWarning?`<div class="sync-card warn"><b>⚠ Sync:</b> ${esc(x.syncWarning)}</div>`:"";el("detailBox").innerHTML=`<div class="card"><div class="row"><div><div class="title">${esc(x.title)}</div><div class="meta">${esc(x.id)} • ${esc(x.shift)} • ${esc(x.area)} • ${esc(x.category)}</div></div><span class="badge ${badgeClass(x)}">${esc(x.status)}</span></div><div class="badges"><span class="badge ${x.priority==="P1"?"red":"amber"}">${x.priority}</span><span class="badge blue">Owner: ${esc(x.owner)}</span><span class="badge revision-badge">Revision ${x.revisions.length}</span>${x.recordState!=="active"?`<span class="record-state ${x.recordState}">${x.recordState==="archived"?"ARCHIVE":"TRASH"}</span>`:""}</div>${sync}</div>${recordActionsHtml(x)}<div class="detail-tabs"><button id="tabDetail" onclick="openIssue('${x.id}','detail')">รายละเอียด/แก้ไข</button><button id="tabTimeline" onclick="openIssue('${x.id}','timeline')">Timeline (${x.updates.length})</button><button id="tabRevision" onclick="openIssue('${x.id}','revision')">ประวัติแก้ไข (${x.revisions.length})</button></div><div id="issueTabBody"></div>`;renderIssueTab(x,tab,ph);showView("detail")}
+function opts(arr,val){return arr.map(v=>`<option ${v===val?"selected":""}>${esc(v)}</option>`).join("")}
+function renderIssueTab(x,tab,ph){["tabDetail","tabTimeline","tabRevision"].forEach(id=>el(id)?.classList.remove("active"));el(tab==="detail"?"tabDetail":tab==="timeline"?"tabTimeline":"tabRevision")?.classList.add("active");if(tab==="timeline"){el("issueTabBody").innerHTML=`<div class="card"><div class="timeline">${[...x.updates].sort((a,b)=>a.createdAt.localeCompare(b.createdAt)).map(u=>`<div class="titem"><div class="thead">${esc(u.shift)} • ${esc(u.by||"")} • ${esc(u.time||"")}</div><div class="tbody">${esc(u.text)}</div></div>`).join("")||"ไม่มี Update"}</div></div>`;return}if(tab==="revision"){el("issueTabBody").innerHTML=`<div class="card">${revHtml(x)}</div>`;return}if(x.recordState!=="active"||!canWrite()){el("issueTabBody").innerHTML=`<div class="card"><div class="readonly-note"><b>${x.recordState==="archived"?"เรื่องนี้อยู่ใน Archive":x.recordState==="trash"?"เรื่องนี้อยู่ในถังขยะ":"หมดช่วงทดลอง — Read Only"}</b><br>ยังดูรายละเอียด Timeline Revision และ Backup/Export ได้ แต่แก้ไขไม่ได้</div><p><b>สิ่งที่พบ:</b> ${esc(x.found||"")}</p><p><b>ผลกระทบ:</b> ${esc(x.impact||"")}</p><p><b>ทำแล้ว:</b> ${esc(x.action||"")}</p><p><b>Next Action:</b> ${esc(x.next||"")}</p>${ph?`<div class="photo-strip">${ph}</div>`:""}</div>`;return}el("issueTabBody").innerHTML=`<div class="card form"><label>หัวข้อ</label><input id="eTitle" value="${esc(x.title)}"><div class="field-grid"><div><label>กะ</label><select id="eShift">${opts(state.config.shifts,x.shift)}</select></div><div><label>พื้นที่</label><select id="eArea">${opts(state.config.areas,x.area)}</select></div></div><div class="field-grid"><div><label>ประเภท</label><select id="eCategory">${opts(state.config.categories,x.category)}</select></div><div><label>Priority</label><select id="ePriority"><option ${x.priority==="P1"?"selected":""}>P1</option><option ${x.priority==="P2"?"selected":""}>P2</option><option ${x.priority==="P3"?"selected":""}>P3</option></select></div></div><label>สิ่งที่พบ</label><textarea id="eFound">${esc(x.found||"")}</textarea><label>ผลกระทบ</label><textarea id="eImpact">${esc(x.impact||"")}</textarea><label>สิ่งที่ทำแล้ว</label><textarea id="eAction">${esc(x.action||"")}</textarea><label>Next Action</label><textarea id="eNext">${esc(x.next||"")}</textarea><div class="field-grid"><div><label>Owner</label><select id="eOwner">${opts(state.config.owners,x.owner)}</select></div><div><label>Due</label><input id="eDue" value="${esc(x.due||"")}"></div></div><div class="field-grid"><div><label>Status</label><select id="eStatus"><option ${x.status==="Open"?"selected":""}>Open</option><option ${x.status==="Monitoring"?"selected":""}>Monitoring</option><option ${x.status==="Waiting"?"selected":""}>Waiting</option><option ${x.status==="Closed"?"selected":""}>Closed</option></select></div><div><label>ส่งต่อกะ</label><select id="eCarry"><option value="true" ${x.carry?"selected":""}>ใช่</option><option value="false" ${!x.carry?"selected":""}>ไม่</option></select></div></div>${ph?`<label>รูปภาพ</label><div class="photo-strip">${ph}</div>`:""}<button class="btn primary full" onclick="saveIssueFields('${x.id}')">บันทึกการแก้ไขข้อมูล</button></div><div class="card form"><label>เพิ่ม Update ใหม่ (Append-only)</label><textarea id="uText" placeholder="บันทึกสิ่งที่ตรวจ/ทำเพิ่ม โดยไม่แก้ Update เก่า"></textarea><div class="photo-buttons"><label class="btn outline">📷 ถ่ายรูป<input id="uCamera" type="file" accept="image/*" capture="environment" hidden></label><label class="btn outline">🖼 เลือกรูป<input id="uGallery" type="file" accept="image/*" multiple hidden></label></div><button class="btn good full" style="margin-top:9px" onclick="appendUpdate('${x.id}')">เพิ่ม Update</button></div>`}
+async function saveIssueFields(id){if(!guardWrite("แก้ข้อมูล"))return;const x=state.issues.find(i=>i.id===id);const fields={title:el("eTitle").value.trim(),shift:el("eShift").value,area:el("eArea").value,category:el("eCategory").value,priority:el("ePriority").value,status:el("eStatus").value,owner:el("eOwner").value,due:el("eDue").value.trim(),found:el("eFound").value.trim(),impact:el("eImpact").value.trim(),action:el("eAction").value.trim(),next:el("eNext").value.trim(),carry:el("eCarry").value==="true"};const changes={};for(const [k,v] of Object.entries(fields))if(String(x[k]??"")!==String(v)){changes[k]={from:x[k]??"",to:v};x[k]=v}if(!Object.keys(changes).length){toast("ไม่มีข้อมูลเปลี่ยนแปลง");return}const ts=nowIso();x.revisions.push({id:uid("R"),createdAt:ts,by:"ผู้แก้ไข",deviceId:state.meta.deviceId,changes});if(changes.status){if(fields.status==="Closed"&&!x.closedAt)x.closedAt=ts;if(fields.status!=="Closed")x.closedAt=""}x.modifiedAt=ts;await saveState();openIssue(id,"revision");toast("บันทึกการแก้ไขและเก็บ Revision แล้ว")}
+async function appendUpdate(id){if(!guardWrite("เพิ่ม Update"))return;const x=state.issues.find(i=>i.id===id),txt=el("uText").value.trim(),files=[...(el("uCamera")?.files||[]),...(el("uGallery")?.files||[])];if(!txt&&!files.length){toast("ใส่ข้อความ Update หรือรูปก่อน");return}const ts=nowIso();if(txt)x.updates.push({id:uid("U"),createdAt:ts,shift:x.shift,by:"ผู้บันทึก",time:new Date().toLocaleTimeString("th-TH",{hour:"2-digit",minute:"2-digit"}),text:txt,deviceId:state.meta.deviceId});for(const f of files.slice(0,4))try{x.photos.push({id:uid("P"),data:await compressImage(f),createdAt:ts})}catch{}x.modifiedAt=ts;await saveState();openIssue(id,"timeline");toast("เพิ่ม Update แล้ว")}
+function snapshot(x){return {id:x.id,title:x.title,shift:x.shift,area:x.area,category:x.category,priority:x.priority,status:x.status,carry:x.carry,owner:x.owner,due:x.due,found:x.found,impact:x.impact,action:x.action,next:x.next,repeated:x.repeated,modifiedAt:x.modifiedAt}}
+function compactEvent(u){return {i:u.id,d:u.createdAt,s:u.shift,b:u.by,t:(u.text||"").slice(0,90)}}
+function compactRev(r){return {i:r.id,d:r.createdAt,c:r.changes}}
+function compactQRItem(x,level=2){return {s:{id:x.id,t:x.title.slice(0,38),sh:(x.shift||"").slice(0,12),a:(x.area||"").slice(0,20),c:(x.category||"").slice(0,14),p:x.priority,st:x.status,cr:x.carry,o:(x.owner||"").slice(0,16),d:(x.due||"").slice(0,14),n:(x.next||"").slice(0,60),m:x.modifiedAt},hc:historyCount(x),hs:historySignature(x),u:level>=1?(x.updates||[]).slice(-level).map(compactEvent):[],r:level>=2?(x.revisions||[]).slice(-level).map(compactRev):[]}}
+function toB64Unicode(str){return btoa(unescape(encodeURIComponent(str)))}function fromB64Unicode(str){return decodeURIComponent(escape(atob(str)))}
+function getHandoverFrom(){return el("handoverFromShift")?.value||state.config.shifts?.[0]||"ไม่ระบุ"}
+function getHandoverTo(){return el("handoverToShift")?.value||state.config.shifts?.[1]||"กะถัดไป"}
+function qrRaw(payload){return "CSQ9:"+toB64Unicode(JSON.stringify(payload))}
+function buildQRPages(){
+  const source=active().filter(x=>x.carry),session=uid("QRS"),pages=[];
+  if(!source.length)throw new Error("NO_ITEMS");
+  let level=2;
+  for(const x of source){
+    let item=compactQRItem(x,level),probe={v:9,co:state.meta.companyId,tm:state.meta.teamId,cn:state.config.companyName,tn:state.config.departmentName,dev:state.meta.deviceId,mb:state.meta.teamMembers,fr:getHandoverFrom(),to:getHandoverTo(),sid:session,pg:1,pt:1,d:nowIso(),tr:teamTrialStartForSync(),x:[item]};
+    if(qrRaw(probe).length>1750){item=compactQRItem(x,1);probe.x=[item]}
+    if(qrRaw(probe).length>1750){item=compactQRItem(x,0);probe.x=[item]}
+    if(qrRaw(probe).length>2200)throw new Error("ITEM_TOO_LARGE");
+    const last=pages.at(-1);
+    if(last){const test={...last,x:[...last.x,item]};if(qrRaw(test).length<=1750){last.x.push(item);continue}}
+    pages.push({v:9,co:state.meta.companyId,tm:state.meta.teamId,cn:state.config.companyName,tn:state.config.departmentName,dev:state.meta.deviceId,mb:state.meta.teamMembers,fr:getHandoverFrom(),to:getHandoverTo(),sid:session,pg:0,pt:0,d:nowIso(),tr:teamTrialStartForSync(),x:[item]});
+  }
+  pages.forEach((p,i)=>{p.pg=i+1;p.pt=pages.length});
+  return pages.map(qrRaw);
+}
+function renderQR(text){const q=new QRCodeCore(-1,QRErrorCorrectLevelCore.L);q.addData(text);q.make();const count=q.getModuleCount(),quiet=4,scale=Math.max(3,Math.floor(350/(count+quiet*2))),c=el("qrCanvas");c.width=(count+quiet*2)*scale;c.height=c.width;const ctx=c.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,c.width,c.height);ctx.fillStyle="#000";for(let r=0;r<count;r++)for(let col=0;col<count;col++)if(q.isDark(r,col))ctx.fillRect((col+quiet)*scale,(r+quiet)*scale,scale,scale)}
+function renderCurrentQR(){currentQRText=currentQRPages[currentQRIndex]||"";if(!currentQRText)return;renderQR(currentQRText);const raw=JSON.parse(fromB64Unicode(currentQRText.slice(5)));el("qrPageLabel").textContent=`QR ${raw.pg}/${raw.pt}`;el("qrPrev").disabled=currentQRIndex<=0;el("qrNext").disabled=currentQRIndex>=currentQRPages.length-1}
+function changeQRPage(delta){const n=currentQRIndex+delta;if(n<0||n>=currentQRPages.length)return;currentQRIndex=n;renderCurrentQR()}
+function openQRTransfer(){try{currentQRPages=buildQRPages();currentQRIndex=0;renderCurrentQR();showView("qr");toast(currentQRPages.length>1?`แบ่งเป็น ${currentQRPages.length} QR กรุณาสแกนครบทุกหน้า`:"QR Quick Sync พร้อมแล้ว")}catch(e){toast(e.message==="NO_ITEMS"?"ไม่มีเรื่องส่งต่อ":"ข้อมูลรายการหนึ่งยาวเกิน QR กรุณาใช้ Full Sync Package")}}
+function canvasBlob(){return new Promise(res=>el("qrCanvas").toBlob(res,"image/png"))}
+async function shareQRImage(){if(!currentQRText)return;const blob=await canvasBlob(),file=new File([blob],"ContactShift_QR_"+Date.now()+".png",{type:"image/png"});try{if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({title:"Contact Shift QR Quick Sync",text:"QR Quick Sync Contact Shift",files:[file]});return}}catch(e){if(e?.name==="AbortError")return}saveQRImage();toast("บันทึกรูป QR ให้แล้ว")}
+function saveQRImage(){const a=document.createElement("a");a.href=el("qrCanvas").toDataURL("image/png");a.download="ContactShift_QR_"+Date.now()+".png";a.click()}
+async function copyQRText(){try{await navigator.clipboard.writeText(currentQRText);toast("คัดลอกข้อความ QR แล้ว")}catch{el("qrPaste").value=currentQRText;toast("นำข้อความ QR ไปไว้ในช่องรับแล้ว")}}
+function mergeById(local=[],incoming=[]){const m=new Map(local.map(x=>[x.id,x]));incoming.forEach(x=>{if(!m.has(x.id))m.set(x.id,x)});return [...m.values()]}
+function snapshotsDiffer(a,b){return ["title","shift","area","category","priority","status","carry","owner","due","found","impact","action","next"].some(k=>String(a?.[k]??"")!==String(b?.[k]??""))}
+function applySnapshot(target,s,preferIncoming=true){for(const k of ["title","shift","area","category","priority","status","carry","owner","due","found","impact","action","next","repeated"])if(preferIncoming||target[k]===undefined)target[k]=s[k];target.modifiedAt=s.modifiedAt||target.modifiedAt}
+function expandEvent(u){return {id:u.i,createdAt:u.d,shift:u.s,by:u.b,time:(u.d||"").slice(11,16),text:u.t,deviceId:"QR"}}
+function expandRev(r){return {id:r.i,createdAt:r.d,by:"QR Sync",deviceId:"QR",changes:r.c||{}}}
+function scopeOfEnvelope(d){const co=d.co||d.companyId||"",tm=d.tm||d.teamId||"";if(!co||!tm)return "legacy";if(co===state.meta.companyId&&tm===state.meta.teamId)return "same_team";if(co===state.meta.companyId)return "same_company_other_team";return "other_company"}
+function sourceSummary(d){return {companyId:d.co||d.companyId||"",teamId:d.tm||d.teamId||"",companyName:d.cn||d.companyName||"ไม่ระบุ",teamName:d.tn||d.teamName||"ไม่ระบุ",deviceId:d.dev||d.deviceId||"",members:d.mb||d.teamMembers||[]}}
+function mergeTeamMembers(members=[]){const all=[...new Set([...(state.meta.teamMembers||[]),...members,state.meta.deviceId])];if(all.length>MAX_TEAM_DEVICES)return false;state.meta.teamMembers=all;return true}
+let pendingExternal=null;
+function clearExternalPreview(){pendingExternal=null;if(el("externalPreview"))el("externalPreview").innerHTML=""}
+function renderExternalPreview(d,kind,scope){const s=sourceSummary(d),items=(d.x||d.issues||[]),titles=items.slice(0,6).map(z=>kind==="qr"?(z.s?.t||z.s?.id||"Issue"):(z.title||z.id||"Issue"));const cls=scope==="same_company_other_team"?"cross":"block",desc=scope==="same_company_other_team"?"บริษัทเดียวกันแต่คนละ Team — ดูได้ก่อน และต้องยืนยันหากต้องการ Import เป็นสำเนา":"ข้อมูลมาจากคนละ Company — ระบบจะไม่ Merge เข้าฐานข้อมูลเครื่องนี้";el("externalPreview").innerHTML=`<div class="scope-card ${cls}"><div class="scope-title">${scope==="same_company_other_team"?"⚠ ข้อมูลข้าม Team":"⛔ ข้อมูลข้าม Company"}</div><b>ต้นทาง:</b> ${esc(s.companyName)} / ${esc(s.teamName)}<br><b>Company ID:</b> ${esc(s.companyId)}<br><b>Team ID:</b> ${esc(s.teamId)}<br><b>Device:</b> ${esc(s.deviceId)}<br>${esc(desc)}${titles.length?`<ul class="scope-list">${titles.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>`:""}${scope==="same_company_other_team"?`<div class="scope-actions"><button class="btn light" onclick="clearExternalPreview()">ดูอย่างเดียว / ปิด</button><button class="btn warn" onclick="confirmCrossTeamImport()">ยืนยัน Import สำเนา</button></div>`:`<div style="height:8px"></div><button class="btn light full" onclick="clearExternalPreview()">ปิด</button>`}</div>`;pendingExternal={d,kind,scope};showView("handover")}
+function crossCopyIssue(inc,src){const x=migrateIssue(structuredClone(inc)),tag=(src.teamId||"TEAM").slice(-5).replace(/[^a-z0-9]/gi,"");x.sourceOriginalId=x.id;x.id=`X-${tag}-${x.id}`;x.externalSource=true;x.sourceCompanyId=src.companyId;x.sourceTeamId=src.teamId;x.sourceDeviceId=src.deviceId;x.carry=false;x.modifiedAt=nowIso();return x}
+async function confirmCrossTeamImport(){if(!pendingExternal||pendingExternal.scope!=="same_company_other_team")return;const {d,kind}=pendingExternal,s=sourceSummary(d),incoming=kind==="package"?(d.issues||[]):(d.x||[]).map(z=>{const q=z.s;return migrateIssue({id:q.id,title:q.t,shift:q.sh,area:q.a,category:q.c,priority:q.p,status:q.st,carry:false,owner:q.o,due:q.d,next:q.n,modifiedAt:q.m,photos:[],updates:(z.u||[]).map(expandEvent),revisions:(z.r||[]).map(expandRev),createdAt:q.m||nowIso()})});let added=0;for(const inc of incoming){const cp=crossCopyIssue(inc,s);if(!state.issues.some(x=>x.id===cp.id)){state.issues.push(cp);added++}}await saveState();clearExternalPreview();showSyncResult(`Import ข้าม Team เป็นสำเนา ${added} เรื่อง • ไม่เขียนทับ Issue ของทีมนี้`,"warn");toast("Import สำเนาข้าม Team แล้ว")}
+async function applyQRPayload(d){let ok=0,warn=0,newc=0;const map=new Map(state.issues.map(x=>[x.id,x]));for(const z of d.x){const q=z.s,s={id:q.id,title:q.t,shift:q.sh,area:q.a,category:q.c,priority:q.p,status:q.st,carry:q.cr,owner:q.o,due:q.d,next:q.n,modifiedAt:q.m};let x=map.get(s.id);if(!x){x=migrateIssue({...s,photos:[],updates:[],revisions:[],createdAt:s.modifiedAt||nowIso()});map.set(s.id,x);newc++}const localModified=x.modifiedAt||"",senderModified=s.modifiedAt||"",diff=snapshotsDiffer(x,s);if(diff){if(senderModified>localModified)applySnapshot(x,s,true);else if(localModified>senderModified)x.syncWarning="ข้อมูลหลักต่างกัน: เครื่องนี้มีการแก้ไขใหม่กว่า QR กรุณา Full Sync";else x.syncWarning="ข้อมูลหลักต่างกันและเวลาแก้ไขเท่ากัน กรุณา Full Sync"}x.updates=mergeById(x.updates,(z.u||[]).map(expandEvent));x.revisions=mergeById(x.revisions,(z.r||[]).map(expandRev));const match=historyCount(x)===z.hc&&historySignature(x)===z.hs;if(match){if(!diff||senderModified>=localModified)x.syncWarning="";ok++}else{x.syncWarning="ประวัติ Timeline/Revision ไม่ครบตรงกับเครื่องส่ง — ใช้ Full Sync Package";warn++}}state.issues=[...map.values()];state.meta.lastSyncAt=nowIso();return {ok,warn,newc}}
+async function importQRText(text){try{text=text.trim();if(!text.startsWith("CSQ9:"))throw 0;const d=JSON.parse(fromB64Unicode(text.slice(5)));if(d.v!==9||!Array.isArray(d.x))throw 0;const scope=scopeOfEnvelope(d);if(scope==="other_company"||scope==="same_company_other_team"){renderExternalPreview(d,"qr",scope);return}if(scope==="legacy"){showSyncResult("QR ไม่มี Company/Team Scope — ไม่ Import อัตโนมัติ","warn");return}const adoptedTrial=applyIncomingTeamTrialStart(d.tr,"handover_qr",d.tm);if(adoptedTrial)await saveState();if(!guardWrite("รับ QR Sync"))return;if(!mergeTeamMembers(d.mb||[])){showSyncResult("Team นี้ตรวจพบเกิน 3 Devices — ไม่ Sync","bad");toast("เกิน 3 เครื่องใน Team");return}const {ok,warn,newc}=await applyQRPayload(d);await saveState();el("qrPaste").value="";const pageInfo=d.pt>1?` • QR ${d.pg}/${d.pt}`:"";showSyncResult(`QR Same-Team Sync${pageInfo}: ตรงครบ ${ok} • ต้อง Full Sync ${warn} • เรื่องใหม่ ${newc}`,warn?"warn":"ok");showView("handover");toast(warn?"รับ QR แล้ว แต่มี History ต่างกัน":"QR Same-Team Sync สำเร็จ")}catch{showSyncResult("QR ไม่ถูกต้องหรือไม่ใช่ V9","bad");toast("QR Contact Shift V9 ไม่ถูกต้อง")}}
+function showSyncResult(msg,type="ok"){if(!el("syncResult"))return;el("syncResult").innerHTML=`<div class="sync-card ${type}">${esc(msg)}</div>`}
+function downloadJSON(name,obj){const blob=new Blob([JSON.stringify(obj)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)}
+async function sharePackage(){const payload={type:"CONTACT_SHIFT_FULL_SYNC_V9",version:9,companyId:state.meta.companyId,teamId:state.meta.teamId,companyName:state.config.companyName,teamName:state.config.departmentName,deviceId:state.meta.deviceId,teamMembers:state.meta.teamMembers,fromShift:getHandoverFrom(),toShift:getHandoverTo(),createdAt:nowIso(),trialStartAt:teamTrialStartForSync(),issues:active().filter(x=>x.carry)};const text=JSON.stringify(payload),name="ContactShift_FullSync_"+Date.now()+".json",file=new File([text],name,{type:"application/json"});try{if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({title:"Contact Shift Full Sync",text:`${state.config.companyName} / ${state.config.departmentName} • Full Sync พร้อมรูป`,files:[file]});return}}catch(e){if(e?.name==="AbortError")return}downloadJSON(name,payload);toast("บันทึก Full Sync Package ให้แล้ว")}
+function mergeFullIssue(local,incoming){incoming=migrateIssue(incoming);if(!local)return incoming;local=migrateIssue(local);const beforeDiff=snapshotsDiffer(local,incoming);local.updates=mergeById(local.updates,incoming.updates);local.revisions=mergeById(local.revisions,incoming.revisions);local.photos=mergeById(local.photos,incoming.photos);if(beforeDiff){if((incoming.modifiedAt||"")>(local.modifiedAt||""))applySnapshot(local,incoming,true);else if((incoming.modifiedAt||"")<(local.modifiedAt||""))local.conflicts.push({id:uid("C"),createdAt:nowIso(),note:"Full Sync พบ Snapshot ต่างกัน แต่เก็บข้อมูลเครื่องนี้เพราะแก้ไขใหม่กว่า"});else local.conflicts.push({id:uid("C"),createdAt:nowIso(),note:"Full Sync พบ Snapshot ต่างกันและเวลาเท่ากัน ต้องตรวจสอบ"})}local.syncWarning=local.conflicts.length?"มี Snapshot Conflict ที่ต้องตรวจสอบ":"";return local}
+async function applyPackageData(d){const map=new Map(state.issues.map(x=>[x.id,x]));let merged=0,added=0,conf=0;for(const inc of d.issues){const old=map.get(inc.id);if(old){const before=(old.conflicts||[]).length;map.set(inc.id,mergeFullIssue(old,inc));merged++;conf+=(map.get(inc.id).conflicts.length-before)}else{map.set(inc.id,migrateIssue(inc));added++}}state.issues=[...map.values()];state.meta.lastSyncAt=nowIso();return {merged,added,conf}}
+async function importPackageFile(f){if(!f)return;try{const d=JSON.parse(await f.text());if(d.type!=="CONTACT_SHIFT_FULL_SYNC_V9"||!Array.isArray(d.issues))throw 0;const scope=scopeOfEnvelope(d);if(scope==="other_company"||scope==="same_company_other_team"){renderExternalPreview(d,"package",scope);return}if(scope==="legacy"){showSyncResult("Package ไม่มี Company/Team Scope — ไม่ Import อัตโนมัติ","warn");return}const adoptedTrial=applyIncomingTeamTrialStart(d.trialStartAt,"full_sync",d.teamId);if(adoptedTrial)await saveState();if(!guardWrite("รับ Full Sync"))return;if(!mergeTeamMembers(d.teamMembers||[])){showSyncResult("Team นี้ตรวจพบเกิน 3 Devices — ไม่ Sync","bad");toast("เกิน 3 เครื่องใน Team");return}const {merged,added,conf}=await applyPackageData(d);await saveState();showSyncResult(`Full Same-Team Sync: รวม ${merged} • เรื่องใหม่ ${added} • Conflict ${conf}`,conf?"warn":"ok");showView("handover");toast("Full Same-Team Sync เสร็จแล้ว")}catch{showSyncResult("Full Sync Package ไม่ถูกต้องหรือไม่ใช่ V9","bad");toast("ไฟล์ Full Sync V9 ไม่ถูกต้อง")}}
+el("pkgInput").addEventListener("change",e=>{importPackageFile(e.target.files[0]);e.target.value=""});
+async function decodeQRFile(f){
+  if(!f)throw new Error("NO_FILE");
+  if(!("BarcodeDetector" in window))throw new Error("NO_DETECTOR");
+  const detector=new BarcodeDetector({formats:["qr_code"]}),bmp=await createImageBitmap(f),codes=await detector.detect(bmp);
+  if(!codes.length)throw new Error("NO_QR");
+  return codes[0].rawValue;
+}
+async function scanQRFile(f){
+  if(!f)return;
+  try{await importQRText(await decodeQRFile(f))}
+  catch(e){toast(e.message==="NO_DETECTOR"?"เบราว์เซอร์นี้อ่าน QR ในแอปไม่ได้ ให้ใช้กล้องระบบหรือวางข้อความ QR":"อ่าน QR ไม่สำเร็จ")}
+}
+el("teamSetupWizardCamera")?.addEventListener("change",async e=>{
+  await teamWizardScanFile(e.target.files[0]);e.target.value="";
+});
+el("teamSetupWizardGallery")?.addEventListener("change",async e=>{
+  await teamWizardScanFile(e.target.files[0]);e.target.value="";
+});
+el("qrCameraInput").addEventListener("change",e=>{scanQRFile(e.target.files[0]);e.target.value=""});
+el("qrGalleryInput").addEventListener("change",e=>{scanQRFile(e.target.files[0]);e.target.value=""});
+
+function openViewer(){showView("viewer");renderViewerEmpty()}
+function renderViewerEmpty(){
+  if(!el("viewerContent"))return;
+  if(!viewerSession.sid){
+    el("viewerProgress").innerHTML="";
+    el("viewerContent").className="viewer-empty";
+    el("viewerContent").innerHTML='ยังไม่มี Snapshot<br><span style="font-size:10px">สแกน QR Handover เพื่อดูข้อมูลแบบ Read Only</span>';
+  }
+}
+function resetViewer(){
+  viewerSession={sid:"",total:1,pages:new Map(),meta:null};
+  if(el("viewerQrPaste"))el("viewerQrPaste").value="";
+  renderViewerEmpty();toast("ล้าง Viewer แล้ว");
+}
+function parseQRTextOnly(text){
+  text=String(text||"").trim();
+  let prefix="";
+  if(text.startsWith("CSQ9:"))prefix="CSQ9:";
+  else if(text.startsWith("CSQ10:"))prefix="CSQ10:";
+  else throw new Error("BAD_PREFIX");
+  const d=JSON.parse(fromB64Unicode(text.slice(prefix.length)));
+  if(!Array.isArray(d.x))throw new Error("BAD_PAYLOAD");
+  return d;
+}
+function viewerAgeLabel(iso){
+  const ms=Date.now()-Date.parse(iso||"");
+  if(!Number.isFinite(ms))return "ไม่ทราบเวลา";
+  const min=Math.max(0,Math.floor(ms/60000));
+  if(min<1)return "เมื่อสักครู่";
+  if(min<60)return `${min} นาทีที่แล้ว`;
+  const hr=Math.floor(min/60);
+  if(hr<24)return `${hr} ชั่วโมงที่แล้ว`;
+  return `${Math.floor(hr/24)} วันที่แล้ว`;
+}
+function viewerSnapshotItems(d){
+  return (d.x||[]).map(z=>{
+    const q=z.s||{};
+    const latest=(z.u||[]).at(-1);
+    return {
+      id:q.id||"-",title:q.t||q.id||"Issue",shift:q.sh||"",area:q.a||"",category:q.c||"",
+      priority:q.p||"",status:q.st||"",carry:!!q.cr,owner:q.o||"ยังไม่กำหนด",due:q.d||"",
+      next:q.n||"ยังไม่ได้กำหนด",modifiedAt:q.m||"",latest:latest?.t||"ไม่มี Update ล่าสุดใน QR",
+      updates:(z.u||[]).length,revisions:(z.r||[]).length
+    };
+  });
+}
+function renderViewerSnapshot(d,received,total){
+  const items=viewerSnapshotItems(d);
+  const open=items.filter(x=>x.status!=="Closed").length;
+  const p1=items.filter(x=>x.priority==="P1"&&x.status!=="Closed").length;
+  const carry=items.filter(x=>x.carry).length;
+  const waiting=items.filter(x=>x.status==="Waiting").length;
+  const age=viewerAgeLabel(d.d);
+  const ageMs=Date.now()-Date.parse(d.d||"");
+  const stale=Number.isFinite(ageMs)&&ageMs>4*60*60*1000;
+  const progress=total>1?`ได้รับ QR ${received}/${total}`:"QR ครบ 1/1";
+  el("viewerProgress").innerHTML=`<div class="${received<total?"viewer-incomplete":stale?"viewer-stale":"viewer-readonly"}"><b>${esc(progress)}</b> • Snapshot ${esc(age)}${received<total?"<br>ข้อมูลยังไม่ครบ กรุณาสแกน QR หน้าที่เหลือ":stale?"<br>⚠ Snapshot นี้เก่ากว่า 4 ชั่วโมง อาจไม่ใช่สถานะล่าสุด":"<br>ข้อมูลนี้เป็น Snapshot แบบ Read Only"}</div>`;
+  el("viewerContent").className="";
+  el("viewerContent").innerHTML=`
+    <div class="viewer-hero">
+      <span class="viewer-mode">VIEW ONLY • READ ONLY</span>
+      <h2>${esc(d.cn||"ไม่ระบุบริษัท")} • ${esc(d.tn||"ไม่ระบุทีม")}</h2>
+      <p>${esc(d.fr||"ไม่ระบุกะ")} → ${esc(d.to||"กะถัดไป")} • สร้าง ${esc((d.d||"").slice(0,16).replace("T"," "))}</p>
+      <div class="viewer-meta">
+        <div><small>COMPANY ID</small><b>${esc(d.co||"-")}</b></div>
+        <div><small>TEAM ID</small><b>${esc(d.tm||"-")}</b></div>
+        <div><small>SOURCE DEVICE</small><b>${esc(d.dev||"-")}</b></div>
+        <div><small>SNAPSHOT AGE</small><b>${esc(age)}</b></div>
+      </div>
+    </div>
+    <div class="viewer-kpis">
+      <div><b class="red">${p1}</b><span>P1</span></div>
+      <div><b>${open}</b><span>Open</span></div>
+      <div><b class="amber">${carry}</b><span>Carry Over</span></div>
+      <div><b class="violet">${waiting}</b><span>Waiting</span></div>
+    </div>
+    <div class="viewer-readonly">👁 หน้านี้ใช้ดูอย่างเดียว • ไม่กิน Device Slot • ไม่ Import • ไม่ Merge • ไม่เพิ่ม History ในเครื่องนี้</div>
+    ${items.map(x=>`<div class="viewer-card ${x.priority==="P1"?"p1":""}">
+      <div class="vtop"><div><h3>${esc(x.title)}</h3><div class="vmeta">${esc(x.id)} • ${esc(x.shift)} • ${esc(x.area)} • ${esc(x.category)}</div></div><span class="badge ${x.priority==="P1"?"red":"blue"}">${esc(x.priority||"-")}</span></div>
+      <div class="viewer-source-badge"><span class="badge blue">${esc(x.status||"-")}</span><span class="badge amber">Owner: ${esc(x.owner)}</span>${x.due?`<span class="badge">Due: ${esc(x.due)}</span>`:""}</div>
+      <div class="vsection"><b>NEXT ACTION</b><span>${esc(x.next)}</span></div>
+      <div class="vsection"><b>LATEST UPDATE</b><span>${esc(x.latest)}</span></div>
+    </div>`).join("")||'<div class="viewer-empty" style="margin-top:10px">QR นี้ไม่มีรายการ Issue</div>'}
+  `;
+}
+function viewerFromText(text){
+  try{
+    const d=parseQRTextOnly(text);
+    const sid=d.sid||("SINGLE-"+(d.d||Date.now()));
+    if(viewerSession.sid!==sid)viewerSession={sid,total:+d.pt||1,pages:new Map(),meta:d};
+    viewerSession.total=+d.pt||viewerSession.total||1;
+    viewerSession.pages.set(+d.pg||1,d);
+    viewerSession.meta=d;
+    const combined=[];
+    [...viewerSession.pages.keys()].sort((a,b)=>a-b).forEach(k=>combined.push(...(viewerSession.pages.get(k).x||[])));
+    const merged={...d,x:combined};
+    renderViewerSnapshot(merged,viewerSession.pages.size,viewerSession.total);
+    showView("viewer");
+    if(el("viewerQrPaste"))el("viewerQrPaste").value="";
+    toast(viewerSession.pages.size<viewerSession.total?`รับ Viewer QR ${viewerSession.pages.size}/${viewerSession.total}`:"Viewer Snapshot พร้อมแล้ว");
+  }catch{toast("QR นี้ไม่ใช่ Contact Shift Handover ที่ Viewer รองรับ")}
+}
+async function viewerScanQRFile(f){
+  if(!f)return;
+  try{viewerFromText(await decodeQRFile(f))}
+  catch(e){toast(e.message==="NO_DETECTOR"?"เบราว์เซอร์นี้อ่าน QR ในแอปไม่ได้ ให้ใช้กล้องระบบสแกนแล้ววางข้อความ QR":"อ่าน QR ไม่สำเร็จ")}
+}
+el("viewerQrCameraInput").addEventListener("change",e=>{viewerScanQRFile(e.target.files[0]);e.target.value=""});
+el("viewerQrGalleryInput").addEventListener("change",e=>{viewerScanQRFile(e.target.files[0]);e.target.value=""});
+
+function csvEscape(v){v=String(v??"");return /[",\n]/.test(v)?'"'+v.replaceAll('"','""')+'"':v}
+function exportCSV(){const cols=["id","recordState","title","shift","area","category","priority","status","owner","due","found","impact","action","next","carry","updates","revisions","photos","modifiedAt"];const rows=state.issues.map(x=>[x.id,x.recordState,x.title,x.shift,x.area,x.category,x.priority,x.status,x.owner,x.due,x.found,x.impact,x.action,x.next,x.carry,x.updates.length,x.revisions.length,x.photos.length,x.modifiedAt]);const text='\ufeff'+[cols,...rows].map(r=>r.map(csvEscape).join(',')).join('\n');const blob=new Blob([text],{type:'text/csv;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ContactShift_Data_'+Date.now()+'.csv';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500);toast('Export CSV แล้ว')}
+function teamSetupPayload(){return {v:10,companyId:state.meta.companyId,companyName:state.config.companyName,teamId:state.meta.teamId,teamName:state.config.departmentName,anchorDeviceId:state.meta.anchorDeviceId||state.meta.teamMembers?.[0]||state.meta.deviceId,members:state.meta.teamMembers}}
+function teamSetupCode(){
+  const p=teamSetupPayload();
+  p.members=[...new Set(p.members||[])].slice(0,MAX_TEAM_DEVICES);
+  return "CST10:"+toB64Unicode(JSON.stringify(p))
+}
+async function copyTeamSetupCode(){const code=teamSetupCode();try{await navigator.clipboard.writeText(code);toast("คัดลอก Team Setup Code แล้ว")}catch{el("teamSetupCode").value=code;el("teamSetupCode").select();document.execCommand("copy");toast("คัดลอกแล้ว")}}
+async function shareTeamSetupCode(){const code=teamSetupCode();try{if(navigator.share){await navigator.share({title:"Contact Shift Team Setup",text:`Contact Shift Team Setup\n${state.config.companyName} / ${state.config.departmentName}\n${code}`});return}}catch(e){if(e?.name==="AbortError")return}await copyTeamSetupCode()}
+
+function shouldArchiveCurrentTeam(){
+  const realData=(state.issues||[]).some(x=>!x.isDemo);
+  const paid=!!(state.license?.renewalCode||state.license?.activationCode);
+  const established=(state.meta.teamMembers||[]).length>1;
+  return realData||paid||established;
+}
+function archiveCurrentTeam(reason){
+  if(!shouldArchiveCurrentTeam())return null;
+  state.teamArchives=Array.isArray(state.teamArchives)?state.teamArchives:[];
+  const a={
+    id:uid("TA"),archivedAt:nowIso(),reason:reason||"team_change",
+    companyId:state.meta.companyId,teamId:state.meta.teamId,
+    anchorDeviceId:state.meta.anchorDeviceId||state.meta.deviceId,
+    companyName:state.config.companyName||"",teamName:state.config.departmentName||"",
+    members:[...(state.meta.teamMembers||[])],
+    license:{
+      plan:state.license?.renewalPayload?.plan||"",
+      exp:state.license?.renewalPayload?.exp||"",
+      serial:state.license?.renewalPayload?.serial||""
+    },
+    config:structuredClone(state.config),
+    issues:structuredClone(state.issues||[])
+  };
+  state.teamArchives.unshift(a);
+  return a;
+}
+function clearActiveWorkspaceForTeamChange(){
+  state.issues=[];
+  state.meta.lastSyncAt="";
+  state.meta.pendingTeamJoin=null;
+  state.meta.lastJoinApproval="";
+}
+async function createNewTeam(){
+  if(!confirm("สร้าง Team ใหม่? เครื่องนี้จะออกจาก Team ปัจจุบัน ข้อมูล Team เดิมจะเก็บเป็น Read-only Team Archive และ License เดิมจะไม่ย้ายตามมา"))return;
+  archiveCurrentTeam("create_new_team");
+  clearActiveWorkspaceForTeamChange();
+  state.meta.companyId=uid("CO");
+  state.meta.teamId=uid("TM");
+  state.meta.anchorDeviceId=state.meta.deviceId;
+  state.meta.teamMembers=[state.meta.deviceId];
+
+  state.license.activationCode="";
+  state.license.activationPayload=null;
+  state.license.renewalCode="";
+  state.license.renewalPayload=null;
+  state.license.teamActivationRequired=false;
+  licenseVerified=false;renewalVerified=false;
+
+  await saveState();
+  showView("settings");
+  toast("สร้าง Team ใหม่แล้ว • Anchor 1/3 • ตั้ง Team ได้ก่อน และเพิ่ม License ภายหลัง");
+}
+async function releaseTeamDeviceSlot(){
+  if(!isAnchorDevice()){toast("เฉพาะ Anchor / เครื่องหลักเท่านั้นที่ปล่อย Slot ได้");return}
+  const dev=el("releaseDeviceSelect")?.value||"";
+  if(!dev){toast("เลือก Device ที่ต้องการปล่อย Slot");return}
+  if(dev===state.meta.deviceId){toast("ไม่สามารถปล่อย Slot ของ Anchor ได้");return}
+  if(!state.meta.teamMembers.includes(dev)){toast("ไม่พบ Device นี้ใน Team");return}
+  if(!confirm("ปล่อย Device Slot นี้ออกจาก Team? เครื่องนั้นจะไม่ได้รับสิทธิ์จาก Roster ชุดใหม่"))return;
+  state.meta.teamMembers=state.meta.teamMembers.filter(x=>x!==dev);
+  state.meta.lastJoinApproval="";
+  await saveState();
+  toast(`ปล่อย Slot แล้ว • ${state.meta.teamMembers.length}/${MAX_TEAM_DEVICES}`);
+}
+function renderSlotManager(){
+  const box=el("slotManagerBox"),sel=el("releaseDeviceSelect");
+  if(!box||!sel)return;
+  if(!isAnchorDevice()){box.classList.add("hidden");return}
+  box.classList.remove("hidden");
+  const others=[...new Set(state.meta.teamMembers||[])].filter(x=>x!==state.meta.deviceId);
+  sel.innerHTML='<option value="">เลือก Device</option>'+others.map((d,i)=>`<option value="${esc(d)}">Device ${i+2}: ${esc(d.slice(-10))}</option>`).join("");
+  if(el("releaseSlotBtn"))el("releaseSlotBtn").disabled=!others.length;
+}
+function renderTeamArchives(){
+  const box=el("teamArchiveList");if(!box)return;
+  const arr=Array.isArray(state.teamArchives)?state.teamArchives:[];
+  if(el("teamArchiveCount"))el("teamArchiveCount").textContent=String(arr.length);
+  if(!arr.length){
+    box.innerHTML='<div class="card"><div class="helper">ยังไม่มี Team Archive</div></div>';
+    return;
+  }
+  box.innerHTML=arr.map(a=>{
+    const issues=Array.isArray(a.issues)?a.issues:[];
+    return `<details class="card">
+      <summary style="font-weight:900;cursor:pointer">${esc(a.companyName||"Company")} • ${esc(a.teamName||"Team")} <span class="badge">${issues.length} เรื่อง</span></summary>
+      <div class="helper" style="margin-top:8px">Archived: ${esc((a.archivedAt||"").slice(0,16).replace("T"," "))}<br>Company ID: ${esc(a.companyId||"-")}<br>Team ID: ${esc(a.teamId||"-")}<br>License: ${esc(a.license?.plan||"-")} ${a.license?.exp?("• "+esc(a.license.exp)):""}</div>
+      <div class="readonly-note" style="margin-top:8px">Read Only • ไม่ Merge กลับ Team ปัจจุบัน</div>
+      ${issues.map(x=>`<details style="margin-top:8px;border:1px solid #e3e9ee;border-radius:12px;padding:9px">
+        <summary style="font-weight:800;cursor:pointer">${esc(x.id||"")} • ${esc(x.title||"Issue")} • ${esc(x.status||"")}</summary>
+        <div class="helper" style="margin-top:7px">
+          Shift: ${esc(x.shift||"-")} • Area: ${esc(x.area||"-")} • Owner: ${esc(x.owner||"-")}<br>
+          Next: ${esc(x.next||"-")}<br>
+          Updates: ${(x.updates||[]).length} • Revisions: ${(x.revisions||[]).length} • Photos: ${(x.photos||[]).length}
+        </div>
+        ${(x.updates||[]).length?`<div class="timeline" style="margin-top:8px">${(x.updates||[]).map(u=>`<div class="titem"><div class="thead">${esc(u.createdAt||u.time||"")} • ${esc(u.by||"")}</div><div class="tbody">${esc(u.text||"")}</div></div>`).join("")}</div>`:""}
+      </details>`).join("")}
+    </details>`;
+  }).join("");
+}
+
+function isAnchorDevice(){return (state.meta.anchorDeviceId||state.meta.deviceId)===state.meta.deviceId}
+
+let teamSetupWizardMode="",teamSetupWizardCode="",teamSetupWizardKind="";
+
+function renderTextQRToCanvas(canvasId,text){
+  const q=new QRCodeCore(-1,QRErrorCorrectLevelCore.L);
+  q.addData(text);q.make();
+  const count=q.getModuleCount(),quiet=4,scale=Math.max(3,Math.floor(330/(count+quiet*2)));
+  const c=el(canvasId);if(!c)return;
+  c.width=(count+quiet*2)*scale;c.height=c.width;
+  const ctx=c.getContext("2d");
+  ctx.fillStyle="#fff";ctx.fillRect(0,0,c.width,c.height);
+  ctx.fillStyle="#000";
+  for(let r=0;r<count;r++)for(let col=0;col<count;col++)
+    if(q.isDark(r,col))ctx.fillRect((col+quiet)*scale,(r+quiet)*scale,scale,scale);
+}
+function teamWizardSetStatus(msg){
+  if(el("teamSetupWizardStatus"))el("teamSetupWizardStatus").innerHTML=msg;
+}
+function teamWizardShowCode(code,kind,label,note){
+  teamSetupWizardCode=String(code||"");
+  teamSetupWizardKind=kind||"";
+  if(!teamSetupWizardCode)return;
+  renderTextQRToCanvas("teamSetupWizardCanvas",teamSetupWizardCode);
+  if(el("teamSetupWizardQRBox"))el("teamSetupWizardQRBox").classList.remove("hidden");
+  if(el("teamSetupWizardQRLabel"))el("teamSetupWizardQRLabel").textContent=label||"QR";
+  if(el("teamSetupWizardQRNote"))el("teamSetupWizardQRNote").textContent=note||"";
+  if(teamSetupWizardMode==="line")teamWizardSetStatus(`<b>${esc(label||"QR พร้อมแล้ว")}</b><br>กด Share / LINE เพื่อส่งรูป QR ไปอีกเครื่อง`);
+}
+function openTeamSetupWizard(mode){
+  if(storageRecoveryMode){
+    toast("Recovery Mode • หยุด Team Setup เพื่อป้องกันข้อมูล/Team แยกกัน กรุณากู้ State เดิมก่อน");
+    return;
+  }
+  teamSetupWizardMode=mode;
+  teamSetupWizardCode="";teamSetupWizardKind="";
+  el("teamSetupWizard")?.classList.remove("hidden");
+  el("teamSetupWizardQRBox")?.classList.add("hidden");
+  const online=mode==="online";
+  el("teamSetupWizardOffline")?.classList.toggle("hidden",online);
+  el("teamSetupWizardOnline")?.classList.toggle("hidden",!online);
+  const title=mode==="near"?"QR Setup — อยู่ใกล้กัน":mode==="line"?"ส่ง QR ทาง LINE — อยู่ไกลกัน":"Quick Setup Online";
+  if(el("teamSetupWizardTitle"))el("teamSetupWizardTitle").textContent=title;
+  if(online){
+    teamWizardSetStatus("Online Setup จะใช้ MEasyMate Team Service ใน Phase ถัดไป • รุ่นนี้ยังไม่มีการส่งข้อมูลไป Server");
+  }else if(mode==="near"){
+    teamWizardSetStatus("เครื่องหลักกด “สร้าง QR เชิญ” • อีกเครื่องสแกน QR • จากนั้นสแกน QR ตอบกลับตามที่หน้าจอแสดง");
+  }else{
+    teamWizardSetStatus("เครื่องหลักสร้าง QR แล้ว Share ทาง LINE • ผู้รับโหลดรูป QR • ระบบจะสร้าง QR ตอบกลับให้ส่งกลับตามขั้นตอน");
+  }
+  el("teamSetupWizard")?.scrollIntoView({behavior:"smooth",block:"start"});
+}
+function closeTeamSetupWizard(){
+  el("teamSetupWizard")?.classList.add("hidden");
+  teamSetupWizardCode="";teamSetupWizardKind="";
+}
+function teamWizardShowInvite(){
+  if(storageRecoveryMode){
+    toast("Recovery Mode • หยุด Team Setup เพื่อป้องกันข้อมูล/Team แยกกัน กรุณากู้ State เดิมก่อน");
+    return;
+  }
+  if(!isAnchorDevice()){toast("เครื่องนี้ไม่ใช่ Anchor / เครื่องหลัก");return}
+  const members=[...new Set([...(state.meta.teamMembers||[]),state.meta.deviceId])];
+  if(members.length>=MAX_TEAM_DEVICES){
+    toast("Team ครบ 3 Device Slots แล้ว • ปล่อย Slot ก่อนเพิ่มเครื่องใหม่");return;
+  }
+  teamWizardShowCode(
+    teamSetupCode(),"setup","QR เชิญเข้าทีม",
+    teamSetupWizardMode==="near"
+      ?"ให้เครื่องใหม่สแกน QR นี้"
+      :"ส่งรูป QR นี้ให้เครื่องใหม่ทาง LINE"
+  );
+}
+function teamSetupWizardBlob(){
+  return new Promise(res=>el("teamSetupWizardCanvas")?.toBlob(res,"image/png"));
+}
+async function shareTeamSetupWizardQR(){
+  if(!teamSetupWizardCode){toast("ยังไม่มี QR สำหรับส่ง");return}
+  const blob=await teamSetupWizardBlob();
+  if(!blob){toast("สร้างรูป QR ไม่สำเร็จ");return}
+  const file=new File([blob],`ContactShift_TeamSetup_${teamSetupWizardKind||"QR"}_${Date.now()}.png`,{type:"image/png"});
+  try{
+    if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){
+      await navigator.share({title:"Contact Shift Team Setup",text:"Contact Shift • Team Setup QR",files:[file]});
+      return;
+    }
+  }catch(e){if(e?.name==="AbortError")return}
+  saveTeamSetupWizardQR();
+  toast("อุปกรณ์นี้ Share รูปไม่ได้ • บันทึกรูป QR ให้แล้ว");
+}
+function saveTeamSetupWizardQR(){
+  if(!teamSetupWizardCode){toast("ยังไม่มี QR สำหรับบันทึก");return}
+  const c=el("teamSetupWizardCanvas");if(!c)return;
+  const a=document.createElement("a");
+  a.href=c.toDataURL("image/png");
+  a.download=`ContactShift_TeamSetup_${teamSetupWizardKind||"QR"}_${Date.now()}.png`;
+  document.body.appendChild(a);a.click();a.remove();
+  toast("บันทึกรูป QR แล้ว");
+}
+async function teamWizardProcessCode(raw){
+  if(storageRecoveryMode){
+    toast("Recovery Mode • หยุด Team Setup เพื่อป้องกันข้อมูล/Team แยกกัน กรุณากู้ State เดิมก่อน");
+    return;
+  }
+  raw=String(raw||"").trim();
+  try{
+    if(raw.startsWith("CST10:")||raw.startsWith("CST9:")){
+      const setup=parseTeamSetupCode(raw);
+      if(el("joinTeamCode"))el("joinTeamCode").value=raw;
+      await joinTeamFromCode();
+      const p=state.meta.pendingTeamJoin;
+      const req=joinRequestCode();
+      if(!p||p.companyId!==setup.companyId||p.teamId!==setup.teamId||!req)
+        throw new Error("JOIN_REQUEST_NOT_CREATED");
+      teamWizardShowCode(
+        req,"request","QR ขอเข้าทีม",
+        teamSetupWizardMode==="near"
+          ?"ให้เครื่องหลักสแกน QR นี้เพื่ออนุมัติ"
+          :"ส่ง QR นี้กลับให้เครื่องหลักทาง LINE"
+      );
+      return;
+    }
+    if(raw.startsWith("CSRJ1:")){
+      if(!isAnchorDevice()){toast("QR นี้ต้องสแกนที่เครื่องหลักของ Team");return}
+      const req=parseJoinRequest(raw);
+      if(el("approveJoinRequestInput"))el("approveJoinRequestInput").value=raw;
+      await approveJoinRequest();
+      const approval=state.meta.lastJoinApproval||"";
+      if(!approval)throw new Error("APPROVAL_NOT_CREATED");
+      const ap=parseJoinApproval(approval);
+      if(ap.dev!==req.dev||ap.co!==req.co||ap.tm!==req.tm)throw new Error("APPROVAL_MISMATCH");
+      teamWizardShowCode(
+        approval,"approval","QR อนุมัติเข้าทีม",
+        teamSetupWizardMode==="near"
+          ?"ให้เครื่องใหม่สแกน QR นี้เพื่อจบการเชื่อมต่อ"
+          :"ส่ง QR นี้กลับให้เครื่องใหม่ทาง LINE"
+      );
+      return;
+    }
+    if(raw.startsWith("CSJA1:")){
+      const ap=parseJoinApproval(raw);
+      if(el("joinApprovalCode"))el("joinApprovalCode").value=raw;
+      await acceptJoinApproval();
+      const joined=
+        state.meta.companyId===ap.co &&
+        state.meta.teamId===ap.tm &&
+        state.meta.anchorDeviceId===ap.a &&
+        (state.meta.teamMembers||[]).includes(state.meta.deviceId);
+      if(!joined)throw new Error("JOIN_NOT_COMPLETED");
+      teamSetupWizardCode="";teamSetupWizardKind="";
+      el("teamSetupWizardQRBox")?.classList.add("hidden");
+      teamWizardSetStatus(`<b>✅ เชื่อม Team สำเร็จ</b><br>เครื่องนี้เป็น Full Device Slot ${state.meta.teamMembers.indexOf(state.meta.deviceId)+1}/${MAX_TEAM_DEVICES}<br>License เป็นขั้นตอนแยก สามารถเพิ่มภายหลังได้`);
+      toast("เชื่อม Team สำเร็จ");
+      return;
+    }
+    throw new Error("UNSUPPORTED_QR");
+  }catch(e){
+    console.error("Team Setup Wizard:",e);
+    toast("QR นี้ไม่ใช่ Team Setup ที่รองรับ หรือขั้นตอนไม่ตรงกัน");
+  }
+}
+async function teamWizardScanFile(f){
+  if(!f)return;
+  try{
+    const raw=await decodeQRFile(f);
+    await teamWizardProcessCode(raw);
+  }catch(e){
+    toast(e?.message==="NO_DETECTOR"
+      ?"เบราว์เซอร์นี้อ่าน QR ในแอปไม่ได้ • ใช้ขั้นสูง/Code แบบเดิม"
+      :"อ่าน Team Setup QR ไม่สำเร็จ");
+  }
+}
+
+function parseTeamSetupCode(raw){
+  raw=String(raw||"").trim();
+  let prefix="";
+  if(raw.startsWith("CST10:"))prefix="CST10:";
+  else if(raw.startsWith("CST9:"))prefix="CST9:";
+  else throw new Error("BAD_SETUP");
+  const d=JSON.parse(fromB64Unicode(raw.slice(prefix.length)));
+  if(!d.companyId||!d.teamId)throw new Error("BAD_SETUP");
+  if(prefix==="CST10:"&&d.v!==10)throw new Error("BAD_SETUP");
+  if(prefix==="CST9:"&&d.v!==9)throw new Error("BAD_SETUP");
+  d.members=[...new Set(d.members||[])];
+  d.anchorDeviceId=d.anchorDeviceId||d.members[0]||"";
+  if(!d.anchorDeviceId)throw new Error("NO_ANCHOR");
+  return d;
+}
+function pendingJoinRequestPayload(){
+  const p=state.meta.pendingTeamJoin;
+  if(!p)return null;
+  return {
+    v:1,t:"TEAM_JOIN_REQUEST",co:p.companyId,tm:p.teamId,a:p.anchorDeviceId,
+    dev:state.meta.deviceId,cn:p.companyName||"",tn:p.teamName||"",
+    at:p.requestAt||nowIso()
+  };
+}
+function joinRequestCode(){
+  const p=pendingJoinRequestPayload();
+  return p?"CSRJ1:"+toB64Unicode(JSON.stringify(p)):"";
+}
+async function copyFieldText(id,okMsg){
+  const x=el(id);if(!x||!x.value){toast("ยังไม่มีรหัส");return}
+  try{await navigator.clipboard.writeText(x.value);toast(okMsg||"คัดลอกรหัสแล้ว")}
+  catch{x.select();document.execCommand("copy");toast(okMsg||"คัดลอกรหัสแล้ว")}
+}
+async function shareJoinRequest(){
+  const code=joinRequestCode();if(!code){toast("สร้าง Join Request ก่อน");return}
+  try{
+    if(navigator.share){
+      await navigator.share({title:"Contact Shift Join Request",text:`Contact Shift - Join Request\nDevice: ${state.meta.deviceId}\n${code}`});
+      return;
+    }
+  }catch(e){if(e?.name==="AbortError")return}
+  if(el("joinRequestCode"))el("joinRequestCode").value=code;
+  await copyFieldText("joinRequestCode","คัดลอก Join Request แล้ว");
+}
+async function joinTeamFromCode(){
+  if(storageRecoveryMode){
+    toast("Recovery Mode • หยุด Team Setup เพื่อป้องกันข้อมูล/Team แยกกัน กรุณากู้ State เดิมก่อน");
+    return;
+  }
+  const raw=el("joinTeamCode").value.trim();
+  try{
+    const d=parseTeamSetupCode(raw);
+    if(d.companyId===state.meta.companyId&&d.teamId===state.meta.teamId&&d.members.includes(state.meta.deviceId)){
+      toast("เครื่องนี้อยู่ใน Team นี้แล้ว");return;
+    }
+    if(d.members.length>=MAX_TEAM_DEVICES&&!d.members.includes(state.meta.deviceId)){
+      toast("Team นี้แสดงว่าครบ 3 Devices แล้ว");return;
+    }
+    state.meta.pendingTeamJoin={
+      companyId:d.companyId,teamId:d.teamId,anchorDeviceId:d.anchorDeviceId,
+      companyName:d.companyName||"",teamName:d.teamName||"",
+      members:d.members,requestAt:nowIso()
+    };
+    await saveState();
+    if(el("joinRequestCode"))el("joinRequestCode").value=joinRequestCode();
+    toast("สร้าง Join Request แล้ว ส่งให้เครื่องหลักอนุมัติ");
+  }catch{toast("Team Setup Code ไม่ถูกต้อง")}
+}
+function parseJoinRequest(raw){
+  raw=String(raw||"").trim();
+  if(!raw.startsWith("CSRJ1:"))throw new Error("BAD_JOIN_REQUEST");
+  const d=JSON.parse(fromB64Unicode(raw.slice(6)));
+  if(d.v!==1||d.t!=="TEAM_JOIN_REQUEST"||!d.co||!d.tm||!d.a||!d.dev)throw new Error("BAD_JOIN_REQUEST");
+  return d;
+}
+function joinApprovalCode(payload){return "CSJA1:"+toB64Unicode(JSON.stringify(payload))}
+async function approveJoinRequest(){
+  if(storageRecoveryMode){
+    toast("Recovery Mode • หยุด Team Setup เพื่อป้องกันข้อมูล/Team แยกกัน กรุณากู้ State เดิมก่อน");
+    return;
+  }
+  try{
+    if(!isAnchorDevice()){toast("เฉพาะเครื่องหลักของ Team เท่านั้นที่อนุมัติได้");return}
+    const d=parseJoinRequest(el("approveJoinRequestInput").value);
+    if(d.co!==state.meta.companyId||d.tm!==state.meta.teamId||d.a!==state.meta.anchorDeviceId){
+      toast("Join Request นี้ไม่ใช่ Team ปัจจุบัน");return;
+    }
+    let members=[...new Set([...(state.meta.teamMembers||[]),state.meta.deviceId])];
+    if(!members.includes(d.dev)&&members.length>=MAX_TEAM_DEVICES){
+      toast("Team ครบ 3 Device Slots แล้ว");return;
+    }
+    members=[...new Set([...members,d.dev])];
+    if(members.length>MAX_TEAM_DEVICES){toast("เกิน 3 Device Slots");return}
+    const issued=Date.now(),approval={
+      v:1,t:"TEAM_JOIN_APPROVAL",co:state.meta.companyId,tm:state.meta.teamId,
+      a:state.meta.anchorDeviceId,dev:d.dev,cn:state.config.companyName,
+      tn:state.config.departmentName,members,tr:teamTrialStartForSync(),iat:new Date(issued).toISOString(),
+      exp:new Date(issued+24*60*60*1000).toISOString()
+    };
+    state.meta.teamMembers=members;
+    state.meta.lastJoinApproval=joinApprovalCode(approval);
+    await saveState();
+    if(el("joinApprovalOut"))el("joinApprovalOut").value=state.meta.lastJoinApproval;
+    toast(`อนุมัติ Device Slot ${members.length}/${MAX_TEAM_DEVICES} แล้ว`);
+  }catch{toast("Join Request ไม่ถูกต้อง")}
+}
+function parseJoinApproval(raw){
+  raw=String(raw||"").trim();
+  if(!raw.startsWith("CSJA1:"))throw new Error("BAD_APPROVAL");
+  const d=JSON.parse(fromB64Unicode(raw.slice(6)));
+  if(d.v!==1||d.t!=="TEAM_JOIN_APPROVAL"||!d.co||!d.tm||!d.a||!d.dev||!Array.isArray(d.members))throw new Error("BAD_APPROVAL");
+  if(Date.parse(d.exp||0)<=Date.now())throw new Error("EXPIRED");
+  if(d.members.length>MAX_TEAM_DEVICES)throw new Error("TOO_MANY");
+  return d;
+}
+async function shareJoinApproval(){
+  const code=state.meta.lastJoinApproval||el("joinApprovalOut")?.value||"";
+  if(!code){toast("ยังไม่มี Join Approval");return}
+  try{
+    if(navigator.share){
+      await navigator.share({title:"Contact Shift Join Approval",text:`Contact Shift - Join Approval\n${code}`});
+      return;
+    }
+  }catch(e){if(e?.name==="AbortError")return}
+  if(el("joinApprovalOut"))el("joinApprovalOut").value=code;
+  await copyFieldText("joinApprovalOut","คัดลอก Join Approval แล้ว");
+}
+async function acceptJoinApproval(){
+  if(storageRecoveryMode){
+    toast("Recovery Mode • หยุด Team Setup เพื่อป้องกันข้อมูล/Team แยกกัน กรุณากู้ State เดิมก่อน");
+    return;
+  }
+  try{
+    const d=parseJoinApproval(el("joinApprovalCode").value);
+    const p=state.meta.pendingTeamJoin;
+    if(d.dev!==state.meta.deviceId){toast("Approval นี้ออกให้ Device อื่น");return}
+    if(!p||d.co!==p.companyId||d.tm!==p.teamId||d.a!==p.anchorDeviceId){
+      toast("Approval ไม่ตรงกับ Team ที่ร้องขอ");return;
+    }
+    if(!d.members.includes(state.meta.deviceId)){toast("Approval ไม่มี Device นี้ใน Roster");return}
+    if(state.issues.some(x=>!x.isDemo)&&!confirm("เครื่องนี้มีข้อมูลจริงอยู่แล้ว การเปลี่ยน Team จะเก็บ Team เดิมเป็น Read-only Archive ยืนยันหรือไม่?"))return;
+    const changingTeam=state.meta.companyId!==d.co||state.meta.teamId!==d.tm;
+    if(changingTeam){archiveCurrentTeam("join_existing_team");clearActiveWorkspaceForTeamChange();clearActiveTeamEntitlementForSwitch()}
+    state.meta.companyId=d.co;state.meta.teamId=d.tm;state.meta.anchorDeviceId=d.a;
+    state.meta.teamMembers=[...new Set(d.members)].slice(0,MAX_TEAM_DEVICES);
+    if(d.cn)state.config.companyName=d.cn;if(d.tn)state.config.departmentName=d.tn;applyIncomingTeamTrialStart(d.tr,"join_approval",d.tm);
+    state.meta.pendingTeamJoin=null;state.meta.lastJoinApproval="";
+    el("joinTeamCode").value="";el("joinApprovalCode").value="";
+    await saveState();
+    toast(`เข้าร่วม Team สำเร็จ • Device ${state.meta.teamMembers.indexOf(state.meta.deviceId)+1}/${MAX_TEAM_DEVICES}`);
+  }catch(e){toast(e?.message==="EXPIRED"?"Join Approval หมดอายุแล้ว":"Join Approval ไม่ถูกต้อง")}
+}
+function renderJoinUI(){
+  if(el("anchorRoleStatus"))el("anchorRoleStatus").textContent=isAnchorDevice()?"เครื่องนี้ = Anchor / เครื่องหลัก":"เครื่องนี้ = Member";
+  if(el("joinRequestCode"))el("joinRequestCode").value=joinRequestCode();
+  if(el("joinApprovalOut"))el("joinApprovalOut").value=state.meta.lastJoinApproval||"";
+}
+function renderTeamUI(){const members=[...new Set([...(state.meta.teamMembers||[]),state.meta.deviceId])];state.meta.teamMembers=members.slice(0,MAX_TEAM_DEVICES);if(el("companyIdField"))el("companyIdField").value=state.meta.companyId;if(el("teamIdField"))el("teamIdField").value=state.meta.teamId;if(el("teamSetupCode"))el("teamSetupCode").value=teamSetupCode();if(el("teamMemberCount"))el("teamMemberCount").textContent=`${members.length} / ${MAX_TEAM_DEVICES}`;if(el("deviceShort"))el("deviceShort").textContent=state.meta.deviceId.slice(-12);if(el("teamMemberList"))el("teamMemberList").innerHTML=members.map((m,i)=>`<span class="member-chip">Device ${i+1}: ${esc(m.slice(-8))}</span>`).join("");if(el("teamSummary"))el("teamSummary").innerHTML=`<b>${esc(state.config.companyName)} • ${esc(state.config.departmentName)}</b><div class="team-grid"><div class="team-kpi"><small>Company ID</small><strong>${esc(state.meta.companyId.slice(-12))}</strong></div><div class="team-kpi"><small>Team ID</small><strong>${esc(state.meta.teamId.slice(-12))}</strong></div></div><div class="member-list">${members.map((m,i)=>`<span class="member-chip">${i+1}/3 • ${esc(m.slice(-7))}</span>`).join("")}</div>`}
+function renderSettingsFields(){if(el("companyName"))el("companyName").value=state.config.companyName||"";if(el("departmentName"))el("departmentName").value=state.config.departmentName||"";if(el("autoArchiveDays"))el("autoArchiveDays").value=String(state.retention.autoArchiveDays||0);if(el("trashDays"))el("trashDays").value=String(state.retention.trashDays||30);if(el("autoPurgeTrash"))el("autoPurgeTrash").checked=!!state.retention.autoPurgeTrash;if(el("headerContext"))el("headerContext").textContent=`${state.config.companyName||"Contact Shift"} • ${state.config.departmentName||""} • Offline ${APP_VERSION}`;if(el("installIdField"))el("installIdField").value=state.meta.deviceId;if(el("teamRenewalRequestCode"))el("teamRenewalRequestCode").value=teamRenewalRequestCode();renderTeamUI();renderJoinUI();renderSlotManager();renderLicenseRecovery()}
+async function saveBranding(){if(!guardWrite("แก้ชื่อระบบ"))return;state.config.companyName=el("companyName").value.trim()||"Contact Shift";state.config.departmentName=el("departmentName").value.trim();await saveState();renderTeamUI();toast("บันทึกชื่อที่แสดงแล้ว")}
+async function saveRetention(){if(!guardWrite("แก้นโยบายเก็บข้อมูล"))return;state.retention.autoArchiveDays=+el("autoArchiveDays").value||0;state.retention.trashDays=+el("trashDays").value||30;state.retention.autoPurgeTrash=el("autoPurgeTrash").checked;applyRetentionPolicy(true);await saveState();toast("บันทึกนโยบายเก็บข้อมูลแล้ว")}
+function applyRetentionPolicy(showToast=false){const now=Date.now(),aDays=+state.retention?.autoArchiveDays||0,tDays=+state.retention?.trashDays||30;let archived=0,purged=0;if(aDays>0){for(const x of state.issues){if(x.recordState==="active"&&x.status==="Closed"){const base=Date.parse(x.closedAt||x.modifiedAt||x.createdAt)||now;if(now-base>=aDays*86400000){x.recordState="archived";x.archivedAt=nowIso();archived++}}}}if(state.retention?.autoPurgeTrash){const before=state.issues.length;state.issues=state.issues.filter(x=>!(x.recordState==="trash"&&now-(Date.parse(x.trashedAt)||now)>=tDays*86400000));purged=before-state.issues.length}if(showToast&&(archived||purged))toast(`Retention: Archive ${archived} • ลบถาวร ${purged}`)}
+async function copyInstallId(){try{await navigator.clipboard.writeText(state.meta.deviceId);toast("คัดลอก Installation ID แล้ว")}catch{el("installIdField").select();document.execCommand("copy");toast("คัดลอกแล้ว")}}
+
+function teamRenewalRequestPayload(){
+  const p=state.license.renewalPayload||{};
+  const anchor=state.meta.anchorDeviceId||state.meta.teamMembers?.[0]||state.meta.deviceId;
+  return {
+    v:1,t:"TEAM_RENEWAL_REQUEST",p:TEAM_RENEWAL_PRODUCT_ID,
+    co:state.meta.companyId,tm:state.meta.teamId,a:anchor,dev:state.meta.deviceId,
+    max:MAX_TEAM_DEVICES,mb:[...(state.meta.teamMembers||[])],
+    plan:p.plan||"",exp:p.exp||"",serial:p.serial||"",at:nowIso()
+  };
+}
+
+function currentTeamLicenseCode(){
+  const p=state.license?.renewalPayload||null;
+  const code=(state.license?.renewalCode||"").trim();
+  if(!p||!code)return "";
+  const scopeOk=
+    p.p===TEAM_RENEWAL_PRODUCT_ID &&
+    p.t==="TEAM_RENEWAL" &&
+    p.co===state.meta.companyId &&
+    p.tm===state.meta.teamId &&
+    p.a===(state.meta.anchorDeviceId||state.meta.deviceId) &&
+    Number(p.max)===MAX_TEAM_DEVICES;
+  return scopeOk?code:"";
+}
+function teamLicenseSummaryText(){
+  const p=state.license?.renewalPayload||{};
+  const plan=p.plan||"-";
+  const exp=plan==="LIFETIME"?"LIFETIME":(p.exp||"-");
+  const serial=p.serial||"-";
+  return `Contact Shift Team License
+Company ID: ${state.meta.companyId}
+Team ID: ${state.meta.teamId}
+Anchor Device ID: ${state.meta.anchorDeviceId||state.meta.deviceId}
+Plan: ${plan}
+Expiry: ${exp}
+Serial: ${serial}
+Max Full Devices: ${MAX_TEAM_DEVICES}`;
+}
+async function copyCurrentTeamLicense(){
+  const code=currentTeamLicenseCode();
+  if(!code){toast("ไม่พบ Team License ที่กู้คืนได้ในเครื่องนี้");return}
+  try{
+    await navigator.clipboard.writeText(code);
+    toast("คัดลอก Team License แล้ว");
+  }catch(e){
+    const ta=document.createElement("textarea");ta.value=code;document.body.appendChild(ta);ta.select();
+    document.execCommand("copy");ta.remove();toast("คัดลอก Team License แล้ว");
+  }
+}
+async function shareCurrentTeamLicense(){
+  const code=currentTeamLicenseCode();
+  if(!code){toast("ไม่พบ Team License ที่กู้คืนได้ในเครื่องนี้");return}
+  const msg=`${teamLicenseSummaryText()}
+
+TEAM LICENSE CODE:
+${code}
+
+เก็บรหัสนี้เป็นความลับภายใน Team และใช้เฉพาะ Team เดิม`;
+  if(navigator.share){
+    try{await navigator.share({title:"Contact Shift Team License",text:msg});return}catch(e){}
+  }
+  try{await navigator.clipboard.writeText(msg);toast("อุปกรณ์นี้ Share ไม่ได้ • คัดลอกข้อมูล License ให้แล้ว")}catch(e){toast("Share ไม่สำเร็จ")}
+}
+function downloadCurrentTeamLicense(){
+  const code=currentTeamLicenseCode();
+  if(!code){toast("ไม่พบ Team License ที่กู้คืนได้ในเครื่องนี้");return}
+  const p=state.license?.renewalPayload||{};
+  const serial=(p.serial||"TEAM").replace(/[^A-Za-z0-9_-]/g,"_");
+  const body=`${teamLicenseSummaryText()}
+
+TEAM LICENSE CODE:
+${code}
+
+IMPORTANT:
+- ใช้กับ Company ID / Team ID / Anchor ชุดนี้เท่านั้น
+- เก็บไฟล์นี้ไว้ในที่ปลอดภัย
+- หากเปลี่ยนเครื่อง ให้ Anchor ปล่อย Slot เก่าก่อนรับเครื่องใหม่
+`;
+  const blob=new Blob([body],{type:"text/plain;charset=utf-8"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;a.download=`CONTACT_SHIFT_TEAM_LICENSE_${serial}.txt`;
+  document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1500);
+  toast("สร้างไฟล์สำรอง Team License แล้ว");
+}
+function renderLicenseRecovery(){
+  const card=el("licenseRecoveryCard");
+  if(!card)return;
+  const code=currentTeamLicenseCode();
+  const p=state.license?.renewalPayload||{};
+  if(!code){
+    card.classList.add("hidden");
+    return;
+  }
+  card.classList.remove("hidden");
+  if(el("licenseRecoveryPlan"))el("licenseRecoveryPlan").textContent=p.plan||"-";
+  if(el("licenseRecoveryExpiry"))el("licenseRecoveryExpiry").textContent=(p.plan==="LIFETIME"?"LIFETIME":(p.exp||"-"));
+  if(el("licenseRecoverySerial"))el("licenseRecoverySerial").textContent=p.serial||"-";
+}
+
+function teamRenewalRequestCode(){return "CSRR1:"+toB64Unicode(JSON.stringify(teamRenewalRequestPayload()))}
+async function copyTeamRenewalRequest(){
+  const code=teamRenewalRequestCode();
+  if(el("teamRenewalRequestCode"))el("teamRenewalRequestCode").value=code;
+  try{await navigator.clipboard.writeText(code);toast("คัดลอกรหัสขอต่ออายุแล้ว")}
+  catch{
+    const x=el("teamRenewalRequestCode");
+    if(x){x.select();document.execCommand("copy");toast("คัดลอกรหัสขอต่ออายุแล้ว")}
+    else toast("คัดลอกอัตโนมัติไม่ได้ กรุณาใช้ปุ่มแชร์");
+  }
+}
+async function shareTeamRenewalRequest(){
+  const code=teamRenewalRequestCode();
+  if(el("teamRenewalRequestCode"))el("teamRenewalRequestCode").value=code;
+  try{
+    if(navigator.share){
+      await navigator.share({title:"Contact Shift Renewal Request",text:`Contact Shift - Renewal Request\n${state.config.companyName} / ${state.config.departmentName}\n${code}`});
+      return;
+    }
+  }catch(e){if(e?.name==="AbortError")return}
+  await copyTeamRenewalRequest();
+}
+
+async function activateLicense(){
+  const code=el("activationInput").value.trim();
+  if(!code){
+    toast("กรอก Activation / Renewal Code ก่อน");
+    return;
+  }
+
+  const legacy=await verifyActivationCode(code);
+  if(legacy){
+    state.license.activationCode=code;
+    state.license.activationPayload=legacy;
+    licenseVerified=true;
+    await saveState();
+    renderLicenseUI();
+    el("activationInput").value="";
+    toast("✅ เปิดใช้งาน Full Lifetime แล้ว ข้อมูลเดิมอยู่ครบ");
+    return;
+  }
+
+  const renewal=await verifyRenewalCode(code);
+  if(!renewal){
+    toast("Activation / Renewal Code ไม่ถูกต้อง หรือไม่ตรง Installation ID");
+    return;
+  }
+
+  const currentExp=paidExpiryMs();
+  const nextExp=renewal.plan==="LIFETIME"
+    ? Number.POSITIVE_INFINITY
+    : (Date.parse(renewal.exp||0)||0);
+
+  if(currentExp===Number.POSITIVE_INFINITY){
+    toast("เครื่องนี้เป็น Lifetime อยู่แล้ว");
+    return;
+  }
+
+  if(renewal.plan!=="LIFETIME"&&currentExp){
+    const expectedBase=new Date(currentExp).toISOString().slice(0,10);
+    if(renewal.baseExp!==expectedBase){
+      toast("Renewal Code ไม่ได้ต่อจากวันหมดอายุเดิม");
+      return;
+    }
+  }
+
+  if(nextExp!==Number.POSITIVE_INFINITY&&currentExp&&nextExp<=currentExp){
+    toast("Renewal Code นี้ไม่ได้ขยายวันหมดอายุ");
+    return;
+  }
+
+  state.license.renewalCode=code;
+  state.license.renewalPayload=renewal;
+  state.license.teamActivationRequired=false;
+  renewalVerified=true;
+
+  await saveState();
+  renderLicenseUI();
+  el("activationInput").value="";
+
+  toast(renewal.plan==="LIFETIME"
+    ?"✅ เปิด Lifetime แล้ว"
+    :"✅ ต่ออายุสำเร็จ ข้อมูลเดิมอยู่ครบ");
+}
+async function clearDemoData(){if(!guardWrite("ล้างข้อมูลตัวอย่าง"))return;const demos=state.issues.filter(x=>x.isDemo).length;if(!demos){toast("ไม่มีข้อมูลตัวอย่าง");return}if(!confirm(`ล้างข้อมูลตัวอย่าง ${demos} เรื่อง?`))return;state.issues=state.issues.filter(x=>!x.isDemo);await saveState();toast("ล้างข้อมูลตัวอย่างแล้ว")}
+function exportBackup(){const d=new Date(),p=n=>String(n).padStart(2,"0"),stamp=`${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}_${p(d.getHours())}-${p(d.getMinutes())}-${p(d.getSeconds())}`,exportedAt=nowIso(),name=`ContactShift_Backup_${stamp}.json`;downloadJSON(name,{type:"CONTACT_SHIFT_BACKUP_V10_2",appVersion:APP_VERSION,dataSchemaVersion:DATA_SCHEMA_VERSION,exportedAt,state});try{localStorage.setItem("measymate_contact_shift_backup_meta",JSON.stringify({name,exportedAt}))}catch{}toast(`บันทึก Backup แล้ว - ${name}`)}
+async function restoreBackupFile(f){
+  if(!guardWrite("Restore Backup"))return;
+  try{
+    const d=JSON.parse(await f.text());
+    if(!["CONTACT_SHIFT_BACKUP_V7","CONTACT_SHIFT_BACKUP_V9","CONTACT_SHIFT_BACKUP_V10_1","CONTACT_SHIFT_BACKUP_V10_2"].includes(d.type)||!d.state?.issues)throw new Error("bad backup");
+    const candidate=migrateState(structuredClone(d.state));
+    const check=validateMigration(d.state,candidate);
+    if(!check.ok)throw new Error("restore validation: "+check.errors.join(","));
+    if(!confirm(`พบ Backup ${candidate.issues.length} เรื่อง - ต้องการ Restore หรือไม่?`))return;
+    let preId=null;
+    if(!storageRecoveryMode || (state?.issues?.length||0)>0){
+      try{preId=await createMigrationBackup(state,"pre-restore-current")}catch(e){console.warn("pre-restore backup skipped",e)}
+    }
+    await dbSet(candidate);
+    const verify=await dbGet(),vc=validateMigration(candidate,verify);
+    if(!vc.ok)throw new Error("restore verify: "+vc.errors.join(","));
+    state=verify;
+    storageRecoveryMode=false;
+    storageSource="restored-backup";
+    storageMigrationStatus="RESTORE_PASS";
+    try{
+      localStorage.removeItem(FALLBACK_KEY);
+      localStorage.setItem(MIGRATION_RECEIPT_KEY,JSON.stringify({status:"RESTORE_PASS",at:nowIso(),origin:location.origin,appVersion:APP_VERSION,issueCount:state.issues.length}));
+    }catch{}
+    renderAll();
+    await refreshLicenseStatus();
+    toast(`Restore สำเร็จ${preId?` - Pre-Restore Backup ${preId}`:""} - กรุณา Refresh เพื่อตรวจซ้ำ`);
+  }catch(e){
+    console.error(e);
+    toast("Restore ไม่สำเร็จ - ยังไม่เขียนทับข้อมูลเดิม");
+  }
+}
+el("restoreInput")?.addEventListener("change",e=>{restoreBackupFile(e.target.files[0]);e.target.value=""});
+["issueSearch","filterStatus","filterPriority","filterArea","filterCategory"].forEach(id=>el(id)?.addEventListener(id==="issueSearch"?"input":"change",renderIssueViews));
+loadState();
+</script>
+
+<script src="/shared/notify/all-project-notice.js"></script>
+<script src="./project-notice.js"></script>
+<script src="/shared/notify/measymate-notify-core.js"></script>
+
+<script id="renewalLayoutFixV1033">
+document.addEventListener("DOMContentLoaded",()=>{
+  const box=document.getElementById("renewalActivationBox");
+  const input=document.getElementById("installIdField");
+  if(!box||!input)return;
+
+  const row=input.parentElement;
+  if(row && row.contains(box)){
+    row.insertAdjacentElement("afterend",box);
+  }
+
+  box.style.width="100%";
+  box.style.boxSizing="border-box";
+  box.style.marginTop="12px";
+});
+</script>
+
+</body></html>
