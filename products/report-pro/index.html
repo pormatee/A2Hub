@@ -230,6 +230,26 @@
 /* MEasyMate Report Pro — Personal Standard core contract */
 /* UX patch: Text annotation requires intentional double-tap/double-click placement; single tap/scroll does not place text. */
 /* Master patch: Storage Isolation V1 + Annotation Text UX Fix V1 */
+/* A2Hub Permanent Edition Access Layer V1
+   Scope: A2Hub copy only.
+   Commercial license logic is retained below and is not modified in MEasyMate-Products. */
+const APP_EDITION='A2HUB';
+const A2HUB_ACCESS_POLICY=Object.freeze({
+  permanentAccess:true,
+  licenseExpiryEnabled:false,
+  trialExpiryEnabled:false,
+  renewalRequired:false,
+  gracePeriodApplicable:false,
+  preserveDataIsolation:true,
+  preserveStorageSchema:true,
+  preserveBackupRestore:true,
+  preserveTeamDeviceRules:true
+});
+function isA2HubPermanentEdition(){
+  return APP_EDITION==='A2HUB' &&
+         A2HUB_ACCESS_POLICY.permanentAccess===true;
+}
+
 const REPORT_PRO_CONFIG = window.REPORT_PRO_CONFIG || {
   product:'REPORT_PRO_PERSONAL',version:'2.6.0',ownerName:'ลูกค้าตัวอย่าง',organization:'บริษัทตัวอย่าง จำกัด',watermark:'SAMPLE / ตัวอย่าง',
   licenseId:'RP-DEMO-SAMPLE',packageName:'Personal Standard • ตัวอย่าง',startDate:'2026-09-05',expiryDate:'2027-09-05',graceDays:7,
@@ -342,9 +362,130 @@ function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show')
 function safeJSON(s,f){try{return JSON.parse(s)}catch{return f}}
 function loadSettings(){let x=safeJSON(localStorage.getItem(rpKey('personal_settings_v2')),null)||safeJSON(localStorage.getItem(rpKey('personal_settings_v1')),null);if(!x||!Array.isArray(x.shifts)||!Array.isArray(x.groups))x=structuredClone(DEFAULT_SETTINGS);if(!Array.isArray(x.categories)||!x.categories.length)x.categories=[...CORE_CATEGORIES];if(!['th','en','my'].includes(x.uiLanguage))x.uiLanguage='th';if(!['th','en','my'].includes(x.reportLanguage))x.reportLanguage=x.uiLanguage;return x}
 function saveSettings(){localStorage.setItem(rpKey('personal_settings_v2'),JSON.stringify(settings));renderSettings();populateStructure();populateCategories();applyUiLanguage();updateGuide()}
-function licenseState(){const exp=new Date(REPORT_PRO_CONFIG.expiryDate+'T23:59:59'),now=new Date(),graceEnd=new Date(exp);graceEnd.setDate(graceEnd.getDate()+(REPORT_PRO_CONFIG.graceDays||7));if(now<=exp)return{state:'active',exp,graceEnd,days:Math.ceil((exp-now)/86400000)};if(now<=graceEnd)return{state:'grace',exp,graceEnd,days:Math.ceil((graceEnd-now)/86400000)};return{state:'expired',exp,graceEnd,days:0}}
-function canCreate(){return licenseState().state!=='expired'}
-function renderLicense(){const s=licenseState(),pill=$('licensePill'),banner=$('licenseBanner'),owner=REPORT_PRO_CONFIG.organization||REPORT_PRO_CONFIG.ownerName;$('ownerLabel').textContent=owner||'Personal Reporting';$('screenWatermark').textContent=REPORT_PRO_CONFIG.watermark||owner||'';$('waterline').textContent=`Licensed to ${owner} • ${REPORT_PRO_CONFIG.licenseId} • ${REPORT_PRO_CONFIG.packageName}`;pill.className='license-pill '+(s.state==='active'?'':s.state);pill.textContent=s.state==='active'?`Active • ${s.days} วัน`:s.state==='grace'?`Grace • ${s.days} วัน`:'Expired';if(s.state==='grace')banner.innerHTML=`<div class="license-note grace"><b>License หมดอายุจริงแล้ว ${formatDateTime(s.exp)}</b><br>ยังใช้งานได้ใน Grace Period อีก ${s.days} วัน และเมื่อต่ออายุจะนับต่อจากวันหมดอายุจริงเดิม</div>`;else if(s.state==='expired')banner.innerHTML='<div class="license-note expired"><b>License หมดอายุและพ้น Grace Period แล้ว</b><br>ยังดู History และ Export PDF ได้ แต่ไม่สามารถสร้าง/บันทึกรายงานใหม่จนกว่าจะต่ออายุ</div>';else banner.innerHTML='';$('saveBtn').disabled=!canCreate();const f=REPORT_PRO_CONFIG.features||{};$$('.voice-btn').forEach(b=>b.style.display=f.voice===false?'none':'');['addPhotoBtn','cameraBtn'].forEach(id=>$(id).style.display=f.photos===false?'none':'');$('licenseDetail').innerHTML=`<div class="kv"><div class="k">Owner</div><div class="v">${escapeHtml(REPORT_PRO_CONFIG.ownerName)}</div></div><div class="kv"><div class="k">Package</div><div class="v">${escapeHtml(REPORT_PRO_CONFIG.packageName)}</div></div><div class="kv"><div class="k">License ID</div><div class="v">${escapeHtml(REPORT_PRO_CONFIG.licenseId)}</div></div><div class="kv"><div class="k">Expiry</div><div class="v">${escapeHtml(REPORT_PRO_CONFIG.expiryDate)}</div></div><div class="kv"><div class="k">Grace</div><div class="v">${REPORT_PRO_CONFIG.graceDays||7} วัน</div></div><div class="kv"><div class="k">Status</div><div class="v">${s.state.toUpperCase()}</div></div>`}
+function commercialLicenseState(){
+  const exp=new Date(REPORT_PRO_CONFIG.expiryDate+'T23:59:59'),
+        now=new Date(),
+        graceEnd=new Date(exp);
+
+  graceEnd.setDate(
+    graceEnd.getDate()+(REPORT_PRO_CONFIG.graceDays||7)
+  );
+
+  if(now<=exp){
+    return {
+      state:'active',
+      exp,
+      graceEnd,
+      days:Math.ceil((exp-now)/86400000)
+    };
+  }
+
+  if(now<=graceEnd){
+    return {
+      state:'grace',
+      exp,
+      graceEnd,
+      days:Math.ceil((graceEnd-now)/86400000)
+    };
+  }
+
+  return {state:'expired',exp,graceEnd,days:0};
+}
+
+function licenseState(){
+  if(isA2HubPermanentEdition()){
+    return {
+      state:'permanent',
+      exp:null,
+      graceEnd:null,
+      days:null
+    };
+  }
+
+  return commercialLicenseState();
+}
+
+function canCreate(){
+  return isA2HubPermanentEdition() ||
+         licenseState().state!=='expired';
+}
+
+function renderLicense(){
+  const s=licenseState(),
+        pill=$('licensePill'),
+        banner=$('licenseBanner'),
+        owner=REPORT_PRO_CONFIG.organization||
+              REPORT_PRO_CONFIG.ownerName,
+        permanent=s.state==='permanent';
+
+  $('ownerLabel').textContent=owner||'Personal Reporting';
+  $('screenWatermark').textContent=
+    REPORT_PRO_CONFIG.watermark||owner||'';
+
+  $('waterline').textContent=
+    `Licensed to ${owner} • ${REPORT_PRO_CONFIG.licenseId} • ${REPORT_PRO_CONFIG.packageName}`;
+
+  pill.className=
+    'license-pill '+((s.state==='active'||permanent)?'':s.state);
+
+  pill.textContent=
+    permanent
+      ? 'A2Hub • Permanent'
+      : s.state==='active'
+        ? `Active • ${s.days} วัน`
+        : s.state==='grace'
+          ? `Grace • ${s.days} วัน`
+          : 'Expired';
+
+  if(permanent){
+    banner.innerHTML=
+      '<div class="license-note"><b>A2Hub Permanent Edition</b><br>สิทธิ์ใช้งานถาวร • ไม่มีวันหมดอายุ • ไม่ต้องต่ออายุ</div>';
+  }else if(s.state==='grace'){
+    banner.innerHTML=
+      `<div class="license-note grace"><b>License หมดอายุจริงแล้ว ${formatDateTime(s.exp)}</b><br>ยังใช้งานได้ใน Grace Period อีก ${s.days} วัน และเมื่อต่ออายุจะนับต่อจากวันหมดอายุจริงเดิม</div>`;
+  }else if(s.state==='expired'){
+    banner.innerHTML=
+      '<div class="license-note expired"><b>License หมดอายุและพ้น Grace Period แล้ว</b><br>ยังดู History และ Export PDF ได้ แต่ไม่สามารถสร้าง/บันทึกรายงานใหม่จนกว่าจะต่ออายุ</div>';
+  }else{
+    banner.innerHTML='';
+  }
+
+  $('saveBtn').disabled=!canCreate();
+
+  const f=REPORT_PRO_CONFIG.features||{};
+
+  $$('.voice-btn').forEach(
+    b=>b.style.display=f.voice===false?'none':''
+  );
+
+  ['addPhotoBtn','cameraBtn'].forEach(
+    id=>$(id).style.display=f.photos===false?'none':''
+  );
+
+  const expiryText=
+    permanent
+      ? 'ไม่หมดอายุ (A2Hub)'
+      : REPORT_PRO_CONFIG.expiryDate;
+
+  const graceText=
+    permanent
+      ? 'ไม่ใช้'
+      : `${REPORT_PRO_CONFIG.graceDays||7} วัน`;
+
+  const statusText=
+    permanent
+      ? 'PERMANENT'
+      : s.state.toUpperCase();
+
+  $('licenseDetail').innerHTML=
+    `<div class="kv"><div class="k">Owner</div><div class="v">${escapeHtml(REPORT_PRO_CONFIG.ownerName)}</div></div>`+
+    `<div class="kv"><div class="k">Package</div><div class="v">${escapeHtml(REPORT_PRO_CONFIG.packageName)}</div></div>`+
+    `<div class="kv"><div class="k">License ID</div><div class="v">${escapeHtml(REPORT_PRO_CONFIG.licenseId)}</div></div>`+
+    `<div class="kv"><div class="k">Expiry</div><div class="v">${escapeHtml(expiryText)}</div></div>`+
+    `<div class="kv"><div class="k">Grace</div><div class="v">${escapeHtml(graceText)}</div></div>`+
+    `<div class="kv"><div class="k">Status</div><div class="v">${escapeHtml(statusText)}</div></div>`;
+}
+
 function openDB(){return new Promise((resolve,reject)=>{const req=indexedDB.open(RP_DB_NAME,1);req.onupgradeneeded=()=>{const d=req.result;if(!d.objectStoreNames.contains('reports')){const st=d.createObjectStore('reports',{keyPath:'id'});st.createIndex('savedAt','savedAt')}};req.onsuccess=()=>{db=req.result;resolve(db)};req.onerror=()=>reject(req.error)})}
 function idbPut(report){return new Promise((res,rej)=>{const tx=db.transaction('reports','readwrite');tx.objectStore('reports').put(report);tx.oncomplete=()=>res();tx.onerror=()=>rej(tx.error)})}
 function idbGet(id){return new Promise((res,rej)=>{const r=db.transaction('reports').objectStore('reports').get(id);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
