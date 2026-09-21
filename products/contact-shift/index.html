@@ -1734,6 +1734,23 @@ window.QRCodeCore=__req("./index");
 window.QRErrorCorrectLevelCore=__req("./QRErrorCorrectLevel");
 })();</script>
 <script>
+/* A2Hub Permanent Edition Access Layer V1 — A2Hub copy only. */
+const APP_EDITION="A2HUB";
+const A2HUB_ACCESS_POLICY=Object.freeze({
+  permanentAccess:true,
+  licenseExpiryEnabled:false,
+  trialExpiryEnabled:false,
+  renewalRequired:false,
+  gracePeriodApplicable:false,
+  preserveTeamDeviceLimit:true,
+  preserveViewerBehavior:true,
+  preserveStorageSchema:true,
+  preserveBackupRestore:true
+});
+function isA2HubPermanentEdition(){
+  return APP_EDITION==="A2HUB"&&A2HUB_ACCESS_POLICY.permanentAccess===true
+}
+
 const PRODUCT_ID="CSPRO-V9",TRIAL_DAYS=30,MAX_TEAM_DEVICES=3;
 const RENEWAL_PRODUCT_ID="CSPRO-V10.3",TEAM_RENEWAL_PRODUCT_ID="CSPRO-V10.4-TEAM",GRACE_DAYS=7;
 const RENEWAL_RSA_N=BigInt("0xba0a74a083b872d5ce1d7159eb710d174587a5e85b8c7ef5f235f74bb8c6db73c463a8dfe846f64160cb7e1d1c7ffc6867d85adec88274c9d25d11436f38679551c601a3f92cddf1f65ef5a18935d24bedcc7d9595a74ec014ca56a6048baddbf166046083075ddf889c1e54b4d4fe18a82009978b50a4db5fa05a9e0b4c292a8ae416c2d83d23a9f545d470187e3183926bd6910430eaba0a32deab514cd35230060e7298b743e6f69ff82b379d339a5d2368f4728bdce839835d44ded1f37e88b71eb65261c59910862e80d197bea9a8482ebabce92e19ddafa6986b0125851b1da135f33e003cacd763278c1d2eb946411cd683fb737bdd543f1e12f21439"),RENEWAL_RSA_E=65537n,RENEWAL_RSA_K=256;
@@ -1875,10 +1892,12 @@ function markInstallTrialUsed(startAt,source="team_trial"){
   try{localStorage.setItem(INSTALL_TRIAL_KEY,JSON.stringify(x))}catch{}
 }
 function teamTrialStartForSync(){
+  if(isA2HubPermanentEdition())return "";
   const x=state.license?.trialStartAt||"";
   return Date.parse(x||0)?x:"";
 }
 function applyIncomingTeamTrialStart(raw,source="team_sync",incomingTeamId=""){
+  if(isA2HubPermanentEdition())return false;
   if(!Date.parse(raw||0))return false;
   const teamId=incomingTeamId||state.meta.teamId||"";
   if(teamId&&teamId!==state.meta.teamId)return false;
@@ -1916,6 +1935,7 @@ function clearActiveTeamEntitlementForSwitch(){
 }
 
 function canWrite(){
+  if(isA2HubPermanentEdition())return true;
   if(isFull()||paidActive()||paidInGrace())return true;
   // A valid active Team Trial received from Team Sync must not be blocked
   // by stale local renewal history from an earlier state.
@@ -1926,6 +1946,7 @@ function canWrite(){
   return isAnchorDevice()&&!installTrialUsedEver();
 }
 async function startTrial(source="manual"){
+  if(isA2HubPermanentEdition())return true;
   if(trialStarted()){markInstallTrialUsed(state.license.trialStartAt,"existing_team_trial");toast("Trial เริ่มแล้ว");return true}
   if(!isAnchorDevice()){toast("Trial ของ Team ต้องเริ่มจากเครื่องหลัก");return false}
   if(installTrialUsedEver()){toast("Installation นี้เคยใช้ Trial แล้ว • ตั้ง Team ได้ แต่ต้องใช้ License หรือเข้าร่วม Team ที่มีสิทธิ์");return false}
@@ -1939,7 +1960,12 @@ async function startTrial(source="manual"){
   toast(source==="first_record"?"เริ่ม Team Trial 30 วันจากเรื่องจริงแรก":"เริ่ม Team Trial 30 วันแล้ว");
   return true
 }
-async function ensureTrialStarted(){if(!trialStarted())return await startTrial("first_record");markInstallTrialUsed(state.license.trialStartAt,"existing_team_trial");return true}
+async function ensureTrialStarted(){
+  if(isA2HubPermanentEdition())return true;
+  if(!trialStarted())return await startTrial("first_record");
+  markInstallTrialUsed(state.license.trialStartAt,"existing_team_trial");
+  return true
+}
 function guardWrite(feature="แก้ไขข้อมูล"){
   if(storageRecoveryMode){
     if(feature==="Restore Backup") return true;
@@ -2003,7 +2029,26 @@ async function refreshLicenseStatus(){
 
   renderLicenseUI();
 }
+function renderA2HubPermanentLicenseUI(){
+  const msg="<b>✅ A2Hub Permanent Edition</b><br>สิทธิ์ใช้งานถาวร • ไม่มีวันหมดอายุ • ไม่ต้อง Trial / Grace / Renewal";
+  for(const id of ["trialBanner","licenseStatusBox"]){
+    const b=el(id);
+    if(b){
+      b.className="license-banner full";
+      b.innerHTML=msg+'<div class="license-grid"><div class="license-kpi"><small>โหมด</small><strong>PERMANENT</strong></div><div class="license-kpi"><small>Device</small><strong>'+esc(state.meta.deviceId.slice(-10))+'</strong></div></div>';
+    }
+  }
+  if(el("licensePill"))el("licensePill").textContent="A2HUB PERMANENT";
+  if(el("installIdField"))el("installIdField").value=state.meta.deviceId;
+  for(const id of ["teamRenewalRequestBox","renewalActivationBox","licenseRecoveryCard"]){
+    const x=el(id);if(x)x.classList.add("hidden");
+  }
+}
 function renderLicenseUI(){
+  if(isA2HubPermanentEdition()){
+    renderA2HubPermanentLicenseUI();
+    return;
+  }
   const lifetime=isFull();
   const started=trialStarted();
   const paid=renewalVerified&&!!state.license.renewalPayload;
@@ -2937,6 +2982,11 @@ IMPORTANT:
   toast("สร้างไฟล์สำรอง Team License แล้ว");
 }
 function renderLicenseRecovery(){
+  if(isA2HubPermanentEdition()){
+    const card=el("licenseRecoveryCard");
+    if(card)card.classList.add("hidden");
+    return;
+  }
   const card=el("licenseRecoveryCard");
   if(!card)return;
   const code=currentTeamLicenseCode();

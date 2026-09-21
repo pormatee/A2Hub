@@ -716,6 +716,20 @@ main{padding:9px 11px 104px}
 */
 var APP_VERSION="2.11.1-pre-push-rc";
 var ACTIVATION_MODE="production"; // sale/source build
+/* A2Hub Permanent Edition Access Layer V1 — A2Hub copy only. */
+var APP_EDITION="A2HUB";
+var A2HUB_ACCESS_POLICY=Object.freeze({
+  permanentAccess:true,
+  licenseExpiryEnabled:false,
+  activationRequired:false,
+  renewalRequired:false,
+  fullEntitlement:true,
+  preserveStorageSchema:true,
+  preserveBackupRestore:true
+});
+function isA2HubPermanentEdition(){
+  return APP_EDITION==="A2HUB"&&A2HUB_ACCESS_POLICY.permanentAccess===true
+}
 var CONTENT_VERSION="caption-content-v1.2-coherent";
 var DATA_SCHEMA_VERSION=9;
 var STORAGE_PREFIX="measymate_caption_studio_v2_";
@@ -1102,6 +1116,15 @@ function saveEntitlementWallet(){
   localStorage.setItem(KEY_ENTITLEMENTS,JSON.stringify(clean))
 }
 function effectiveEntitlement(){
+  if(isA2HubPermanentEdition()){
+    return {
+      categories:CATEGORY_META.map(function(c){return c.id}),
+      features:{plus:true,importPack:true},
+      labels:["A2Hub Permanent"],
+      packageName:"A2HUB FULL",
+      isDemo:false
+    }
+  }
   var cats=[],features={},labels=[];
   entitlementWallet.grants.forEach(function(item){
     var g=item.grant;
@@ -1135,6 +1158,22 @@ function syncProductCategoryRights(){
     for(var i=0;i<sel.options.length;i++)if(!sel.options[i].disabled){sel.selectedIndex=i;break}
   }
 }
+function applyA2HubPermanentEntitlementUI(){
+  if(!isA2HubPermanentEdition())return;
+  var input=$("#activationCode"),card=input&&input.closest?input.closest(".activation-card"):null;
+  if(card){
+    var h=card.querySelector("h3"),p=card.querySelector(".activation-top p"),row=card.querySelector(".code-row");
+    if(h)h.textContent="🔓 A2Hub Permanent Edition";
+    if(p)p.textContent="Full entitlement สำหรับ A2Hub • ใช้งานถาวร • ไม่ต้อง Activate";
+    if(row)row.style.display="none";
+  }
+  var purchase=document.querySelector("#screenOwner .purchase-card");
+  if(purchase)purchase.style.display="none";
+  if($("#activationMessage"))$("#activationMessage").textContent="A2Hub Permanent • Full 5 หมวด • ไม่หมดอายุ";
+  if($("#packageStatusBadge"))$("#packageStatusBadge").textContent="A2HUB FULL";
+  if($("#buyPackBtn"))$("#buyPackBtn").style.display="none";
+  if($("#packAccessMessage"))$("#packAccessMessage").textContent="A2Hub Permanent • Import / Update Content Pack ได้";
+}
 function syncEntitlementUI(){
   var e=effectiveEntitlement();
   if($("#headerPackage"))$("#headerPackage").textContent=e.packageName;
@@ -1166,6 +1205,7 @@ function syncEntitlementUI(){
   if($("#onlineUpdateStatus")){
     $("#onlineUpdateStatus").textContent="App: "+APP_VERSION+" · สิทธิ์: "+e.packageName+" · Content Packs: "+installedPacks.length
   }
+  applyA2HubPermanentEntitlementUI();
 }
 function addGrantItem(item){
   var grant=item.grant;
