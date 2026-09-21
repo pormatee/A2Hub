@@ -1,14 +1,20 @@
 # A2Hub Product Edition
 
-Seed source:
-- Repo: `pormatee/MEasyMate-Products`
-- Commit: `5bfe02fcdeaef202cc6cb6bba4f48d05f4ddaefe`
+A2Hub is the internal/permanent product hub for MEasyMate.
 
-This is the independent A2Hub Permanent Edition development copy.
+## Product routing
 
-Current status:
-- Copy completed
-- Permanent/no-expiry conversion not yet applied
-- Path compatibility not yet adjusted
-- Product smoke tests not yet run
-- Not ready for release
+- `products/factory-daily/` — A2Hub Factory Daily
+- `products/report-pro/` — A2Hub Permanent Edition
+- `products/contact-shift/` — A2Hub Permanent Edition
+- MEasyMate Money — linked to canonical runtime `https://app.measymate.com/money/`
+
+## Excluded from A2Hub
+
+- Caption Studio is not included in A2Hub.
+- Money is not duplicated in A2Hub because it has no A2Hub-specific license conversion requirement.
+
+## Source boundary
+
+Commercial/source-family work remains in `pormatee/MEasyMate-Products`.
+A2Hub changes must not be synchronized back automatically.

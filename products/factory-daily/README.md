@@ -1,17 +1,23 @@
-# Factory Daily
+# Factory Daily — A2Hub
 
-**Migration status:** UNVERIFIED
+**Migration status:** VERIFIED
 
-The real product `index.html` has not been copied into this starter.
+The former A2Hub root `index.html` was preserved byte-for-byte as:
 
-Before migration:
-1. Inventory the current project files.
-2. Identify the latest source of truth.
-3. Verify current data storage and schema.
-4. Verify Project Display Name and shortcut identity.
-5. Copy the verified complete `index.html`.
-6. Integrate shared notice scripts without replacing user data logic.
-7. Test update compatibility before release.
+`products/factory-daily/index.html`
+
+Verified source blob before relocation:
+
+`cb697d94b4f63907759d72d716a2e4c542322e97`
+
+Factory Daily remains a single-file local-first application containing:
+- Manpower Dashboard
+- Daily Absence
+- Report 5W2H
+- Help
+- QR / History functions
 
 Project ID: `factory-daily`
 Project Display Name: `Factory Daily`
+
+The A2Hub root `index.html` is now the Product Hub.

@@ -5,50 +5,62 @@
 - Repository: `pormatee/A2Hub`
 - Edition: `A2HUB_PERMANENT`
 - Commercial Sale: `NO`
-- Intended Access: Permanent / No Expiry
+- Intended Access: Permanent / No Expiry for A2Hub-specific permanent products
 - Source Family: `pormatee/MEasyMate-Products`
 - Source Seed Commit: `5bfe02fcdeaef202cc6cb6bba4f48d05f4ddaefe`
 - A2Hub Base Commit: `d48c9641a13b21a70c702cee6087da38d97eb972`
 
 ## Source Boundary
 
-`pormatee/MEasyMate-Products` remains the Commercial Edition source family.
+`pormatee/MEasyMate-Products` remains the commercial/source-family repository.
 
-This A2Hub copy is an independent edition. Changes made in A2Hub must not be written back
-to MEasyMate-Products automatically.
+A2Hub changes must not be written back to `MEasyMate-Products` automatically.
+Commercial license behavior must not be modified as part of A2Hub work.
+
+## A2Hub Product Policy
+
+### Factory Daily
+- Stored in A2Hub at `products/factory-daily/`.
+- Former A2Hub root application preserved byte-for-byte before the root became the Hub.
+
+### Report Pro
+- A2Hub Permanent Edition.
+- No expiry / no renewal requirement in A2Hub.
+- License ID, storage isolation, backup and restore behavior preserved.
+
+### Contact Shift
+- A2Hub Permanent Edition.
+- No Trial / Grace / Renewal requirement in A2Hub.
+- Maximum Full Devices remains 3.
+- Viewer remains read-only and does not consume a Device Slot.
+- Team/device and storage/data rules remain preserved.
+
+### MEasyMate Money
+- No A2Hub copy.
+- Source of Truth remains in `pormatee/MEasyMate-Products`.
+- A2Hub links to canonical runtime: `https://app.measymate.com/money/`.
+
+### Caption Studio
+- Excluded from A2Hub.
+- No Caption Studio files or link are published by A2Hub.
 
 ## Safety Rules
 
 - Commercial source modification from A2Hub work: FORBIDDEN
-- Source delete/move: FORBIDDEN
 - Automatic A2Hub → Commercial sync: FORBIDDEN
-- Commercial license behavior must not be changed from this repository
-- A2Hub-only permanent-access behavior must be implemented only inside A2Hub
-- Shared runtime files copied here belong to the A2Hub edition
-- PRE_GIT_AUDIT is required before commit/push
-- PRE_RELEASE_AUDIT is required before any public/customer-facing release
+- PRE_GIT_AUDIT required before commit/push
+- PRE_RELEASE_AUDIT required before public release
+- Secrets/API keys/tokens must not be stored in A2Hub
+- Product data/storage schema must not be changed as a side effect of edition routing
 
-## Current Migration Stage
+## Release State
 
 ```text
-COPY_STAGE = COMPLETE_LOCALLY
-PERMANENT_LICENSE_CONVERSION = PENDING
-RUNTIME_PATH_REWRITE = PENDING
-A2HUB_INDEX_INTEGRATION = PENDING
-PRODUCT_SMOKE_TEST = PENDING
-PRE_GIT_AUDIT = PENDING
-REMOTE_PUSH = NOT_DONE
+REPORT_PRO_PERMANENT = PASS
+CONTACT_SHIFT_PERMANENT = PASS
+FACTORY_DAILY_RELOCATION = VERIFIED
+MONEY_LOCAL_COPY = REMOVED
+MONEY_CANONICAL_LINK = https://app.measymate.com/money/
+CAPTION_STUDIO_A2HUB = EXCLUDED
+A2HUB_HOME = PRODUCT_HUB
 ```
-
-At this stage copied products retain their original behavior.
-No expiry/license bypass has been activated yet.
-
-## Product Set
-
-- Caption Studio
-- Contact Shift
-- Factory Daily metadata/notice source
-- Money
-- Report Pro
-
-A2Hub root `index.html` remains unchanged.
