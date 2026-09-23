@@ -44,6 +44,16 @@ Commercial license behavior must not be modified as part of A2Hub work.
 - Excluded from A2Hub.
 - No Caption Studio files or link are published by A2Hub.
 
+### MEasyMate Coach
+- Stored in A2Hub at `products/coach/`.
+- Edition purpose: internal/team trial source.
+- Offline Core remains usable without AI.
+- AI provider/API keys are never stored in A2Hub.
+- AI Hub access tokens are never committed to A2Hub.
+- Team Trial target quota is 1,000,000 shared tokens per trial entitlement, enforced by MEasyMate AI Hub.
+- AI Hub backend remains in `pormatee/measymate-ai-hub`.
+- Private team trial packages may inject a scoped/revocable Hub access token outside Git.
+
 ## Safety Rules
 
 - Commercial source modification from A2Hub work: FORBIDDEN
