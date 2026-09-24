@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#eaf6ff">
-<title>MEasyMate Intelligence Coach — Team Clean High Contrast V0.3.8</title>
+<title>MEasyMate Intelligence Coach — Team Clean Readability V0.3.9</title>
 <style>
 :root{
   --bg:#071728; --panel:#0C1E31; --panel2:#102B45; --line:#274969; --text:#F4FBFF;
@@ -157,16 +157,127 @@ body{font-size:16px!important;}
 .missingChip{color:#7b5b00!important;background:#fffdf4!important;border-color:#efd58f!important;}
 .teamIntro{background:#ffffff!important;border-color:#d4e6f3!important;}
 </style>
+
+<style id="readability-v039-overrides">
+/* V0.3.9 Readability Patch — visual only, no Coach/CBI/Gate logic change */
+#intakePreviewWrap>.card{
+  background:#ffffff!important;
+  border:1px solid #c7ddeb!important;
+  box-shadow:0 12px 30px rgba(22,80,120,.08)!important;
+}
+#intakePreviewWrap>.card>h3{color:#15324b!important;font-size:19px!important;}
+#intakePreviewWrap>.card>.sub{color:#4c6a82!important;font-size:13px!important;line-height:1.55!important;}
+.intakePreview{gap:12px!important;}
+.proposal{
+  background:#f8fcff!important;
+  border:1px solid #bfd8e8!important;
+  border-radius:16px!important;
+  padding:14px!important;
+  box-shadow:0 4px 14px rgba(21,84,128,.05)!important;
+}
+.proposalHead{margin-bottom:10px!important;align-items:flex-start!important;}
+.proposalHead b{
+  color:#173a55!important;
+  font-size:14px!important;
+  line-height:1.45!important;
+  font-weight:850!important;
+}
+.proposalState{
+  color:#775900!important;
+  background:#fff8dc!important;
+  border:1px solid #e6c65b!important;
+  font-size:9px!important;
+  font-weight:850!important;
+  padding:4px 7px!important;
+  opacity:.86!important;
+}
+.proposal .field label{
+  color:#385b74!important;
+  font-size:12px!important;
+  font-weight:800!important;
+}
+.proposal input,.proposal select,.proposal textarea{
+  background:#ffffff!important;
+  color:#17324a!important;
+  border:1px solid #adcadd!important;
+  box-shadow:none!important;
+}
+.proposal textarea{
+  min-height:96px!important;
+  font-size:16px!important;
+  line-height:1.65!important;
+  padding:13px!important;
+}
+.proposal input,.proposal select{
+  min-height:50px!important;
+  font-size:16px!important;
+}
+.proposal input::placeholder,.proposal textarea::placeholder{color:#71879a!important;opacity:1!important;}
+.proposal input:focus,.proposal select:focus,.proposal textarea:focus{
+  border-color:#2fa6d5!important;
+  box-shadow:0 0 0 3px rgba(47,166,213,.14)!important;
+}
+.gapList{gap:8px!important;margin-top:14px!important;}
+#intakeGaps>.hint{
+  display:block!important;
+  color:#274c68!important;
+  font-size:14px!important;
+  font-weight:850!important;
+  margin-bottom:7px!important;
+}
+.gapItem{
+  color:#6d5100!important;
+  background:#fff9e8!important;
+  border:1px solid #efd58d!important;
+  border-left:5px solid #d59a00!important;
+  border-radius:10px!important;
+  padding:10px 12px!important;
+  font-size:13px!important;
+  line-height:1.5!important;
+  font-weight:700!important;
+}
+.correction{
+  color:#28546f!important;
+  background:#eef8ff!important;
+  border-color:#bcd9e9!important;
+  font-size:11px!important;
+}
+.smartNote{
+  color:#315a75!important;
+  background:#eef9ff!important;
+  border-color:#bfddec!important;
+  font-size:12px!important;
+  line-height:1.6!important;
+}
+.originalBox{
+  color:#304f68!important;
+  background:#f7fbfe!important;
+  border-color:#bfd8e8!important;
+  font-size:12px!important;
+  line-height:1.65!important;
+}
+#intakePreviewWrap details>summary.hint{color:#45657f!important;font-size:12px!important;font-weight:750!important;}
+#confirmIntakeBtn{font-size:15px!important;min-height:50px!important;padding:12px 18px!important;}
+#reparseBtn{min-height:46px!important;}
+/* Keep all user-facing secondary text readable on bright displays */
+.intakePanel .hint,.intakePanel .sub{color:#4e6c83!important;}
+@media(max-width:520px){
+  .proposal{padding:12px!important;}
+  .proposalHead b{font-size:13px!important;}
+  .proposal textarea{font-size:16px!important;min-height:88px!important;}
+  .gapItem{font-size:13px!important;}
+}
+</style>
 </head>
 <body class="team-clean">
 <div class="shell">
   <header class="topbar">
     <div class="topin">
       <div class="brand">
-        <!-- Official MEasyMate master logo asset from pormatee/MEasyMate assets/brand; offline fallback is exact MEasyMate wordmark text. -->
+        <!-- Official MEasyMate logo served locally from A2Hub shared/brand; offline fallback remains available. -->
         <img class="brandLogo" id="brandLogo" src="../../shared/brand/measymate-logo.jpg" alt="MEasyMate logo" onload="document.getElementById('brandFallback').classList.add('hidden')" onerror="this.classList.add('hidden');document.getElementById('brandFallback').classList.remove('hidden')">
         <div class="brandFallback" id="brandFallback"><span class="wordmark">MEasyMate</span><small>Make Everything Easy.</small></div>
-        <div class="brandtext"><b>Intelligence Coach</b><span>Team Clean V0.3.8</span></div>
+        <div class="brandtext"><b>Intelligence Coach</b><span>Team Clean V0.3.9</span></div>
       </div>
       <div class="statusrow">
         <span id="netPill" class="pill ok">● พร้อมใช้งาน • Offline</span>
@@ -286,7 +397,7 @@ body{font-size:16px!important;}
       <div class="card"><div id="profileRows"></div><div class="notice" style="margin-top:12px">หลักการ: Profile ไม่ควรใช้ตัดสิน Performance บุคคล แต่ใช้เพื่อปรับคำถาม/คำใบ้ให้เหมาะกับการพัฒนาวิธีคิด</div><div class="actionrow"><button class="btn" data-go="homeView">กลับหน้าหลัก</button><button class="btn bad" id="resetProfileBtn">ล้าง Profile</button></div></div>
     </section>
   </main>
-  <div class="footerNote">MEasyMate Intelligence Coach • Team Clean High Contrast V0.3.8 • ใช้งาน Offline ได้</div>
+  <div class="footerNote">MEasyMate Intelligence Coach • Team Clean Readability V0.3.9 • ใช้งาน Offline ได้</div>
 </div>
 
 <div class="modal" id="settingsModal">
@@ -333,7 +444,7 @@ body{font-size:16px!important;}
         <button class="btn small bad" id="iqaClearBankBtn">Clear Regression Bank</button>
       </div>
       <div id="iqaDetails" style="margin-top:8px"></div>
-      <div class="notice" style="margin-top:10px"><b>Safe QA policy:</b> Failure Analyzer เสนอ Repair Plan ได้ แต่ V0.3.8 ยังไม่แก้ source code อัตโนมัติ • ทุก FAIL ถูกเพิ่มเข้า Regression Bank • ห้ามลบ test / ลด Gate / แก้ Frozen CBI V1 เพื่อทำให้ PASS • Authority/Integrity failure = BLOCKED ทันที</div>
+      <div class="notice" style="margin-top:10px"><b>Safe QA policy:</b> Failure Analyzer เสนอ Repair Plan ได้ แต่ V0.3.6 ยังไม่แก้ source code อัตโนมัติ • ทุก FAIL ถูกเพิ่มเข้า Regression Bank • ห้ามลบ test / ลด Gate / แก้ Frozen CBI V1 เพื่อทำให้ PASS • Authority/Integrity failure = BLOCKED ทันที</div>
     </div>
 
     <div class="card" style="margin:0 0 12px">
@@ -359,7 +470,7 @@ body{font-size:16px!important;}
 <script>
 (()=>{
 'use strict';
-const VERSION='0.3.6-TEAM-CLEAN-FRIENDLY-GATE';
+const VERSION='0.3.9-TEAM-CLEAN-READABILITY';
 const CASE_KEY='measymate.ic.teamclean.cases.v036';
 const PROFILE_KEY='measymate.ic.teamclean.profile.v036';
 const SETTINGS_KEY='measymate.ic.teamclean.settings.v036';
@@ -1235,6 +1346,117 @@ body{font-size:16px!important;}
 .missingBox b{color:#7b5b00!important;}
 .missingChip{color:#7b5b00!important;background:#fffdf4!important;border-color:#efd58f!important;}
 .teamIntro{background:#ffffff!important;border-color:#d4e6f3!important;}
+</style>
+
+<style id="readability-v039-overrides">
+/* V0.3.9 Readability Patch — visual only, no Coach/CBI/Gate logic change */
+#intakePreviewWrap>.card{
+  background:#ffffff!important;
+  border:1px solid #c7ddeb!important;
+  box-shadow:0 12px 30px rgba(22,80,120,.08)!important;
+}
+#intakePreviewWrap>.card>h3{color:#15324b!important;font-size:19px!important;}
+#intakePreviewWrap>.card>.sub{color:#4c6a82!important;font-size:13px!important;line-height:1.55!important;}
+.intakePreview{gap:12px!important;}
+.proposal{
+  background:#f8fcff!important;
+  border:1px solid #bfd8e8!important;
+  border-radius:16px!important;
+  padding:14px!important;
+  box-shadow:0 4px 14px rgba(21,84,128,.05)!important;
+}
+.proposalHead{margin-bottom:10px!important;align-items:flex-start!important;}
+.proposalHead b{
+  color:#173a55!important;
+  font-size:14px!important;
+  line-height:1.45!important;
+  font-weight:850!important;
+}
+.proposalState{
+  color:#775900!important;
+  background:#fff8dc!important;
+  border:1px solid #e6c65b!important;
+  font-size:9px!important;
+  font-weight:850!important;
+  padding:4px 7px!important;
+  opacity:.86!important;
+}
+.proposal .field label{
+  color:#385b74!important;
+  font-size:12px!important;
+  font-weight:800!important;
+}
+.proposal input,.proposal select,.proposal textarea{
+  background:#ffffff!important;
+  color:#17324a!important;
+  border:1px solid #adcadd!important;
+  box-shadow:none!important;
+}
+.proposal textarea{
+  min-height:96px!important;
+  font-size:16px!important;
+  line-height:1.65!important;
+  padding:13px!important;
+}
+.proposal input,.proposal select{
+  min-height:50px!important;
+  font-size:16px!important;
+}
+.proposal input::placeholder,.proposal textarea::placeholder{color:#71879a!important;opacity:1!important;}
+.proposal input:focus,.proposal select:focus,.proposal textarea:focus{
+  border-color:#2fa6d5!important;
+  box-shadow:0 0 0 3px rgba(47,166,213,.14)!important;
+}
+.gapList{gap:8px!important;margin-top:14px!important;}
+#intakeGaps>.hint{
+  display:block!important;
+  color:#274c68!important;
+  font-size:14px!important;
+  font-weight:850!important;
+  margin-bottom:7px!important;
+}
+.gapItem{
+  color:#6d5100!important;
+  background:#fff9e8!important;
+  border:1px solid #efd58d!important;
+  border-left:5px solid #d59a00!important;
+  border-radius:10px!important;
+  padding:10px 12px!important;
+  font-size:13px!important;
+  line-height:1.5!important;
+  font-weight:700!important;
+}
+.correction{
+  color:#28546f!important;
+  background:#eef8ff!important;
+  border-color:#bcd9e9!important;
+  font-size:11px!important;
+}
+.smartNote{
+  color:#315a75!important;
+  background:#eef9ff!important;
+  border-color:#bfddec!important;
+  font-size:12px!important;
+  line-height:1.6!important;
+}
+.originalBox{
+  color:#304f68!important;
+  background:#f7fbfe!important;
+  border-color:#bfd8e8!important;
+  font-size:12px!important;
+  line-height:1.65!important;
+}
+#intakePreviewWrap details>summary.hint{color:#45657f!important;font-size:12px!important;font-weight:750!important;}
+#confirmIntakeBtn{font-size:15px!important;min-height:50px!important;padding:12px 18px!important;}
+#reparseBtn{min-height:46px!important;}
+/* Keep all user-facing secondary text readable on bright displays */
+.intakePanel .hint,.intakePanel .sub{color:#4e6c83!important;}
+@media(max-width:520px){
+  .proposal{padding:12px!important;}
+  .proposalHead b{font-size:13px!important;}
+  .proposal textarea{font-size:16px!important;min-height:88px!important;}
+  .gapItem{font-size:13px!important;}
+}
 </style>
 </head><body><pre>${esc(text)}</pre><script>window.onload=()=>window.print()<\/script></body></html>`);w.document.close()}
 async function copyReport(){try{await navigator.clipboard.writeText(buildReportText());alert('Copy report แล้ว')}catch(e){alert('Copy ไม่สำเร็จใน browser นี้')}}

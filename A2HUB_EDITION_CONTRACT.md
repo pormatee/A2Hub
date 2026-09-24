@@ -37,7 +37,7 @@ Commercial license behavior must not be modified as part of A2Hub work.
 
 ### Intelligence Coach
 - Stored in A2Hub at `products/intelligence-coach/`.
-- Team Field Trial V0.3.8 / High Contrast.
+- Team Field Trial V0.3.9 / Readability Patch.
 - CBI-First with Offline Coach Core.
 - Internal field evaluation; no commercial license policy is changed by this A2Hub routing.
 - CBI / AI assistance must not bypass Coach Evidence, Root Cause, Action, or Verification gates.
@@ -69,6 +69,6 @@ FACTORY_DAILY_RELOCATION = VERIFIED
 MONEY_LOCAL_COPY = REMOVED
 MONEY_CANONICAL_LINK = https://app.measymate.com/money/
 CAPTION_STUDIO_A2HUB = EXCLUDED
-INTELLIGENCE_COACH_FIELD_TRIAL = V0.3.8
+INTELLIGENCE_COACH_FIELD_TRIAL = V0.3.9
 A2HUB_HOME = PRODUCT_HUB
 ```
