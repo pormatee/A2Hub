@@ -1,0 +1,1319 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#eaf6ff">
+<title>MEasyMate Intelligence Coach — Team Clean High Contrast V0.3.8</title>
+<style>
+:root{
+  --bg:#071728; --panel:#0C1E31; --panel2:#102B45; --line:#274969; --text:#F4FBFF;
+  --muted:#9AB8CE; --brand:#299AC7; --brand2:#78D1DA; --teal:#38C3B1; --ok:#3ddc97; --warn:#f7c948;
+  --bad:#ff7272; --info:#68b5ff; --shadow:0 18px 50px rgba(0,0,0,.28);
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:radial-gradient(circle at 18% -8%,#16486e 0,transparent 36%),var(--bg);color:var(--text);font-family:Inter,"Noto Sans Thai",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+button,input,textarea,select{font:inherit} button{cursor:pointer} button:disabled{cursor:not-allowed;opacity:.45}
+.shell{max-width:1180px;margin:auto;padding:0 14px 80px}.topbar{position:sticky;top:0;z-index:30;background:rgba(8,17,31,.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(145,168,197,.12);margin:0 -14px;padding:10px 14px}
+.topin{max-width:1180px;margin:auto;display:flex;gap:10px;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:10px;min-width:0}.brandmark{width:38px;height:38px;border-radius:12px;background:#fff;display:grid;place-items:center;color:#06131d;font-weight:900;box-shadow:0 0 28px rgba(41,154,199,.18);overflow:hidden}
+.brandtext{min-width:0}.brandtext b{display:block;font-size:14px}.brandtext span{display:block;font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.statusrow{display:flex;gap:7px;align-items:center}.pill{border:1px solid var(--line);background:#0c1828;border-radius:999px;padding:5px 9px;font-size:11px;color:var(--muted);white-space:nowrap}.pill.ok{color:#baf4d5;border-color:rgba(61,220,151,.35);background:rgba(61,220,151,.08)}.pill.ai{color:#bfe2ff;border-color:rgba(104,181,255,.35);background:rgba(104,181,255,.08)}
+.hero{padding:24px 2px 14px}.hero h1{font-size:clamp(24px,5vw,40px);line-height:1.12;margin:0 0 10px;letter-spacing:-.02em}.hero h1 em{font-style:normal;color:var(--brand)}.hero p{max-width:820px;color:var(--muted);margin:0;font-size:14px}.heroActions{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
+.btn{border:1px solid var(--line);background:#13233a;color:var(--text);border-radius:12px;padding:10px 13px;font-weight:750;font-size:13px;min-height:42px}.btn:hover{filter:brightness(1.08)}.btn.primary{background:linear-gradient(135deg,var(--brand),#3fb4f7);border-color:transparent;color:#06141e}.btn.ghost{background:transparent}.btn.warn{background:rgba(247,201,72,.12);border-color:rgba(247,201,72,.35);color:#ffe7a4}.btn.bad{background:rgba(255,114,114,.1);border-color:rgba(255,114,114,.3);color:#ffc2c2}.btn.small{padding:7px 10px;min-height:34px;font-size:12px;border-radius:10px}
+.grid{display:grid;gap:12px}.grid.two{grid-template-columns:1fr}.card{background:linear-gradient(180deg,rgba(19,35,58,.95),rgba(12,25,42,.96));border:1px solid var(--line);border-radius:18px;padding:15px;box-shadow:var(--shadow)}.card h2,.card h3{margin:0}.card .sub{color:var(--muted);font-size:12px;margin-top:4px}
+.homecards{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:12px}.homecard{border:1px solid var(--line);background:rgba(19,35,58,.8);border-radius:16px;padding:14px;min-height:118px}.homecard b{display:block;margin-bottom:6px}.homecard span{font-size:12px;color:var(--muted)}
+.view{display:none}.view.active{display:block}.formgrid{display:grid;gap:12px;grid-template-columns:1fr}.field label{display:block;font-size:12px;font-weight:800;margin-bottom:6px;color:#cfe1f5}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);background:#091625;color:var(--text);border-radius:12px;padding:11px;outline:none}.field textarea{min-height:104px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{border-color:#4ba9c6;box-shadow:0 0 0 3px rgba(53,212,199,.08)}.hint{font-size:11px;color:var(--muted);margin-top:5px}
+.stagebar{display:flex;gap:7px;overflow:auto;padding:2px 0 8px;scrollbar-width:none}.stagebar::-webkit-scrollbar{display:none}.stagechip{min-width:max-content;border:1px solid var(--line);background:#0c1828;border-radius:999px;padding:7px 9px;font-size:11px;color:var(--muted)}.stagechip.done{color:#a7f3d0;border-color:rgba(61,220,151,.32);background:rgba(61,220,151,.08)}.stagechip.current{color:#08111f;background:linear-gradient(135deg,var(--brand),#60a5fa);border-color:transparent;font-weight:900}.stagechip.locked{opacity:.45}
+.casehead{display:flex;gap:10px;align-items:flex-start;justify-content:space-between;margin-bottom:12px}.casehead .title{font-size:18px;font-weight:900}.meta{font-size:11px;color:var(--muted)}
+.coach{border:1px solid rgba(53,212,199,.28);background:linear-gradient(135deg,rgba(53,212,199,.08),rgba(96,165,250,.07));border-radius:16px;padding:14px}.coachTop{display:flex;gap:10px;align-items:center}.coachIcon{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#07131e;font-weight:950}.coachLabel{font-size:11px;color:#9ccfcf}.question{font-size:17px;font-weight:850;line-height:1.42;margin-top:11px}.why{font-size:12px;color:var(--muted);margin-top:7px}.answerBox{margin-top:12px}.answerBox textarea{min-height:130px}.actionrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.feedback{margin-top:12px;border-radius:14px;padding:12px;border:1px solid var(--line);background:#0a1727}.feedback.good{border-color:rgba(61,220,151,.34);background:rgba(61,220,151,.07)}.feedback.warn{border-color:rgba(247,201,72,.35);background:rgba(247,201,72,.07)}.feedback.bad{border-color:rgba(255,114,114,.35);background:rgba(255,114,114,.07)}.feedback b{display:block;margin-bottom:4px}.feedback p{margin:0;color:#dbe8f7;font-size:13px}.feedback .smallline{margin-top:7px;color:var(--muted);font-size:11px}
+.stategrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.stateitem{padding:9px;border-radius:12px;border:1px solid var(--line);background:#0a1727}.stateitem span{display:block;color:var(--muted);font-size:10px}.stateitem b{font-size:12px}.tag{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:4px 7px;font-size:10px;color:var(--muted);margin:3px 3px 0 0}.tag.good{color:#b8f3d4;border-color:rgba(61,220,151,.32)}.tag.warn{color:#ffe6a1;border-color:rgba(247,201,72,.32)}.tag.bad{color:#ffc5c5;border-color:rgba(255,114,114,.32)}
+.timeline{display:grid;gap:8px}.entry{border-left:3px solid var(--line);padding:6px 0 6px 11px}.entry.done{border-left-color:var(--ok)}.entry .et{font-size:12px;font-weight:800}.entry .ea{font-size:12px;color:#d4e2f2;white-space:pre-wrap}.entry .ef{font-size:11px;color:var(--muted);margin-top:4px}.empty{padding:18px;border:1px dashed var(--line);border-radius:14px;color:var(--muted);text-align:center;font-size:12px}
+.kbox{margin-top:10px;padding:11px;border:1px dashed rgba(104,181,255,.35);background:rgba(104,181,255,.06);border-radius:13px}.kbox b{font-size:12px}.kbox ul{margin:7px 0 0;padding-left:18px;color:#c9d9ea;font-size:12px}.kbox li{margin:4px 0}.aiBox{margin-top:10px;padding:11px;border:1px solid rgba(104,181,255,.25);background:rgba(104,181,255,.05);border-radius:13px}.aiBox pre{white-space:pre-wrap;font-family:inherit;margin:6px 0 0;font-size:12px;color:#cfe7ff}.notice{border-radius:13px;padding:10px 12px;border:1px solid rgba(247,201,72,.3);background:rgba(247,201,72,.06);font-size:12px;color:#ffe6a4}
+.caseList{display:grid;gap:9px}.caseItem{border:1px solid var(--line);background:#0b192a;border-radius:14px;padding:12px;display:flex;gap:10px;justify-content:space-between;align-items:center}.caseItem b{display:block}.caseItem small{display:block;color:var(--muted);margin-top:2px}.rightActions{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+.modal{position:fixed;inset:0;background:rgba(2,8,15,.78);display:none;align-items:flex-end;justify-content:center;z-index:60;padding:12px}.modal.show{display:flex}.sheet{width:min(720px,100%);max-height:90vh;overflow:auto;background:#0e1b2d;border:1px solid var(--line);border-radius:20px 20px 14px 14px;padding:16px;box-shadow:0 30px 70px rgba(0,0,0,.5)}.sheetHead{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px}.sheetHead h3{margin:0}.close{width:36px;height:36px;border-radius:11px;border:1px solid var(--line);background:#13233a;color:var(--text)}
+.switchrow{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid rgba(145,168,197,.1)}.switch{position:relative;width:48px;height:28px}.switch input{opacity:0;width:0;height:0}.slider{position:absolute;inset:0;background:#26374f;border-radius:999px;transition:.2s}.slider:before{content:"";position:absolute;width:22px;height:22px;left:3px;top:3px;border-radius:50%;background:white;transition:.2s}.switch input:checked+.slider{background:#23a99e}.switch input:checked+.slider:before{transform:translateX(20px)}
+.profileRow{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(145,168,197,.08)}.profileRow b{font-size:12px}.profileRow span{font-size:11px;color:var(--muted)}
+.footerNote{text-align:center;color:#657f9f;font-size:10px;margin-top:30px}.hidden{display:none!important}
+
+.intakeModes{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 12px}.modeBtn.active{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#06141e;border-color:transparent}.intakePanel{border:1px solid rgba(53,212,199,.26);background:rgba(53,212,199,.045);border-radius:15px;padding:12px;margin:10px 0}.intakePreview{display:grid;gap:9px;margin-top:10px}.proposal{border:1px solid var(--line);background:#0a1727;border-radius:13px;padding:10px}.proposalHead{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:6px}.proposalHead b{font-size:12px}.proposalState{font-size:10px;color:#ffe6a1;border:1px solid rgba(247,201,72,.3);border-radius:999px;padding:3px 7px}.proposal textarea{min-height:64px}.correctionList{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}.correction{font-size:10px;border:1px solid rgba(104,181,255,.3);background:rgba(104,181,255,.07);color:#cfe7ff;padding:4px 7px;border-radius:999px}.gapList{display:grid;gap:6px;margin-top:8px}.gapItem{font-size:11px;color:#ffe6a1;border-left:3px solid var(--warn);padding:5px 8px;background:rgba(247,201,72,.055);border-radius:0 9px 9px 0}.originalBox{white-space:pre-wrap;font-size:11px;color:#abc0d9;background:#07121f;border:1px dashed var(--line);padding:9px;border-radius:10px;max-height:150px;overflow:auto}.smartNote{font-size:11px;color:#bfe2ff;border:1px solid rgba(104,181,255,.28);background:rgba(104,181,255,.055);padding:9px;border-radius:11px;margin-top:8px}.dimline{margin-top:7px;font-size:10px;color:#91a8c5}.investigate{margin-top:8px;border:1px dashed rgba(247,201,72,.35);background:rgba(247,201,72,.05);border-radius:11px;padding:9px;font-size:11px;color:#ffe6a1}
+
+.brandLogo{width:48px;height:48px;object-fit:contain;border-radius:12px;background:#fff;padding:2px;border:1px solid rgba(120,209,218,.25)}
+.brandFallback{display:flex;flex-direction:column;justify-content:center;line-height:1.05;min-width:92px}.brandFallback .wordmark{font-weight:950;font-size:16px;letter-spacing:-.03em;color:#eaf8ff}.brandFallback small{font-size:8px;color:#78D1DA;margin-top:4px}.brandtext b{font-size:15px}.brandtext span{font-size:10px}
+.teamBadge{display:inline-flex;gap:5px;align-items:center;border:1px solid rgba(120,209,218,.3);background:rgba(41,154,199,.09);color:#d9f6ff;padding:5px 8px;border-radius:999px;font-size:10px;font-weight:800}
+.teamIntro{border:1px solid rgba(120,209,218,.28);background:linear-gradient(135deg,rgba(41,154,199,.12),rgba(56,195,177,.07));border-radius:18px;padding:15px;margin-top:12px}.teamIntro b{display:block;font-size:15px}.teamIntro p{margin:5px 0 0;color:#b9d4e6;font-size:12px}
+.progressWrap{display:flex;gap:8px;align-items:center;margin:8px 0 2px}.progressTrack{height:8px;background:#10243a;border-radius:999px;overflow:hidden;flex:1;border:1px solid rgba(120,209,218,.12)}.progressFill{height:100%;background:linear-gradient(90deg,#299AC7,#38C3B1);border-radius:999px;transition:width .25s ease}.progressText{font-size:10px;color:#b8d7e9;white-space:nowrap}
+.stageMemory{margin-top:10px;padding:10px 11px;border-radius:12px;border:1px solid rgba(120,209,218,.18);background:rgba(41,154,199,.055);font-size:11px;color:#cce5f3}.stageMemory b{display:block;color:#e8f7ff;margin-bottom:3px}.stageMemory.empty{display:none}
+.missingBox{margin-top:8px;padding:9px 11px;border-radius:11px;background:rgba(247,201,72,.075);border:1px solid rgba(247,201,72,.25);font-size:12px;color:#ffe8ae}.missingBox b{display:block;margin-bottom:4px}.missingChip{display:inline-flex;margin:3px 4px 0 0;padding:4px 7px;border-radius:999px;border:1px solid rgba(247,201,72,.3);font-size:10px;background:rgba(247,201,72,.06)}
+.answerFrame{margin-top:8px;border-left:3px solid #78D1DA;background:rgba(120,209,218,.055);padding:8px 10px;border-radius:0 10px 10px 0;font-size:11px;color:#d7f3fa}.answerFrame b{display:block;margin-bottom:3px}
+.quickrow{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}.btn.soft{background:rgba(120,209,218,.08);border-color:rgba(120,209,218,.26);color:#dff8ff}.btn.pause{background:rgba(145,168,197,.07);color:#c8d9e8}
+body:not(.developer-mode) .devPanel{display:none!important}body:not(.developer-mode) .technicalOnly{display:none!important}
+.teamTools{border-color:rgba(120,209,218,.18)!important}.teamTools .actionrow{margin-top:8px}
+.fieldTrialNote{font-size:11px;color:#c7ddeb;background:rgba(56,195,177,.07);border:1px solid rgba(56,195,177,.2);padding:8px 10px;border-radius:11px;margin-top:10px}
+.feedback.good{box-shadow:inset 0 0 0 1px rgba(61,220,151,.04)}.feedback.warn{box-shadow:inset 0 0 0 1px rgba(247,201,72,.03)}
+@media(max-width:520px){.brandLogo{width:42px;height:42px}.brandFallback{min-width:82px}.brandFallback .wordmark{font-size:14px}.brandtext b{font-size:13px}.statusrow .pill{max-width:124px;overflow:hidden;text-overflow:ellipsis}.hero{padding-top:18px}.homecards{grid-template-columns:1fr}.question{font-size:18px}.btn{min-height:44px}.answerBox textarea{min-height:116px}}
+
+@media(min-width:760px){.grid.two{grid-template-columns:minmax(0,1.55fr) minmax(290px,.85fr)}.formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.field.full{grid-column:1/-1}.homecards{grid-template-columns:repeat(4,minmax(0,1fr))}.stategrid{grid-template-columns:repeat(3,minmax(0,1fr))}.modal{align-items:center}.sheet{border-radius:20px}}
+.inputAssist{margin-top:8px;border-radius:12px;padding:9px 11px;border:1px solid var(--line);font-size:12px;background:#0a1727}.inputAssist.good{border-color:rgba(61,220,151,.34);background:rgba(61,220,151,.07);color:#d8f9e7}.inputAssist.warn{border-color:rgba(247,201,72,.38);background:rgba(247,201,72,.07);color:#ffe8a8}.inputAssist.bad{border-color:rgba(255,114,114,.42);background:rgba(255,114,114,.08);color:#ffd0d0}.inputAssist.info{border-color:rgba(104,181,255,.35);background:rgba(104,181,255,.07);color:#d8edff}.inputAssist .assistTitle{font-weight:850;margin-bottom:3px}.inputAssist .assistSub{font-size:11px;color:#b8cbe2}.inputAssist .issueWord{display:inline-block;border-bottom:2px dotted currentColor;font-weight:850}.inputAssist .actionrow{margin-top:7px}
+.cbiResult{border:1px solid rgba(53,212,199,.28);background:rgba(53,212,199,.055);padding:9px;border-radius:11px;margin-top:9px}.cbiResult.bad{border-color:rgba(255,114,114,.32);background:rgba(255,114,114,.055)}.cbiResult .line{font-size:11px;color:#b9cde4;margin-top:3px}.metricgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.metric{border:1px solid var(--line);border-radius:10px;padding:8px;background:#091625}.metric b{display:block;font-size:15px}.metric span{font-size:10px;color:var(--muted)}@media(min-width:700px){.metricgrid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+/* Team Clean Edition: user-facing only */
+#settingsModal,#casesView,#profileView,#backupBtn{display:none!important}
+body.team-clean .devPanel,body.team-clean .technicalOnly{display:none!important}
+body.team-clean .teamTools #saveBtn,body.team-clean .teamTools #reportBtn{display:inline-flex}
+body.team-clean .teamTools .sub{display:none}
+body.team-clean .footerNote{opacity:.72}
+</style>
+
+<style id="light-theme-overrides">
+:root{
+  --bg:#eef8ff;
+  --panel:#ffffff;
+  --panel2:#f6fbff;
+  --line:#cfe3f1;
+  --text:#17324a;
+  --muted:#5d7b95;
+  --brand:#1fa0d7;
+  --brand2:#7ed8ee;
+  --teal:#21b7a9;
+  --ok:#179d63;
+  --warn:#c58b00;
+  --bad:#d95858;
+  --info:#347fd8;
+  --shadow:0 16px 40px rgba(21,84,128,.10);
+}
+body{background:radial-gradient(circle at 18% -8%,rgba(116,212,242,.35) 0,transparent 34%),linear-gradient(180deg,#f8fcff 0%,#eef8ff 100%) !important;color:var(--text)!important;}
+.topbar{background:rgba(255,255,255,.92)!important;border-bottom:1px solid rgba(126,163,191,.35)!important;}
+.brandmark{background:#ffffff!important;color:#123047!important;box-shadow:0 10px 24px rgba(31,160,215,.14)!important;}
+.pill{background:#f4fbff!important;color:#4d718b!important;border-color:#cfe3f1!important;}
+.pill.ok{color:#14734c!important;border-color:rgba(23,157,99,.25)!important;background:rgba(23,157,99,.08)!important;}
+.pill.ai{color:#236bb8!important;border-color:rgba(52,127,216,.22)!important;background:rgba(52,127,216,.08)!important;}
+.btn{background:#f7fbfe!important;color:#163149!important;border-color:#cfe3f1!important;box-shadow:none!important;}
+.btn.primary{background:linear-gradient(135deg,var(--brand),#66caf5)!important;color:#ffffff!important;border-color:transparent!important;}
+.btn.ghost{background:transparent!important;}
+.btn.warn{background:rgba(197,139,0,.10)!important;border-color:rgba(197,139,0,.25)!important;color:#926700!important;}
+.btn.bad{background:rgba(217,88,88,.08)!important;border-color:rgba(217,88,88,.22)!important;color:#a24141!important;}
+.card{background:linear-gradient(180deg,#ffffff 0%,#f7fbff 100%)!important;border-color:#d4e6f3!important;box-shadow:var(--shadow)!important;}
+.homecard{background:#fbfdff!important;border-color:#d4e6f3!important;}
+.field label,.card .sub,.hero p,.meta,.hint,.why,.feedback .smallline,.stateitem span,.entry .ef,.brandtext span{color:var(--muted)!important;}
+.field input,.field select,.field textarea{background:#ffffff!important;color:var(--text)!important;border-color:#cfe3f1!important;}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#6ec7e0!important;box-shadow:0 0 0 3px rgba(126,216,238,.22)!important;}
+.stagechip{background:#f7fbfe!important;color:#5d7b95!important;border-color:#cfe3f1!important;}
+.stagechip.done{color:#15754d!important;border-color:rgba(23,157,99,.25)!important;background:rgba(23,157,99,.08)!important;}
+.stagechip.current{color:#ffffff!important;background:linear-gradient(135deg,var(--brand),#64c7ef)!important;}
+.coach{border-color:rgba(31,160,215,.22)!important;background:linear-gradient(135deg,rgba(31,160,215,.07),rgba(126,216,238,.14))!important;}
+.coachLabel{color:#39728d!important;}
+.feedback{background:#f7fbfe!important;border-color:#d4e6f3!important;}
+.feedback.good{background:rgba(23,157,99,.08)!important;border-color:rgba(23,157,99,.24)!important;}
+.feedback.warn{background:rgba(197,139,0,.09)!important;border-color:rgba(197,139,0,.22)!important;}
+.feedback.bad{background:rgba(217,88,88,.08)!important;border-color:rgba(217,88,88,.22)!important;}
+.feedback p,.entry .ea{color:#24435d!important;}
+.stateitem{background:#fbfdff!important;border-color:#d4e6f3!important;}
+.tag{border-color:#cfe3f1!important;background:#f8fcff!important;color:#5d7b95!important;}
+.entry{border-left-color:#cfe3f1!important;}
+.empty{border-color:#cfe3f1!important;background:#fbfdff!important;color:var(--muted)!important;}
+.footerNote{color:#6d879e!important;}
+.modal{background:rgba(225,238,247,.56)!important;}
+.sheet{background:linear-gradient(180deg,#ffffff 0%,#f7fbff 100%)!important;border-color:#d4e6f3!important;color:var(--text)!important;}
+.close{background:#f7fbfe!important;color:var(--text)!important;border-color:#cfe3f1!important;}
+.smartNote,.runtimeBox,.benchbox,.cbiCard,.debugbox{background:#f8fcff!important;border-color:#d4e6f3!important;color:var(--text)!important;}
+@media (prefers-color-scheme: dark){ body{color-scheme:light;} }
+</style>
+
+<style id="contrast-overrides">
+body{font-size:16px!important;}
+.hero p,.brandtext span,.meta,.progressText,.coachLabel,.why,.hint,.fieldTrialNote,.feedback .smallline,.entry .ef,.teamIntro p,.kbox ul,.caseItem small,.subtle,.footerNote,.empty,.homecard span{color:#45657f!important;}
+.stagechip{color:#466680!important;background:#ffffff!important;border-color:#c7ddeb!important;}
+.stagechip.locked{opacity:1!important;color:#69849b!important;background:#f7fbfe!important;}
+.stagechip.current{color:#ffffff!important;}
+.progressTrack{background:#dcebF5!important;border-color:#c7ddeb!important;}
+.progressText{font-weight:700!important;}
+.coachLabel{font-weight:700!important;}
+.question{color:#15324b!important;font-size:18px!important;line-height:1.5!important;}
+.why{font-size:13px!important;line-height:1.6!important;}
+#knowledgeNudge.kbox,.kbox{background:#f2f9ff!important;border-color:#bfd9ea!important;}
+.kbox b{color:#1d4564!important;}
+.kbox ul,.kbox li{color:#35556f!important;}
+.stageMemory{background:#ffffff!important;border-color:#bfd9ea!important;color:#35556f!important;font-size:13px!important;line-height:1.6!important;box-shadow:0 2px 10px rgba(21,84,128,.05)!important;}
+.stageMemory b{color:#1d4564!important;font-size:13px!important;}
+.answerBox label,.field label{color:#294a66!important;font-size:13px!important;}
+.field input,.field select,.field textarea{font-size:16px!important;line-height:1.65!important;background:#ffffff!important;color:#14324a!important;border:1px solid #b9d4e6!important;}
+#answerInput{min-height:180px!important;}
+.inputAssist{font-size:13px!important;line-height:1.6!important;background:#fff7e8!important;border:1px solid #efd396!important;color:#7a5a09!important;}
+.feedback{font-size:14px!important;line-height:1.65!important;}
+.feedback b{font-size:17px!important;color:#163149!important;}
+.feedback p{font-size:14px!important;line-height:1.7!important;color:#24435d!important;}
+.feedback.good p,.feedback.warn p,.feedback.bad p{color:#24435d!important;}
+.stateitem span{color:#567590!important;font-size:11px!important;}
+.stateitem b{color:#163149!important;font-size:13px!important;}
+.tag{font-size:11px!important;color:#4e6d87!important;}
+.entry .et{font-size:13px!important;color:#163149!important;}
+.entry .ea{font-size:13px!important;line-height:1.65!important;color:#24435d!important;}
+.empty{font-size:13px!important;}
+.homecard b,.title,h1,h2,h3{color:#163149!important;}
+.casehead .title{font-size:19px!important;color:#163149!important;}
+.btn{font-weight:800!important;}
+.btn.soft{background:#f7fbfe!important;color:#163149!important;border-color:#cfe3f1!important;}
+.notice,.missingBox{color:#7b5b00!important;background:#fff8e5!important;border-color:#efd58f!important;}
+.missingBox b{color:#7b5b00!important;}
+.missingChip{color:#7b5b00!important;background:#fffdf4!important;border-color:#efd58f!important;}
+.teamIntro{background:#ffffff!important;border-color:#d4e6f3!important;}
+</style>
+</head>
+<body class="team-clean">
+<div class="shell">
+  <header class="topbar">
+    <div class="topin">
+      <div class="brand">
+        <!-- Official MEasyMate master logo asset from pormatee/MEasyMate assets/brand; offline fallback is exact MEasyMate wordmark text. -->
+        <img class="brandLogo" id="brandLogo" src="../../shared/brand/measymate-logo.jpg" alt="MEasyMate logo" onload="document.getElementById('brandFallback').classList.add('hidden')" onerror="this.classList.add('hidden');document.getElementById('brandFallback').classList.remove('hidden')">
+        <div class="brandFallback" id="brandFallback"><span class="wordmark">MEasyMate</span><small>Make Everything Easy.</small></div>
+        <div class="brandtext"><b>Intelligence Coach</b><span>Team Clean V0.3.8</span></div>
+      </div>
+      <div class="statusrow">
+        <span id="netPill" class="pill ok">● พร้อมใช้งาน • Offline</span>
+        <button class="hidden" id="settingsBtn" aria-hidden="true" tabindex="-1"></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="homeView" class="view active">
+      <div class="hero">
+        <h1><em>MEasyMate Intelligence Coach</em><br>ช่วยคิดทีละขั้น ไม่บังคับคำตอบ</h1>
+        <p>สำหรับทดลองกับทีมหน้างาน: พิมพ์ภาษาธรรมชาติได้ ตอบทีละส่วนได้ ถ้ายังไม่รู้ให้บอกตรง ๆ ได้ ระบบจะจำสิ่งที่ตอบไว้แล้วและถามเฉพาะส่วนที่ยังขาด โดยไม่สรุป Root Cause แทนผู้ใช้</p>
+        <div class="heroActions">
+          <button class="btn primary" id="newCaseBtn">+ เริ่มเคสใหม่</button>
+          <button class="btn" id="resumeBtn">ทำต่อเคสล่าสุด</button>
+          <button class="hidden" id="casesBtn" aria-hidden="true" tabindex="-1"></button>
+          <button class="hidden" id="profileBtn" aria-hidden="true" tabindex="-1"></button>
+        </div>
+      </div>
+      <div class="grid homecards" style="grid-template-columns:repeat(auto-fit,minmax(210px,1fr))">
+        <div class="homecard"><b>💬 ตอบตามที่เห็นจริง</b><span>ตอบสั้น ๆ หรือทีละส่วนได้ ถ้ายังไม่รู้ให้บอกว่า “ยังไม่รู้” ระบบจะถามต่อเฉพาะสิ่งที่ยังขาด</span></div>
+        <div class="homecard"><b>📝 จบเคสแล้วดูรายงานได้</b><span>Coach ช่วยเรียงข้อมูลตั้งแต่ปัญหา หลักฐาน Root Cause มาตรการ และการยืนยันผล โดยไม่คิดคำตอบแทนผู้ใช้</span></div>
+      </div>
+      <div class="teamIntro"><b>สำหรับทีมทดลองใช้งาน</b><p>แนะนำให้เริ่มจากเคส <b>Quality</b> ก่อน พิมพ์เหมือนที่ใช้หน้างานจริงได้เลย ไม่ต้องเขียนให้เป็นภาษาทางการ</p></div>
+    </section>
+
+    <section id="setupView" class="view">
+      <div class="hero"><h1 style="font-size:28px">เริ่มเคสใหม่</h1><p>เลือกประเภทปัญหา แล้วพิมพ์สิ่งที่เกิดขึ้นตามจริงได้เลย</p></div>
+      <div class="card">
+        <div class="intakeModes">
+          <button class="btn small modeBtn active" id="modeShortBtn">กรอกแบบสั้น</button>
+          <button class="btn small modeBtn" id="modeReportBtn">วางรายงานทั้งฉบับ</button>
+          <button class="btn small" id="sampleReportBtn">ใส่ตัวอย่างทดลอง</button>
+        </div>
+        <div id="shortIntakePanel">
+          <div class="formgrid">
+            <div class="field"><label>Domain</label><select id="domainInput"><option value="quality">Quality — คุณภาพ (แนะนำสำหรับ Field Trial)</option><option value="safety">Safety — ความปลอดภัย (Experimental)</option><option value="productivity">Productivity — ประสิทธิภาพการผลิต (Experimental)</option><option value="maintenance">Maintenance — เครื่องจักร/บำรุงรักษา (Experimental)</option></select></div>
+            <div class="field"><label>ประเภทปัญหา / Failure mode</label><input id="typeInput" placeholder="เช่น ลืมประกอบ, Part บาดมือ, Cycle time สูง"></div>
+            <div class="field"><label>พื้นที่ / Line / Process</label><input id="processInput" placeholder="เช่น Main Assembly / Station 4"></div>
+            <div class="field"><label>วันที่</label><input id="dateInput" type="date"></div>
+            <div class="field full"><label>อธิบายสิ่งที่เกิดขึ้นแบบสั้น ๆ</label><textarea id="initialProblem" placeholder="เขียนตามที่พบ ไม่ต้องสรุปสาเหตุ เช่น ปกติประกอบ 5 จุด แต่พบงานจริงขันเพียง 4 จุดที่ Main Drive"></textarea><div class="hint">พิมพ์ผิดได้บางส่วน — Offline Language Normalizer จะช่วยตีความ แต่เก็บข้อความต้นฉบับไว้</div></div>
+          </div>
+          <div class="actionrow"><button class="btn primary" id="startCaseBtn">เริ่ม Coaching</button><button class="btn" data-go="homeView">ยกเลิก</button></div>
+        </div>
+        <div id="reportIntakePanel" class="hidden">
+          <div class="intakePanel">
+            <div class="field"><label>วางข้อความรายงาน / ข้อความจาก LINE / บันทึกหน้างาน</label><textarea id="fullReportInput" style="min-height:190px" placeholder="วางรายงานทั้งหมดได้เลย ไม่ต้องจัดรูปแบบ Coach จะพยายามแยกข้อมูลโดยไม่สรุป Root Cause ให้เอง"></textarea></div>
+            <div class="actionrow"><button class="btn primary" id="parseReportBtn">ให้ Coach แยกข้อมูล Offline</button><button class="btn" id="clearReportBtn">ล้าง</button></div>
+            <div class="smartNote">ข้อมูลที่ระบบแยกได้จะเป็น <b>PROPOSED</b> จนกว่าคุณจะตรวจและกดยืนยัน ไม่มีข้อมูลใดถูกถือเป็น Fact/Root Cause อัตโนมัติ</div>
+          </div>
+          <div id="intakePreviewWrap" class="hidden">
+            <div class="card" style="box-shadow:none"><h3>Coach เข้าใจเบื้องต้น</h3><div class="sub">แก้ข้อความได้ก่อนยืนยัน · ต้นฉบับไม่ถูกเขียนทับ</div><div id="intakeCorrections" class="correctionList"></div><div id="intakePreview" class="intakePreview"></div><div id="intakeGaps" class="gapList"></div><div class="actionrow"><button class="btn primary" id="confirmIntakeBtn">ยืนยันและเริ่ม Coaching</button><button class="btn" id="reparseBtn">วิเคราะห์ใหม่</button></div><details style="margin-top:10px"><summary class="hint">ดูข้อความต้นฉบับ</summary><div id="intakeOriginal" class="originalBox" style="margin-top:8px"></div></details></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="coachView" class="view">
+      <div class="hero" style="padding-bottom:8px">
+        <div class="casehead"><div><div class="title" id="caseTitle">—</div><div class="meta" id="caseMeta">—</div></div><button class="btn small" id="homeBtn">หน้าหลัก</button></div>
+        <div class="progressWrap"><div class="progressTrack"><div id="progressFill" class="progressFill" style="width:0%"></div></div><div id="progressText" class="progressText">ขั้น 1/13</div></div><div id="stageBar" class="stagebar"></div>
+      </div>
+      <div class="grid two">
+        <div class="grid">
+          <div class="coach">
+            <div class="coachTop"><div class="coachIcon">C</div><div><b>MEasyMate Intelligence Coach</b><div class="coachLabel" id="coachStateLabel">กำลังอ่านสถานะการคิด</div></div></div>
+            <div class="question" id="coachQuestion">—</div>
+            <div class="why" id="coachWhy">—</div>
+            <div id="knowledgeNudge" class="kbox"></div>
+            <div id="stageMemory" class="stageMemory empty"></div>
+            <div class="answerBox field"><label>คำตอบของคุณ</label><textarea id="answerInput" placeholder="ตอบจากสิ่งที่รู้จริง ถ้ายังไม่รู้ให้พิมพ์ว่า ‘ยังไม่รู้’ ได้"></textarea><div id="cbiInputAssist" class="inputAssist hidden" aria-live="polite"></div></div>
+            <div class="actionrow">
+              <button class="btn primary" id="analyzeBtn">ให้ Coach ตรวจคำตอบ</button>
+              <button class="btn soft" id="guidanceBtn">ดูแนวทางตอบ</button>
+              <button class="btn soft" id="unknownBtn">ยังไม่รู้ / ต้องไปตรวจ</button>
+              <button class="btn ai hidden" id="aiAssistBtn">AI ช่วยตีความ</button>
+            </div>
+            <div id="feedbackBox" class="feedback hidden"></div><div class="fieldTrialNote">💡 ตอบทีละส่วนได้ครับ ถ้า Coach บอกว่ายังขาดอะไร ให้ตอบเฉพาะส่วนนั้นเพิ่ม ระบบจะรวมกับข้อมูลเดิมให้เอง</div>
+            <div id="aiBox" class="aiBox hidden"><b>ข้อเสนอจาก AI Assist — ยังไม่ถือเป็นข้อสรุป</b><pre id="aiText"></pre></div>
+          </div>
+
+          <div class="card">
+            <h3>บันทึกการคิดของเคส</h3><div class="sub">เก็บ Operational Case Record ตามจริง และไม่แก้คำตอบเดิมอัตโนมัติ</div>
+            <div id="timeline" class="timeline" style="margin-top:10px"></div>
+          </div>
+        </div>
+
+        <aside class="grid" style="align-content:start">
+          <div class="card devPanel">
+            <h3>Reasoning State</h3><div class="sub">Core ใช้สถานะนี้เลือกคำถามถัดไป</div>
+            <div id="stateGrid" class="stategrid" style="margin-top:10px"></div>
+          </div>
+          <div class="card devPanel">
+            <h3>Intelligence Signals</h3><div class="sub">สัญญาณเพื่อคุมคุณภาพการคิด ไม่ใช่คะแนนตัดสินคน</div>
+            <div id="signalTags" style="margin-top:7px"></div>
+          </div>
+          <div class="card devPanel">
+            <h3>Local CBI Runtime</h3><div class="sub">CBI รับข้อความก่อนทุกครั้ง • Coach Core เป็นผู้ตัดสิน Evidence / Reasoning / Root Cause Gate</div><div class="hint" style="margin-top:6px">Natural-language pipeline: User → Local CBI → Coach Core → Gate → Optional AI. ปุ่ม/เมนูระบบไม่ส่งเข้า CBI</div>
+            <div id="cbiCaseStatus" style="margin-top:8px"></div>
+          </div>
+          <div class="card teamTools">
+            <h3>เครื่องมือเคส</h3><div class="sub">บันทึกได้ทุกเวลา แม้ยังไม่ผ่านขั้นปัจจุบัน</div>
+            <div class="actionrow"><button class="btn small primary" id="saveBtn">บันทึกไว้ก่อน</button><button class="btn small" id="reportBtn">ดูรายงาน</button><button class="hidden" id="backupBtn" aria-hidden="true" tabindex="-1"></button></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="casesView" class="view">
+      <div class="hero"><h1 style="font-size:28px">เคสในเครื่อง</h1><p>ข้อมูลเก็บใน localStorage ของอุปกรณ์นี้ ไม่ต้องมี Server</p></div>
+      <div class="card"><div id="caseList" class="caseList"></div><div class="actionrow"><button class="btn" data-go="homeView">กลับหน้าหลัก</button><button class="btn" id="restoreBtn">Restore JSON</button><input type="file" id="restoreFile" accept="application/json" class="hidden"></div></div>
+    </section>
+
+    <section id="profileView" class="view">
+      <div class="hero"><h1 style="font-size:28px">Development Profile</h1><p>ข้อมูลส่วนนี้แยกจาก Case Record ใช้เพื่อให้ Coach ปรับระดับความช่วยเหลือในเคสถัดไป</p></div>
+      <div class="card"><div id="profileRows"></div><div class="notice" style="margin-top:12px">หลักการ: Profile ไม่ควรใช้ตัดสิน Performance บุคคล แต่ใช้เพื่อปรับคำถาม/คำใบ้ให้เหมาะกับการพัฒนาวิธีคิด</div><div class="actionrow"><button class="btn" data-go="homeView">กลับหน้าหลัก</button><button class="btn bad" id="resetProfileBtn">ล้าง Profile</button></div></div>
+    </section>
+  </main>
+  <div class="footerNote">MEasyMate Intelligence Coach • Team Clean High Contrast V0.3.8 • ใช้งาน Offline ได้</div>
+</div>
+
+<div class="modal" id="settingsModal">
+  <div class="sheet">
+    <div class="sheetHead"><div><h3>Runtime / Online Settings</h3><div class="sub">CBI-First + Offline Coach Core ทำงานได้โดยไม่ต้องมี Internet</div></div><button class="close" id="closeSettings">×</button></div>
+
+    <div class="card" style="margin:0 0 12px">
+      <div class="switchrow"><div><b>Local CBI — บังคับใช้ใน CBI-First Edition</b><div class="hint">ทุกข้อความภาษาธรรมชาติผ่าน CBI ก่อน Coach Core • ปิดไม่ได้จากหน้าใช้งานปกติ</div></div><span class="pill ok">● ON</span></div>
+      <div class="switchrow"><div><b>Developer / Benchmark Mode</b><div class="hint">ค่าเริ่มต้นปิดสำหรับทีมหน้างาน • เปิดเมื่อต้องการดู Reasoning State, Signals, CBI Status, Confidence และ Benchmark</div></div><label class="switch"><input type="checkbox" id="cbiDebugToggle"><span class="slider"></span></label></div>
+      <div id="cbiRuntimeInfo" class="smartNote" style="margin-top:10px"></div>
+      <div class="actionrow">
+        <button class="btn small" id="cbiSelfTestBtn">Self-test CBI</button>
+        <button class="btn small" id="cbiExportBtn">Export Runtime Pack</button>
+        <button class="btn small" id="cbiImportBtn">Update CBI จากไฟล์</button>
+        <input type="file" id="cbiImportFile" accept="application/json,.json" class="hidden">
+        <button class="btn small" id="cbiRollbackBtn">Rollback</button>
+        <button class="btn small bad" id="cbiResetBtn">Default</button>
+      </div>
+      <div id="cbiUpdateResult" class="hint" style="margin-top:7px"></div>
+      <div class="notice" style="margin-top:10px"><b>Update policy:</b> Runtime Pack เป็น JSON แบบ declarative เท่านั้น ไม่รัน JavaScript จากไฟล์อัปเดต • Contract V1 เท่านั้น • ตรวจ checksum • สำรองรุ่นเดิมก่อนติดตั้ง</div>
+    </div>
+
+    <div class="card" style="margin:0 0 12px">
+      <h3 style="margin-bottom:4px">Automated Regression Test</h3>
+      <div class="sub">กดครั้งเดียวเพื่อตรวจ Language Guard, CBI Semantic, CBI-First Pipeline, Coach Gates, Reference และ Runtime Integrity โดยไม่แก้ข้อมูลเคสจริง</div>
+      <div id="autoTestSummary" style="margin-top:9px"></div>
+      <div class="actionrow">
+        <button class="btn small primary" id="autoTestFullBtn">Run Full Auto Test</button>
+        <button class="btn small" id="autoTestQuickBtn">Quick Regression</button>
+        <button class="btn small" id="autoTestExportBtn">Export Result</button>
+      </div>
+      <div id="autoTestDetails" style="margin-top:8px"></div>
+      <div class="notice" style="margin-top:10px"><b>Regression Gate:</b> ถ้ามี FAIL แม้แต่ 1 ข้อ ให้ถือว่า BLOCKED สำหรับการ promote รุ่นใหม่จนกว่าจะแก้และรันผ่านอีกครั้ง • Auto Test ไม่แทน Field Test หน้างานจริง</div>
+    </div>
+
+    <div class="card" style="margin:0 0 12px">
+      <h3 style="margin-bottom:4px">Intelligent QA Engine — Phase 1 (Developer)</h3>
+      <div class="sub">Behavior Contract → Generate / Mutate → Execute → Failure Analysis → Regression Bank • ทดสอบใน sandbox state ไม่แก้ข้อมูลเคสจริง</div>
+      <div id="iqaSummary" style="margin-top:9px"></div>
+      <div class="actionrow">
+        <button class="btn small primary" id="iqaRunBtn">Run Intelligent Test</button>
+        <button class="btn small" id="iqaAdversarialBtn">Adversarial Test</button>
+        <button class="btn small" id="iqaExportBtn">Export QA Report</button>
+        <button class="btn small bad" id="iqaClearBankBtn">Clear Regression Bank</button>
+      </div>
+      <div id="iqaDetails" style="margin-top:8px"></div>
+      <div class="notice" style="margin-top:10px"><b>Safe QA policy:</b> Failure Analyzer เสนอ Repair Plan ได้ แต่ V0.3.8 ยังไม่แก้ source code อัตโนมัติ • ทุก FAIL ถูกเพิ่มเข้า Regression Bank • ห้ามลบ test / ลด Gate / แก้ Frozen CBI V1 เพื่อทำให้ PASS • Authority/Integrity failure = BLOCKED ทันที</div>
+    </div>
+
+    <div class="card" style="margin:0 0 12px">
+      <h3 style="margin-bottom:4px">CBI Field Benchmark</h3><div class="sub">วัดจากคำตอบจริงของหน้างาน และให้ผู้ใช้ยืนยันว่า CBI เข้าใจถูก/ผิด</div>
+      <div id="cbiBenchmarkSummary" style="margin-top:8px"></div>
+      <div class="actionrow"><button class="btn small" id="cbiBenchmarkExportBtn">Export Benchmark</button><button class="btn small bad" id="cbiBenchmarkResetBtn">ล้าง Benchmark</button></div>
+    </div>
+
+    <div class="switchrow"><div><b>เปิด Online AI Assist</b><div class="hint">ใช้หลัง CBI + Coach Core ยังไม่ชัด และเชื่อมผ่าน MEasyMate AI Hub เท่านั้น</div></div><label class="switch"><input type="checkbox" id="aiToggle"><span class="slider"></span></label></div>
+    <div class="switchrow"><div><b>Smart AUTO — CBI/Core-first</b><div class="hint">ถ้า CBI + Coach Core เข้าใจแล้วจะไม่เรียก AI</div></div><label class="switch"><input type="checkbox" id="aiAutoToggle"><span class="slider"></span></label></div>
+    <div id="aiSettings" class="hidden" style="margin-top:12px">
+      <div class="notice"><b>Security:</b> เชื่อมผ่าน MEasyMate AI Hub เท่านั้น ไม่ควรใส่ Provider API Key (เช่น DeepSeek/OpenAI key) ในไฟล์ HTML นี้</div>
+      <div class="field" style="margin-top:10px"><label>MEasyMate AI Hub endpoint</label><input id="hubUrl" placeholder="https://your-hub.example.com/v1/ai/generate"><div class="hint">URL สามารถบันทึกในเครื่องได้</div></div>
+      <div class="field" style="margin-top:10px"><label>Session bearer token</label><input id="hubToken" type="password" autocomplete="off" placeholder="เก็บเฉพาะ session นี้"><div class="hint">เก็บ token ใน sessionStorage ไม่บันทึกถาวร</div></div>
+      <div class="field" style="margin-top:10px"><label>Logical profile</label><input id="hubProfile" value="coach-semantic-assist"></div>
+      <div class="actionrow"><button class="btn" id="testHubBtn">ทดสอบการเชื่อมต่อ</button><span id="hubTestResult" class="hint"></span></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="reportModal"><div class="sheet"><div class="sheetHead"><h3>Case Report</h3><button class="close" id="closeReport">×</button></div><div id="reportContent"></div><div class="actionrow"><button class="btn primary" id="printReportBtn">พิมพ์ / บันทึก PDF</button><button class="btn" id="copyReportBtn">Copy Text</button></div></div></div>
+
+<script>
+(()=>{
+'use strict';
+const VERSION='0.3.6-TEAM-CLEAN-FRIENDLY-GATE';
+const CASE_KEY='measymate.ic.teamclean.cases.v036';
+const PROFILE_KEY='measymate.ic.teamclean.profile.v036';
+const SETTINGS_KEY='measymate.ic.teamclean.settings.v036';
+const DRAFT_KEY='measymate.ic.teamclean.current.v036';
+const CBI_ACTIVE_KEY='measymate.ic.teamclean.cbi.active.v1';
+const CBI_BACKUP_KEY='measymate.ic.teamclean.cbi.backup.v1';
+const IQA_RESULT_KEY='measymate.ic.teamclean.iqa.result.v1';
+const IQA_BANK_KEY='measymate.ic.teamclean.iqa.regression.bank.v1';
+const IQA_HISTORY_KEY='measymate.ic.teamclean.iqa.history.v1';
+const CBI_BENCH_KEY='measymate.ic.teamclean.cbi.benchmark.v1';
+const AUTO_TEST_KEY='measymate.ic.teamclean.autotest.last.v1';
+
+const STAGES=[
+ {id:'problem',label:'Problem',th:'ปัญหา',dim:'problem'},
+ {id:'protect',label:'Protect',th:'ป้องกันชั่วคราว',dim:'system'},
+ {id:'fact',label:'Fact',th:'ข้อเท็จจริง',dim:'evidence'},
+ {id:'evidence',label:'Evidence',th:'หลักฐาน',dim:'evidence'},
+ {id:'change',label:'Change',th:'ความเปลี่ยนแปลง',dim:'causal'},
+ {id:'hypothesis',label:'Hypothesis',th:'สมมติฐาน',dim:'causal'},
+ {id:'occurrence',label:'Occurrence',th:'เหตุให้เกิด',dim:'occurrence'},
+ {id:'escape',label:'Escape',th:'เหตุให้หลุด',dim:'escape'},
+ {id:'root',label:'Root Cause',th:'รากสาเหตุ',dim:'causal'},
+ {id:'action',label:'Action',th:'มาตรการถาวร',dim:'system'},
+ {id:'verify',label:'Verify',th:'ยืนยันผล',dim:'verification'},
+ {id:'prevent',label:'Prevent',th:'ป้องกันขยายผล',dim:'verification'},
+ {id:'learn',label:'Learn',th:'บทเรียน',dim:'learning'}
+];
+const DIM_LABEL={problem:'กำหนดปัญหา',system:'System Thinking',evidence:'Evidence Thinking',causal:'Causal Thinking',occurrence:'Occurrence Cause',escape:'Escape Cause',verification:'Verification',learning:'Reflection'};
+const DOMAIN_LABEL={quality:'Quality',safety:'Safety',productivity:'Productivity',maintenance:'Maintenance'};
+
+const QUESTIONS={
+ problem:{q:'ช่วยบอก 2 อย่างครับ: ปกติควรเป็นอย่างไร และเกิดจริงเป็นอย่างไร? ตอบทีละส่วนได้',why:'เริ่มจากความต่างที่สังเกตได้ก่อน เพื่อไม่รีบกระโดดไปหาสาเหตุ',guide:'ตอบแค่ 2 ส่วนก็พอ: ปกติ ___ / เกิดจริง ___ ถ้ารู้ทีละส่วนก็ตอบทีละส่วนได้'},
+ protect:{q:'ตอนนี้ต้องทำอะไรเพื่อควบคุมความเสี่ยงหรือหยุดผลกระทบไม่ให้ลามก่อน?',why:'Containment/Protection แยกจากมาตรการถาวร — จุดประสงค์คือปกป้องคน ลูกค้า และกระบวนการระหว่างที่ยังหาสาเหตุ',guide:'บอกเพียงว่าตอนนี้ทำอะไรเพื่อกันปัญหาไว้ก่อน เช่น คัด NG / กักงาน / หยุดส่ง ถ้ายังไม่ต้องทำให้บอกเหตุผล'},
+ fact:{q:'ตอนนี้มีข้อเท็จจริงอะไรที่ยืนยันได้บ้าง? บอกเพียง 1–2 อย่างก่อนก็ได้',why:'Fact ต้องเป็นสิ่งที่ตรวจสอบย้อนกลับได้ ไม่ใช่ความเห็นหรือคำอธิบายสาเหตุ',guide:'เช่น เวลา ___ / จุด ___ / จำนวน ___ / รุ่น ___ / สภาพที่พบ ___'},
+ evidence:{q:'ตรวจจากอะไร และตรวจแล้วพบอะไร? ถ้ารู้แค่อย่างเดียว ตอบอย่างนั้นก่อนก็ได้',why:'การบอกเพียงว่า “ดูกล้อง/สอบถาม/ตรวจชิ้นงาน” เป็นวิธีหา Evidence แต่ยังไม่ใช่ผลของ Evidence',guide:'โครงสร้างช่วยตอบ: ตรวจจาก ___ แล้วพบว่า ___ (ถ้าไม่พบก็เขียนว่า “ไม่พบ ___”)'},
+ change:{q:'ก่อนเกิดปัญหา มีอะไรเปลี่ยนไปจากเดิมไหม? ถ้ายังไม่พบการเปลี่ยนก็บอกได้',why:'Change และ Is/Is-Not ช่วยลดการเดาและสร้างสมมติฐานที่ทดสอบได้',guide:'ลองเทียบ: เกิดที่ไหน/ไม่เกิดที่ไหน, รุ่นไหน/ไม่ใช่รุ่นไหน, ก่อน-หลังเวลาใด, คน/เครื่อง/วิธี/วัสดุอะไรเปลี่ยน'},
+ hypothesis:{q:'ตอนนี้สงสัยอะไรเป็นสาเหตุได้บ้าง? บอก 1 ข้อก่อนก็พอ ยังไม่ใช่ Root Cause',why:'เก็บหลายสมมติฐานก่อน แล้วค่อยใช้หลักฐานคัดออก ลด confirmation bias',guide:'บอกสิ่งที่สงสัย 1 ข้อก่อนก็พอ เช่น “สงสัยว่า fixture อาจไม่มีตัวบังคับตำแหน่ง”'},
+ occurrence:{q:'อะไรในระบบ/วิธีงานทำให้ปัญหานี้เกิดขึ้นได้จริง? อธิบายสั้น ๆ ก็ได้',why:'Occurrence Cause ต้องอธิบายการเกิด ไม่ใช่จบที่คำว่า “ลืม/ประมาท/ไม่ทำตาม”',guide:'ตอบสั้น ๆ ว่า “อะไรในระบบ/วิธีงาน → ทำให้ปัญหาเกิดอย่างไร” เช่น fixture ไม่มี stopper ทำให้ Part วางเอียง'},
+ escape:{q:'อะไรควรดักปัญหานี้ และทำไมครั้งนี้จึงไม่ดัก/ไม่หยุด?',why:'Occurrence กับ Escape เป็นคนละคำถาม: อะไรทำให้เกิด และอะไรทำให้หลุด',guide:'ตอบ 2 ส่วน: “อะไรควรตรวจจับ/หยุด” และ “ทำไมครั้งนี้จึงไม่จับ/ไม่หยุด”'},
+ root:{q:'จากหลักฐาน ตอนนี้สาเหตุเชิงระบบที่อธิบายปัญหาได้คืออะไร? ไม่จบแค่ “คนลืม/คนผิด”',why:'Root Cause ต้องมี causal chain และ evidence รองรับ ไม่ใช่เพียงตอบครบจำนวน Why',guide:'ตอบสั้น ๆ ว่า “ระบบ/เงื่อนไขอะไร → ทำให้ปัญหาเกิดอย่างไร” หลักฐานจะถูกตรวจจากขั้นก่อนหน้าเอง'},
+ action:{q:'จะเปลี่ยนอะไรในระบบเพื่อไม่ให้ Root Cause นี้สร้างปัญหาได้อีก? บอกมาตรการหลักก่อน',why:'Action ที่ดีต้องผูกกับ Root Cause ไม่ใช่เพียงเตือนหรืออบรมซ้ำโดยไม่มีเหตุผล',guide:'บอกมาตรการหลักก่อน เช่น “เพิ่ม stopper ที่ fixture เพื่อป้องกันวาง Part เอียง” Owner/Due เติมในรายงานภายหลังได้'},
+ verify:{q:'จะตรวจอย่างไรว่ามาตรการได้ผลจริง? บอกสิ่งที่จะวัดหรือช่วงเวลาติดตามก่อนก็ได้',why:'“ทำเสร็จ” ไม่เท่ากับ “ได้ผล” ต้องมีผลลัพธ์หลัง Implement',guide:'บอกสิ่งที่จะวัดหรือเวลาติดตามอย่างใดอย่างหนึ่งก่อน เช่น “ติดตาม 2 สัปดาห์ เป้าหมาย NG = 0”'},
+ prevent:{q:'ต้องขยายผลไปจุด/รุ่น/ไลน์อื่น หรืออัปเดต Standard อะไรบ้าง?',why:'Prevent คือ horizontal deployment และการทำให้ความรู้ไม่หายไปกับเคสเดียว',guide:'บอกอย่างใดอย่างหนึ่งก่อน: จะตรวจ/ขยายไปจุดไหน หรือจะอัปเดต Standard/Control อะไร'},
+ learn:{q:'จากเคสนี้ได้บทเรียนอะไร 1 ข้อ? ตอบสั้น ๆ ได้',why:'บทเรียนเน้นพัฒนาวิธีคิด ไม่ใช่ประเมินคน',guide:'ตอบสั้น ๆ ได้ เช่น “ครั้งนี้หลักฐานจาก ___ ช่วยตัดสมมติฐาน ___; ครั้งหน้าจะเก็บ ___ ตั้งแต่แรก”'}
+};
+
+const KNOWLEDGE={
+ quality:{evidence:['ชิ้นงานจริง/ภาพตำหนิ','WI / Standard / Drawing ที่ใช้งานจริง','Traceability / เครื่องจักร / Torque log / QC record'],occurrence:['ลำดับงานและจุดที่ defect ถูกสร้าง','Jig/Fixture/Tool interaction','ความต่างระหว่าง OK กับ NG'],escape:['จุดตรวจปัจจุบันและ detection limit','ตำแหน่ง Control เทียบกับจุดเกิด defect','Sampling / Sensor / Visual check record']},
+ safety:{evidence:['ภาพ/สภาพหน้างาน ณ เวลาเกิด','Guard / Interlock / PPE / Permit status','Witness / CCTV / machine event log'],occurrence:['พลังงาน/การสัมผัสอันตรายเกิดอย่างไร','Layout / access / task sequence','สภาพแวดล้อมและ control ที่มีอยู่'],escape:['Barrier ใดควรหยุดเหตุการณ์','ทำไม barrier ไม่ทำงาน/ถูก bypass','สัญญาณ near miss ก่อนหน้า']},
+ productivity:{evidence:['Cycle time จริงแยก element','Downtime / waiting / WIP timestamp','Standard time / takt / capacity condition'],occurrence:['คอขวดจริงอยู่ขั้นใด','งานเพิ่ม/การรอ/การเดิน/การแก้ซ้ำ','ความผันผวนของ Man-Machine-Material'],escape:['เหตุใดระบบ visual/control ไม่เห็น loss เร็วพอ','Alarm/Andon/escalation ทำงานหรือไม่','ข้อมูลที่ใช้ตัดสินใจช้าหรือไม่ครบ']},
+ maintenance:{evidence:['Alarm / trend / vibration / temperature / pressure','PM history / breakdown history','สภาพชิ้นส่วนจริงหลังเปิดตรวจ'],occurrence:['Failure mechanism ของชิ้นส่วน/ระบบ','load, lubrication, alignment, contamination','สัญญาณก่อนเสียและช่วงเวลาที่เปลี่ยน'],escape:['Inspection/PM ใดควรเห็นอาการก่อนเสีย','threshold/frequency เหมาะหรือไม่','spare/response/escalation พร้อมหรือไม่']}
+};
+
+const CBI_DEFAULT_PACK={
+ package_type:'MEASYMATE_CBI_RUNTIME_PACK',
+ runtime_family:'MEasyMate CBI',
+ cbi_runtime_version:'1.0.0',
+ semantic_contract_version:'1.0',
+ state_schema_version:1,
+ domain_pack_version:'1.0.0',
+ adapter_version:'coach-js-1.1.0',
+ target:'MEasyMate Intelligence Coach',
+ created_at:'2026-09-24',
+ thresholds:{understood:0.78,dimension_match:0.62},
+ typo_aliases:[
+  ['พาท','part'],['พาร์ท','part'],['บาทมือ','บาดมือ'],['ขันน๊อต','ขันน็อต'],['น๊อต','น็อต'],['ไม่คบ','ไม่ครบ'],['ไมครบ','ไม่ครบ'],['ประกอป','ประกอบ'],['ประหกอบ','ประกอบ'],['เชค','ตรวจ'],['คิวซี','QC'],['เซนเซอ','sensor'],['ฟิกเจอร์','fixture'],['ไลน','line'],['สเตชั่น','station']
+ ],
+ intent_aliases:{
+  correction:['แก้เป็น','แก้ไขเป็น','หมายถึง','ที่ถูกคือ','จริงๆ','จริง ๆ','เมื่อกี้ไม่ใช่','ขอแก้'],
+  clarify:['ไม่เข้าใจ','หมายความว่า','ถามว่าอะไร','ช่วยอธิบาย','ขยายความ','ยังไง','อย่างไรครับ'],
+  confirm:['ใช่','ถูกต้อง','โอเค','ครับใช่','ยืนยัน'],
+  deny:['ไม่ใช่','ไม่ถูก','ไม่ใช่ครับ','ผิด'],
+  unknown:['ยังไม่รู้','ไม่รู้','ไม่ทราบ','ยังไม่มีข้อมูล','ไม่แน่ใจ','unknown']
+ },
+ reference_terms:{
+  first:['อันแรก','ข้อแรก','คำตอบแรก'],second:['อันที่สอง','ข้อที่สอง','คำตอบที่สอง'],last:['อันสุดท้าย','ข้อล่าสุด','คำตอบล่าสุด'],active:['อันนั้น','อันเดิม','อันเมื่อกี้','เมื่อกี้','คำตอบก่อนหน้า','ข้อเดิม']
+ },
+ clarification:{language:'ข้อความนี้อาจพิมพ์คลาดเคลื่อนมาก Coach ยังไม่ควรเดา ช่วยพิมพ์ใหม่สั้น ๆ อีกครั้งครับ',reference:'หมายถึงคำตอบหรือรายการไหนครับ',dimension:'คำตอบนี้ดูเป็นคนละเรื่องกับคำถามปัจจุบัน ช่วยตอบเฉพาะประเด็นที่ Coach กำลังถามอีกครั้งครับ',generic:'ขอรายละเอียดเพิ่มอีกนิดครับ'},
+ integrity:{fnv1a:''}
+};
+
+let current=null;
+let lastEval=null;
+let lastCBI=null;
+let settings={cbiEnabled:true,cbiDebug:false,aiEnabled:false,aiAuto:true,hubUrl:'',hubProfile:'coach-semantic-assist',friendlyGate:true};
+settings.cbiEnabled=true; // Team Clean: CBI-first is fixed on
+settings.cbiDebug=false; settings.aiEnabled=false; document.body.classList.remove('developer-mode');
+let profile={};
+
+function $(id){return document.getElementById(id)}
+function nowISO(){return new Date().toISOString()}
+function today(){return new Date().toISOString().slice(0,10)}
+function uid(){return 'IC-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).slice(2,6).toUpperCase()}
+function loadJSON(k,f){try{const v=localStorage.getItem(k);return v?JSON.parse(v):f}catch(e){return f}}
+function saveJSON(k,v){localStorage.setItem(k,JSON.stringify(v))}
+function esc(s=''){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+function stageIndex(id){return STAGES.findIndex(s=>s.id===id)}
+function currentStage(){return STAGES[current?.stageIndex||0]}
+function major(v){const n=parseInt(String(v||'').split('.')[0],10);return Number.isFinite(n)?n:null}
+function fnv1a(str=''){let h=0x811c9dc5;for(let i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,0x01000193)>>>0}return h.toString(16).padStart(8,'0')}
+function cbiPayload(pack){const x=JSON.parse(JSON.stringify(pack||{}));delete x.integrity;return JSON.stringify(x)}
+function cbiExpectedChecksum(pack){return fnv1a(cbiPayload(pack))}
+function cbiPackWithIntegrity(pack){const x=JSON.parse(JSON.stringify(pack));x.integrity={fnv1a:cbiExpectedChecksum(x)};return x}
+function cbiValidatePack(pack,{checkChecksum=true}={}){
+ if(!pack||typeof pack!=='object')return{ok:false,reason:'INVALID_PACK'};
+ if(pack.package_type!=='MEASYMATE_CBI_RUNTIME_PACK')return{ok:false,reason:'INVALID_PACKAGE_TYPE'};
+ if(pack.target!=='MEasyMate Intelligence Coach')return{ok:false,reason:'WRONG_TARGET'};
+ if(major(pack.cbi_runtime_version)!==1||major(pack.semantic_contract_version)!==1||Number(pack.state_schema_version)!==1||major(pack.domain_pack_version)!==1)return{ok:false,reason:'INCOMPATIBLE_CONTRACT'};
+ if(!pack.intent_aliases||!pack.reference_terms||!pack.thresholds)return{ok:false,reason:'PACK_FIELDS_MISSING'};
+ if(checkChecksum&&pack.integrity?.fnv1a&&pack.integrity.fnv1a!==cbiExpectedChecksum(pack))return{ok:false,reason:'CHECKSUM_MISMATCH'};
+ return{ok:true,reason:'OK'};
+}
+function activeCBIPack(){const stored=loadJSON(CBI_ACTIVE_KEY,null);if(stored&&cbiValidatePack(stored).ok)return stored;const d=cbiPackWithIntegrity(CBI_DEFAULT_PACK);saveJSON(CBI_ACTIVE_KEY,d);return d}
+function cbiAliasNormalize(text='',pack=activeCBIPack()){
+ const original=String(text||'');let out=normalize(original),corrections=[];
+ for(const pair of (pack.typo_aliases||[])){const bad=String(pair?.[0]||''),good=String(pair?.[1]||'');if(!bad||!good)continue;const re=new RegExp(bad.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi');if(re.test(out)){out=out.replace(re,good);corrections.push(`${bad} → ${good}`)}}
+ return{original,normalized:out,corrections:[...new Set(corrections)]};
+}
+function cbiMatchAny(text,arr=[]){const n=normalize(text).toLowerCase();return arr.some(x=>n.includes(String(x).toLowerCase()))}
+function cbiIntent(text,pack){if(cbiMatchAny(text,pack.intent_aliases.unknown))return'unknown';if(cbiMatchAny(text,pack.intent_aliases.correction))return'correction';if(cbiMatchAny(text,pack.intent_aliases.clarify))return'clarify';if(cbiMatchAny(text,pack.intent_aliases.confirm))return'confirm';if(cbiMatchAny(text,pack.intent_aliases.deny))return'deny';return'answer'}
+function cbiReferenceRequested(text,pack){return Object.values(pack.reference_terms||{}).flat().some(x=>normalize(text).includes(x))}
+function cbiRecentRefs(){if(!current)return[];return STAGES.map(s=>({reference_id:s.id,reference_type:'coach_stage',label:s.th,answer:current.entries?.[s.id]?.originalAnswer||current.entries?.[s.id]?.answer||''})).filter(x=>normalize(x.answer))}
+function cbiResolveReference(text,pack){const refs=cbiRecentRefs();if(!cbiReferenceRequested(text,pack))return{status:'NO_REFERENCE',reference_id:null};if(!refs.length)return{status:'NEEDS_CLARIFICATION',reference_id:null,ambiguity:'no_reference_context'};const groups=pack.reference_terms||{};if(cbiMatchAny(text,groups.first))return{status:'RESOLVED',reference_id:refs[0].reference_id};if(cbiMatchAny(text,groups.second))return refs.length>=2?{status:'RESOLVED',reference_id:refs[1].reference_id}:{status:'NEEDS_CLARIFICATION',reference_id:null,ambiguity:'unresolved_reference'};if(cbiMatchAny(text,groups.last))return{status:'RESOLVED',reference_id:refs[refs.length-1].reference_id};if(cbiMatchAny(text,groups.active))return{status:'RESOLVED',reference_id:refs[refs.length-1].reference_id};return{status:'NEEDS_CLARIFICATION',reference_id:null,ambiguity:'ambiguous_reference'}
+}
+function cbiExtractCorrection(text){const n=normalize(text);const m=n.match(/(?:แก้(?:ไข)?เป็น|หมายถึง|ที่ถูกคือ|ขอแก้(?:เป็น)?|จริง\s*ๆ(?:คือ)?)[\s:：-]*(.+)$/i);return m?normalize(m[1]):''}
+function cbiAnswerType(text,stageId){const n=normalize(text);if(isUnknown(n))return'unknown';if(evidenceAnswerEnough(n))return'evidence_result';if(evidenceSourceOnly(n))return'evidence_source';if(/น่าจะ|คิดว่า|คาดว่า|อาจ|สงสัย|สมมติ/.test(n))return'hypothesis';if(stageId==='protect'&&containmentAnswerEnough(n))return'containment_action';if(countCausal(n)>0)return'cause';if(wordishLen(n)>=8)return'fact_or_answer';return'unknown'}
+function cbiProcess(raw,stageId,opts={}){
+ const started=performance.now(),pack=activeCBIPack(),valid=cbiValidatePack(pack);if(!valid.ok)return{status:'INVALID_RUNTIME',confidence:0,band:'LOW',reason:valid.reason,latency_ms:Math.round(performance.now()-started)};
+ const lang=cbiAliasNormalize(raw,pack),intent=cbiIntent(lang.normalized,pack),guard=languageGuard(lang.normalized),explicitCorrection=intent==='correction'?cbiExtractCorrection(lang.normalized):'',reference=explicitCorrection?{status:'NO_REFERENCE',reference_id:null}:cbiResolveReference(lang.normalized,pack),qDim=questionDimension(QUESTIONS[stageId]?.q||'',stageId),aDim=answerDimension(lang.normalized),answerType=cbiAnswerType(lang.normalized,stageId);
+ let meaning=lang.normalized,contextAction='CARRY',ambiguity=[],clarification='',advisory='',confidence=.76;
+ if(intent==='correction'){const c=cbiExtractCorrection(lang.normalized);if(c){meaning=c;contextAction='CORRECTION';confidence=.92}else confidence=.7}
+ if(intent==='unknown')confidence=.98;
+ if(intent==='clarify')confidence=.92;
+ if(intent==='confirm'||intent==='deny')confidence=.9;
+ const dimMatch=(qDim===aDim)||(qDim==='what'&&aDim!=='unknown')||((qDim==='how'||qDim==='why')&&aDim==='why/how')||(qDim==='containment'&&answerType==='containment_action')||(qDim==='evidence'&&['evidence_result','evidence_source'].includes(answerType));
+ if(dimMatch)confidence=Math.max(confidence,.88);
+ else if(!['unknown','clarify','correction','confirm','deny'].includes(intent)){contextAction='DIFFERENT_DIMENSION';confidence=Math.max(confidence,.82);advisory=pack.clarification.dimension}
+ if(wordishLen(meaning)>=12)confidence=Math.max(confidence,.84);
+ if(guard.status==='corrupt'||guard.status==='suspect'){confidence=.12;ambiguity.push('language_unclear');clarification=pack.clarification.language}
+ if(reference.status==='NEEDS_CLARIFICATION'){confidence=.15;ambiguity.push(reference.ambiguity||'ambiguous_reference');clarification=pack.clarification.reference}
+ if(stageId==='evidence'&&answerType==='evidence_source'){confidence=Math.max(confidence,.88);advisory='CBI เข้าใจว่าเป็นแหล่ง/วิธีตรวจแล้ว ส่วนผลที่พบให้ Coach ถามต่อครับ'}
+ confidence=Math.max(0,Math.min(1,confidence));
+ let status='UNDERSTOOD';
+ if(ambiguity.length)status='NEEDS_CLARIFICATION';
+ else if(lang.corrections.length&&!opts.acceptCorrection)status='NEEDS_CONFIRMATION';
+ else if(wordishLen(meaning)<3&&!['unknown','confirm','deny','clarify'].includes(intent)){status='NEEDS_CLARIFICATION';clarification=pack.clarification.generic;confidence=.35}
+ const band=confidence>=.78?'HIGH':confidence>=.5?'MEDIUM':'LOW';
+ return{status,intent,answerType,normalizedMeaning:meaning,corrections:lang.corrections,questionDimension:qDim,answerDimension:aDim,semanticMatch:dimMatch?1:.45,relevance:dimMatch?.95:.65,confidence,band,ambiguity,clarification,advisory,reference,contextAction,runtime_version:pack.cbi_runtime_version,adapter_version:pack.adapter_version,contract:pack.semantic_contract_version,latency_ms:Math.max(0,Math.round((performance.now()-started)*100)/100)};
+}
+function cbiFirstGate(stageId,raw,cbi,opts={}){
+ // CBI-FIRST CONTRACT: natural-language input is interpreted by CBI before Coach Core evaluates any Gate.
+ // CBI never changes the original user text and never owns Evidence/Root Cause/Action gates.
+ if(!cbi){const coreEv=evaluate(stageId,raw);return{coreEvaluated:true,semanticForCore:raw,coreEv,finalEv:coreEv}}
+ if(cbi.status==='INVALID_RUNTIME'){
+  const ev={pass:false,severity:'bad',title:'CBI Runtime ใช้งานไม่ได้',message:'CBI Runtime ไม่ผ่าน Compatibility/Integrity จึงหยุดก่อนเข้า Coach Gate เพื่อป้องกันการตีความผิด กรุณา Rollback/Reset CBI ก่อนใช้งานต่อ',signals:['CBI_RUNTIME_INVALID','FAIL_CLOSED'],classification:'Unclear',normalized:raw,qDim:questionDimension(QUESTIONS[stageId]?.q||'',stageId),aDim:answerDimension(raw),corrections:[],cbi};
+  return{coreEvaluated:false,semanticForCore:null,coreEv:null,finalEv:ev};
+ }
+ if(cbi.status==='NEEDS_CLARIFICATION'){
+  const ev={pass:false,severity:'bad',title:'Coach ยังไม่เข้าใจข้อความนี้',message:cbi.clarification||'ช่วยพิมพ์ข้อความนี้ใหม่อีกครั้งครับ',signals:['CBI_CLARIFY','CORE_NOT_EVALUATED'],classification:'Unclear',normalized:cbi.normalizedMeaning||raw,qDim:cbi.questionDimension||questionDimension(QUESTIONS[stageId]?.q||'',stageId),aDim:cbi.answerDimension||answerDimension(raw),corrections:cbi.corrections||[],cbi};
+  return{coreEvaluated:false,semanticForCore:null,coreEv:null,finalEv:ev};
+ }
+ if(cbi.status==='NEEDS_CONFIRMATION'){
+  const ev={pass:false,severity:'warn',title:'ขอยืนยันคำที่พิมพ์ก่อน',message:'CBI พอเข้าใจและมีคำที่ปรับให้ แต่จะยังไม่ส่งเข้า Coach Core จนกว่าคุณจะยืนยัน',signals:['CBI_CONFIRM_NORMALIZATION','CORE_NOT_EVALUATED'],classification:'Language normalization pending',normalized:cbi.normalizedMeaning||raw,qDim:cbi.questionDimension,aDim:cbi.answerDimension,corrections:cbi.corrections||[],cbi};
+  return{coreEvaluated:false,semanticForCore:null,coreEv:null,finalEv:ev};
+ }
+ const semantic=opts.semanticOverride??((cbi.normalizedMeaning&&cbi.intent!=='clarify')?cbi.normalizedMeaning:raw);
+ const coreEv=evaluate(stageId,semantic);coreEv.cbi=cbi;
+ return{coreEvaluated:true,semanticForCore:semantic,coreEv,finalEv:coreEv};
+}
+function cbiBench(){return loadJSON(CBI_BENCH_KEY,[])}
+function cbiRecordBenchmark(stageId,raw,coreEv,cbi,finalEv,pipeline=null){if(!cbi)return null;const row={id:'CB-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,5),at:nowISO(),case_id:current?.id||null,stage:stageId,original:raw,pipeline:'CBI_FIRST',core_evaluated:pipeline?!!pipeline.coreEvaluated:!!coreEv,semantic_for_core:pipeline?.semanticForCore??null,core_pass:coreEv?!!coreEv.pass:null,core_classification:coreEv?.classification||'',cbi_status:cbi.status,cbi_intent:cbi.intent,cbi_answer_type:cbi.answerType,cbi_confidence:cbi.confidence,cbi_band:cbi.band,cbi_meaning:cbi.normalizedMeaning,cbi_reference:cbi.reference?.status||'NO_REFERENCE',final_pass:!!finalEv.pass,latency_ms:cbi.latency_ms,verdict:null};const rows=cbiBench();rows.unshift(row);saveJSON(CBI_BENCH_KEY,rows.slice(0,1000));return row.id}
+function cbiSetVerdict(id,verdict){const rows=cbiBench(),r=rows.find(x=>x.id===id);if(r){r.verdict=verdict;r.judged_at=nowISO();saveJSON(CBI_BENCH_KEY,rows);renderCBIBenchmark();if(current)renderCBICaseStatus()}}
+function cbiStats(){const rows=cbiBench(),judged=rows.filter(x=>x.verdict),correct=judged.filter(x=>x.verdict==='correct').length,understood=rows.filter(x=>x.cbi_status==='UNDERSTOOD').length,clarify=rows.filter(x=>x.cbi_status==='NEEDS_CLARIFICATION').length,refs=rows.filter(x=>x.cbi_reference==='RESOLVED').length,avg=rows.length?rows.reduce((a,x)=>a+Number(x.latency_ms||0),0)/rows.length:0;return{total:rows.length,judged:judged.length,correct,accuracy:judged.length?correct/judged.length:0,understood,clarify,refs,avg}}
+function renderCBIBenchmark(){const el=$('cbiBenchmarkSummary');if(!el)return;const m=cbiStats();el.innerHTML=`<div class="metricgrid"><div class="metric"><b>${m.total}</b><span>CBI turns</span></div><div class="metric"><b>${m.understood}</b><span>UNDERSTOOD</span></div><div class="metric"><b>${m.clarify}</b><span>Clarification</span></div><div class="metric"><b>${m.judged?Math.round(m.accuracy*100)+'%':'—'}</b><span>Accuracy จาก ${m.judged} ที่ยืนยัน</span></div></div><div class="hint" style="margin-top:7px">Reference resolved ${m.refs} • Avg local latency ${m.avg.toFixed(2)} ms</div>`}
+function renderCBICaseStatus(){const el=$('cbiCaseStatus');if(!el)return;const p=activeCBIPack(),ok=cbiValidatePack(p),c=lastCBI;let h=`<div class="tag ${ok.ok?'good':'bad'}">CBI ${esc(p.cbi_runtime_version)} • Contract ${esc(p.semantic_contract_version)} • ${ok.ok?'Compatible':'Invalid'}</div>`;if(c)h+=`<div class="line" style="margin-top:7px;font-size:11px;color:var(--muted)">ล่าสุด: <b>${esc(c.status)}</b> • ${esc(c.intent||'—')} • confidence ${Math.round(Number(c.confidence||0)*100)}% • ${esc(c.latency_ms)} ms</div>`;el.innerHTML=h}
+function renderCBIRuntime(){const el=$('cbiRuntimeInfo');if(!el)return;const p=activeCBIPack(),v=cbiValidatePack(p),back=loadJSON(CBI_BACKUP_KEY,null);el.innerHTML=`<b>${esc(p.runtime_family)} ${esc(p.cbi_runtime_version)}</b> • Adapter ${esc(p.adapter_version)}<br><span class="hint">Contract ${esc(p.semantic_contract_version)} • Domain Pack ${esc(p.domain_pack_version)} • Checksum ${esc(p.integrity?.fnv1a||'—')} • ${v.ok?'Compatible':'ERROR '+v.reason}${back?' • Rollback พร้อม':''}</span>`}
+function cbiExport(){downloadJSON(`MEasyMate_CBI_RuntimePack_${activeCBIPack().cbi_runtime_version}_${today()}.json`,activeCBIPack())}
+function cbiInstallPackFile(file){const r=new FileReader();r.onload=()=>{try{const p=JSON.parse(r.result),v=cbiValidatePack(p);if(!v.ok)throw Error(v.reason);const old=activeCBIPack();if(!confirm(`ติดตั้ง CBI Runtime Pack ${p.cbi_runtime_version} / Adapter ${p.adapter_version}?\nระบบจะสำรองรุ่นเดิม ${old.cbi_runtime_version} ก่อน`))return;saveJSON(CBI_BACKUP_KEY,old);saveJSON(CBI_ACTIVE_KEY,p);settings.cbiEnabled=true;saveJSON(SETTINGS_KEY,settings);lastCBI=null;renderSettings();if(current)renderCoach();const ar=runAutoTests('quick');$('cbiUpdateResult').textContent=`ติดตั้งสำเร็จ: CBI ${p.cbi_runtime_version} / ${p.adapter_version} • Quick Regression ${ar.passed}/${ar.total} ${ar.failed?'BLOCKED':'PASS'}`;}catch(e){$('cbiUpdateResult').textContent='ติดตั้งไม่สำเร็จ: '+e.message}};r.readAsText(file)}
+function cbiRollback(){const b=loadJSON(CBI_BACKUP_KEY,null);if(!b)return alert('ยังไม่มี CBI Backup สำหรับ Rollback');const v=cbiValidatePack(b);if(!v.ok)return alert('CBI Backup ไม่ผ่าน Compatibility: '+v.reason);const cur=activeCBIPack();if(!confirm(`Rollback จาก ${cur.cbi_runtime_version} ไป ${b.cbi_runtime_version}?`))return;saveJSON(CBI_ACTIVE_KEY,b);saveJSON(CBI_BACKUP_KEY,cur);lastCBI=null;renderSettings();if(current)renderCoach();runAutoTests('quick')}
+function cbiResetDefault(){if(!confirm('กลับไปใช้ CBI Default Pack ที่มากับแอป? รุ่นปัจจุบันจะถูกเก็บไว้เป็น Rollback'))return;saveJSON(CBI_BACKUP_KEY,activeCBIPack());saveJSON(CBI_ACTIVE_KEY,cbiPackWithIntegrity(CBI_DEFAULT_PACK));lastCBI=null;renderSettings();if(current)renderCoach();runAutoTests('quick')}
+function cbiSelfTest(){const saved=current;current={id:'SELFTEST',entries:Object.fromEntries(STAGES.map(s=>[s.id,{answer:''}])),stageIndex:0};const tests=[['protect','สยำี้้/วว','NEEDS_CLARIFICATION'],['protect','คัดแยกงาน NG ไว้ก่อน','UNDERSTOOD'],['evidence','ตรวจกล้องแล้วพบว่าขั้นตอนใส่ Part ถูกข้าม','UNDERSTOOD'],['evidence','ดูกล้อง','UNDERSTOOD'],['fact','ยังไม่รู้','UNDERSTOOD'],['occurrence','เพราะ fixture ไม่มีตัวกำหนดตำแหน่งจึงประกอบเอียง','UNDERSTOOD'],['fact','เมื่อกี้ไม่ใช่ ขอแก้เป็นพบ NG 12 ชิ้น','UNDERSTOOD'],['fact','อันเมื่อกี้','NEEDS_CLARIFICATION'],['problem','ปกติมี E-ring ใส่อยู่','UNDERSTOOD'],['fact','ขันน๊อตไม่ครบ','NEEDS_CONFIRMATION']];let pass=0,details=[];for(const [stage,msg,want] of tests){const got=cbiProcess(msg,stage);const ok=got.status===want;pass+=ok?1:0;details.push(`${ok?'PASS':'FAIL'} ${stage}: ${msg} → ${got.status}`)}const bad=cbiProcess('สยำี้้/วว','protect'),badPipe=cbiFirstGate('protect','สยำี้้/วว',bad),badOk=!badPipe.coreEvaluated&&!badPipe.finalEv.pass;pass+=badOk?1:0;details.push(`${badOk?'PASS':'FAIL'} pipeline: unclear → Core ${badPipe.coreEvaluated?'CALLED':'SKIPPED'}`);const good=cbiProcess('คัดแยกงาน NG ไว้ก่อน','protect'),goodPipe=cbiFirstGate('protect','คัดแยกงาน NG ไว้ก่อน',good),goodOk=goodPipe.coreEvaluated;pass+=goodOk?1:0;details.push(`${goodOk?'PASS':'FAIL'} pipeline: understood → Core ${goodPipe.coreEvaluated?'CALLED':'SKIPPED'}`);const total=tests.length+2;current=saved;$('cbiUpdateResult').textContent=`CBI-First Self-test ${pass}/${total} ${pass===total?'PASS':'CHECK'} • `+details.join(' | ');return{pass,total,details}}
+
+function makeAutoTestCase(){
+ const entries={};STAGES.forEach(x=>entries[x.id]={answer:'',originalAnswer:'',status:'locked',feedback:'',attempts:0});entries.problem.status='current';
+ return{id:'AUTO-TEST',version:VERSION,domain:'quality',type:'Quality',process:'Assembly',date:today(),stageIndex:0,entries,cbiState:{turn:0,state_version:0},signals:{}};
+}
+function cloneObj(x){return JSON.parse(JSON.stringify(x))}
+function renderAutoTest(result=loadJSON(AUTO_TEST_KEY,null)){
+ const sum=$('autoTestSummary'),details=$('autoTestDetails');if(!sum||!details)return;
+ if(!result){sum.innerHTML='<div class="empty">ยังไม่มีผล Auto Test</div>';details.innerHTML='';return}
+ const ok=result.failed===0;
+ sum.innerHTML=`<div class="metricgrid"><div class="metric"><b>${result.passed}/${result.total}</b><span>PASS</span></div><div class="metric"><b>${result.failed}</b><span>FAIL</span></div><div class="metric"><b>${result.duration_ms.toFixed(1)} ms</b><span>เวลา</span></div><div class="metric"><b>${ok?'PASS':'BLOCKED'}</b><span>Regression Gate</span></div></div><div class="hint" style="margin-top:7px">${esc(result.mode.toUpperCase())} • ${esc(result.at)} • App ${esc(result.app_version)} • CBI ${esc(result.cbi_version)}</div>`;
+ const cats=Object.entries(result.categories||{}).map(([k,v])=>`<span class="tag ${v.failed?'bad':'good'}">${esc(k)} ${v.passed}/${v.total}</span>`).join(' ');
+ const fails=(result.results||[]).filter(x=>!x.ok);
+ details.innerHTML=`<div style="margin-bottom:7px">${cats}</div>${fails.length?`<div class="feedback bad"><b>FAIL ${fails.length} ข้อ</b>${fails.map(x=>`<div class="line">• ${esc(x.category)} — ${esc(x.name)}${x.actual?` → ${esc(x.actual)}`:''}</div>`).join('')}</div>`:`<div class="feedback good"><b>Auto Test ผ่านทั้งหมด</b><div class="line">ไม่พบ regression ในชุดทดสอบ ${result.total} ข้อ</div></div>`}<details style="margin-top:8px"><summary>ดูรายละเอียดทุก Test</summary><div style="margin-top:7px;max-height:320px;overflow:auto">${(result.results||[]).map(x=>`<div class="line" style="padding:4px 0;border-bottom:1px solid var(--line)">${x.ok?'✅':'❌'} <b>${esc(x.category)}</b> — ${esc(x.name)}${x.actual?` <span class="hint">(${esc(x.actual)})</span>`:''}</div>`).join('')}</div></details>`;
+}
+function runAutoTests(mode='full'){
+ const started=performance.now(),savedCurrent=current,savedLast=lastCBI,results=[];
+ const add=(category,name,fn,actualFn=null)=>{let ok=false,actual='';try{const v=fn();ok=!!v;if(actualFn)actual=String(actualFn())}catch(e){ok=false;actual='ERROR: '+e.message}results.push({category,name,ok,actual});};
+ const fixture=makeAutoTestCase();current=fixture;
+ try{
+   // QUICK / CBI SEMANTIC
+   const sem=[
+    ['ข้อความเสียต้องถาม','protect','สยำี้้/วว','NEEDS_CLARIFICATION'],
+    ['Containment ชัดเจน','protect','คัดแยกงาน NG ไว้ก่อน','UNDERSTOOD'],
+    ['Evidence source เข้าใจ','evidence','ดูกล้อง','UNDERSTOOD'],
+    ['Evidence result เข้าใจ','evidence','ตรวจกล้องแล้วพบว่าขั้นตอนใส่ Part ถูกข้าม','UNDERSTOOD'],
+    ['Unknown เข้าใจโดยไม่เดา','fact','ยังไม่รู้','UNDERSTOOD'],
+    ['Correction เข้าใจ','fact','เมื่อกี้ไม่ใช่ ขอแก้เป็นพบ NG 12 ชิ้น','UNDERSTOOD'],
+    ['Reference ไม่มีบริบทต้องถาม','fact','อันเมื่อกี้','NEEDS_CLARIFICATION'],
+    ['ข้อความถูกแม้คนละมิติไม่ควรถาม','problem','ปกติมี E-ring ใส่อยู่','UNDERSTOOD'],
+    ['Typo ที่แก้ได้ต้องยืนยัน','fact','ขันน๊อตไม่ครบ','NEEDS_CONFIRMATION'],
+    ['คำที่ถูกต้องต้องไม่ถูกบังคับยืนยัน','fact','ขันน็อตไม่ครบ','UNDERSTOOD']
+   ];
+   sem.forEach(([name,stage,msg,want])=>{let got;add('CBI Semantic',name,()=>{got=cbiProcess(msg,stage);return got.status===want},()=>got?.status||'')});
+   let corr;add('CBI Semantic','Correction ต้องสกัดความหมายใหม่',()=>{corr=cbiProcess('เมื่อกี้ไม่ใช่ ขอแก้เป็นพบ NG 12 ชิ้น','fact');return corr.normalizedMeaning==='พบ NG 12 ชิ้น'},()=>corr?.normalizedMeaning||'');
+   let diff;add('CBI Semantic','Dimension mismatch เป็น advisory ไม่ใช่ clarification',()=>{diff=cbiProcess('ปกติมี E-ring ใส่อยู่','protect');return diff.status==='UNDERSTOOD'&&diff.contextAction==='DIFFERENT_DIMENSION'},()=>`${diff?.status}/${diff?.contextAction}`);
+
+   // CBI-FIRST PIPELINE
+   let p1;add('CBI-First Pipeline','Unclear ต้องหยุดก่อน Core',()=>{const c=cbiProcess('สยำี้้/วว','protect');p1=cbiFirstGate('protect','สยำี้้/วว',c);return !p1.coreEvaluated&&!p1.finalEv.pass},()=>`core=${p1?.coreEvaluated}`);
+   let p2;add('CBI-First Pipeline','Understood ต้องเรียก Core',()=>{const c=cbiProcess('คัดแยกงาน NG ไว้ก่อน','protect');p2=cbiFirstGate('protect','คัดแยกงาน NG ไว้ก่อน',c);return p2.coreEvaluated&&p2.finalEv.pass},()=>`core=${p2?.coreEvaluated},pass=${p2?.finalEv?.pass}`);
+   let p3;add('CBI-First Pipeline','Typo pending ต้องไม่เข้า Core',()=>{const c=cbiProcess('ขันน๊อตไม่ครบ','fact');p3=cbiFirstGate('fact','ขันน๊อตไม่ครบ',c);return !p3.coreEvaluated&&p3.finalEv.signals.includes('CBI_CONFIRM_NORMALIZATION')},()=>`core=${p3?.coreEvaluated}`);
+   let p4;add('CBI-First Pipeline','Evidence source เข้า Core แต่ Evidence Gate ยังไม่ผ่าน',()=>{const c=cbiProcess('ดูกล้อง','evidence');p4=cbiFirstGate('evidence','ดูกล้อง',c);return p4.coreEvaluated&&!p4.finalEv.pass},()=>`core=${p4?.coreEvaluated},pass=${p4?.finalEv?.pass}`);
+   let p5;add('CBI-First Pipeline','Unknown เข้า Core แต่ Gate ไม่ผ่านและไม่เดา',()=>{const c=cbiProcess('ยังไม่รู้','fact');p5=cbiFirstGate('fact','ยังไม่รู้',c);return p5.coreEvaluated&&!p5.finalEv.pass&&p5.finalEv.signals.includes('UNKNOWN')},()=>`core=${p5?.coreEvaluated}`);
+   let p6;add('CBI-First Pipeline','Invalid Runtime ต้อง Fail-Closed',()=>{p6=cbiFirstGate('fact','พบ NG 12 ชิ้น',{status:'INVALID_RUNTIME',reason:'CHECKSUM_MISMATCH'});return !p6.coreEvaluated&&!p6.finalEv.pass&&p6.finalEv.signals.includes('FAIL_CLOSED')},()=>`core=${p6?.coreEvaluated}`);
+
+   // LANGUAGE GUARD
+   let lg;add('Language Guard','ข้อความปกติไม่ควรถูกปฏิเสธ',()=>{lg=languageGuard('พบ NG 12 ชิ้นที่สถานี 3');return lg.status==='ok'},()=>lg?.status||'');
+   add('Language Guard','วรรณยุกต์ซ้ำผิดปกติต้องถูกจับ',()=>languageGuard('สยำี้้/วว').status!=='ok');
+   let nl;add('Language Guard','Normalizer แก้ ขันน๊อต → ขันน็อต',()=>{nl=normalizeLanguage('ขันน๊อตไม่ครบ');return nl.normalized.includes('ขันน็อต')&&nl.corrections.length>0},()=>nl?.normalized||'');
+   add('Language Guard','ข้อความสั้นมี separator แปลกต้องเตือน',()=>languageGuard('abc/xyz').status==='suspect');
+   add('Language Guard','ข้อความต้นฉบับต้องไม่ถูกเขียนทับ',()=>{const raw='ขันน๊อตไม่ครบ';const c=cbiProcess(raw,'fact');return raw==='ขันน๊อตไม่ครบ'&&c.normalizedMeaning!==''});
+
+   // FRIENDLY GATE / TEAM USABILITY
+   let fg1;add('Friendly Gate','Problem ตอบทีละส่วน: Normal ก่อน แล้ว Actual ต้องรวมจนผ่าน',()=>{current=makeAutoTestCase();current.entries.problem.answer='ปกติควรมี E-ring';const c=cbiProcess('เกิดจริง E-ring ไม่มี','problem');const merged=mergeStageAnswer(current.entries.problem.answer,c.normalizedMeaning,c.intent);fg1=evaluate('problem',merged);return fg1.pass===true},()=>fg1?.message||'');
+   let fg2;add('Friendly Gate','Occurrence ภาษาธรรมชาติไม่ต้องมี เพราะ-จึง แบบตายตัว',()=>{current=makeAutoTestCase();fg2=evaluate('occurrence','fixture ไม่มี stopper ทำให้ Part วางเอียงได้');return fg2.pass===true},()=>fg2?.message||'');
+   let fg3;add('Friendly Gate','Action ไม่บังคับ Owner + Verify ในประโยคเดียว',()=>{current=makeAutoTestCase();fg3=evaluate('action','เพิ่ม stopper ที่ fixture ป้องกันวาง Part เอียง');return fg3.pass===true},()=>fg3?.message||'');
+   let fg4;add('Friendly Gate','Human Error อย่างเดียวต้องยังไม่ผ่าน',()=>{current=makeAutoTestCase();fg4=evaluate('occurrence','พนักงานลืม');return fg4.pass===false&&fg4.signals.includes('HUMAN_ERROR_CHALLENGE')},()=>fg4?.message||'');
+
+   if(mode==='full'){
+     // COACH GATES
+     const gate=(name,stage,msg,want,prep)=>{let ev;add('Coach Gates',name,()=>{current=makeAutoTestCase();if(prep)prep(current);ev=evaluate(stage,msg);return ev.pass===want},()=>`${ev?.pass?'PASS':'FAIL'}:${ev?.classification||''}`)};
+     gate('Problem ครบ Normal + Actual ต้องผ่าน','problem','ปกติควรมี E-ring อยู่ แต่เกิดจริงพบว่า E-ring ไม่มีที่ชิ้นงาน','true'===String(true));
+     gate('Problem มีแค่ Normal ต้องไม่ผ่าน','problem','ปกติควรมี E-ring อยู่',false);
+     gate('Problem มีแค่ Actual ต้องไม่ผ่าน','problem','พบว่า E-ring ไม่มีที่ชิ้นงาน',false);
+     gate('Containment ชัดเจนต้องผ่าน','protect','คัดแยกงาน NG และกักงานไว้ก่อน',true);
+     gate('แจ้งหัวหน้าอย่างเดียวไม่ใช่ Containment','protect','แจ้งหัวหน้าแล้วครับ',false);
+     gate('Fact ตรวจย้อนกลับได้ต้องผ่าน','fact','ตรวจบันทึกแล้วพบ NG จำนวน 12 ชิ้นที่สถานี 3',true);
+     gate('Fact ที่มี น่าจะ ต้องไม่ผ่าน','fact','น่าจะเกิดจากพนักงานรีบประกอบงาน',false);
+     gate('Evidence source อย่างเดียวต้องไม่ผ่าน','evidence','ดูกล้อง',false);
+     gate('Evidence source + result ต้องผ่าน','evidence','ตรวจกล้องแล้วพบว่าขั้นตอนใส่ Part ถูกข้าม',true);
+     gate('Evidence แบบ measurement ต้องผ่าน','evidence','วัดระยะได้ 3.2 mm ที่ชิ้นงาน NG',true);
+     gate('Change comparison ต้องผ่าน','change','ก่อนเปลี่ยนรุ่นไม่เกิด แต่หลังเปลี่ยนรุ่นพบ NG ต่อเนื่อง',true);
+     gate('Hypothesis candidate ต้องผ่านในฐานะสมมติฐาน','hypothesis','สมมติฐานคือ fixture อาจไม่มีตัวกำหนดตำแหน่ง',true);
+     gate('Occurrence causal systemic ต้องผ่าน','occurrence','เพราะ fixture ไม่มีตัวกำหนดตำแหน่งจึงทำให้ประกอบเอียงและเกิด NG',true);
+     gate('Occurrence จบ Human Error ต้องไม่ผ่าน','occurrence','เพราะพนักงานลืมจึงประกอบผิด',false);
+     gate('Escape มี Control + causal link ต้องผ่าน','escape','เพราะจุดตรวจ QC ไม่มี sensor ตรวจจับ จึงไม่สามารถดักงาน NG ก่อนส่งต่อได้',true);
+     gate('Escape ไม่ระบุ Control ต้องไม่ผ่าน','escape','เพราะงานหลุดไปขั้นตอนถัดไปจึงพบที่ปลายไลน์',false);
+     gate('Root มี Evidence + systemic causal chain ต้องผ่าน','root','เพราะ fixture ไม่มีตัวกำหนดตำแหน่งจึงทำให้ชิ้นงานวางเอียงและเกิด NG ซ้ำได้',true,c=>c.entries.evidence.status='done');
+     gate('Root ไม่มี Evidence ต้องไม่ผ่าน','root','เพราะ fixture ไม่มีตัวกำหนดตำแหน่งจึงทำให้ชิ้นงานวางเอียงและเกิด NG ซ้ำได้',false);
+     gate('Root จบ Human Error ต้องไม่ผ่าน','root','เพราะพนักงานลืมและไม่ระวังจึงเกิดปัญหาซ้ำ',false,c=>c.entries.evidence.status='done');
+     gate('Action มี Owner + Verify ต้องผ่าน','action','ให้ PE รับผิดชอบติดตั้ง poka-yoke และตรวจผล NG ทุกวันเป็นเวลา 2 สัปดาห์',true);
+     gate('Action ไม่บังคับ Owner ในประโยคเดียว','action','ติดตั้ง poka-yoke และตรวจผล NG ทุกวันเป็นเวลา 2 สัปดาห์',true);
+     gate('Verify มี metric ต้องผ่าน','verify','ติดตาม 2 สัปดาห์ เป้าหมาย NG = 0 ชิ้น และเทียบก่อนหลัง',true);
+     gate('Verify คลุมเครือต้องไม่ผ่าน','verify','ติดตามดูว่าดีขึ้นหรือไม่',false);
+     gate('Prevent ระบุการขยายผลต้องผ่าน','prevent','อัปเดต WI และขยาย poka-yoke ไปยังไลน์ที่ใช้ fixture แบบเดียวกัน',true);
+     gate('Learning reflection ต้องผ่าน','learn','ครั้งนี้ต้องเก็บ Evidence ก่อนสรุปสาเหตุ',true);
+
+     // RUNTIME INTEGRITY
+     let pack=activeCBIPack();add('Runtime Integrity','Active Runtime Pack ต้อง Valid',()=>cbiValidatePack(pack).ok);
+     add('Runtime Integrity','Runtime major V2 ต้อง Reject',()=>{const x=cloneObj(pack);x.cbi_runtime_version='2.0.0';x.integrity={fnv1a:cbiExpectedChecksum(x)};return cbiValidatePack(x).reason==='INCOMPATIBLE_CONTRACT'});
+     add('Runtime Integrity','Semantic Contract V2 ต้อง Reject',()=>{const x=cloneObj(pack);x.semantic_contract_version='2.0';x.integrity={fnv1a:cbiExpectedChecksum(x)};return cbiValidatePack(x).reason==='INCOMPATIBLE_CONTRACT'});
+     add('Runtime Integrity','State Schema V2 ต้อง Reject',()=>{const x=cloneObj(pack);x.state_schema_version=2;x.integrity={fnv1a:cbiExpectedChecksum(x)};return cbiValidatePack(x).reason==='INCOMPATIBLE_CONTRACT'});
+     add('Runtime Integrity','Wrong target ต้อง Reject',()=>{const x=cloneObj(pack);x.target='Other App';x.integrity={fnv1a:cbiExpectedChecksum(x)};return cbiValidatePack(x).reason==='WRONG_TARGET'});
+     add('Runtime Integrity','Tampered pack checksum ต้อง Reject',()=>{const x=cloneObj(pack);x.thresholds=cloneObj(x.thresholds||{});x.thresholds.high=.123;return cbiValidatePack(x).reason==='CHECKSUM_MISMATCH'});
+
+     // REFERENCE RESOLUTION
+     current=makeAutoTestCase();current.entries.problem.answer='ปัญหา E-ring ไม่มี';current.entries.protect.answer='คัดแยกงาน';current.entries.fact.answer='พบ NG 12 ชิ้น';
+     let rr;add('Reference','อันแรก → Problem',()=>{rr=cbiProcess('อันแรก','fact');return rr.reference.status==='RESOLVED'&&rr.reference.reference_id==='problem'},()=>rr?.reference?.reference_id||'');
+     add('Reference','อันที่สอง → Protect',()=>{rr=cbiProcess('อันที่สอง','fact');return rr.reference.status==='RESOLVED'&&rr.reference.reference_id==='protect'},()=>rr?.reference?.reference_id||'');
+     add('Reference','อันสุดท้าย → Fact',()=>{rr=cbiProcess('อันสุดท้าย','fact');return rr.reference.status==='RESOLVED'&&rr.reference.reference_id==='fact'},()=>rr?.reference?.reference_id||'');
+     add('Reference','อันนั้น → Active/ล่าสุด',()=>{rr=cbiProcess('อันนั้น','fact');return rr.reference.status==='RESOLVED'&&rr.reference.reference_id==='fact'},()=>rr?.reference?.reference_id||'');
+
+     // AUTHORITY / NON-MUTATION
+     current=makeAutoTestCase();current.entries.root.answer='ROOT ORIGINAL';const before=JSON.stringify(current.entries.root);
+     add('Authority Safety','CBI process ต้องไม่แก้ Root record',()=>{cbiProcess('เพราะ fixture ไม่มีตัวกำหนดตำแหน่ง','occurrence');return JSON.stringify(current.entries.root)===before});
+     add('Authority Safety','CBI semantic result ต้องไม่มี Gate pass authority',()=>{const c=cbiProcess('คัดแยกงาน NG ไว้ก่อน','protect');return !Object.prototype.hasOwnProperty.call(c,'pass')&&!Object.prototype.hasOwnProperty.call(c,'rootCause')});
+   }
+ } finally {current=savedCurrent;lastCBI=savedLast}
+ const duration=performance.now()-started,passed=results.filter(x=>x.ok).length,failed=results.length-passed,categories={};
+ results.forEach(x=>{const c=categories[x.category]||(categories[x.category]={total:0,passed:0,failed:0});c.total++;x.ok?c.passed++:c.failed++});
+ const result={schema:'MEASYMATE_IC_AUTO_TEST_V1',at:nowISO(),mode,app_version:VERSION,cbi_version:activeCBIPack().cbi_runtime_version,total:results.length,passed,failed,duration_ms:Math.round(duration*10)/10,categories,results};
+ saveJSON(AUTO_TEST_KEY,result);renderAutoTest(result);$('cbiUpdateResult').textContent=`Auto Test ${passed}/${results.length} ${failed===0?'PASS':'BLOCKED'} • ${mode}`;return result;
+}
+function exportAutoTest(){const r=loadJSON(AUTO_TEST_KEY,null);if(!r)return alert('ยังไม่มีผล Auto Test ให้ Export');downloadJSON(`MEasyMate_IC_AutoTest_${r.mode}_${today()}.json`,r)}
+
+
+// ---------- INTELLIGENT QA ENGINE V1 (Phase 1: generate/analyze/bank; no source auto-write) ----------
+const IQA_BEHAVIOR_CONTRACTS=[
+ {id:'LANG-001',area:'Language',rule:'ข้อความเสีย/ไม่เข้าใจต้อง Clarify และ Core ต้องไม่ถูกเรียก',risk:'HIGH'},
+ {id:'LANG-002',area:'Language',rule:'ข้อความที่เข้าใจได้แม้ข้อมูลยังไม่ครบ ต้องไปให้ Coach Core ถามต่อ ไม่ใช่ CBI ถามเกินจำเป็น',risk:'MEDIUM'},
+ {id:'CBI-001',area:'CBI',rule:'ทุก natural-language turn ต้องผ่าน CBI ก่อน Core',risk:'CRITICAL'},
+ {id:'CBI-002',area:'CBI',rule:'Correction ต้องรักษาข้อความต้นฉบับและส่ง normalized proposal เท่านั้น',risk:'HIGH'},
+ {id:'CBI-003',area:'CBI',rule:'Reference คลุมเครือต้อง fail-closed',risk:'HIGH'},
+ {id:'GATE-001',area:'Coach Gate',rule:'Problem ต้องมี Normal + Actual ไม่ใช้ความยาวอย่างเดียว',risk:'HIGH'},
+ {id:'GATE-002',area:'Coach Gate',rule:'Evidence source อย่างเดียวไม่ใช่ Evidence result',risk:'HIGH'},
+ {id:'GATE-003',area:'Coach Gate',rule:'Human Error ไม่ใช่ final occurrence/root cause',risk:'CRITICAL'},
+ {id:'GATE-004',area:'Coach Gate',rule:'Root Cause ต้องรอ Evidence Gate',risk:'CRITICAL'},
+ {id:'UX-001',area:'Friendly Gate',rule:'ผู้ใช้ตอบทีละส่วนได้ ระบบต้องรวมข้อมูลเดิมกับข้อมูลใหม่ก่อนประเมิน Gate',risk:'HIGH'},
+ {id:'UX-002',area:'Friendly Gate',rule:'Gate ต้องประเมินความหมาย ไม่บังคับความยาวหรือ keyword รูปประโยคเดียว',risk:'HIGH'},
+ {id:'AUTH-001',area:'Authority',rule:'CBI ไม่มีสิทธิ์ pass Gate หรือเขียน Root Cause',risk:'CRITICAL'},
+ {id:'RUNTIME-001',area:'Runtime',rule:'CBI Runtime incompatible/tampered ต้อง reject และ fail-closed',risk:'CRITICAL'},
+ {id:'REG-001',area:'Regression',rule:'Bug ที่พบต้องถูกเก็บเป็น Regression Test ถาวร',risk:'HIGH'}
+];
+function iqaBank(){return loadJSON(IQA_BANK_KEY,[])}
+function iqaSaveBank(rows){saveJSON(IQA_BANK_KEY,(rows||[]).slice(0,500))}
+function iqaTestKey(t){return [t.contract,t.kind,t.stage||'',t.input||'',JSON.stringify(t.expected||{})].join('|')}
+function iqaAddToBank(test,analysis){
+ const rows=iqaBank(),key=iqaTestKey(test);if(rows.some(x=>x.key===key))return false;
+ rows.unshift({key,id:'REG-'+Date.now().toString(36).toUpperCase(),first_seen:nowISO(),source_test_id:test.id,contract:test.contract,category:test.category,kind:test.kind,stage:test.stage||'',input:test.input||'',expected:cloneObj(test.expected||{}),prep:test.prep||null,analysis:analysis||null});
+ iqaSaveBank(rows);return true;
+}
+function iqaFromBank(){return iqaBank().map((x,i)=>({id:x.id||`BANK-${i+1}`,contract:x.contract||'REG-001',category:'Regression Bank',kind:x.kind,stage:x.stage,input:x.input,expected:cloneObj(x.expected||{}),prep:x.prep||null,origin:'REGRESSION_BANK'}))}
+function iqaMutationText(base,mode){
+ const rules={
+  polite:s=>s+' ครับ',
+  spaces:s=>s.replace(/ /g,'  '),
+  colloquial:s=>s.replace(/ตรวจกล้องแล้วพบว่า/,'ดูกล้องแล้วเห็นว่า').replace(/คัดแยกงาน NG/,'แยกงานเสีย').replace(/พนักงาน/,'คนทำงาน'),
+  typo:s=>s.replace(/ขันน็อต/g,'ขันน๊อต').replace(/ไม่ครบ/g,'ไมครบ').replace(/ประกอบ/g,'ประกอป'),
+  casing:s=>s.replace(/part/gi,'PART').replace(/qc/gi,'QC'),
+ };
+ return (rules[mode]||((x)=>x))(base);
+}
+function iqaGenerateTests(mode='intelligent'){
+ const tests=[];let seq=0;const add=(t)=>tests.push(Object.assign({id:`IQA-${String(++seq).padStart(3,'0')}`,origin:'GENERATED'},t));
+ const cbi=(contract,category,stage,input,status,core)=>add({contract,category,kind:'pipeline',stage,input,expected:{cbiStatus:status,coreEvaluated:core}});
+ const gate=(contract,category,stage,input,pass,prep=null)=>add({contract,category,kind:'gate',stage,input,prep,expected:{pass}});
+ // CBI / language seeds
+ cbi('LANG-001','Language','protect','สยำี้้/วว','NEEDS_CLARIFICATION',false);
+ cbi('LANG-002','Language','evidence','ดูกล้อง','UNDERSTOOD',true);
+ cbi('LANG-002','Language','fact','ยังไม่รู้','UNDERSTOOD',true);
+ cbi('CBI-002','CBI Semantic','fact','เมื่อกี้ไม่ใช่ ขอแก้เป็นพบ NG 12 ชิ้น','UNDERSTOOD',true);
+ cbi('CBI-003','Reference','fact','อันเมื่อกี้','NEEDS_CLARIFICATION',false);
+ cbi('LANG-001','Language','fact','abc/xyz','NEEDS_CLARIFICATION',false);
+ cbi('LANG-002','Language','problem','ปกติมี E-ring แต่เกิดจริง E-ring หาย','UNDERSTOOD',true);
+ // Gate seeds + variants
+ const seeds=[
+  ['GATE-001','Problem','problem','ปกติควรมี E-ring อยู่ แต่เกิดจริงพบว่า E-ring ไม่มีที่ชิ้นงาน',true,null],
+  ['GATE-001','Problem','problem','ปกติควรมี E-ring อยู่',false,null],
+  ['GATE-001','Problem','problem','พบว่า E-ring ไม่มีที่ชิ้นงาน',false,null],
+  ['GATE-002','Evidence','evidence','ดูกล้อง',false,null],
+  ['GATE-002','Evidence','evidence','ตรวจกล้องแล้วพบว่าขั้นตอนใส่ Part ถูกข้าม',true,null],
+  ['GATE-002','Evidence','evidence','วัดระยะได้ 3.2 mm ที่ชิ้นงาน NG',true,null],
+  ['GATE-003','Occurrence','occurrence','เพราะพนักงานลืมจึงประกอบผิด',false,null],
+  ['GATE-003','Occurrence','occurrence','เพราะ fixture ไม่มีตัวกำหนดตำแหน่งจึงทำให้ประกอบเอียงและเกิด NG',true,null],
+  ['GATE-004','Root','root','เพราะ fixture ไม่มีตัวกำหนดตำแหน่งจึงทำให้ชิ้นงานวางเอียงและเกิด NG ซ้ำได้',false,null],
+  ['GATE-004','Root','root','เพราะ fixture ไม่มีตัวกำหนดตำแหน่งจึงทำให้ชิ้นงานวางเอียงและเกิด NG ซ้ำได้',true,'evidence_done'],
+  ['GATE-003','Root','root','เพราะพนักงานลืมและไม่ระวังจึงเกิดปัญหาซ้ำ',false,'evidence_done'],
+  ['GATE-001','Containment','protect','คัดแยกงาน NG และกักงานไว้ก่อน',true,null],
+  ['GATE-001','Containment','protect','แจ้งหัวหน้าแล้วครับ',false,null],
+  ['GATE-001','Fact','fact','ตรวจบันทึกแล้วพบ NG จำนวน 12 ชิ้นที่สถานี 3',true,null],
+  ['GATE-001','Fact','fact','น่าจะเกิดจากพนักงานรีบประกอบงาน',false,null],
+  ['GATE-001','Escape','escape','เพราะจุดตรวจ QC ไม่มี sensor ตรวจจับ จึงไม่สามารถดักงาน NG ก่อนส่งต่อได้',true,null],
+  ['GATE-001','Escape','escape','เพราะงานหลุดไปขั้นตอนถัดไปจึงพบที่ปลายไลน์',false,null],
+  ['GATE-001','Action','action','ติดตั้ง poka-yoke เพื่อป้องกันประกอบผิดตำแหน่ง',true,null],
+  ['GATE-001','Action','action','แจ้งพนักงานให้ระวังมากขึ้น',false,null],
+  ['GATE-001','Verify','verify','ติดตาม 2 สัปดาห์ เป้าหมาย NG = 0 ชิ้น และเทียบก่อนหลัง',true,null],
+  ['GATE-001','Verify','verify','ติดตามดูว่าดีขึ้นหรือไม่',false,null]
+ ];
+ for(const [contract,category,stage,input,pass,prep] of seeds){
+   gate(contract,category,stage,input,pass,prep);
+   for(const m of ['polite','spaces'])gate(contract,category+' Mutation',stage,iqaMutationText(input,m),pass,prep);
+ }
+ // targeted lexical/adversarial cases: protect against substring & over-acceptance
+ const adversarial=[
+  ['GATE-001','Adversarial','problem','ปกติใช้ engineering ring ตามมาตรฐาน',false,null],
+  ['GATE-001','Adversarial','problem','ปกติมี warning label ติดอยู่',false,null],
+  ['GATE-001','Adversarial','problem','ปกติควรมี O-ring อยู่',false,null],
+  ['LANG-001','Adversarial','protect','///\\\\|||','NEEDS_CLARIFICATION',false,'pipeline'],
+  ['LANG-001','Adversarial','fact','้้้้','NEEDS_CLARIFICATION',false,'pipeline'],
+  ['GATE-002','Adversarial','evidence','ตรวจกล้องแล้ว',false,null],
+  ['GATE-002','Adversarial','evidence','สอบถามพนักงาน',false,null],
+  ['GATE-002','Adversarial','evidence','วัดได้ 4.5 mm',true,null],
+  ['GATE-003','Adversarial','occurrence','พนักงานประมาท',false,null],
+  ['GATE-003','Adversarial','occurrence','พนักงานลืมเพราะขั้นตอนงานไม่มี visual control ทำให้ข้ามจุดตรวจ',true,null]
+ ];
+ for(const a of adversarial){
+  if(a[6]==='pipeline')cbi(a[0],a[1],a[2],a[3],a[4],a[5]); else gate(a[0],a[1],a[2],a[3],a[4],a[5]);
+ }
+ // typo normalization pipeline must request confirmation, not silently pass
+ for(const x of [
+  ['problem','ขันน๊อตไม่ครบ','NEEDS_CONFIRMATION'],['fact','พบว่าขันน๊อตไมครบ 4 ชิ้น','NEEDS_CONFIRMATION'],['fact','ประกอปผิดตำแหน่ง','NEEDS_CONFIRMATION']
+ ]) cbi('CBI-002','Typo Confirmation',x[0],x[1],x[2],false);
+ // runtime/authority specs are data-only special kinds
+ add({contract:'RUNTIME-001',category:'Runtime Integrity',kind:'runtime',expected:{valid:true}});
+ add({contract:'RUNTIME-001',category:'Runtime Integrity',kind:'runtime_tamper',expected:{reason:'CHECKSUM_MISMATCH'}});
+ add({contract:'RUNTIME-001',category:'Runtime Integrity',kind:'runtime_v2',expected:{reason:'INCOMPATIBLE_CONTRACT'}});
+ add({contract:'AUTH-001',category:'Authority Safety',kind:'authority_root',stage:'occurrence',input:'เพราะ fixture ไม่มีตัวกำหนดตำแหน่งจึงประกอบเอียง',expected:{unchanged:true}});
+ add({contract:'AUTH-001',category:'Authority Safety',kind:'authority_semantic',stage:'protect',input:'คัดแยกงาน NG ไว้ก่อน',expected:{noGateAuthority:true}});
+ // reference with seeded history
+ for(const x of [['อันแรก','problem'],['อันที่สอง','protect'],['อันสุดท้าย','fact'],['อันนั้น','fact']])add({contract:'CBI-003',category:'Reference',kind:'reference',stage:'fact',input:x[0],expected:{reference:x[1]}});
+ // add persistent regression bank to every intelligent/full run
+ if(mode!=='adversarial')tests.push(...iqaFromBank());
+ if(mode==='adversarial')return tests.filter(t=>t.category==='Adversarial'||t.category==='Typo Confirmation'||t.category==='Reference'||t.category==='Runtime Integrity'||t.category==='Authority Safety');
+ return tests;
+}
+function iqaPrepare(test){
+ current=makeAutoTestCase();
+ if(test.prep==='evidence_done')current.entries.evidence.status='done';
+ if(test.kind==='reference'){
+  current.entries.problem.answer='ปัญหา E-ring ไม่มี';current.entries.problem.originalAnswer=current.entries.problem.answer;
+  current.entries.protect.answer='คัดแยกงาน';current.entries.protect.originalAnswer=current.entries.protect.answer;
+  current.entries.fact.answer='พบ NG 12 ชิ้น';current.entries.fact.originalAnswer=current.entries.fact.answer;
+ }
+}
+function iqaExecuteOne(test){
+ iqaPrepare(test);let actual={},ok=false;
+ try{
+  if(test.kind==='pipeline'){
+   const c=cbiProcess(test.input,test.stage);const p=cbiFirstGate(test.stage,test.input,c);
+   actual={cbiStatus:c.status,coreEvaluated:p.coreEvaluated,finalPass:!!p.finalEv?.pass,intent:c.intent,confidence:c.confidence};
+   ok=actual.cbiStatus===test.expected.cbiStatus && (test.expected.coreEvaluated===undefined||actual.coreEvaluated===test.expected.coreEvaluated);
+  }else if(test.kind==='gate'){
+   const ev=evaluate(test.stage,test.input);actual={pass:!!ev.pass,classification:ev.classification,signals:ev.signals};ok=actual.pass===!!test.expected.pass;
+  }else if(test.kind==='runtime'){
+   const v=cbiValidatePack(activeCBIPack());actual={valid:v.ok,reason:v.reason};ok=v.ok===!!test.expected.valid;
+  }else if(test.kind==='runtime_tamper'){
+   const x=cloneObj(activeCBIPack());x.thresholds=cloneObj(x.thresholds||{});x.thresholds.high=.123;const v=cbiValidatePack(x);actual={valid:v.ok,reason:v.reason};ok=v.reason===test.expected.reason;
+  }else if(test.kind==='runtime_v2'){
+   const x=cloneObj(activeCBIPack());x.cbi_runtime_version='2.0.0';x.integrity={fnv1a:cbiExpectedChecksum(x)};const v=cbiValidatePack(x);actual={valid:v.ok,reason:v.reason};ok=v.reason===test.expected.reason;
+  }else if(test.kind==='authority_root'){
+   current.entries.root.answer='ROOT ORIGINAL';const before=JSON.stringify(current.entries.root);cbiProcess(test.input,test.stage);actual={unchanged:JSON.stringify(current.entries.root)===before};ok=actual.unchanged===true;
+  }else if(test.kind==='authority_semantic'){
+   const c=cbiProcess(test.input,test.stage);actual={hasPass:Object.prototype.hasOwnProperty.call(c,'pass'),hasRootCause:Object.prototype.hasOwnProperty.call(c,'rootCause')};ok=!actual.hasPass&&!actual.hasRootCause;
+  }else if(test.kind==='reference'){
+   const c=cbiProcess(test.input,test.stage);actual={status:c.reference?.status,reference:c.reference?.reference_id};ok=actual.status==='RESOLVED'&&actual.reference===test.expected.reference;
+  }else{actual={reason:'UNKNOWN_TEST_KIND'};ok=false}
+ }catch(e){actual={exception:String(e?.message||e)};ok=false}
+ return{ok,actual};
+}
+function iqaAnalyzeFailure(test,actual){
+ let type='UNKNOWN_FAILURE',module='Intelligent QA',risk='MEDIUM',cause='ผลจริงไม่ตรง Behavior Contract',repair='ตรวจ rule ที่รับผิดชอบและแก้เฉพาะ DEV copy';
+ if(test.kind==='gate'){
+  module=`Coach Core / ${test.stage} Gate`;
+  if(test.expected.pass===false&&actual.pass===true){type='FALSE_ACCEPT';risk=['root','occurrence','evidence','protect'].includes(test.stage)?'CRITICAL':'HIGH';cause='Gate รับข้อความที่ควรยังไม่ผ่าน';repair=`ทำ predicate ของ ${test.stage} Gate ให้ตรวจ semantic requirement แทนความยาว/substring อย่างเดียว`}
+  else if(test.expected.pass===true&&actual.pass===false){type='FALSE_REJECT';risk='MEDIUM';cause='Gate ปฏิเสธข้อความที่มีข้อมูลตาม contract';repair=`ตรวจ synonym/ordering ใน ${test.stage} Gate โดยห้ามลด safety requirement`}
+ }else if(test.kind==='pipeline'){
+  module='CBI-First Pipeline';
+  if(test.expected.cbiStatus==='UNDERSTOOD'&&actual.cbiStatus==='NEEDS_CLARIFICATION'){type='OVER_CLARIFICATION';risk='MEDIUM';cause='CBI ถามเกินจำเป็นทั้งที่ความหมายพอชัด';repair='ปรับ semantic/ambiguity rule ให้ CBI ถามเฉพาะเมื่อไม่รู้ความหมายจริง'}
+  else if(test.expected.cbiStatus==='NEEDS_CLARIFICATION'&&actual.cbiStatus==='UNDERSTOOD'){type='UNSAFE_UNDERSTANDING';risk='HIGH';cause='CBI รับข้อความกำกวม/เสียรูปมากเกินไป';repair='เพิ่ม Language Guard / confidence fail-closed ก่อน Core'}
+  else if(test.expected.coreEvaluated===false&&actual.coreEvaluated===true){type='CBI_FIRST_BYPASS';risk='CRITICAL';cause='ข้อความควรถูกหยุดที่ CBI แต่ Core ถูกเรียก';repair='บังคับ CBI-first dispatcher ให้ Core ทำงานเฉพาะสถานะที่อนุญาต'}
+ }else if(test.category==='Authority Safety'){type='AUTHORITY_VIOLATION';module='CBI Authority Boundary';risk='CRITICAL';cause='CBI แตะข้อมูล/อำนาจที่ Project Brain ต้องเป็นเจ้าของ';repair='BLOCK auto-repair; restore authority boundary and run full regression'}
+ else if(test.category==='Runtime Integrity'){type='RUNTIME_INTEGRITY_FAILURE';module='Runtime Guard';risk='CRITICAL';cause='Compatibility/checksum guard ไม่ fail-closed';repair='BLOCK auto-repair; rollback runtime and inspect integrity guard'}
+ else if(test.kind==='reference'){type='REFERENCE_RESOLUTION_FAILURE';module='CBI Reference Resolver';risk='HIGH';cause='Reference ไม่ resolve ตาม context';repair='แก้ reference rule โดยรักษา fail-closed เมื่อคลุมเครือ'}
+ return{type,module,risk,cause,repair,auto_repair_eligible:false};
+}
+function iqaRender(result=loadJSON(IQA_RESULT_KEY,null)){
+ const sum=$('iqaSummary'),details=$('iqaDetails');if(!sum||!details)return;
+ const bank=iqaBank();
+ if(!result){sum.innerHTML=`<div class="empty">ยังไม่มีผล Intelligent QA • Regression Bank ${bank.length} ข้อ</div>`;details.innerHTML='';return}
+ const ok=result.failed===0,blocked=result.blocked;
+ sum.innerHTML=`<div class="metricgrid"><div class="metric"><b>${result.passed}/${result.total}</b><span>PASS</span></div><div class="metric"><b>${result.failed}</b><span>FAIL</span></div><div class="metric"><b>${result.generated}</b><span>Generated</span></div><div class="metric"><b>${bank.length}</b><span>Regression Bank</span></div></div><div class="hint" style="margin-top:7px">${esc(result.mode.toUpperCase())} • ${esc(result.at)} • ${blocked?'BLOCKED':ok?'CANDIDATE_READY':'REVIEW_REQUIRED'}</div>`;
+ const fails=(result.results||[]).filter(x=>!x.ok);
+ const failHtml=fails.length?`<div class="feedback bad"><b>พบ ${fails.length} Failure</b>${fails.slice(0,20).map(x=>`<div class="line">• <b>${esc(x.analysis?.type||'FAIL')}</b> [${esc(x.analysis?.risk||'')}] ${esc(x.id)} — ${esc(x.input||x.category)}<br><span class="hint">${esc(x.analysis?.module||'')} • ${esc(x.analysis?.cause||'')}</span></div>`).join('')}</div>`:`<div class="feedback good"><b>Intelligent QA ผ่านทั้งหมด</b><div class="line">ไม่พบ failure ใน generated + mutation + regression tests รอบนี้</div></div>`;
+ const plans=fails.length?`<details style="margin-top:8px"><summary>Repair Plans (DEV only)</summary><div style="margin-top:7px">${fails.slice(0,20).map(x=>`<div class="smartNote" style="margin-bottom:6px"><b>${esc(x.id)} — ${esc(x.analysis?.module||'')}</b><div>${esc(x.analysis?.repair||'')}</div><div class="hint">Auto repair: BLOCKED in Phase 1</div></div>`).join('')}</div></details>`:'';
+ details.innerHTML=failHtml+plans+`<details style="margin-top:8px"><summary>Behavior Contracts / Test detail</summary><div style="margin-top:7px;max-height:340px;overflow:auto">${(result.results||[]).map(x=>`<div class="line" style="padding:4px 0;border-bottom:1px solid var(--line)">${x.ok?'✅':'❌'} <b>${esc(x.contract)}</b> ${esc(x.category)} — ${esc(x.input||x.kind)}</div>`).join('')}</div></details>`;
+}
+function runIntelligentQA(mode='intelligent'){
+ const started=performance.now(),savedCurrent=current,savedLast=lastCBI,tests=iqaGenerateTests(mode),results=[];let newBank=0;
+ try{
+  for(const t of tests){const r=iqaExecuteOne(t);const row=Object.assign({},t,{ok:r.ok,actual:r.actual});if(!r.ok){row.analysis=iqaAnalyzeFailure(t,r.actual);if(iqaAddToBank(t,row.analysis))newBank++}results.push(row)}
+ }finally{current=savedCurrent;lastCBI=savedLast}
+ const passed=results.filter(x=>x.ok).length,failed=results.length-passed,critical=results.filter(x=>!x.ok&&['CRITICAL'].includes(x.analysis?.risk)).length;
+ const result={schema:'MEASYMATE_INTELLIGENT_QA_V1',engine_version:'1.0-phase1',at:nowISO(),mode,app_version:VERSION,cbi_version:activeCBIPack().cbi_runtime_version,behavior_contracts:IQA_BEHAVIOR_CONTRACTS,total:results.length,generated:tests.filter(x=>x.origin!=='REGRESSION_BANK').length,regression_replayed:tests.filter(x=>x.origin==='REGRESSION_BANK').length,passed,failed,critical_failures:critical,new_regression_tests:newBank,blocked:critical>0,duration_ms:Math.round((performance.now()-started)*10)/10,results};
+ saveJSON(IQA_RESULT_KEY,result);const hist=loadJSON(IQA_HISTORY_KEY,[]);hist.unshift({at:result.at,mode,total:result.total,passed,failed,critical,newBank,app:VERSION,cbi:result.cbi_version});saveJSON(IQA_HISTORY_KEY,hist.slice(0,50));iqaRender(result);$('cbiUpdateResult').textContent=`Intelligent QA ${passed}/${results.length} ${critical?'BLOCKED':failed?'REVIEW_REQUIRED':'PASS'} • +${newBank} regression`;return result;
+}
+function iqaExport(){const r=loadJSON(IQA_RESULT_KEY,null);if(!r)return alert('ยังไม่มีผล Intelligent QA ให้ Export');downloadJSON(`MEasyMate_Intelligent_QA_${r.mode}_${today()}.json`,Object.assign({},r,{regression_bank:iqaBank(),history:loadJSON(IQA_HISTORY_KEY,[])}))}
+function iqaClearBank(){if(confirm('ล้าง Regression Bank ของ Intelligent QA?\nไม่กระทบเคสงานจริง แต่ test จาก bug ที่เคยพบจะหาย')){iqaSaveBank([]);iqaRender();}}
+
+const TYPO_ALIASES=[
+ ['พาท','part'],['พาร์ท','part'],['บาทมือ','บาดมือ'],['ขันน๊อต','ขันน็อต'],['น๊อต','น็อต'],['ไม่คบ','ไม่ครบ'],['ไมครบ','ไม่ครบ'],['ประกอป','ประกอบ'],['ประหกอบ','ประกอบ'],['เช็ค','ตรวจ'],['เชค','ตรวจ'],['คิวซี','QC'],['เซนเซอ','sensor'],['เซ็นเซอร์','sensor'],['ฟิกเจอร์','fixture'],['จิ๊ก','jig'],['ไลน','line'],['สเตชั่น','station']
+];
+function normalize(s=''){return String(s).trim().replace(/\s+/g,' ')}
+function normalizeLanguage(s=''){
+ const original=String(s||'');let text=normalize(original),corrections=[];
+ TYPO_ALIASES.forEach(([bad,good])=>{const re=new RegExp(bad.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi');if(re.test(text)){text=text.replace(re,good);corrections.push(`${bad} → ${good}`)}});
+ text=text.replace(/\bP\s*A\s*R\s*T\b/gi,'Part').replace(/\bQ\s*C\b/gi,'QC');
+ return{original,normalized:text,corrections:[...new Set(corrections)]};
+}
+function languageGuard(text=''){
+ const n=normalize(text),compact=n.replace(/\s/g,'');
+ const duplicateThaiMark=/([\u0E31\u0E34-\u0E3A\u0E47-\u0E4E])\1+/.test(compact);
+ const tooManyThaiMarks=/[\u0E31\u0E34-\u0E3A\u0E47-\u0E4E]{3,}/.test(compact);
+ const oddSeparators=(compact.match(/[\/\\|~^`]/g)||[]).length;
+ const controlChars=/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/.test(n);
+ if(duplicateThaiMark||tooManyThaiMarks||controlChars){
+   return{status:'corrupt',reason:'รูปแบบตัวอักษรดูผิดปกติหรือมีสระ/วรรณยุกต์ซ้ำ จึงไม่ควรเดาความหมาย'};
+ }
+ if(compact.length<=12&&oddSeparators>0){
+   return{status:'suspect',reason:'ข้อความสั้นและมีอักขระคั่นผิดปกติ Coach ยังไม่มั่นใจว่าหมายถึงอะไร'};
+ }
+ return{status:'ok',reason:''};
+}
+function containmentAnswerEnough(t=''){
+ const n=normalize(t);if(!n)return false;
+ const action=hasAny(n,['คัดแยก','คัด ng','คัดงาน','คัดออก','แยก ng','แยกของเสีย','พักงาน','hold ng','กัก','หยุดไลน์','หยุดผลิต','หยุดการผลิต','หยุดส่ง','หยุดใช้','hold','quarantine','sort','แยกงาน','ตรวจทั้งหมด','ตรวจ 100','100% check','ปิดเครื่อง','ตัดไฟ','lockout','ล็อก','กั้นพื้นที่','แจ้งเตือน','ห้ามใช้','ห้ามผลิต','ควบคุมชั่วคราว','ป้องกันชั่วคราว']);
+ const justifiedNone=/(ไม่จำเป็น|ยังไม่ต้อง|ไม่ต้อง).{0,20}(เพราะ|เนื่องจาก)|ไม่มี.{0,16}ความเสี่ยง/.test(n);
+ return wordishLen(n)>=6&&(action||justifiedNone);
+}
+function hasAny(text,arr){const t=String(text||'').toLowerCase();return arr.some(x=>t.includes(x.toLowerCase()))}
+function wordishLen(t){return normalize(t).replace(/\s/g,'').length}
+function countCausal(t){return ['เพราะ','เนื่องจาก','จึง','ทำให้','ส่งผล','เกิดจาก','ดังนั้น','ส่งต่อ','ส่งผลให้'].filter(x=>t.includes(x)).length}
+function humanErrorShallow(t){const h=['ลืม','ประมาท','ไม่ระวัง','ไม่ทำตาม','พนักงานผิด','คนผิด','เผลอ','ขาดความใส่ใจ'];const sys=['ระบบ','มาตรฐาน','jig','fixture','วิธี','ขั้นตอน','เงื่อนไข','การออกแบบ','control','ควบคุม','ตรวจจับ','sensor','interlock','การฝึก','ข้อมูล','layout','ภาระงาน','จังหวะงาน'];return hasAny(t,h)&&!hasAny(t,sys)}
+function isUnknown(t){return /^(ยังไม่รู้|ไม่รู้|ไม่ทราบ|ยังไม่มีข้อมูล|ไม่แน่ใจ|unknown)$/i.test(normalize(t))}
+function evidenceMethodMention(t){return hasAny(t,['ตรวจ','กล้อง','cctv','วัด','บันทึก','log','สอบถาม','ภาพ','ชิ้นงาน','trace','เครื่องมือ','เอกสาร','wi','drawing','เช็ค'])}
+function evidenceResultContent(t){return hasAny(t,['พบ','เห็น','ได้ค่า','แสดง','ยืนยัน','ไม่พบ','ระบุ','พบว่า','เวลา','จำนวน','ค่า','ผลคือ','ปรากฏ','วัดได้'])}
+function evidenceSourceOnly(t){const n=normalize(t);return evidenceMethodMention(n)&&!evidenceResultContent(n)&&wordishLen(n)<28}
+function evidenceAnswerEnough(t){const n=normalize(t);if(!n||isUnknown(n))return false;const measurement=/\d+(?:\.\d+)?\s*(?:mm|cm|nm|n|kg|%|ครั้ง|ชิ้น|จุด|cycle|รอบ|วินาที|นาที)/i.test(n);if(measurement)return true;if(evidenceSourceOnly(n))return false;const explicit=evidenceMethodMention(n)&&evidenceResultContent(n);const clear=/(พบ|เห็น|ตรวจ.*พบ|ไม่พบ|ไม่มี|ขาด|หลุด|หาย|เอียง|เยื้อง|แตก|งอ).{0,24}(?:part|ชิ้น|screw|connector|label|tape|grease|shaft|แกน|gear|เกียร์|รอย|จุด)/i.test(n);return explicit||clear}
+function questionDimension(q='',stageId=''){if(stageId==='evidence')return'evidence';if(stageId==='protect')return'containment';if(stageId==='occurrence')return'how';if(stageId==='escape'||stageId==='root')return'why';const n=normalize(q);if(/หลักฐาน|ตรวจ|พบอะไร/.test(n))return'evidence';if(/ทำไม|เหตุ/.test(n))return'why';if(/อย่างไร|กลไก|ทำให้/.test(n))return'how';if(/เมื่อไร|เวลา/.test(n))return'when';if(/ที่ไหน|จุด|พื้นที่/.test(n))return'where';if(/ควบคุม|ชั่วคราว|contain/.test(n))return'containment';return'what'}
+function answerDimension(t=''){const n=normalize(t);if(isUnknown(n))return'unknown';if(evidenceAnswerEnough(n))return'evidence';if(/\d{1,2}[:.]\d{2}|เมื่อวาน|วันนี้|เวลา|กะ|shift/i.test(n))return'when';if(/line|station|จุด|เครื่อง|พื้นที่|สถานี/i.test(n))return'where';if(countCausal(n)>0)return'why/how';return'what'}
+function investigationFor(stage){const m={problem:'ไปดูชิ้นงาน/จุดเกิดจริง แล้วบันทึก ปกติ vs เกิดจริง',protect:'ตรวจความเสี่ยงและขอบเขตงานที่อาจได้รับผลก่อน',fact:'เก็บ เวลา/จุด/รุ่น/จำนวน จาก record หรือชิ้นงานจริง',evidence:'เลือกแหล่งหลักฐาน 1 แหล่ง แล้วบันทึก “ตรวจอะไร → พบอะไร”',change:'เทียบก่อน/หลัง หรือจุดที่เกิด/ไม่เกิด อย่างน้อย 1 คู่',hypothesis:'เลือก 1 สมมติฐานแล้วกำหนดสิ่งที่จะตรวจหักล้าง',occurrence:'ไปดูขั้นตอนจริงเพื่อหากลไก Cause → Effect',escape:'ตรวจ Control ที่ควรดักงานและผลการทำงานจริง',root:'ย้อน causal chain กับ Evidence ที่ผ่าน Gate แล้ว'};return m[stage]||'เก็บข้อมูลจริงเพิ่มก่อน แล้วกลับมาตอบโดยไม่ต้องเดา'}
+
+
+function factAnchor(t=''){
+ const n=normalize(t);return /\d|พบ|เห็น|ตรวจ|วัด|บันทึก|เวลา|กะ|shift|สถานี|line|เครื่อง|รุ่น|lot|ล็อต|ชิ้น|ครั้ง|จุด|ไม่มี|ขาด|หาย|หลุด|ผิด|เอียง|แตก|บาด/i.test(n);
+}
+function systemAnchor(t=''){
+ const n=normalize(t);return hasAny(n,['ระบบ','มาตรฐาน','standard','wi','jig','fixture','tool','เครื่องมือ','sensor','interlock','poka','poka-yoke','visual','control','ขั้นตอน','วิธี','เงื่อนไข','layout','program','โปรแกรม','setting','ตั้งค่า','design','ออกแบบ','stopper','ตัวบังคับ','ตัวกำหนด','ตัวล็อก','guide','guide pin','template','sampling','alarm','andon','training','ฝึก','workload','ภาระงาน']);
+}
+function failureLink(t=''){
+ const n=normalize(t);return countCausal(n)>0||hasAny(n,['ทำให้','ส่งผล','เลย','จน','จึง','เพราะ','เนื่องจาก','เป็นเหตุ','ไม่สามารถ','ไม่จับ','ตรวจไม่พบ','ข้าม','เปิดโอกาส','ทำให้เกิด']);
+}
+function changeExplored(t=''){
+ const n=normalize(t);return hasAny(n,['เปลี่ยน','ก่อน','หลัง','ต่าง','เหมือน','เหมือนเดิม','ไม่มีอะไรเปลี่ยน','ไม่เปลี่ยน','is/not','is-not','ไม่เกิด','เกิดเฉพาะ','รุ่น','lot','ล็อต','กะ','คนใหม่','ช่วยงาน','ตั้งค่า','เปลี่ยน tool','เปลี่ยนวัสดุ'])||/ไม่พบ.{0,12}(การ)?เปลี่ยน/.test(n);
+}
+function escapeMeaning(t=''){
+ const n=normalize(t);const control=hasAny(n,['ตรวจ','control','ควบคุม','qc','sensor','check','sampling','ตรวจจับ','ดัก','หยุด','andon','alarm','interlock','visual','inspection']);
+ const fail=hasAny(n,['ไม่พบ','ไม่จับ','จับไม่ได้','ตรวจไม่พบ','ไม่มี','ข้าม','หลุด','ไม่หยุด','ไม่ทำงาน','ไม่ได้ตรวจ','ไม่ได้เช็ค','ไม่ครอบคลุม','มองไม่เห็น','เห็นไม่ชัด','ตรวจไม่เจอ','ตรวจไม่ออก','หลุดรอด','sampling']);
+ return control&&fail;
+}
+function actionMeaning(t=''){
+ const n=normalize(t);return hasAny(n,['เพิ่ม','ติดตั้ง','แก้','ปรับ','เปลี่ยน','ออกแบบ','ทำ','กำหนด','ล็อก','ป้องกัน','interlock','poka','stopper','sensor','visual','standard','wi','update','อัปเดต','ย้าย','ลด','ตัด','ปิดช่อง']);
+}
+function mergeStageAnswer(previous='',latest='',intent='answer'){
+ const p=normalize(previous),n=normalize(latest);if(!p)return n;if(!n)return p;
+ if(['correction','deny'].includes(intent))return n;
+ if(n===p||n.includes(p))return n;
+ if(p.includes(n))return p;
+ return `${p} / ${n}`;
+}
+const FRIENDLY_FRAMES={
+ problem:'ตอบเพิ่มเฉพาะส่วนที่ขาดได้ เช่น “เกิดจริง E-ring ไม่มีที่ชิ้นงาน”',
+ protect:'เช่น “คัดแยกงาน NG ไว้ก่อน” หรือ “ยังไม่ต้องกัก เพราะงานยังไม่ถูกส่งต่อ”',
+ fact:'เช่น “พบ NG 12 ชิ้น ที่ Station 3”',
+ evidence:'เช่น “ตรวจกล้องแล้วพบว่า ขั้นตอนใส่ Part ถูกข้าม”',
+ change:'เช่น “หลังเปลี่ยนรุ่น มีคนมาช่วยงาน” หรือ “ยังไม่พบสิ่งที่เปลี่ยน”',
+ hypothesis:'เช่น “สงสัยว่า fixture อาจไม่มีตัวบังคับตำแหน่ง”',
+ occurrence:'เช่น “fixture ไม่มี stopper ทำให้ Part วางเอียงได้”',
+ escape:'เช่น “Visual check ตรวจไม่พบ เพราะจุดที่ผิดถูกชิ้นส่วนบัง”',
+ root:'เช่น “fixture ไม่มีตัวบังคับตำแหน่ง ทำให้ประกอบเอียงได้โดยระบบไม่ป้องกัน”',
+ action:'เช่น “เพิ่ม stopper ที่ fixture เพื่อป้องกันวาง Part ผิดตำแหน่ง”',
+ verify:'เช่น “ติดตาม 2 สัปดาห์ เป้าหมาย NG = 0 ชิ้น”',
+ prevent:'เช่น “ตรวจ fixture รุ่นอื่นและอัปเดตมาตรฐานเดียวกัน”',
+ learn:'ตอบสั้น ๆ ได้ เช่น “ครั้งหน้าจะเก็บ Evidence ตั้งแต่ต้น”'
+};
+
+function createCase(data){
+ const entries={}; STAGES.forEach(s=>entries[s.id]={answer:'',status:'locked',feedback:'',attempts:0,fragments:[]}); entries.problem.status='current';
+ if(normalize(data.initialProblem||'')){
+   entries.problem.answer=normalize(data.initialProblem);entries.problem.rawAnswer=data.initialProblem;entries.problem.originalAnswer=data.initialProblem;entries.problem.fragments=[data.initialProblem];
+ }
+ return {id:uid(),version:VERSION,createdAt:nowISO(),updatedAt:nowISO(),domain:data.domain,type:data.type||'ไม่ระบุ',process:data.process||'ไม่ระบุ',date:data.date||today(),initialProblem:data.initialProblem||'',originalReport:data.originalReport||'',normalizedReport:data.normalizedReport||'',intake:data.intake||null,stageIndex:0,entries,cbiState:{turn:0,state_version:0,active_intent:null,active_reference_id:null},signals:{language:(data.corrections||[]).length?'NORMALIZED':'ORIGINAL',evidence:'UNKNOWN',hypothesis:'OPEN',causal:'OPEN',humanError:'WATCH',root:'LOCKED',cbi:'ON',ai:'OFF'},notes:[]};
+}
+
+function evaluate(stageId,text){
+ const lang=normalizeLanguage(text),t=lang.normalized,len=wordishLen(t),e={pass:false,severity:'warn',title:'ยังขาดอีกนิด',message:'',missing:[],signals:[],classification:'',next:'',original:lang.original,normalized:t,corrections:lang.corrections,qDim:questionDimension(QUESTIONS[stageId]?.q||'',stageId),aDim:answerDimension(t)};
+ if(!t){e.severity='bad';e.title='ยังไม่มีคำตอบ';e.message='พิมพ์สิ่งที่รู้ตอนนี้ได้เลยครับ ถ้ายังไม่รู้ให้กด “ยังไม่รู้ / ต้องไปตรวจ”';e.missing=['คำตอบ'];return e}
+ const lg=languageGuard(t);
+ if(lg.status==='corrupt'||lg.status==='suspect'){
+   e.severity='bad';e.title='Coach ยังไม่เข้าใจข้อความนี้';e.classification='Unclear / possible typo';e.signals=['LANGUAGE_UNCLEAR','RETYPE_REQUIRED'];
+   e.message=`ข้อความส่วนนี้ยังตีความไม่ได้โดยไม่เดา — ${lg.reason}`;e.missing=['พิมพ์ใหม่เฉพาะข้อความที่ไม่ชัด'];e.investigation='พิมพ์ใหม่เป็นคำสั้น ๆ ตามที่เห็นจริง ไม่ต้องใช้ศัพท์เทคนิค';return e;
+ }
+ if(isUnknown(t)){
+   e.severity='warn';e.title='รับทราบว่ายังไม่รู้';e.message='ไม่ต้องเดาครับ Coach จะเก็บสถานะว่า “ยังไม่รู้” และบอกสิ่งที่ควรไปตรวจ';e.missing=['ข้อมูลจากการตรวจเพิ่ม'];e.signals=['UNKNOWN','INVESTIGATION_NEEDED'];e.classification='Unknown';e.investigation=investigationFor(stageId);return e;
+ }
+ if(stageId==='problem'){
+   const normalKnown=hasAny(t,['ปกติ','ควร','มาตรฐาน','standard','spec','ปกติแล้ว','ตามแบบ']);
+   const ngToken=/(^|[\s,.;:()\[\]\/\-])ng(?=$|[\s,.;:()\[\]\/\-])/i.test(t);
+   const actualKnown=hasAny(t,['เกิดจริง','พบ','แต่','ไม่ครบ','ไม่มี','ขาด','หาย','หลุด','ผิด','เอียง','บาด','เสีย','แตก','เกิน','ต่ำกว่า','สูงกว่า','defect'])||ngToken;
+   e.pass=normalKnown&&actualKnown;e.classification='Problem statement';
+   if(!normalKnown)e.missing.push('ปกติควรเป็นอย่างไร');if(!actualKnown)e.missing.push('เกิดจริงอย่างไร');
+   e.signals=[normalKnown?'NORMAL_KNOWN':'NORMAL_MISSING',actualKnown?'ACTUAL_KNOWN':'ACTUAL_MISSING',e.pass?'PROBLEM_CLEAR':'PROBLEM_PARTIAL'];
+   e.message=e.pass?'เข้าใจความต่างระหว่าง “ปกติ” กับ “เกิดจริง” แล้ว ใช้ไปต่อได้':`Coach รับข้อมูลที่มีไว้แล้วครับ เหลือ ${e.missing.join(' และ ')}`;
+ } else if(stageId==='protect'){
+   e.pass=containmentAnswerEnough(t);e.classification=e.pass?'Containment / protection':'Containment partial';e.signals=[e.pass?'PROTECT_DEFINED':'PROTECT_MEANING_MISSING'];
+   if(!e.pass)e.missing.push('ทำอะไรชั่วคราวเพื่อหยุด/จำกัดผลกระทบ หรือเหตุผลที่ยังไม่ต้องทำ');
+   e.message=e.pass?'เข้าใจมาตรการควบคุมชั่วคราวแล้ว':'Coach เข้าใจข้อความ แต่ยังไม่เห็นการควบคุมงาน/ความเสี่ยงที่ชัดเจน';
+ } else if(stageId==='fact'){
+   const opinion=hasAny(t,['น่าจะ','คิดว่า','คงจะ','อาจจะ','สงสัยว่า']);const anchored=factAnchor(t);
+   e.pass=anchored&&!opinion;e.classification=opinion?'Hypothesis mixed into Fact':'Fact candidate';e.signals=[opinion?'ASSUMPTION_RISK':anchored?'FACT_CANDIDATE':'FACT_DETAIL_MISSING'];
+   if(opinion)e.missing.push('แยกสิ่งที่ตรวจพบออกจากความเห็น/สาเหตุที่คาด');else if(!anchored)e.missing.push('ข้อเท็จจริงที่ตรวจย้อนกลับได้ เช่น จำนวน เวลา จุด หรือสภาพที่พบ');
+   e.message=e.pass?'มีข้อเท็จจริงที่ตรวจย้อนกลับได้แล้ว':opinion?'ประโยคนี้มีการคาดสาเหตุปนอยู่ ลองบอกเฉพาะสิ่งที่พบก่อน':'Coach ยังต้องการข้อเท็จจริงที่จับต้องได้อีก 1 อย่าง';
+ } else if(stageId==='evidence'){
+   const method=evidenceMethodMention(t),enough=evidenceAnswerEnough(t);e.pass=enough;e.classification=enough?'Evidence result':method?'Evidence method/source only':'Unverified statement';e.signals=[enough?'EVIDENCE_PRESENT':method?'METHOD_WITHOUT_RESULT':'EVIDENCE_WEAK'];
+   if(method&&!enough)e.missing.push('ตรวจแล้ว “พบอะไร / ไม่พบอะไร”');else if(!enough)e.missing.push('แหล่งหลักฐาน + ผลที่พบ หรือค่าที่วัดได้');
+   e.message=enough?'มี “ผลจากหลักฐาน” พอใช้ตรวจเหตุผลต่อได้':method?'วิธีตรวจรับไว้แล้วครับ เหลือเพียงผลที่พบจากการตรวจนั้น':'ยังไม่เห็นหลักฐานที่ตรวจย้อนกลับได้';
+ } else if(stageId==='change'){
+   e.pass=changeExplored(t);e.classification='Change / Is-Is Not';e.signals=[e.pass?'CHANGE_EXPLORED':'CHANGE_PARTIAL'];if(!e.pass)e.missing.push('สิ่งที่เปลี่ยน/ต่าง หรือระบุว่า “ยังไม่พบการเปลี่ยน” หลังตรวจแล้ว');
+   e.message=e.pass?'สำรวจ Change / ความต่างแล้ว ใช้ช่วยคัดสมมติฐานต่อได้':'ไม่ต้องหาคำตอบยาวครับ บอกเพียงสิ่งที่เปลี่ยนไปจากเดิม หรือสิ่งที่ตรวจแล้วว่าไม่เปลี่ยน';
+ } else if(stageId==='hypothesis'){
+   const candidate=wordishLen(t)>=5 && (hasAny(t,['น่าจะ','อาจ','สงสัย','เป็นไปได้','คาด','เพราะ'])||systemAnchor(t)||factAnchor(t));e.pass=candidate;e.classification='Hypothesis';e.signals=['HYPOTHESIS_NOT_FACT',e.pass?'TESTABLE_CANDIDATE':'HYPOTHESIS_PARTIAL'];if(!e.pass)e.missing.push('สาเหตุที่เป็นไปได้อย่างน้อย 1 ข้อ');
+   e.message=e.pass?'รับเป็น “สมมติฐาน” เพื่อไปตรวจต่อ ยังไม่ถือเป็น Root Cause':'ลองบอกสิ่งที่สงสัย 1 ข้อก็พอ ไม่ต้องมั่นใจว่าถูก';
+ } else if(stageId==='occurrence'){
+   const he=humanErrorShallow(t),mechanism=systemAnchor(t),linked=failureLink(t);e.pass=!he && ((mechanism&&linked)||(countCausal(t)>0&&wordishLen(t)>=10));e.classification=he?'Human error endpoint':'Occurrence cause candidate';e.signals=[he?'HUMAN_ERROR_CHALLENGE':e.pass?'CAUSAL_CHAIN_PRESENT':'CAUSAL_LINK_MISSING'];
+   if(he)e.missing.push('เงื่อนไข/ระบบที่ทำให้คนลืมหรือทำผิดได้');else if(!mechanism)e.missing.push('เงื่อนไขหรือกลไกที่สร้างปัญหา');if(!linked)e.missing.push('ความเชื่อมโยงว่ากลไกนั้นทำให้ปัญหาเกิดอย่างไร');
+   e.message=he?'“ลืม/ประมาท/ไม่ทำตาม” ยังเป็นปลายเหตุ Coach จะพาไปหาเงื่อนไขของระบบต่อ':e.pass?'เห็นกลไกที่ทำให้ปัญหาเกิดแล้ว':'ตอบสั้นได้ครับ เช่น “fixture ไม่มี stopper ทำให้ Part วางเอียงได้”';
+ } else if(stageId==='escape'){
+   e.pass=escapeMeaning(t)||(hasAny(t,['ไม่มี control','ไม่มีการตรวจ','ไม่ได้ตรวจ','ข้ามการตรวจ'])&&wordishLen(t)>=6);e.classification='Escape cause candidate';e.signals=[e.pass?'ESCAPE_LINK_PRESENT':'ESCAPE_LINK_MISSING'];if(!e.pass)e.missing.push('Control ที่ควรดัก + เหตุที่ครั้งนี้ไม่ดัก/ไม่หยุด');
+   e.message=e.pass?'เข้าใจเหตุที่ระบบตรวจ/ป้องกันปล่อยให้ปัญหาหลุดแล้ว':'ไม่ต้องเขียน causal chain ยาว แค่บอก “อะไรควรจับ” และ “ทำไมครั้งนี้ไม่จับ”';
+ } else if(stageId==='root'){
+   const evidenceOk=current?.entries?.evidence?.status==='done',he=humanErrorShallow(t),sys=systemAnchor(t),linked=failureLink(t);e.pass=evidenceOk&&!he&&sys&&linked;e.classification=he?'Human error endpoint':'Root cause candidate';e.signals=[evidenceOk?'EVIDENCE_GATE_OK':'EVIDENCE_GATE_MISSING',he?'HUMAN_ERROR_CHALLENGE':sys&&linked?'CAUSAL_COHERENCE':'CAUSAL_LINK_MISSING'];
+   if(!evidenceOk)e.missing.push('Evidence Gate ต้องผ่านก่อน');if(he)e.missing.push('สาเหตุเชิงระบบ ไม่จบที่ Human Error');if(!sys&&!he)e.missing.push('ระบบ/เงื่อนไขต้นเหตุ');if(!linked&&!he)e.missing.push('ความเชื่อมโยงกับปัญหา');
+   e.message=!evidenceOk?'Root Cause ยังล็อกเพราะ Evidence ยังไม่ผ่าน':he?'คำตอบยังจบที่คน ลองลงต่อว่าระบบอะไรเปิดโอกาสให้เกิดซ้ำ':e.pass?'Root Cause candidate เชื่อมกับระบบและหลักฐานพอสำหรับออกแบบมาตรการ':'ตอบสั้นได้ แต่ต้องบอก “ระบบ/เงื่อนไขอะไร → ทำให้ปัญหาเกิดอย่างไร”';
+ } else if(stageId==='action'){
+   const action=actionMeaning(t);e.pass=action&&wordishLen(t)>=6;e.classification='Permanent action proposal';e.signals=[e.pass?'ACTION_DEFINED':'ACTION_MISSING'];if(!e.pass)e.missing.push('มาตรการที่เปลี่ยนระบบ/เงื่อนไขของ Root Cause โดยตรง');
+   e.message=e.pass?'มาตรการถาวรชัดพอแล้ว Owner/Due สามารถเติมในรายงานได้ และขั้น Verify จะถามวิธีวัดผลต่อ':'บอกมาตรการหลักก่อนก็พอ ไม่ต้องใส่ Owner + Verify ในประโยคเดียว';
+ } else if(stageId==='verify'){
+   const metric=hasAny(t,['%','จำนวน','ครั้ง','วัน','สัปดาห์','เดือน','ค่า','เป้าหมาย','ก่อน','หลัง','0','ลด','เพิ่ม','ไม่เกิด','ชิ้น','cycle','นาที','วินาที']);e.pass=metric&&wordishLen(t)>=5;e.classification='Verification plan';e.signals=[metric?'MEASURABLE_VERIFY':'VERIFY_VAGUE'];if(!e.pass)e.missing.push('สิ่งที่จะวัด หรือช่วงเวลาติดตาม อย่างน้อย 1 อย่าง');
+   e.message=e.pass?'มีเกณฑ์ยืนยันผลที่วัดได้แล้ว':'ทำให้วัดได้อีกนิด เช่น “ติดตาม 2 สัปดาห์” หรือ “NG = 0 ชิ้น”';
+ } else if(stageId==='prevent'){
+   const explored=hasAny(t,['ขยาย','รุ่นอื่น','จุดอื่น','line อื่น','ไลน์อื่น','standard','มาตรฐาน','wi','update','อัปเดต','ทุก','อื่น','ไม่พบจุดอื่น','ไม่มีจุดอื่น','ตรวจจุดอื่น']);e.pass=explored&&wordishLen(t)>=5;e.classification='Prevention / horizontal deployment';e.signals=[e.pass?'PREVENT_DEFINED':'PREVENT_PARTIAL'];if(!e.pass)e.missing.push('จุดที่จะขยายผล หรือ Standard/Control/Knowledge ที่จะอัปเดต');
+   e.message=e.pass?'มีแนวทางป้องกันซ้ำ/ขยายผลแล้ว':'บอกเพียงว่าจะขยายไปจุดไหน หรือจะอัปเดตมาตรฐานอะไร';
+ } else if(stageId==='learn'){
+   e.pass=wordishLen(t)>=3;e.classification='Learning reflection';e.signals=['LEARNING_CAPTURED'];if(!e.pass)e.missing.push('บทเรียนสั้น ๆ 1 ข้อ');e.message=e.pass?'บันทึกบทเรียนการคิดแล้ว':'ตอบสั้น ๆ หนึ่งประโยคก็พอ';
+ }
+ e.severity=e.pass?'good':'warn';e.title=e.pass?'ข้อมูลพอไปต่อ':'ยังขาดอีกนิด';e.frame=FRIENDLY_FRAMES[stageId]||'';return e;
+}
+function guidanceFor(stageId){return QUESTIONS[stageId].guide}
+function knowledgeFor(stageId){
+ const d=current?.domain||'quality'; const k=KNOWLEDGE[d]||KNOWLEDGE.quality;
+ if(['evidence','occurrence','escape'].includes(stageId)) return k[stageId]||[];
+ if(stageId==='root') return ['ทบทวน Evidence ที่ผ่าน Gate แล้ว','ตรวจว่าคำอธิบายไม่จบที่ Human Error','ลองหาข้อเท็จจริงที่ “ขัด” กับสมมติฐานหลัก'];
+ if(stageId==='action') return ['มาตรการต้องผูกกับ Root Cause ที่ยืนยันแล้ว','แยก Prevention กับ Detection ให้ชัด','กำหนด Owner + Due + Verify criterion'];
+ return [];
+}
+
+function recordProfile(stage,ev){ /* Team Clean: development-profile collection disabled */ }
+function recordGuidance(){ /* Team Clean: development-profile collection disabled */ }
+function profileLevel(p){if(!p||!p.attempts)return 'ยังไม่มีข้อมูล'; const friction=(p.retries+p.guidance)/(p.attempts+p.guidance||1); if(p.attempts<3)return 'กำลังเริ่มเรียนรู้'; if(friction<.28)return 'ช่วยเหลือน้อยลงได้'; if(friction<.65)return 'กำลังพัฒนา'; return 'ควรมีคำถามช่วยมากขึ้น'}
+
+function updateSignals(stageId,ev){
+ if(!current)return; ev.signals.forEach(s=>{
+   if(s.includes('EVIDENCE')) current.signals.evidence=s;
+   if(s.includes('HYPOTHESIS')) current.signals.hypothesis=s;
+   if(s.includes('CAUSAL')) current.signals.causal=s;
+   if(s.includes('HUMAN_ERROR')) current.signals.humanError=s;
+ });
+ current.signals.root=current.entries.root.status==='done'?'PASSED':(current.entries.evidence.status==='done'?'OPEN':'LOCKED');
+ current.signals.cbi=settings.cbiEnabled?(lastCBI?.status||'ON'):'OFF';
+ current.signals.ai=settings.aiEnabled?'OPTIONAL':'OFF';
+}
+function saveCurrent(){if(!current)return;current.updatedAt=nowISO();localStorage.setItem(DRAFT_KEY,JSON.stringify(current));}
+
+function go(view){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));$(view).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});if(view==='casesView')renderCases();if(view==='profileView')renderProfile()}
+function renderCoach(){
+ if(!current)return;
+ document.body.classList.toggle('developer-mode',!!settings.cbiDebug);
+ const s=currentStage(), entry=current.entries[s.id];
+ $('caseTitle').textContent=`${DOMAIN_LABEL[current.domain]} • ${current.type}`;
+ $('caseMeta').textContent=`${current.process} • ${current.date} • ${current.id}`;
+ $('coachStateLabel').textContent=`ขั้น ${current.stageIndex+1}/${STAGES.length}: ${s.th} • ตอบทีละส่วนได้`;
+ $('coachQuestion').textContent=QUESTIONS[s.id].q;
+ $('coachWhy').textContent=QUESTIONS[s.id].why;
+ $('answerInput').value=entry.answer||'';
+ const pf=$('progressFill'),pt=$('progressText');if(pf)pf.style.width=`${Math.round(((current.stageIndex+1)/STAGES.length)*100)}%`;if(pt)pt.textContent=`ขั้น ${current.stageIndex+1}/${STAGES.length}`;
+ const mem=$('stageMemory');if(mem){const a=normalize(entry.answer||'');mem.classList.toggle('empty',!a);mem.innerHTML=a?`<b>Coach จำข้อมูลในขั้นนี้ไว้แล้ว</b>${esc(a)}<div class="hint">ถ้ายังไม่ครบ ให้ตอบเฉพาะส่วนที่ขาดเพิ่มได้</div>`:'';}
+ $('feedbackBox').className='feedback hidden'; $('feedbackBox').innerHTML=''; clearCBIInputAssist(); $('aiBox').classList.add('hidden');
+ $('aiAssistBtn').classList.toggle('hidden',!settings.aiEnabled);
+ renderStageBar(); renderStates(); renderTimeline(); renderKnowledge(); renderSignalTags(); renderCBICaseStatus(); updateNetPill();
+}
+function renderStageBar(){
+ $('stageBar').innerHTML=STAGES.map((s,i)=>{let c='stagechip locked';if(i<current.stageIndex)c='stagechip done';else if(i===current.stageIndex)c='stagechip current';return `<div class="${c}">${i+1}. ${esc(s.th)}</div>`}).join('');
+}
+function renderStates(){
+ $('stateGrid').innerHTML=STAGES.slice(0,12).map((s,i)=>{const st=current.entries[s.id].status;const label=st==='done'?'PASS':st==='current'?'ACTIVE':'LOCKED';return `<div class="stateitem"><span>${esc(s.th)}</span><b>${label}</b></div>`}).join('');
+}
+function renderTimeline(){
+ const rows=STAGES.map(s=>({s,e:current.entries[s.id]})).filter(x=>x.e.answer);
+ $('timeline').innerHTML=rows.length?rows.map(({s,e})=>`<div class="entry ${e.status==='done'?'done':''}"><div class="et">${esc(s.th)} • ${e.status==='done'?'ผ่าน':'กำลังทบทวน'}</div><div class="ea">${esc(e.answer)}</div><div class="ef">${esc(e.feedback||'')}</div></div>`).join(''):'<div class="empty">ยังไม่มีคำตอบที่บันทึก</div>';
+}
+function renderKnowledge(){
+ const arr=knowledgeFor(currentStage().id);const box=$('knowledgeNudge');
+ if(!arr.length){box.classList.add('hidden');return}box.classList.remove('hidden');box.innerHTML=`<b>Knowledge Assist — จุดที่ควรสำรวจ (ไม่ใช่คำตอบ)</b><ul>${arr.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;
+}
+function renderSignalTags(){
+ const tags=Object.entries(current.signals).map(([k,v])=>{let c='';if(/PASSED|PRESENT|OK/.test(v))c='good';else if(/MISSING|WEAK|CHALLENGE|LOCKED/.test(v))c='bad';else c='warn';return `<span class="tag ${c}">${esc(k)}: ${esc(v)}</span>`}).join(''); $('signalTags').innerHTML=tags;
+}
+function renderCases(){
+ const cases=loadJSON(CASE_KEY,[]), box=$('caseList');
+ if(!cases.length){box.innerHTML='<div class="empty">ยังไม่มีเคสที่บันทึกในเครื่อง</div>';return}
+ box.innerHTML=cases.map(c=>`<div class="caseItem"><div><b>${esc(DOMAIN_LABEL[c.domain]||c.domain)} • ${esc(c.type)}</b><small>${esc(c.process)} • ${esc(c.date)} • ขั้น ${Number(c.stageIndex)+1}/${STAGES.length}</small></div><div class="rightActions"><button class="btn small" data-open-case="${esc(c.id)}">เปิด</button><button class="btn small bad" data-delete-case="${esc(c.id)}">ลบ</button></div></div>`).join('');
+ box.querySelectorAll('[data-open-case]').forEach(b=>b.onclick=()=>openCase(b.dataset.openCase));
+ box.querySelectorAll('[data-delete-case]').forEach(b=>b.onclick=()=>deleteCase(b.dataset.deleteCase));
+}
+function openCase(id){const c=loadJSON(CASE_KEY,[]).find(x=>x.id===id);if(!c)return;current=c;saveCurrent();go('coachView');renderCoach()}
+function deleteCase(id){if(!confirm('ลบเคสนี้จากอุปกรณ์?'))return;saveJSON(CASE_KEY,loadJSON(CASE_KEY,[]).filter(x=>x.id!==id));renderCases()}
+function renderProfile(){
+ $('profileRows').innerHTML=Object.keys(DIM_LABEL).map(d=>{const p=profile[d]||{};return `<div class="profileRow"><div><b>${esc(DIM_LABEL[d])}</b><span> attempts ${p.attempts||0} • retry ${p.retries||0} • guidance ${p.guidance||0}</span></div><span>${esc(profileLevel(p))}</span></div>`}).join('');
+}
+function clearCBIInputAssist(){const el=$('cbiInputAssist');if(el){el.className='inputAssist hidden';el.innerHTML=''}}
+function renderCBIInputAssist(cbi,ev){
+ const el=$('cbiInputAssist');if(!el||!cbi){clearCBIInputAssist();return}
+ if(cbi.status==='NEEDS_CONFIRMATION'){
+  el.className='inputAssist warn';
+  el.innerHTML=`<div class="assistTitle">CBI คิดว่ามีคำพิมพ์คลาดเคลื่อน</div><div>คิดว่าคุณหมายถึง: <b>${esc(cbi.normalizedMeaning)}</b> ใช่ไหมครับ?</div>${cbi.corrections?.length?`<div class="assistSub">ปรับ: ${cbi.corrections.map(esc).join(' • ')}</div>`:''}<div class="actionrow"><button class="btn small primary" id="acceptCbiCorrectionBtn">ใช่ ใช้ข้อความนี้</button><button class="btn small" id="editCbiTextBtn">แก้ไขข้อความ</button></div>`;
+  $('acceptCbiCorrectionBtn').onclick=()=>analyzeAnswer({acceptCorrection:true,countAttempt:false});
+  $('editCbiTextBtn').onclick=()=>{$('answerInput').focus();$('answerInput').select()};
+  return;
+ }
+ if(cbi.status==='NEEDS_CLARIFICATION'){
+  el.className='inputAssist bad';
+  const isLang=(cbi.ambiguity||[]).includes('language_unclear');
+  el.innerHTML=`<div class="assistTitle">${isLang?'ข้อความนี้น่าจะพิมพ์คลาดเคลื่อน':'Coach ยังไม่เข้าใจข้อความนี้'}</div><div>${esc(cbi.clarification||'ช่วยพิมพ์ใหม่อีกครั้งครับ')}</div><div class="assistSub">ข้อความนี้ยังไม่ถูกส่งเข้า Coach Core และยังไม่ถูกใช้ผ่าน Gate</div>`;
+  $('answerInput').focus();
+  return;
+ }
+ if(cbi.contextAction==='DIFFERENT_DIMENSION'&&ev&&!ev.pass){
+  el.className='inputAssist info';
+  el.innerHTML=`<div class="assistTitle">CBI เข้าใจข้อความแล้ว</div><div>แต่ข้อมูลนี้ยังไม่ตอบสิ่งที่ Coach กำลังถามครบครับ ดูคำแนะนำของ Coach ด้านล่างแล้วเติมเฉพาะส่วนที่ขาดได้เลย</div>`;
+  return;
+ }
+ if(cbi.advisory&&ev&&!ev.pass){
+  el.className='inputAssist info';el.innerHTML=`<div class="assistTitle">CBI เข้าใจข้อความแล้ว</div><div>${esc(cbi.advisory)}</div>`;return;
+ }
+ clearCBIInputAssist();
+}
+
+function showFeedback(ev){
+ const box=$('feedbackBox');box.className=`feedback ${ev.severity}`;
+ const correction=ev.corrections?.length?`<div class="smartNote">Coach เข้าใจคำที่พิมพ์ว่า: <b>${esc(ev.normalized)}</b><div class="correctionList">${ev.corrections.map(x=>`<span class="correction">${esc(x)}</span>`).join('')}</div><div class="hint">ข้อความต้นฉบับยังถูกเก็บไว้</div></div>`:'';
+ const missing=ev.missing?.length?`<div class="missingBox"><b>เหลืออะไรอีก?</b>${ev.missing.map(x=>`<span class="missingChip">${esc(x)}</span>`).join('')}</div>`:'';
+ const investigate=ev.investigation?`<div class="investigate"><b>ถ้ายังไม่รู้ ให้ไปตรวจ:</b> ${esc(ev.investigation)}</div>`:'';
+ const attempt=current?Number(current.entries[currentStage().id]?.attempts||0):0;const frame=(!ev.pass&&ev.frame&&(attempt>=2||ev.severity==='bad'))?`<div class="answerFrame"><b>ตอบแบบนี้ได้</b>${esc(ev.frame)}</div>`:'';
+ const c=ev.cbi;const cbiHtml=(c&&settings.cbiDebug)?`<div class="cbiResult ${c.status==='UNDERSTOOD'?'':'bad'}"><b>Developer CBI ${esc(c.runtime_version)} — ${esc(c.status)}</b><div class="line">Pipeline: CBI-FIRST → Coach Core ${(ev.signals||[]).includes('CORE_NOT_EVALUATED')?'(Core skipped)':'(Core next)'}</div><div class="line">Intent: ${esc(c.intent)} • Type: ${esc(c.answerType)} • Confidence: ${Math.round(Number(c.confidence||0)*100)}% • ${esc(c.latency_ms)} ms</div><div class="line">CBI เข้าใจว่า: ${esc(c.normalizedMeaning||'—')}</div>${c.reference?.status==='RESOLVED'?`<div class="line">Reference → ${esc(c.reference.reference_id)}</div>`:''}${c.clarification?`<div class="line"><b>Clarification:</b> ${esc(c.clarification)}</div>`:''}<div class="actionrow"><button class="btn small" id="cbiCorrectBtn">✓ CBI เข้าใจถูก</button><button class="btn small bad" id="cbiWrongBtn">✗ CBI เข้าใจผิด</button></div></div>`:'';
+ const technical=settings.cbiDebug?`<div class="dimline technicalOnly">Question: ${esc(ev.qDim||'—')} • Answer: ${esc(ev.aDim||'—')}</div><div class="smallline technicalOnly">Classification: ${esc(ev.classification||'—')} • Signals: ${esc((ev.signals||[]).join(', ')||'—')}</div>`:'';
+ box.innerHTML=`<b>${esc(ev.title)}</b><p>${esc(ev.message)}</p>${missing}${correction}${investigate}${frame}${cbiHtml}${technical}${ev.pass?'<div class="actionrow"><button class="btn small primary" id="advanceBtn">ยืนยันและไปต่อ</button></div>':''}`;
+ if(ev.pass)$('advanceBtn').onclick=advanceStage;if(c&&ev.benchmarkId&&settings.cbiDebug&&$('cbiCorrectBtn')&&$('cbiWrongBtn')){$('cbiCorrectBtn').onclick=()=>{cbiSetVerdict(ev.benchmarkId,'correct');$('cbiCorrectBtn').disabled=true;$('cbiWrongBtn').disabled=true};$('cbiWrongBtn').onclick=()=>{cbiSetVerdict(ev.benchmarkId,'wrong');$('cbiCorrectBtn').disabled=true;$('cbiWrongBtn').disabled=true}}
+}
+function analyzeAnswer(opts={}){
+ if(opts instanceof Event)opts={};if(!current)return;
+ const s=currentStage(),entry=current.entries[s.id],raw=$('answerInput').value,lang=normalizeLanguage(raw);
+ if(opts.countAttempt!==false)entry.attempts=(entry.attempts||0)+1;
+ entry.rawAnswer=raw;entry.originalAnswer=entry.originalAnswer||raw;entry.languageCorrections=lang.corrections;entry.fragments=entry.fragments||[];
+ const cbi=cbiProcess(raw,s.id,{acceptCorrection:!!opts.acceptCorrection});lastCBI=cbi;
+ if(current.cbiState&&cbi){current.cbiState.turn=(current.cbiState.turn||0)+1;current.cbiState.state_version=(current.cbiState.state_version||0)+1;current.cbiState.active_intent=cbi.intent;current.cbiState.active_reference_id=cbi.reference?.reference_id||current.cbiState.active_reference_id||null}
+ const baseSemantic=(cbi?.normalizedMeaning&&cbi.intent!=='clarify')?cbi.normalizedMeaning:lang.normalized;
+ let contextual=baseSemantic;
+ if(cbi?.status==='UNDERSTOOD'){
+   contextual=mergeStageAnswer(entry.answer||'',baseSemantic,cbi.intent||'answer');
+   if(raw.trim()&&!entry.fragments.includes(raw.trim()))entry.fragments.push(raw.trim());
+ }
+ const pipeline=cbiFirstGate(s.id,raw,cbi,{semanticOverride:contextual}),coreEv=pipeline.coreEv,ev=pipeline.finalEv;ev.cbi=cbi;
+ if(pipeline.semanticForCore)entry.answer=pipeline.semanticForCore;
+ const benchId=cbiRecordBenchmark(s.id,raw,coreEv,cbi,ev,pipeline);ev.benchmarkId=benchId;lastEval=ev;
+ entry.feedback=ev.message;entry.interpretation={pipeline:'CBI_FIRST',coreEvaluated:pipeline.coreEvaluated,semanticForCore:pipeline.semanticForCore,normalized:ev.normalized,qDim:ev.qDim,aDim:ev.aDim,classification:ev.classification,cbi:cbi?{status:cbi.status,intent:cbi.intent,answerType:cbi.answerType,confidence:cbi.confidence,meaning:cbi.normalizedMeaning,reference:cbi.reference}:null};
+ updateSignals(s.id,ev);recordProfile(s.id,ev);saveCurrent();renderCBIInputAssist(cbi,ev);showFeedback(ev);renderTimeline();renderStates();renderSignalTags();renderCBICaseStatus();
+ const mem=$('stageMemory');if(mem&&entry.answer){mem.classList.remove('empty');mem.innerHTML=`<b>Coach จำข้อมูลในขั้นนี้ไว้แล้ว</b>${esc(entry.answer)}<div class="hint">ถ้ายังไม่ครบ ให้ตอบเฉพาะส่วนที่ขาดเพิ่มได้</div>`;}
+ if(settings.aiEnabled&&settings.aiAuto&&!ev.pass&&aiNeedsHelp(raw,ev)){const b=$('aiAssistBtn');b.classList.remove('hidden');b.textContent='AI ช่วยตีความ (CBI/Core ยังไม่ชัด)'}
+}
+function advanceStage(){
+ if(!current||!lastEval?.pass)return; const s=currentStage(); current.entries[s.id].status='done'; if(current.stageIndex<STAGES.length-1){current.stageIndex++; current.entries[currentStage().id].status='current';lastEval=null;saveCurrent();renderCoach();}else{saveCurrent();alert('เคสผ่านทุก Stage ของ Trial แล้ว สามารถเปิดรายงานและทบทวนบทเรียนได้');renderCoach()}
+}
+function showGuidance(){if(!current)return;recordGuidance();const box=$('feedbackBox');box.className='feedback warn';box.innerHTML=`<b>แนวทางตอบ — ไม่ใช่คำตอบสำเร็จรูป</b><p>${esc(guidanceFor(currentStage().id))}</p><div class="smallline">การกดดูแนวทางจะถูกนับเป็น Development signal เพื่อให้ Coach ปรับระดับความช่วยเหลือภายหลัง</div>`}
+
+function buildReportText(){
+ if(!current)return''; let out=`MEasyMate Intelligence Coach — Case Report\nVersion: ${VERSION}\nCase ID: ${current.id}\nDomain: ${DOMAIN_LABEL[current.domain]}\nType: ${current.type}\nProcess: ${current.process}\nDate: ${current.date}\n\nInitial: ${current.initialProblem}\n\n`;
+ if(current.originalReport)out+=`Original Report (preserved)\n${current.originalReport}\n\n`;STAGES.forEach((s,i)=>{const e=current.entries[s.id];if(e.answer)out+=`${i+1}. ${s.th} [${e.status==='done'?'PASS':'OPEN'}]\n${e.originalAnswer&&e.originalAnswer!==e.answer?`Original: ${e.originalAnswer}\nNormalized: ${e.answer}`:e.answer}\nCoach: ${e.feedback||'-'}\n\n`});
+ out+=`Intelligence Signals\n${Object.entries(current.signals).map(([k,v])=>`${k}: ${v}`).join('\n')}\n\nCBI Runtime\n${settings.cbiEnabled?`Version: ${activeCBIPack().cbi_runtime_version} / Adapter: ${activeCBIPack().adapter_version} / Contract: ${activeCBIPack().semantic_contract_version}`:'Disabled'}\n`;
+ return out;
+}
+function showReport(){if(!current)return;const text=buildReportText();$('reportContent').innerHTML=`<div class="notice">รายงานนี้สะท้อนข้อมูลที่ผู้ใช้กรอกและ Gate ที่ Core ตรวจ ไม่ควรถือเป็นการรับรองเชิงวิศวกรรม/ความปลอดภัยโดยอัตโนมัติ</div><pre style="white-space:pre-wrap;font-family:inherit;font-size:12px;color:#d9e7f7">${esc(text)}</pre>`;$('reportModal').classList.add('show')}
+function printReport(){const text=buildReportText();const w=window.open('','_blank');if(!w)return alert('Browser บล็อกหน้าต่าง Print');w.document.write(`<html><head><meta charset="utf-8"><title>Case Report</title><style>body{font-family:system-ui,sans-serif;padding:28px;line-height:1.55}pre{white-space:pre-wrap;font-family:inherit}</style>
+<style id="light-theme-overrides">
+:root{
+  --bg:#eef8ff;
+  --panel:#ffffff;
+  --panel2:#f6fbff;
+  --line:#cfe3f1;
+  --text:#17324a;
+  --muted:#5d7b95;
+  --brand:#1fa0d7;
+  --brand2:#7ed8ee;
+  --teal:#21b7a9;
+  --ok:#179d63;
+  --warn:#c58b00;
+  --bad:#d95858;
+  --info:#347fd8;
+  --shadow:0 16px 40px rgba(21,84,128,.10);
+}
+body{background:radial-gradient(circle at 18% -8%,rgba(116,212,242,.35) 0,transparent 34%),linear-gradient(180deg,#f8fcff 0%,#eef8ff 100%) !important;color:var(--text)!important;}
+.topbar{background:rgba(255,255,255,.92)!important;border-bottom:1px solid rgba(126,163,191,.35)!important;}
+.brandmark{background:#ffffff!important;color:#123047!important;box-shadow:0 10px 24px rgba(31,160,215,.14)!important;}
+.pill{background:#f4fbff!important;color:#4d718b!important;border-color:#cfe3f1!important;}
+.pill.ok{color:#14734c!important;border-color:rgba(23,157,99,.25)!important;background:rgba(23,157,99,.08)!important;}
+.pill.ai{color:#236bb8!important;border-color:rgba(52,127,216,.22)!important;background:rgba(52,127,216,.08)!important;}
+.btn{background:#f7fbfe!important;color:#163149!important;border-color:#cfe3f1!important;box-shadow:none!important;}
+.btn.primary{background:linear-gradient(135deg,var(--brand),#66caf5)!important;color:#ffffff!important;border-color:transparent!important;}
+.btn.ghost{background:transparent!important;}
+.btn.warn{background:rgba(197,139,0,.10)!important;border-color:rgba(197,139,0,.25)!important;color:#926700!important;}
+.btn.bad{background:rgba(217,88,88,.08)!important;border-color:rgba(217,88,88,.22)!important;color:#a24141!important;}
+.card{background:linear-gradient(180deg,#ffffff 0%,#f7fbff 100%)!important;border-color:#d4e6f3!important;box-shadow:var(--shadow)!important;}
+.homecard{background:#fbfdff!important;border-color:#d4e6f3!important;}
+.field label,.card .sub,.hero p,.meta,.hint,.why,.feedback .smallline,.stateitem span,.entry .ef,.brandtext span{color:var(--muted)!important;}
+.field input,.field select,.field textarea{background:#ffffff!important;color:var(--text)!important;border-color:#cfe3f1!important;}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#6ec7e0!important;box-shadow:0 0 0 3px rgba(126,216,238,.22)!important;}
+.stagechip{background:#f7fbfe!important;color:#5d7b95!important;border-color:#cfe3f1!important;}
+.stagechip.done{color:#15754d!important;border-color:rgba(23,157,99,.25)!important;background:rgba(23,157,99,.08)!important;}
+.stagechip.current{color:#ffffff!important;background:linear-gradient(135deg,var(--brand),#64c7ef)!important;}
+.coach{border-color:rgba(31,160,215,.22)!important;background:linear-gradient(135deg,rgba(31,160,215,.07),rgba(126,216,238,.14))!important;}
+.coachLabel{color:#39728d!important;}
+.feedback{background:#f7fbfe!important;border-color:#d4e6f3!important;}
+.feedback.good{background:rgba(23,157,99,.08)!important;border-color:rgba(23,157,99,.24)!important;}
+.feedback.warn{background:rgba(197,139,0,.09)!important;border-color:rgba(197,139,0,.22)!important;}
+.feedback.bad{background:rgba(217,88,88,.08)!important;border-color:rgba(217,88,88,.22)!important;}
+.feedback p,.entry .ea{color:#24435d!important;}
+.stateitem{background:#fbfdff!important;border-color:#d4e6f3!important;}
+.tag{border-color:#cfe3f1!important;background:#f8fcff!important;color:#5d7b95!important;}
+.entry{border-left-color:#cfe3f1!important;}
+.empty{border-color:#cfe3f1!important;background:#fbfdff!important;color:var(--muted)!important;}
+.footerNote{color:#6d879e!important;}
+.modal{background:rgba(225,238,247,.56)!important;}
+.sheet{background:linear-gradient(180deg,#ffffff 0%,#f7fbff 100%)!important;border-color:#d4e6f3!important;color:var(--text)!important;}
+.close{background:#f7fbfe!important;color:var(--text)!important;border-color:#cfe3f1!important;}
+.smartNote,.runtimeBox,.benchbox,.cbiCard,.debugbox{background:#f8fcff!important;border-color:#d4e6f3!important;color:var(--text)!important;}
+@media (prefers-color-scheme: dark){ body{color-scheme:light;} }
+</style>
+
+<style id="contrast-overrides">
+body{font-size:16px!important;}
+.hero p,.brandtext span,.meta,.progressText,.coachLabel,.why,.hint,.fieldTrialNote,.feedback .smallline,.entry .ef,.teamIntro p,.kbox ul,.caseItem small,.subtle,.footerNote,.empty,.homecard span{color:#45657f!important;}
+.stagechip{color:#466680!important;background:#ffffff!important;border-color:#c7ddeb!important;}
+.stagechip.locked{opacity:1!important;color:#69849b!important;background:#f7fbfe!important;}
+.stagechip.current{color:#ffffff!important;}
+.progressTrack{background:#dcebF5!important;border-color:#c7ddeb!important;}
+.progressText{font-weight:700!important;}
+.coachLabel{font-weight:700!important;}
+.question{color:#15324b!important;font-size:18px!important;line-height:1.5!important;}
+.why{font-size:13px!important;line-height:1.6!important;}
+#knowledgeNudge.kbox,.kbox{background:#f2f9ff!important;border-color:#bfd9ea!important;}
+.kbox b{color:#1d4564!important;}
+.kbox ul,.kbox li{color:#35556f!important;}
+.stageMemory{background:#ffffff!important;border-color:#bfd9ea!important;color:#35556f!important;font-size:13px!important;line-height:1.6!important;box-shadow:0 2px 10px rgba(21,84,128,.05)!important;}
+.stageMemory b{color:#1d4564!important;font-size:13px!important;}
+.answerBox label,.field label{color:#294a66!important;font-size:13px!important;}
+.field input,.field select,.field textarea{font-size:16px!important;line-height:1.65!important;background:#ffffff!important;color:#14324a!important;border:1px solid #b9d4e6!important;}
+#answerInput{min-height:180px!important;}
+.inputAssist{font-size:13px!important;line-height:1.6!important;background:#fff7e8!important;border:1px solid #efd396!important;color:#7a5a09!important;}
+.feedback{font-size:14px!important;line-height:1.65!important;}
+.feedback b{font-size:17px!important;color:#163149!important;}
+.feedback p{font-size:14px!important;line-height:1.7!important;color:#24435d!important;}
+.feedback.good p,.feedback.warn p,.feedback.bad p{color:#24435d!important;}
+.stateitem span{color:#567590!important;font-size:11px!important;}
+.stateitem b{color:#163149!important;font-size:13px!important;}
+.tag{font-size:11px!important;color:#4e6d87!important;}
+.entry .et{font-size:13px!important;color:#163149!important;}
+.entry .ea{font-size:13px!important;line-height:1.65!important;color:#24435d!important;}
+.empty{font-size:13px!important;}
+.homecard b,.title,h1,h2,h3{color:#163149!important;}
+.casehead .title{font-size:19px!important;color:#163149!important;}
+.btn{font-weight:800!important;}
+.btn.soft{background:#f7fbfe!important;color:#163149!important;border-color:#cfe3f1!important;}
+.notice,.missingBox{color:#7b5b00!important;background:#fff8e5!important;border-color:#efd58f!important;}
+.missingBox b{color:#7b5b00!important;}
+.missingChip{color:#7b5b00!important;background:#fffdf4!important;border-color:#efd58f!important;}
+.teamIntro{background:#ffffff!important;border-color:#d4e6f3!important;}
+</style>
+</head><body><pre>${esc(text)}</pre><script>window.onload=()=>window.print()<\/script></body></html>`);w.document.close()}
+async function copyReport(){try{await navigator.clipboard.writeText(buildReportText());alert('Copy report แล้ว')}catch(e){alert('Copy ไม่สำเร็จใน browser นี้')}}
+function backup(){const data={app:'MEasyMate Intelligence Coach',version:VERSION,exportedAt:nowISO(),cases:loadJSON(CASE_KEY,[]),profile:loadJSON(PROFILE_KEY,{}),cbi_runtime_pack:activeCBIPack(),cbi_benchmark:cbiBench()};downloadJSON(`MEasyMate_IC_Backup_${today()}.json`,data)}
+function downloadJSON(name,obj){const blob=new Blob([JSON.stringify(obj,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function restoreFile(file){const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!Array.isArray(d.cases))throw Error('Invalid backup');if(!confirm(`Restore ${d.cases.length} เคส? ข้อมูลเดิมจะถูกรวมโดย Case ID`))return;const old=loadJSON(CASE_KEY,[]),m=new Map(old.map(c=>[c.id,c]));d.cases.forEach(c=>m.set(c.id,c));saveJSON(CASE_KEY,[...m.values()]);if(d.profile&&typeof d.profile==='object'){profile={...profile,...d.profile};saveJSON(PROFILE_KEY,profile)}renderCases();alert('Restore สำเร็จ')}catch(e){alert('ไฟล์ Backup ไม่ถูกต้อง')}};r.readAsText(file)}
+
+function renderSettings(){
+ settings.cbiEnabled=true;document.body.classList.toggle('developer-mode',!!settings.cbiDebug);$('cbiDebugToggle').checked=!!settings.cbiDebug;$('aiToggle').checked=!!settings.aiEnabled;$('aiAutoToggle').checked=settings.aiAuto!==false;$('hubUrl').value=settings.hubUrl||'';$('hubProfile').value=settings.hubProfile||'coach-semantic-assist';$('hubToken').value=sessionStorage.getItem('measymate.ic.hubtoken')||'';$('aiSettings').classList.toggle('hidden',!settings.aiEnabled);renderCBIRuntime();renderCBIBenchmark();renderAutoTest();iqaRender();updateNetPill();
+}
+function saveSettingsFromUI(){settings.cbiEnabled=true;settings.cbiDebug=$('cbiDebugToggle').checked;settings.aiEnabled=$('aiToggle').checked;settings.aiAuto=$('aiAutoToggle').checked;settings.hubUrl=$('hubUrl').value.trim();settings.hubProfile=$('hubProfile').value.trim()||'coach-semantic-assist';saveJSON(SETTINGS_KEY,settings);document.body.classList.toggle('developer-mode',!!settings.cbiDebug);sessionStorage.setItem('measymate.ic.hubtoken',$('hubToken').value.trim());updateNetPill();if(current)renderCoach()}
+function updateNetPill(){const p=$('netPill');p.textContent='● พร้อมใช้งาน • Offline';p.className='pill ok'}
+function aiNeedsHelp(raw,ev){return ev.cbi?.status==='NEEDS_CLARIFICATION'||isUnknown(raw)||wordishLen(raw)<10||ev.aDim!==ev.qDim||ev.classification==='Unverified statement'||ev.signals.includes('METHOD_WITHOUT_RESULT')||ev.corrections?.length>0}
+function aiPrompt(){const s=currentStage();return `คุณเป็น semantic assistant ของ MEasyMate Intelligence Coach\nข้อจำกัด: ห้ามสรุป Root Cause ห้ามบอกคำตอบสุดท้าย ห้ามข้าม Gate\nงานของคุณ: 1) สรุปว่าผู้ใช้กำลังสื่ออะไร 2) ระบุว่าเป็น Fact/Evidence/Hypothesis/Unknown แบบเสนอแนะเท่านั้น 3) เสนอคำถาม rephrase 1 ข้อ\nDomain: ${current.domain}\nStage: ${s.id} ${s.th}\nProblem: ${current.initialProblem}\nOriginal user answer: ${$('answerInput').value}\nOffline normalized meaning: ${normalizeLanguage($('answerInput').value).normalized}\nCBI-first proposal: ${lastCBI?JSON.stringify({status:lastCBI.status,intent:lastCBI.intent,answerType:lastCBI.answerType,meaning:lastCBI.normalizedMeaning,confidence:lastCBI.confidence,clarification:lastCBI.clarification}):'none'}\nตอบภาษาไทยสั้น กระชับ และระบุชัดว่าเป็น "AI proposal"`}
+async function callHub(prompt,test=false){
+ const url=(settings.hubUrl||'').trim(),token=(sessionStorage.getItem('measymate.ic.hubtoken')||'').trim();if(!url)throw Error('ยังไม่ได้ตั้ง Hub endpoint');
+ const body={product_id:'measymate-intelligence-coach',profile:settings.hubProfile||'coach-semantic-assist',input:prompt,metadata:{mode:'semantic_assist',trial_version:VERSION,test:!!test}};
+ const headers={'Content-Type':'application/json'};if(token)headers['Authorization']='Bearer '+token;
+ const res=await fetch(url,{method:'POST',headers,body:JSON.stringify(body)});if(!res.ok)throw Error(`Hub HTTP ${res.status}`);const d=await res.json();return d.text||d.output_text||d.output||d.message||d.result?.text||JSON.stringify(d,null,2);
+}
+async function aiAssist(){if(!settings.aiEnabled)return;const b=$('aiAssistBtn');b.disabled=true;b.textContent='กำลังขอ AI Assist…';$('aiBox').classList.remove('hidden');$('aiText').textContent='กำลังเชื่อมต่อ MEasyMate AI Hub';try{$('aiText').textContent=await callHub(aiPrompt());current.signals.ai='PROPOSAL_RECEIVED';saveCurrent();renderSignalTags()}catch(e){$('aiText').textContent=`AI Assist ใช้ไม่ได้: ${e.message}\nOffline Core ยังทำงานต่อได้ตามปกติ`}finally{b.disabled=false;b.textContent='AI ช่วยตีความ'}}
+async function testHub(){const el=$('hubTestResult');saveSettingsFromUI();el.textContent='กำลังทดสอบ…';try{await callHub('ตอบคำว่า HUB_OK เท่านั้น',true);el.textContent='เชื่อมต่อสำเร็จ'}catch(e){el.textContent='ไม่สำเร็จ: '+e.message}}
+
+let intakeDraft=null;
+function sentenceSplit(text){return String(text||'').replace(/\r/g,'\n').split(/(?:\n+|[.!?。]+|\s*[•●▪]\s*)/).map(x=>normalize(x)).filter(x=>x.length>2)}
+function classifySentence(x){const n=normalize(x);if(/คัดแยก|กัก|หยุดไลน์|หยุดผลิต|contain|ชั่วคราว|100%\s*check|ตรวจทั้งหมด/i.test(n))return'containment';if(evidenceAnswerEnough(n))return'evidence';if(/เปลี่ยนรุ่น|เปลี่ยนคน|หลังเปลี่ยน|ก่อนเกิด|หลังเกิด|เปลี่ยนวิธี|ย้าย|ปรับตั้ง|เปลี่ยน lot|ล็อตใหม่/i.test(n))return'change';if(/น่าจะ|คาดว่า|คิดว่า|อาจ|สงสัย|สมมติ/i.test(n))return'hypothesis';if(countCausal(n)>0&&/ตรวจ|qc|sensor|control|ดัก|หลุด/i.test(n))return'escape';if(countCausal(n)>0)return'occurrence';return'fact'}
+function inferDomain(text){const n=normalize(text);if(/บาด|เจ็บ|อุบัติเหตุ|หนีบ|ลื่น|ไฟฟ้า|สารเคมี|เกือบเกิด|near miss/i.test(n))return'safety';if(/downtime|หยุดเครื่อง|เสีย|alarm|แบริ่ง|bearing|pm|ซ่อม/i.test(n))return'maintenance';if(/cycle|takt|output|ผลิตไม่ทัน|กำลังการผลิต|waiting|รอคอย/i.test(n))return'productivity';return'quality'}
+function inferType(text){const n=normalize(text);const cand=['ลืมประกอบ','ประกอบไม่ครบ','ประกอบผิด','กลับด้าน','ขันไม่ครบ','ขันน็อตไม่ครบ','บาดมือ','หนีบ','cycle time สูง','เครื่องจักรเสีย','งานหลุด QC'];return cand.find(x=>n.toLowerCase().includes(x.toLowerCase()))||((n.match(/(?:พบ|เกิด|ปัญหา)\s*([^,\n]{3,35})/i)||[])[1]||'รายงานหน้างาน')}
+function inferProcess(text){const m=String(text||'').match(/(?:line|ไลน์|station|สถานี|process|กระบวนการ)\s*[:#-]?\s*([A-Za-z0-9ก-๙ _/-]{2,32})/i);return m?normalize(m[0]):''}
+function chooseProblem(sentences){const p=sentences.find(x=>/ปกติ|พบ|เกิด|ไม่ครบ|ผิด|หาย|หลุด|บาด|เสีย|ng|defect|หยุด/i.test(x)&&!(/คัดแยก|กัก|ตรวจกล้อง/.test(x)));return p||sentences[0]||''}
+function joinCat(map,k){return (map[k]||[]).join(' | ')}
+function parseFullReport(){const raw=$('fullReportInput').value;if(!normalize(raw))return alert('กรุณาวางข้อความรายงานก่อน');const lang=normalizeLanguage(raw),sentences=sentenceSplit(lang.normalized),cats={fact:[],evidence:[],change:[],containment:[],hypothesis:[],occurrence:[],escape:[]};sentences.forEach(x=>cats[classifySentence(x)].push(x));const problem=chooseProblem(sentences);const gaps=[];if(!problem)gaps.push('ยังหา Problem statement ไม่ชัด');if(!cats.evidence.length)gaps.push('ยังไม่มี Evidence result ที่ชัด');if(!cats.change.length)gaps.push('ยังไม่มี Change / Is-Is Not');if(!cats.occurrence.length)gaps.push('ยังไม่ทราบ Occurrence Cause');if(!cats.escape.length)gaps.push('ยังไม่ทราบ Escape Cause');intakeDraft={original:raw,normalized:lang.normalized,corrections:lang.corrections,domain:inferDomain(lang.normalized),type:inferType(lang.normalized),process:inferProcess(lang.normalized),date:today(),problem,fact:joinCat(cats,'fact'),evidence:joinCat(cats,'evidence'),change:joinCat(cats,'change'),containment:joinCat(cats,'containment'),hypothesis:joinCat(cats,'hypothesis'),occurrence:joinCat(cats,'occurrence'),escape:joinCat(cats,'escape'),gaps};renderIntakePreview()}
+const INTAKE_FIELDS=[['problem','Problem / สิ่งที่เกิดขึ้น'],['fact','Fact / ข้อเท็จจริง'],['evidence','Evidence result'],['change','Change / Is-Is Not'],['containment','Containment'],['hypothesis','Hypothesis — ยังไม่ใช่ข้อเท็จจริง'],['occurrence','Occurrence Cause — ถ้ารายงานระบุไว้'],['escape','Escape Cause — ถ้ารายงานระบุไว้']];
+function renderIntakePreview(){
+ if(!intakeDraft)return;
+ $('intakePreviewWrap').classList.remove('hidden');
+ $('intakeOriginal').textContent=intakeDraft.original;
+ if(intakeDraft.corrections.length){
+   $('intakeCorrections').innerHTML=intakeDraft.corrections.map(x=>`<span class="correction">${esc(x)}</span>`).join('');
+ }else{
+   $('intakeCorrections').innerHTML='<span class="hint">ไม่พบคำที่ Offline Normalizer ต้องแก้</span>';
+ }
+ let header=`<div class="proposal"><div class="proposalHead"><b>Domain / Type / Process</b><span class="proposalState">PROPOSED</span></div><div class="formgrid"><div class="field"><label>Domain</label><select id="intDomain"><option value="quality">Quality</option><option value="safety">Safety</option><option value="productivity">Productivity</option><option value="maintenance">Maintenance</option></select></div><div class="field"><label>Type</label><input id="intType" value="${esc(intakeDraft.type)}"></div><div class="field full"><label>Process</label><input id="intProcess" value="${esc(intakeDraft.process)}"></div></div></div>`;
+ const fields=INTAKE_FIELDS.map(([k,label])=>{
+   const value=esc(intakeDraft[k]||'');
+   return `<div class="proposal"><div class="proposalHead"><b>${esc(label)}</b><span class="proposalState">PROPOSED</span></div><div class="field"><textarea id="int_${k}" placeholder="ยังไม่พบในรายงาน">${value}</textarea></div></div>`;
+ }).join('');
+ $('intakePreview').innerHTML=header+fields;
+ $('intDomain').value=intakeDraft.domain;
+ if(intakeDraft.gaps.length){
+   $('intakeGaps').innerHTML='<b class="hint">สิ่งที่ Coach ยังไม่รู้และควรถามต่อ</b>'+intakeDraft.gaps.map(x=>`<div class="gapItem">${esc(x)}</div>`).join('');
+ }else{
+   $('intakeGaps').innerHTML='<div class="feedback good"><b>ข้อมูลตั้งต้นค่อนข้างครบ</b><p>ยังคงต้องผ่าน Gate ตามลำดับ ไม่ถือว่ารายงานยืนยัน Root Cause อัตโนมัติ</p></div>';
+ }
+}
+function confirmIntake(){if(!intakeDraft)return;const data={domain:$('intDomain').value,type:normalizeLanguage($('intType').value).normalized,process:normalizeLanguage($('intProcess').value).normalized,date:today(),initialProblem:normalizeLanguage($('int_problem').value).normalized,originalReport:intakeDraft.original,normalizedReport:intakeDraft.normalized,corrections:intakeDraft.corrections,intake:{confirmedAt:nowISO(),proposed:{}}};INTAKE_FIELDS.forEach(([k])=>data.intake.proposed[k]=$(`int_${k}`).value);if(!data.initialProblem)return alert('กรุณายืนยัน Problem ก่อน');current=createCase(data);const map={problem:'problem',containment:'protect',fact:'fact',evidence:'evidence',change:'change',hypothesis:'hypothesis',occurrence:'occurrence',escape:'escape'};Object.entries(map).forEach(([src,stage])=>{const v=normalize($(`int_${src}`)?.value||'');if(v){current.entries[stage].answer=v;current.entries[stage].originalAnswer=$(`int_${src}`)?.value||v;current.entries[stage].source='CONFIRMED_INTAKE';}});current.entries.problem.status='current';current.stageIndex=0;saveCurrent();go('coachView');renderCoach();$('answerInput').value=current.entries.problem.answer||''}
+function toggleIntakeMode(mode){const report=mode==='report';$('shortIntakePanel').classList.toggle('hidden',report);$('reportIntakePanel').classList.toggle('hidden',!report);$('modeShortBtn').classList.toggle('active',!report);$('modeReportBtn').classList.toggle('active',report)}
+
+function startCase(){const p=normalizeLanguage($('initialProblem').value);const t=normalizeLanguage($('typeInput').value);const pr=normalizeLanguage($('processInput').value);const data={domain:$('domainInput').value,type:t.normalized,process:pr.normalized,date:$('dateInput').value,initialProblem:p.normalized,corrections:[...p.corrections,...t.corrections,...pr.corrections]};if(!data.type||!data.initialProblem)return alert('กรุณาใส่ประเภทปัญหาและสิ่งที่เกิดขึ้น');current=createCase(data);current.entries.problem.answer=data.initialProblem;saveCurrent();go('coachView');renderCoach()}
+
+// events
+$('newCaseBtn').onclick=()=>go('setupView');$('resumeBtn').onclick=()=>{if(!current)return alert('ยังไม่มีเคสล่าสุดในไฟล์ Team Clean นี้');go('coachView');renderCoach()};$('casesBtn').onclick=()=>{};$('profileBtn').onclick=()=>{};$('startCaseBtn').onclick=startCase;$('homeBtn').onclick=()=>{saveCurrent();go('homeView')};
+$('modeShortBtn').onclick=()=>toggleIntakeMode('short');$('modeReportBtn').onclick=()=>toggleIntakeMode('report');$('parseReportBtn').onclick=parseFullReport;$('reparseBtn').onclick=parseFullReport;$('confirmIntakeBtn').onclick=confirmIntake;$('clearReportBtn').onclick=()=>{$('fullReportInput').value='';intakeDraft=null;$('intakePreviewWrap').classList.add('hidden')};$('sampleReportBtn').onclick=()=>{toggleIntakeMode('report');$('fullReportInput').value='เมื่อวาน Line A พบ Motor 12 ชิ้นไม่มีแหวนล็อคที่ Final QC หลังเปลี่ยนรุ่นมีพนักงานมาช่วยงาน ตรวจกล้องแล้วพบว่าหลังเปลี่ยนรุ่นมีการประกอบต่อทันทีโดยไม่ได้ตรวจ First Piece จึงคัดแยกงานทั้งหมดไว้ก่อน สงสัยว่าขั้นตอนเริ่มงานหลังเปลี่ยนรุ่นอาจไม่ชัดเจน';parseFullReport()};
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
+$('answerInput').addEventListener('input',()=>{clearCBIInputAssist();lastEval=null});
+$('analyzeBtn').onclick=()=>analyzeAnswer();$('guidanceBtn').onclick=showGuidance;$('unknownBtn').onclick=()=>{$('answerInput').value='ยังไม่รู้';analyzeAnswer()};$('aiAssistBtn').onclick=aiAssist;$('saveBtn').onclick=()=>{saveCurrent();if($('resumeBtn'))$('resumeBtn').classList.remove('hidden');alert('บันทึกเคสล่าสุดในเครื่องแล้ว')};$('reportBtn').onclick=showReport;$('backupBtn').onclick=backup;$('restoreBtn').onclick=()=>$('restoreFile').click();$('restoreFile').onchange=e=>e.target.files[0]&&restoreFile(e.target.files[0]);
+$('settingsBtn').onclick=()=>{};$('closeSettings').onclick=()=>{$('settingsModal').classList.remove('show');saveSettingsFromUI()};$('cbiDebugToggle').onchange=saveSettingsFromUI;$('cbiSelfTestBtn').onclick=cbiSelfTest;$('cbiExportBtn').onclick=cbiExport;$('cbiImportBtn').onclick=()=>$('cbiImportFile').click();$('cbiImportFile').onchange=e=>e.target.files[0]&&cbiInstallPackFile(e.target.files[0]);$('cbiRollbackBtn').onclick=cbiRollback;$('cbiResetBtn').onclick=cbiResetDefault;$('cbiBenchmarkExportBtn').onclick=()=>downloadJSON(`MEasyMate_CBI_Benchmark_${today()}.json`,{exportedAt:nowISO(),runtime:activeCBIPack(),metrics:cbiStats(),turns:cbiBench()});$('cbiBenchmarkResetBtn').onclick=()=>{if(confirm('ล้าง CBI Benchmark ทั้งหมด? ข้อมูลเคสจะไม่ถูกลบ')){saveJSON(CBI_BENCH_KEY,[]);renderCBIBenchmark()}};$('autoTestFullBtn').onclick=()=>runAutoTests('full');$('autoTestQuickBtn').onclick=()=>runAutoTests('quick');$('autoTestExportBtn').onclick=exportAutoTest;$('iqaRunBtn').onclick=()=>runIntelligentQA('intelligent');$('iqaAdversarialBtn').onclick=()=>runIntelligentQA('adversarial');$('iqaExportBtn').onclick=iqaExport;$('iqaClearBankBtn').onclick=iqaClearBank;$('aiToggle').onchange=()=>{$('aiSettings').classList.toggle('hidden',!$('aiToggle').checked);saveSettingsFromUI()};$('aiAutoToggle').onchange=saveSettingsFromUI();$('hubUrl').onchange=saveSettingsFromUI;$('hubToken').onchange=saveSettingsFromUI;$('hubProfile').onchange=saveSettingsFromUI;$('testHubBtn').onclick=testHub;
+$('closeReport').onclick=()=>$('reportModal').classList.remove('show');$('printReportBtn').onclick=printReport;$('copyReportBtn').onclick=copyReport;
+$('resetProfileBtn').onclick=()=>{if(confirm('ล้าง Development Profile ทั้งหมด? เคสงานจริงจะไม่ถูกลบ')){profile={};saveJSON(PROFILE_KEY,profile);renderProfile()}};
+window.addEventListener('online',updateNetPill);window.addEventListener('offline',updateNetPill);
+document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('show')}));
+activeCBIPack();$('dateInput').value=today();renderSettings();settings.cbiDebug=false;settings.aiEnabled=false;document.body.classList.remove('developer-mode');updateNetPill();
+const draft=loadJSON(DRAFT_KEY,null);if(draft&&draft.id){current=draft}
+if($('resumeBtn'))$('resumeBtn').classList.toggle('hidden',!(current&&current.id));
+
+// Test hook for local/headless verification only. Normal users do not need this.
+if(new URLSearchParams(location.search).get('autotest')==='1'){setTimeout(()=>runAutoTests('full'),120)}
+if(new URLSearchParams(location.search).get('iqatest')==='1'){setTimeout(()=>{const r=runIntelligentQA('intelligent');const pre=document.createElement('pre');pre.id='iqaHeadlessResult';pre.textContent=JSON.stringify({total:r.total,passed:r.passed,failed:r.failed,critical:r.critical_failures,new_regression_tests:r.new_regression_tests});document.body.appendChild(pre)},180)}
+})();
+</script>
+</body>
+</html>
